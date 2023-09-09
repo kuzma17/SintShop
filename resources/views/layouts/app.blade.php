@@ -10,7 +10,14 @@
     <title>{{ config('app.name', 'Sint - Master shop') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+{{--    @vite(['resources/sass/app.scss', 'resources/js/app.js'])--}}
+    <link href="{{ asset('/build/assets/app-76742b4c.css') }}" rel="stylesheet">
+    <link href="{{ asset('/build/assets/app-260f9e7e.css') }}" rel="stylesheet">
+
+    <script async src="{{ asset('/build/assets/app-ad077736.js') }}"></script>
+    <script async src="{{ asset('/build/assets/ru-ef69a4e1.js') }}"></script>
+    <script async src="{{ asset('/build/assets/ua-cc329ed6.js') }}"></script>
+
 
 </head>
 <body>
