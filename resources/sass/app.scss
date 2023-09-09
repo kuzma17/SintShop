@@ -1,0 +1,14 @@
+// Fonts
+//@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// for FontAwesome v6+
+@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
+// Style
+@import "../css/app.css";
