@@ -74,9 +74,7 @@ class LoginController extends Controller
 //    public function loginPhone(Request $request)
 //    {
 //        $request['phone'] = cleanPhone($request['phone']);
-//
-//
-//
+
 //        if ($request->ajax()){
 //
 //            if($this->login($request)){
@@ -86,9 +84,7 @@ class LoginController extends Controller
 //            }
 //
 //        }
-//
-//
-//
+
 //        return $this->login($request);
 //    }
 }
