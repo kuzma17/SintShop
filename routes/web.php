@@ -45,12 +45,9 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
     Route::post('/cart/remove', [\App\Http\Controllers\CartController::class, 'removeItemCart'])->name('cart.remove');
     Route::post('/cart/clean', [\App\Http\Controllers\CartController::class, 'cleanCart'])->name('cart.destroy');
 
-   // Route::resource('order',App\Http\Controllers\OrderController::class);
-//    Route::post('/order/store', [\App\Http\Controllers\OrderController::class, 'store'])->name('order.store');
 
     Route::post('/order/create', [\App\Http\Controllers\OrderController::class, 'createOrder'])->name('order.create');
 
     Route::get('/order/created/{order}', [\App\Http\Controllers\OrderController::class, 'created'])->name('order.created');
-
 
 });
