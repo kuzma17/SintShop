@@ -84,7 +84,6 @@ class LoginController extends Controller
 //            }
 //
 //        }
-
 //        return $this->login($request);
 //    }
 }
