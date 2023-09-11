@@ -81,10 +81,7 @@ app.use(i18nVue, {
         }
     }).mount('#app');
 
-
-
 // app.mount("#app");
-
 
 const myCollapsible = document.getElementById('collapseOrder');
 if(myCollapsible){
