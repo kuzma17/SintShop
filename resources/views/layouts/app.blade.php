@@ -16,7 +16,8 @@
 {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">--}}
 
 
-    {{--    <script async src="{{ asset('/build/assets/app-ad077736.js') }}"></script>--}}
+
+{{--    <script async src="{{ asset('/build/assets/app-ad077736.js') }}"></script>--}}
 {{--    <script async src="{{ asset('/build/assets/ru-ef69a4e1.js') }}"></script>--}}
 {{--    <script async src="{{ asset('/build/assets/ua-cc329ed6.js') }}"></script>--}}
 
