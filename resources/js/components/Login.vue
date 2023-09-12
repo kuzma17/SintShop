@@ -4,7 +4,7 @@
         <span v-else @click="show = !show" ><i class="fa-solid fa-user"></i> {{ $t('login') }}</span>
         <transition name="fade">
         <div v-if="show" class="dropdown-login">
-            <div class="close_btn"><span @click="show = false">x</span></div>
+            <div class="container_btn"><span class="close_btn" @click="show = false">x</span></div>
            <div class="body">
                <div class="row mb-3">
                    <!--                <label for="email" class="col-md-3 col-form-label text-md-end">{{ $t('phone') }}</label>-->
@@ -157,10 +157,10 @@ export default {
     box-shadow: 5px 5px 5px #CCCCCC;
     border-radius: 10px;
 }
-.close_btn{
+.container_btn{
     height: 15px;
 }
-.close_btn span{
+.close_btn{
     position: absolute;
     top: 5px;
     right: 5px;
@@ -168,14 +168,6 @@ export default {
     height: 20px;
     cursor: pointer;
     text-align: center;
-}
-.fade-enter-active, .fade-leave-active {
-    transition: all .3s ease;
-}
-
-.fade-enter-from, .fade-leave-to{
-    transform: translateY(-30px);
-    opacity: 0;
 }
 
 </style>
