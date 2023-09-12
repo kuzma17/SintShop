@@ -100,6 +100,7 @@
                                 v-model="phone"
                                 :class="{'is-invalid': errors.phone}"
                                 placeholder=""
+                                @input="cleanError()"
                             ></input-phone>
                             <span v-if="errors.phone" class="invalid-feedback" role="alert">
                                 <strong>{{ errors.phone }}</strong>
@@ -112,7 +113,7 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="password" class="form-control" :class="{'is-invalid': errors.password}"
-                                   v-model="password" required>
+                                   v-model="password" @input="cleanError()" required>
                             <span v-if="errors.password" class="invalid-feedback" role="alert">
                                 <strong>{{ errors.password }}</strong>
                         </span>
@@ -231,6 +232,9 @@ export default {
             this.delivery = data.delivery_id
             this.payment = data.payment_id
             this.delivery_address= data.delivery_address
+        },
+        cleanError(){
+            this.errors = false
         }
 
     }

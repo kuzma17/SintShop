@@ -46,7 +46,7 @@ body{
 }
 
 .top-menu ul li{
-    padding: 0 13px;
+    padding: 0 12px;
     font-size: 14px;
     text-transform: uppercase;
 }
@@ -269,7 +269,7 @@ body{
 /*Catalog*/
 
 .btn-blue{
-    padding: 3px 10px 3px 10px!important;
+    padding: 5px 10px 5px 10px!important;
     font-weight: 600!important;
     background-color: #04B4F2!important;
     color: #ffffff !important;
@@ -523,6 +523,25 @@ input[type=radio]:focus + label:before {
 .button_order_create{
     text-align: center;
     padding: 20px
+}
+
+/*=====Login========*/
+.dropdown-login{
+    font-size: 12px;
+    color: #4b5563;
+}
+.dropdown-login .close_btn{
+    color: red;
+    font-size: 14px;
+}
+.dropdown-login .body{
+    padding: 10px;
+}
+.dropdown-login button{
+    width: 100%;
+}
+.dropdown-login .invalid-feedback{
+    font-size: 10px;
 }
 
 

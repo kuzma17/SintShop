@@ -51,6 +51,8 @@ app.component('input-phone', InputPhone);
 import CreateOrder from './components/CreateOrder.vue';
 app.component('create-order', CreateOrder);
 
+import Login from "./components/Login.vue";
+app.component('login', Login);
 
 
 

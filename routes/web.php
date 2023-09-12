@@ -29,6 +29,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
     Auth::routes();
 
+    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'loginPhone'])->name('login.phone'); //Login Phone
     Route::post('/login_order', [\App\Http\Controllers\Auth\LoginController::class, 'loginOrder'])->name('login.order'); //Login from Order
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

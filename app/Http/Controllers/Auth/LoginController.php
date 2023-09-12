@@ -71,9 +71,9 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
-//    public function loginPhone(Request $request)
-//    {
-//        $request['phone'] = cleanPhone($request['phone']);
+    public function loginPhone(Request $request)
+    {
+        $request['phone'] = cleanPhone($request['phone']);
 
 //        if ($request->ajax()){
 //
@@ -84,6 +84,6 @@ class LoginController extends Controller
 //            }
 //
 //        }
-//        return $this->login($request);
-//    }
+        return $this->login($request);
+    }
 }
