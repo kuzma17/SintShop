@@ -21,6 +21,11 @@
     "forgot_password": "Забыли пароль",
     "delivery": "Доставка",
     "address": "Адрес",
-    "payment": "Способ оплаты"
+    "payment": "Способ оплаты",
+
+    "login": "Вход",
+    "personal_area": "Кабинет",
+    "remember": "Запомнить меня"
+
 
 }

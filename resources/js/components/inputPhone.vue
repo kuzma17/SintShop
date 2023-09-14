@@ -1,5 +1,6 @@
 <template>
     <input
+        ref="input"
         :id="id"
         :name="name"
         v-model="value"
@@ -30,12 +31,17 @@ export default {
         'placeholder',
         'id',
         'required',
+        'autofocus',
         'class',
         'name'
     ],
     emits: ['update:modelValue'],
     mounted() {
         this.value = this.modelValue
+
+        if (this.autofocus){
+            this.addFocus()
+        }
     },
     data(){
         return{
@@ -55,6 +61,9 @@ export default {
         edit(){
             this.num++
             this.$emit('update:modelValue', this.value)
+        },
+        addFocus(){
+            this.$refs.input.focus()
         },
     }
 }

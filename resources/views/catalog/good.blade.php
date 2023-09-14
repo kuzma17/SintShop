@@ -41,7 +41,9 @@
                             </div>
                             <div class="col-8">
                                 <div class="button">
-                                    <button class="btn btn-blue">@lang('catalog.buy')</button>
+                                    <x-button-add-cart
+                                        :good=$good
+                                    ></x-button-add-cart>
                                 </div>
                             </div>
                         </div>

@@ -51,6 +51,11 @@ app.component('input-phone', InputPhone);
 import CreateOrder from './components/CreateOrder.vue';
 app.component('create-order', CreateOrder);
 
+import Login from "./components/Login.vue";
+app.component('login', Login);
+
+import DeliveryChoice from "./components/DeliveryChoice.vue";
+app.component('delivery-choice', DeliveryChoice);
 
 
 
@@ -88,4 +93,4 @@ if(myCollapsible){
     myCollapsible.addEventListener('shown.bs.collapse', event => {
         document.querySelectorAll(".button_order_create").forEach(button_order_create => { button_order_create.style.display = "none" });
     });
-}
+};

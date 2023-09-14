@@ -6,7 +6,7 @@
 <div class="collapse" id="collapseOrder">
     <h4>@lang('order.creating_order')</h4>
 
-    <div class="checkout_order">
+    <div class="user_settings">
         <form method="post" action="{{route('order.create')}}">
             @csrf
             <create-order
