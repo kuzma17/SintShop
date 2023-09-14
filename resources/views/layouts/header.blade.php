@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-12 col-md-auto">
                         <div class="logo">
-                            <a href="/">
+                            <a href="{{route('home')}}">
                                 <img src="/images/logo.png">
                             </a>
                         </div>
