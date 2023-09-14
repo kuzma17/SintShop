@@ -1,7 +1,7 @@
 <template>
     <div>
         <h5><i class="fa-regular fa-address-card"></i> {{ $t('contacts_data') }}</h5>
-        <div class="content_checkout">
+        <div class="content">
             <div v-if="auth_user" class="auth_user">
                 <div class="mb-3 row">
                     <label class="col-sm-2">
@@ -100,6 +100,7 @@
                                 v-model="phone"
                                 :class="{'is-invalid': errors.phone}"
                                 placeholder=""
+                                @input="cleanError()"
                             ></input-phone>
                             <span v-if="errors.phone" class="invalid-feedback" role="alert">
                                 <strong>{{ errors.phone }}</strong>
@@ -112,7 +113,7 @@
                         </label>
                         <div class="col-sm-10">
                             <input type="password" class="form-control" :class="{'is-invalid': errors.password}"
-                                   v-model="password" required>
+                                   v-model="password" @input="cleanError()" required>
                             <span v-if="errors.password" class="invalid-feedback" role="alert">
                                 <strong>{{ errors.password }}</strong>
                         </span>
@@ -130,37 +131,15 @@
             </div>
         </div>
         <h5><i class="fa-solid fa-truck-arrow-right"></i> {{ $t('delivery') }}</h5>
-        <div class="content_checkout">
-            <ul>
-                <li v-for="item in deliveries">
-                    <input type="radio" :id="'delivery' + item.id" :value="item.id"
-                           name="delivery_id"
-                           v-model="delivery">
-                    <label :for="'delivery' + item.id">{{ item.title }}</label>
-                </li>
-            </ul>
-            <div v-if="delivery == 2">
-                <div class="mb-3 row">
-                    <label class="col-sm-2 star">
-                        {{ $t('address') }}
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="text"
-                               name="delivery_address"
-                               class="form-control"
-                               :class="{'is-invalid': errors.delivery_address}"
-                               v-model="delivery_address"
-                               :required="delivery == 2"
-                        >
-                        <span v-if="errors.delivery_address" class="invalid-feedback" role="alert">
-                                <strong>{{ errors.delivery_address }}</strong>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <delivery-choice
+            :deliveries="deliveries"
+            v-model="delivery"
+            :address="delivery_address"
+            :validate_errors="errors"
+        >
+        </delivery-choice>
         <h5><i class="fa-regular fa-money-bill-1"></i> {{ $t('payment') }}</h5>
-        <div class="content_checkout">
+        <div class="content">
             <ul>
                 <li v-for="pay in payments">
                     <input type="radio" name="payment_id" :id="'payment'+pay.id" :value="pay.id" v-model="payment">
@@ -231,6 +210,9 @@ export default {
             this.delivery = data.delivery_id
             this.payment = data.payment_id
             this.delivery_address= data.delivery_address
+        },
+        cleanError(){
+            this.errors = false
         }
 
     }

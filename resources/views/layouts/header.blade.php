@@ -20,7 +20,7 @@
                             <i class="fa-regular fa-clock"></i> @lang('main.we_working'): 9.00 - 18.00
                         </div>
                     </div>
-                    <div class="col-7">
+                    <div class="col-7 p-0">
                         <x-top-menu></x-top-menu>
                     </div>
                     <div class="col-1 p-0">

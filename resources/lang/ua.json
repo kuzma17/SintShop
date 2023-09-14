@@ -21,5 +21,9 @@
     "forgot_password": "Забули пароль",
     "delivery": "Доставка",
     "address": "Адреса",
-    "payment": "Спосіб оплати"
+    "payment": "Спосіб оплати",
+
+    "login": "Вхід",
+    "personal_area": "Кабінет",
+    "remember": "Запам`ятати мене"
 }
