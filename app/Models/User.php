@@ -48,6 +48,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function orders(){
+        return $this->hasMany(Order::class)->sort();
+    }
+
+    public function delivery(){
+        return $this->belongsTo(Delivery::class);
+    }
+
+    public function payment(){
+        return $this->belongsTo(Payment::class);
+    }
+
     public function findUser($phone){
         $phone = cleanPhone($phone);
         return self::where('phone', $phone)->first();

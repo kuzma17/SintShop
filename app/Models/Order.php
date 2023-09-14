@@ -13,15 +13,16 @@ class Order extends Model
         'user_id',
         'delivery_id',
         'payment_id',
-        'quantity',
+        'count',
         'summa',
-        'address',
+        'delivery_address',
         'note',
         'status_id'
     ];
 
     public function goods(){
-        return $this->belongsToMany(Good::class);
+        return $this->belongsToMany(Good::class)
+            ->withPivot('quantity', 'price');
     }
 
     public function user(){
@@ -38,6 +39,10 @@ class Order extends Model
 
     public function status(){
         return $this->belongsTo(Status::class);
+    }
+
+    public function scopeSort($request){
+        return $request->orderByDesc('id');
     }
 
     public function createOrder($data, $cart_content){

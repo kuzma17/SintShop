@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('delivery_id')->references('id')->on('deliveries');
             $table->unsignedBigInteger('payment_id')->index();
             $table->foreign('payment_id')->references('id')->on('payments');
-            $table->integer('quantity', 5);
+            $table->integer('count', 5);
             $table->decimal('summa', 10, 2);
             $table->string('delivery_address', 255)->nullable();
             $table->text('note')->nullable();

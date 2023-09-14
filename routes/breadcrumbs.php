@@ -36,3 +36,13 @@ Breadcrumbs::for('cart', function (BreadcrumbTrail $trail){
     $trail->parent('home');
     $trail->push(__('cart.cart'), route('cart'));
 });
+
+Breadcrumbs::for('user.profile', function (BreadcrumbTrail $trail){
+    $trail->parent('home');
+    $trail->push(__('user.cabinet'), route('user.profile'));
+});
+
+//Breadcrumbs::for('user.orders', function (BreadcrumbTrail $trail){
+//    $trail->parent('home');
+//    $trail->push(__('user.orders'), route('user.orders'));
+//});

@@ -7,7 +7,6 @@
             <div class="container_btn"><span class="close_btn" @click="show = false">x</span></div>
            <div class="body">
                <div class="row mb-3">
-                   <!--                <label for="email" class="col-md-3 col-form-label text-md-end">{{ $t('phone') }}</label>-->
                    <div class="col-md-12">
                        <input-phone
                            name="phone"
@@ -24,7 +23,6 @@
                </div>
 
                <div class="row mb-3">
-                   <!--                <label for="password" class="col-md-3 col-form-label text-md-end">{{ $t('password') }}</label>-->
                    <div class="col-md-12">
                        <input id="password"
                               type="password"
@@ -48,7 +46,7 @@
                        <div class="form-check">
                            <input class="form-check-input" type="checkbox" v-model="remember" name="remember" id="remember">
                            <label class="form-check-label" for="remember">
-                               Запомнить меня
+                               {{ $t('remember') }}
                            </label>
                        </div>
                    </div>
@@ -57,7 +55,7 @@
                <div class="row mb-3">
                    <div class="col-md-12">
                        <button type="submit" @click="login()" class="btn btn-blue">
-                           login
+                           {{ $t('login') }}
                        </button>
                    </div>
                </div>

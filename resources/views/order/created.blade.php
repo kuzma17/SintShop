@@ -13,7 +13,7 @@
 {{--            </div>--}}
             <div class="clearfix"></div>
             <div class="row">
-                <div class="parameter">@lang('order.count_good')</div> <div class="col value">{{$order->quantity}}</div>
+                <div class="parameter">@lang('order.count_good')</div> <div class="col value">{{$order->count}}</div>
             </div>
             <div class="row">
                 <div class="parameter">@lang('order.cart_sum')</div> <div class=" col value text-orange">{{$order->summa}}</div>

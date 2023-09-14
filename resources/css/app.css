@@ -2,6 +2,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: #FFFFFF;
     font-family: sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -462,40 +463,40 @@ input[type=radio]:focus + label:before {
 }
 
 
-/*===Checkout Order====*/
+/*===Create Order====*/
 
-.checkout_order{
+.user_settings{
     width: 70%;
     margin: 0 auto;
     padding-top: 20px;
 }
-.checkout_order h5{
+.user_settings h5{
     color: #0468C5;
 }
-.checkout_order h5 i{
+.user_settings h5 i{
     color: #CCCCCC;
 }
-.checkout_order .content_checkout{
+.user_settings .content{
     padding: 10px 20px;
 }
-.checkout_order .login{
+.user_settings .login{
     padding-top: 20px;
 }
-.checkout_order .row label{
+.user_settings .row label{
     text-align: right;
 }
-.checkout_order ul li{
+.user_settings li{
     list-style-type: none;
     padding-left: 20px;
 
 }
-.checkout_order .user_type{
+.user_settings .user_type{
     padding-left: 50px;
 }
-.checkout_order button{
+.user_settings button{
     width: 150px;
 }
-.checkout_order .info{
+.user_settings .info{
     color: #5c636a;
 }
 
@@ -553,6 +554,29 @@ input[type=radio]:focus + label:before {
 }
 
 
+/*Cabinet*/
+
+.cabinet{
+    padding-top: 20px;
+}
+.cabinet .menu{
+    margin: 40px 10px;
+}
+.user_password{
+    padding-top: 40px;
+}
+.user_orders{
+    padding-top: 40px;
+}
+.user_orders img{
+    width: 50px;
+}
+.user_orders .param{
+    font-weight: bolder;
+    font-size: 14px;
+    color: #0468C5;
+}
+
 
 
 
@@ -561,4 +585,7 @@ input[type=radio]:focus + label:before {
     /*.col{margin:0 !important; padding:0 !important;}*/
 div{
     /*border: 1px solid green;*/
+}
+ul li{
+    /*padding: 0!important;*/
 }
