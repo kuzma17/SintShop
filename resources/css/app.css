@@ -375,6 +375,9 @@ body{
     font-size: 14px;
     color: #5c636a;
 }
+.good .button i{
+    color: #FFFFFF;
+}
 
 /*===Cart===*/
 .cart{}
