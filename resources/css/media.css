@@ -1,0 +1,38 @@
+
+@media (min-width: 576px) {
+
+}
+
+
+@media (min-width: 768px) {
+    .mobile-nav{
+        display: none!important;
+    }
+
+    .top-menu{
+        display: block!important;
+    }
+
+    .search_block{
+        display: block!important;
+    }
+    .search_block-mobile{
+        display: none!important;
+    }
+
+}
+
+
+@media (min-width: 992px) {
+
+}
+
+
+@media (min-width: 1200px) {
+
+}
+
+
+@media (min-width: 1400px) {
+
+}

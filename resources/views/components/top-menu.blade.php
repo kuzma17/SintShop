@@ -5,6 +5,7 @@
         <li><a href="#">@lang('menu.contacts')</a></li>
         <li><login
             auth_user="{{auth()->check()}}"
-            ></login></li>
+            ></login>
+        </li>
     </ul>
 </div>

@@ -12,7 +12,7 @@
         <div class="catalog">
             <div class="row justify-content-center">
                 @foreach($goods as $good)
-                    <div class="col-3 p-0">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-0">
                         <div class="good-cart">
                            <a href="{{route('good', [$good->slug, $good->id])}}">
                                <div class="photo">
