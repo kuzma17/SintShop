@@ -9,7 +9,7 @@ class CatalogController extends Controller
 {
 
     public function list($slug, Category $category){
-        $goods = $category->getGoodsCategory()->paginate(4);
+        $goods = $category->getGoodsCategory()->paginate(12);
 
         return view('catalog.index', ['category' => $category, 'goods' => $goods]);
     }
