@@ -12,12 +12,33 @@
     .top-menu{
         display: block!important;
     }
+    .header .menu .container .navbar{
+        margin-left: 100px!important;
+
+    }
 
     .search_block{
         display: block!important;
     }
+    .header .search{
+        padding-left: 30px!important;
+    }
     .search_block-mobile{
         display: none!important;
+    }
+    .header .time-work_text{
+        display: block!important;
+    }
+    .phone-block{
+        display: block!important;
+        margin-top: 55px!important;
+    }
+    .phone-block_mobile{
+        display: none!important;
+    }
+
+    .login .dropdown-login{
+        right: -130px!important;
     }
 
 }

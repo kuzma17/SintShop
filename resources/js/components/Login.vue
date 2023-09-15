@@ -149,7 +149,7 @@ export default {
     padding: 5px;
     z-index: 100;
     top: 30px;
-    right: -130px;
+    right: -20px;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     box-shadow: 5px 5px 5px #CCCCCC;

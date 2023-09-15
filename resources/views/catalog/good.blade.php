@@ -14,14 +14,14 @@
 
         <div class="good">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <photos-good
                         :patch="{{json_encode('/images/goods/')}}"
                         :photos="{{json_encode($good->photos)}}"
                         :no_photo="{{json_encode('no_photo.png')}}"
                     ></photos-good>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="good-set">
                         <div class="title">
                             <h4>{{$good->title}}</h4>

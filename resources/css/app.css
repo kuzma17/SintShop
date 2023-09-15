@@ -24,19 +24,32 @@ body{
 
  /*header phone*/
 .header .phone{
-    margin-top: 55px;
     font-size: 18px;
     font-weight: 700;
     color: #5c636a;
+    text-align: center;
 }
 .header .phone i{
     color: #04B3F1;
+}
+.phone-block{
+    display: none;
 }
 
 /*Clock*/
 .header .clock{
     /*font-size: 13px;*/
     color: #7e7e7e;
+}
+.header .clock span{
+    float: left;
+}
+.header .clock i{
+    float: left;
+    margin: 3px 3px 0 0;
+}
+.header .time-work_text{
+    display: none;
 }
 
 
@@ -66,7 +79,7 @@ body{
     display: none;
 }
 .header .search{
-    padding-left: 30px;
+    /*padding-left: 30px;*/
 }
 .header .search .input-group{
     border: 1px solid #CCCCCC;
@@ -80,9 +93,10 @@ body{
 /*Head Cart*/
 .header .cart{
     padding-top: 5px;
+    width: 60px;
 }
 .header .cart a{
-    float: right;
+
     color: #5c636a;
     text-decoration: none;
 }
@@ -133,6 +147,7 @@ body{
 .header .locale{
     width: 60px;
     color: #5c636a;
+    float: right;
 }
 .header .locale a{
     color: #04B3F1;
@@ -148,7 +163,7 @@ body{
     background-color: #484848;
 }
 .header .menu .container .navbar{
-    margin-left: 100px;
+    /*margin-left: 100px;*/
 
 }
 .header .menu .navbar .nav-link{
@@ -158,6 +173,13 @@ body{
     text-transform: uppercase;
     padding: 5px 20px;
 
+}
+.header .menu .navbar i{
+    color: #FFFFFF;
+    padding: 5px;
+}
+.header .menu .navbar span{
+    color: #FFFFFF;
 }
 .header .menu .navbar .nav-link:hover{
     color: #04B4F2;
@@ -200,9 +222,9 @@ body{
     position: relative;
 }
 .category img{
-    width: 290px;
-    height: 290px;
-    /*height: 300px;*/
+    /*width: 290px;*/
+    /*height: 290px;*/
+    width: 100%;
     border-radius: 10px;
     border: 1px solid #BABDB6;
 }
@@ -540,7 +562,7 @@ input[type=radio]:focus + label:before {
     color: #4b5563;
 }
 .dropdown-login .close_btn{
-    color: red;
+    color: red!important;
     font-size: 14px;
 }
 .dropdown-login .body{
