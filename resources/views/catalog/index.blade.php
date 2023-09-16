@@ -9,6 +9,11 @@
 
         <h4>{{$category->title}}</h4>
 
+        <div class="sort-panel">
+            <x-sort
+                :category=$category
+            ></x-sort>
+        </div>
         <div class="catalog">
             <div class="row justify-content-center">
                 @foreach($goods as $good)

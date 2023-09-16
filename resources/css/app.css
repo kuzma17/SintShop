@@ -515,7 +515,7 @@ input[type=radio]:focus + label:before {
 .user_settings .row label{
     text-align: right;
 }
-.user_settings li{
+.user_settings ul li{
     list-style-type: none;
     padding-left: 20px;
 
@@ -605,6 +605,39 @@ input[type=radio]:focus + label:before {
     font-weight: bolder;
     font-size: 14px;
     color: #0468C5;
+}
+
+
+/*Sort panel*/
+
+.sort-panel{
+    height: 45px;
+}
+.sort-panel .sort{
+    width: 260px;
+    float: right;
+}
+.sort label{
+    padding: 5px;
+}
+.sort .select{
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    width: 160px;
+    padding: 6px 10px;
+    margin-right: 10px;
+    float: right;
+    text-align: center;
+    cursor: pointer;
+}
+.sort .dropdown-menu{
+    width: 160px;
+    padding: 0;
+}
+.sort .dropdown-menu a{
+    padding: 5px 10px;
+    background-color: #484848;
+    color: #FFFFFF;
 }
 
 
