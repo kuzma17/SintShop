@@ -88,9 +88,26 @@ app.use(i18nVue, {
 
 // app.mount("#app");
 
+// Button cart
 const myCollapsible = document.getElementById('collapseOrder');
 if(myCollapsible){
     myCollapsible.addEventListener('shown.bs.collapse', event => {
         document.querySelectorAll(".button_order_create").forEach(button_order_create => { button_order_create.style.display = "none" });
     });
+}
+
+// Preloader
+const fadeOut = (el, timeout) => {
+    el.style.opacity = 1;
+    el.style.transition = `opacity ${timeout}ms`;
+    el.style.opacity = 0;
+
+    setTimeout(() => {
+        el.style.display = 'none';
+    }, timeout);
 };
+
+const Preloader = document.getElementById('preloader');
+if(Preloader){
+    fadeOut(Preloader, 300);
+}
