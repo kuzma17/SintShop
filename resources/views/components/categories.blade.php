@@ -1,6 +1,6 @@
 <div class="categories">
 
-    <h2>{{__('menu.categories')}}</h2>
+    <h3>{{__('menu.categories')}}</h3>
 
     <div class="row justify-content-center">
         @foreach($categories as $category)

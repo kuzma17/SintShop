@@ -1,5 +1,5 @@
 <div class="slider">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             @foreach($sliders as $slider)
                 <button type="button" data-bs-target="#cslide" data-bs-slide-to="{{ $loop->index }}"  @if($loop->first) class="active" @endif></button>
@@ -14,10 +14,10 @@
                 </div>
             @endforeach
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
     </div>

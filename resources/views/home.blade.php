@@ -2,8 +2,10 @@
 
 @section('content')
     <x-slider></x-slider>
-    <div class="content container">
+    <div class="container">
         <x-categories></x-categories>
+        <br>
+        <x-new-products></x-new-products>
     </div>
     <br>
     <br>
