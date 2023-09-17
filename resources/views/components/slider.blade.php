@@ -1,5 +1,5 @@
 <div class="slider">
-    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-indicators">
             @foreach($sliders as $slider)
                 <button type="button" data-bs-target="#cslide" data-bs-slide-to="{{ $loop->index }}"  @if($loop->first) class="active" @endif></button>
