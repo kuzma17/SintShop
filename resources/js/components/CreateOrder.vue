@@ -57,7 +57,6 @@
                             {{ $t('phone') }}:
                         </label>
                         <div class="col-sm-10">
-                            <!--                            <input type="text"  class="form-control" v-model="phone">-->
                             <input-phone
                                 name="phone"
                                 v-model="phone"
@@ -123,7 +122,7 @@
                     <div class="mb-3 row">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                            <span class="btn btn-blue" @click="login()">Войти</span>
+                            <span class="btn btn-blue" @click="login()">{{ $t('login') }}</span> &nbsp;
                             <a href="password/reset">{{ $t('forgot_password') }}?</a>
                         </div>
                     </div>

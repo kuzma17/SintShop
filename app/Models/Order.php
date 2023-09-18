@@ -17,7 +17,7 @@ class Order extends Model
         'summa',
         'delivery_address',
         'note',
-        'status_id'
+        'status_id',
     ];
 
     public function goods(){

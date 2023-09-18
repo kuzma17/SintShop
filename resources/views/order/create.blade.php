@@ -16,9 +16,19 @@
                 :validate_errors="{{$errors}}"
             ></create-order>
             <div class="mb-3 row">
+                <div class="col-sm-2 note">
+                    @lang('order.note'):
+                </div>
+                <div class="col-sm-10">
+                    <textarea name="note" class="form-control">
+                        {{old('note')}}
+                    </textarea>
+                </div>
+            </div>
+            <div class="mb-3 row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-blue">Сохранить</button>
+                    <button type="submit" class="btn btn-blue">@lang('order.save')</button>
                 </div>
             </div>
         </form>

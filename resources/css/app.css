@@ -531,6 +531,9 @@ input[type=radio]:focus + label:before {
 .user_settings .info{
     color: #5c636a;
 }
+.note{
+   text-align: right;
+}
 
     /*====Stare*=====*/
 .star::after{

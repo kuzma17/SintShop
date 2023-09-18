@@ -33,8 +33,12 @@
             <div class="col-10">{{$order->payment->title}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">статус</div>
-            <div class="col-10">{{$order->status->title}}:</div>
+            <div class="col-2 param">@lang('user.status')</div>
+            <div class="col-10">{{$order->status->title}}</div>
+        </div>
+        <div class="row">
+            <div class="col-2 param">@lang('order.note'):</div>
+            <div class="col-10">{{$order->note}}</div>
         </div>
         <div class="row">
             <div class="col-2 param">@lang('user.items'):</div>
