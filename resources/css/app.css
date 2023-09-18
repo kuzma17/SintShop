@@ -641,6 +641,9 @@ input[type=radio]:focus + label:before {
     background-color: #484848;
     color: #FFFFFF;
 }
+.sort .list-group{
+    border-radius: 5px;
+}
 
 
 /*===Preloader===*/
@@ -670,6 +673,9 @@ input[type=radio]:focus + label:before {
 
 
 
+ul li{
+    padding-left: 0!important;
+}
 
 
     /*.col{margin:0 !important; padding:0 !important;}*/

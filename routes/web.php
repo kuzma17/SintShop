@@ -58,13 +58,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
         Route::get('/order/{order}', [\App\Http\Controllers\UserController::class, 'order'])->name('user.order');
     });
 
-//    Route::get('/user/profile', [\App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
-//    Route::put('/user/profile/{user}', [\App\Http\Controllers\UserController::class, 'updateProfile'])->name('user.profile.update');
-//    Route::get('/user/password', [\App\Http\Controllers\UserController::class, 'password'])->name('user.password');
-//    Route::put('/user/password/{user}', [\App\Http\Controllers\UserController::class, 'updatePassword'])->name('user.password.update');
-//    Route::get('/user/orders', [\App\Http\Controllers\UserController::class, 'orders'])->name('user.orders');
-//    Route::get('/user/order/{order}', [\App\Http\Controllers\UserController::class, 'order'])->name('user.order');
+    Route::get('/catalog/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
-//    Route::resource('user', \App\Http\Controllers\UserController::class);
 
 });

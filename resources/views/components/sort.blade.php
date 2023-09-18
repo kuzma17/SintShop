@@ -8,10 +8,10 @@
                 @lang('filter.'.$sort)
             </div>
             <div class="dropdown-menu">
-                <div class="list-group" style="border-radius: 5px">
-                    <a href="{{$route}}?sort=new" class="list-group-item list-group-item-action">@lang('filter.new')</a>
-                    <a href="{{$route}}?sort=priceAsc" class="list-group-item list-group-item-action">@lang('filter.priceAsc')</a>
-                    <a href="{{$route}}?sort=priceDesc" class="list-group-item list-group-item-action">@lang('filter.priceDesc')</a>
+                <div class="list-group">
+                    <a href="{{$route}}new" class="list-group-item list-group-item-action">@lang('filter.new')</a>
+                    <a href="{{$route}}priceAsc" class="list-group-item list-group-item-action">@lang('filter.priceAsc')</a>
+                    <a href="{{$route}}priceDesc" class="list-group-item list-group-item-action">@lang('filter.priceDesc')</a>
                 </div>
             </div>
         </div>

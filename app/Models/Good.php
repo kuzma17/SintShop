@@ -5,12 +5,25 @@ namespace App\Models;
 use App\Traits\Locale;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Good extends Model
 {
     use HasFactory;
     use Locale;
+    use Searchable;
 
+    public function toSearchableArray()
+    {
+        return $this->only([
+            'id',
+            'code',
+            'title_ru',
+            'title_ua',
+            'description_ru',
+            'description_ua'
+        ]);
+    }
     public function photos(){
         return $this->hasMany(Photo::class);
     }

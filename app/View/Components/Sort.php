@@ -16,8 +16,18 @@ class Sort extends Component
      */
     public function __construct(Request $request,$category)
     {
-       $this->route = route('catalog', [$category->slug, $category->id]);
+       $this->route = $this->getUrlPatch($request);
        $this->sort = $request->query->get('sort', env('SORT_DEFAULT'));
+    }
+
+    protected function getUrlPatch($request)
+    {
+        $search = $request->query('search');
+        if ($search){
+            return route('search').'?search='.$search.'&sort=';
+        }
+
+        return url()->current().'?sort=';
     }
 
     /**

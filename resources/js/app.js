@@ -45,9 +45,6 @@ app.component('input-quantity', InputQuantity);
 import InputPhone from './components/inputPhone.vue';
 app.component('input-phone', InputPhone);
 
-// import CheckoutOrder from './components/CheckoutOrder.vue';
-// app.component('checkout-order', CheckoutOrder);
-
 import CreateOrder from './components/CreateOrder.vue';
 app.component('create-order', CreateOrder);
 

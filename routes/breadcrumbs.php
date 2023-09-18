@@ -42,7 +42,7 @@ Breadcrumbs::for('user.profile', function (BreadcrumbTrail $trail){
     $trail->push(__('user.cabinet'), route('user.profile'));
 });
 
-//Breadcrumbs::for('user.orders', function (BreadcrumbTrail $trail){
-//    $trail->parent('home');
-//    $trail->push(__('user.orders'), route('user.orders'));
-//});
+Breadcrumbs::for('search', function (BreadcrumbTrail $trail){
+    $trail->parent('home');
+    $trail->push(__('main.search'), route('search'));
+});
