@@ -108,3 +108,15 @@ const Preloader = document.getElementById('preloader');
 if(Preloader){
     fadeOut(Preloader, 300);
 }
+
+// Top Scroll
+function scrollFunction() {
+    const TopScroll = document.getElementById('top-scroll');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        TopScroll.style.display = "block";
+    } else {
+        TopScroll.style.display = "none";
+    }
+}
+
+window.onscroll = function() {scrollFunction()};

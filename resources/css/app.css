@@ -670,8 +670,40 @@ input[type=radio]:focus + label:before {
     height: 70px;
     margin-top: -35px;
     margin-left: -35px;
-    background: url('../images/preloader.gif') no-repeat 50% 50%; /*расположение (url) изображения gif и др. параметры*/
+    background: url('../images/preloader.gif') no-repeat 50% 50%;
 }
+
+/*====Top Scroll====*/
+#top-scroll{
+    position: fixed;
+    bottom: 35px;
+    right: 28px;
+    z-index: 100;
+    display: none;
+}
+.top-scroll a {
+    height: 42px;
+    width: 42px;
+    border-radius: 42px;
+    text-align: center;
+    background: #04B4F2;
+    display: block;
+}
+.top-scroll a span {
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 42px;
+    cursor: pointer;
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+    html,
+    body {
+        scroll-behavior: smooth;
+    }
+}
+
+
+
 
 
 
@@ -679,6 +711,9 @@ input[type=radio]:focus + label:before {
 ul li{
     padding-left: 0!important;
 }
+
+
+
 
 
     /*.col{margin:0 !important; padding:0 !important;}*/

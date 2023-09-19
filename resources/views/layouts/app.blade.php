@@ -22,6 +22,11 @@
         @include('layouts.header')
         @yield('content')
         @include('layouts.footer')
+
+        <div id="top-scroll" class="top-scroll">
+            <a href="#" title="вверх"><span class="fas fa-angle-up"></span></a>
+        </div>
+
     </div>
     {{--    <script async src="{{ asset('/build/assets/app-ad077736.js') }}"></script>--}}
     {{--    <script async src="{{ asset('/build/assets/ru-ef69a4e1.js') }}"></script>--}}
