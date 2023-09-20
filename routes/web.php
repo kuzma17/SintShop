@@ -63,6 +63,10 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
     Route::get('/catalog/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
 
+    Route::get('/admin', [App\Http\Controllers\PageController::class, 'admin'])->name('admin');
+
+
     Route::get('/{page}', [App\Http\Controllers\PageController::class, 'page'])->name('page');
+
 
 });

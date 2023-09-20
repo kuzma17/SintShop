@@ -17,4 +17,8 @@ class PageController extends Controller
 
         return view('pages.page', ['page' => $page]);
     }
+
+    public function admin(){
+        return view('admin.layouts.app');
+    }
 }

@@ -10,7 +10,11 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
+
+                // 'resources/sass/admin.scss', //admin
+                // 'resources/js/app_admin.js',
             ],
+
             refresh: true,
         }),
         i18n(),
