@@ -29,6 +29,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
     Auth::routes();
 
     Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'loginPhone'])->name('login.phone'); //Login Phone
@@ -60,5 +62,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
     Route::get('/catalog/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
+
+    Route::get('/{page}', [App\Http\Controllers\PageController::class, 'page'])->name('page');
 
 });
