@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\DeliveryResource;
+use App\Http\Resources\PaymentResource;
+use App\Models\Delivery;
+use App\Models\Payment;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -49,12 +53,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            //'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        $rules = [
+            'name' => ['required', 'string'],
             'phone' => ['required'],
+            //'email' => ['nullable','email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ];
+
+        if (isset($data['delivery_id']) && $data['delivery_id'] == 2){
+
+            $rules['delivery_address'] = ['required', 'string'];
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -72,7 +83,23 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'delivery_id' => $data['delivery_id'],
             'payment_id' => $data['payment_id'],
-            'delivery_address' => $data['delivery_address'],
+            'delivery_address' => isset($data['delivery_address'])? $data['delivery_address']: '',
         ]);
     }
+
+    public function showRegistrationForm()
+    {
+        $deliveries = Delivery::active()
+            ->sort()
+            ->get();
+        $payments = Payment::active()
+            ->sort()
+            ->get();
+
+        return view('auth.register', [
+            'deliveries' => DeliveryResource::collection($deliveries),
+            'payments' => PaymentResource::collection($payments)
+        ]);
+    }
+
 }

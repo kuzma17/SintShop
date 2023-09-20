@@ -1,18 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
-@section('content')
+@section('link', Breadcrumbs::render('search'))
 
-    <div class="container">
-        <div class="link">
-            {{ Breadcrumbs::render('search') }}
-        </div>
-
-        <h4>Результаты поиска: {{$q}}</h4>
+@section('title', __('main.searching_results').' '.$q)
+@section('body')
 
         <div class="sort-panel">
-            <x-sort
-                category='sort'
-            ></x-sort>
+            <x-sort></x-sort>
         </div>
         <div class="catalog">
             <div class="row justify-content-center">
@@ -26,6 +20,4 @@
                 {{$goods->links()}}
             </div>
         </div>
-    </div>
-
 @endsection

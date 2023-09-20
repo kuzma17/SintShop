@@ -1,14 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
-@section('content')
+@section('link', Breadcrumbs::render('cart'))
 
-<div class="container">
-    <div class="link">
-        {{ Breadcrumbs::render('cart') }}
-    </div>
+@section('title', __('cart.cart'))
 
-    <h4>@lang('cart.cart')</h4>
-
+@section('body')
     <div class="cart">
         <cart
             :goods="{{json_encode($goods)}}"
@@ -21,6 +17,4 @@
         @endif
 
     </div>
-</div>
-
 @endsection

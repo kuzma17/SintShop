@@ -1,13 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
-@section('content')
+@section('link', Breadcrumbs::render('user.profile'))
 
-    <div class="container">
-        <div class="link">
-            {{ Breadcrumbs::render('user.profile') }}
-        </div>
+@section('title')
+    @lang('user.cabinet'). @yield('sub_title')
+@endsection
 
-        <h4>@lang('user.cabinet'). @yield('sub_title')</h4>
+@section('body')
 
         <div class="row cabinet">
             <div class="col-3 p-0">
@@ -25,6 +24,5 @@
                 @yield('user_content')
             </div>
         </div>
-    </div>
 
 @endsection

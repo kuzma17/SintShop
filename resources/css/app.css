@@ -703,6 +703,12 @@ input[type=radio]:focus + label:before {
 }
 
 
+/*===Register===*/
+.card-body{
+    padding: 40px 0!important;
+
+}
+
 
 
 

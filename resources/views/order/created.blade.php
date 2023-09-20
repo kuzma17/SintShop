@@ -1,8 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
-@section('content')
-    <div class="container">
-
+@section('body')
         <div class="order-created">
             <h4>@lang('order.thank_for_order')</h4>
             <div class="row row-param">
@@ -37,9 +35,5 @@
                 <a class="no_link" href="{{route('home')}}"><button class="btn btn-blue">@lang('order.continue_shopping')</button></a>
             </div>
 
-
         </div>
-
-
-    </div>
 @endsection

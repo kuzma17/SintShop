@@ -1,17 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
-@section('content')
-    <div class="container">
-        <div class="link">
-            {{ Breadcrumbs::render('good', $good) }}
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-
-            </div>
-        </div>
-
+@section('link'){{Breadcrumbs::render('good', $good)}}@endsection
+@section('body')
         <div class="good">
             <div class="row">
                 <div class="col-12 col-md-6">
@@ -73,8 +63,5 @@
                 <h4>@lang('catalog.description')</h4>
                 {!! $good->description !!}
             </div>
-        </div>
 
-
-    </div>
 @endsection

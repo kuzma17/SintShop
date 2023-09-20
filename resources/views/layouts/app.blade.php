@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Sint - Master shop') }}</title>
+    <title>{{ config('app.name', 'Sint - Master shop') }} @yield('title')</title>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -22,10 +22,6 @@
         @include('layouts.header')
         @yield('content')
         @include('layouts.footer')
-
-        <div id="top-scroll" class="top-scroll">
-            <a href="#" title="вверх"><span class="fas fa-angle-up"></span></a>
-        </div>
 
     </div>
     {{--    <script async src="{{ asset('/build/assets/app-ad077736.js') }}"></script>--}}

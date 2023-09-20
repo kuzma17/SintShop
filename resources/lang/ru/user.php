@@ -25,6 +25,7 @@ return [
     'code' => 'код',
     'price' => 'цена',
     'quantity' => 'количество',
-    'items' => 'Позиции'
+    'items' => 'Позиции',
+    'forgot_password' => 'Забыли пароль',
 
 ];

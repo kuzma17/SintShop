@@ -1,18 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
-@section('content')
+@section('link' ,Breadcrumbs::render('catalog', $category))
 
-    <div class="container">
-        <div class="link">
-            {{ Breadcrumbs::render('catalog', $category) }}
-        </div>
+@section('title', $category->title)
 
-        <h4>{{$category->title}}</h4>
-
+@section('body')
         <div class="sort-panel">
-            <x-sort
-                :category=$category
-            ></x-sort>
+            <x-sort></x-sort>
         </div>
         <div class="catalog">
             <div class="row justify-content-center">
@@ -26,6 +20,6 @@
                 {{$goods->links()}}
             </div>
         </div>
-    </div>
+
 
 @endsection

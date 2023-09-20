@@ -14,7 +14,7 @@ class Sort extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(Request $request,$category)
+    public function __construct(Request $request)
     {
        $this->route = $this->getUrlPatch($request);
        $this->sort = $request->query->get('sort', env('SORT_DEFAULT'));

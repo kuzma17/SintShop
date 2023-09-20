@@ -46,3 +46,13 @@ Breadcrumbs::for('search', function (BreadcrumbTrail $trail){
     $trail->parent('home');
     $trail->push(__('main.search'), route('search'));
 });
+
+Breadcrumbs::for('login', function (BreadcrumbTrail $trail){
+    $trail->parent('home');
+    $trail->push(__('main.login'), route('login'));
+});
+
+Breadcrumbs::for('register', function (BreadcrumbTrail $trail){
+    $trail->parent('home');
+    $trail->push(__('main.register'), route('register'));
+});

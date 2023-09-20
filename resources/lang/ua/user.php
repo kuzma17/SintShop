@@ -26,5 +26,6 @@ return [
      'price' => 'ціна',
      'quantity' => 'кількість',
     'items' => 'Позиції',
+    'forgot_password' => 'Забули пароль',
 
 ];
