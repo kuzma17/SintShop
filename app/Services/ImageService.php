@@ -144,8 +144,8 @@ class ImageService implements ImageServiceInterface
         $img_small = $this->path.'small_'.$image;
 
         $this->deleteImage($img);
-        $this->deleteImage($img_big);
-        $this->deleteImage($img_small);
+//        $this->deleteImage($img_big);
+//        $this->deleteImage($img_small);
     }
 
 }
