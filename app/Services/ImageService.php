@@ -143,9 +143,11 @@ class ImageService implements ImageServiceInterface
         $img_big = $this->path.'big_'.$image;
         $img_small = $this->path.'small_'.$image;
 
+        file_put_contents('/home/cboyezmz/shop.sint.odessa.ua/ajaxDebug.log',  $img);
+
         $this->deleteImage($img);
-//        $this->deleteImage($img_big);
-//        $this->deleteImage($img_small);
+        $this->deleteImage($img_big);
+        $this->deleteImage($img_small);
     }
 
 }
