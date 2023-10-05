@@ -29,6 +29,7 @@ class PhotoController extends Controller
 
     public function delete($photo){
 
-        $this->imageService->delete($photo);
+//        $this->imageService->delete($photo);
+        return true;
     }
 }
