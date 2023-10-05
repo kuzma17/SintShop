@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-{{dd(gd_info())}}
     <div id="app">
         @include('layouts.preloader')
         @include('layouts.header')
