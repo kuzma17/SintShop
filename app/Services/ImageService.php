@@ -42,7 +42,7 @@ class ImageService implements ImageServiceInterface
     }
 
     protected function getRandomName(){
-        return bin2hex(random_bytes(10));
+        return bin2hex(random_bytes(10)).'.'.$this->format;
     }
 
     protected function getName($name){
@@ -50,7 +50,7 @@ class ImageService implements ImageServiceInterface
 //            return $name.'.'.$this->format;
             return $name;
         }
-        return $this->getRandomName().'.'.$this->format;
+        return $this->getRandomName();
     }
 
     protected function getNamefromImage($mage){
@@ -116,7 +116,9 @@ class ImageService implements ImageServiceInterface
 
     public function createGoodPhotos($image){
 
-        $name = $this->getNamefromImage($image);
+        //$name = $this->getNamefromImage($image);
+
+        $name = $image;
 
         $this->size(800, 800);
         $this->create($this->path.$image,'big_'.$name);
