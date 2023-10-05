@@ -72,13 +72,13 @@
             <td>{{$good->active}}</td>
             <td>
                 <a href="{{route('admin.goods.edit', $good->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
-{{--                <form name="destroy_good" method="POST" style="margin: -30px 0 0 15px" action="{{route('admin.goods.destroy', $good->id)}}">--}}
-{{--                    @method('DELETE')--}}
-{{--                    @csrf--}}
-{{--                    <button type="submit" class="btn btn-link" style="color: red" title="Удалить">--}}
-{{--                        <i class="fa-regular fa-trash-can"></i>--}}
-{{--                    </button>--}}
-{{--                </form>--}}
+                <form name="destroy_good" method="POST" style="margin: -30px 0 0 15px" action="{{route('admin.goods.destroy', $good->id)}}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-link" style="color: red" title="Удалить">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                </form>
             </td>
         </tr>
         @endforeach
