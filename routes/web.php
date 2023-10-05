@@ -73,7 +73,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);
-    Route::delete('/photo/{photo}', [\App\Http\Controllers\PhotoController::class, 'delete']);
+    Route::get('/photo/{photo}/delete', [\App\Http\Controllers\PhotoController::class, 'delete']);
 
 
 

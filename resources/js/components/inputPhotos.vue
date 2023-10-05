@@ -79,7 +79,7 @@ export default {
         },
 
         removeFile(key, img) {
-            axios.delete('/photo/'+img)
+            axios.get('/photo/'+img+'/delete')
                 .then(response => {
                 //console.log(response.data);
                 this.fileList.splice(key, 1);
