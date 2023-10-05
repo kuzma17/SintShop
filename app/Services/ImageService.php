@@ -96,6 +96,7 @@ class ImageService implements ImageServiceInterface
 
     public function create($image, $name = null, $width = null, $height = null, $path = null, $format = null, $quality = null)
     {
+        file_put_contents('/home/cboyezmz/shop.sint.odessa.ua/ajaxDebug.log',  132);
         $name = $this->getName($name);
         $width = $this->getWidth($width);
         $height = $this->getHeight($height);
