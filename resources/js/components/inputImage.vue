@@ -40,7 +40,7 @@ export default {
                 this.image = reader.result;
             }.bind(this), false);
             if (this.file) {
-                if (/\.(jpe?g|png|gif)$/i.test(this.file.name)) {
+                if (/\.(jpe?g|png|gif|webp)$/i.test(this.file.name)) {
                     reader.readAsDataURL(this.file);
                 }
             }
