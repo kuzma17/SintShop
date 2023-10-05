@@ -63,5 +63,5 @@
                 <h4>@lang('catalog.description')</h4>
                 {!! $good->description !!}
             </div>
-
+        </div>
 @endsection

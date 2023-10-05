@@ -6,8 +6,10 @@
 
 import './bootstrap';
 
-import {createApp} from 'vue/dist/vue.esm-bundler.js';
+//import {createApp} from 'vue/dist/vue.esm-bundler.js';
+import {createApp} from 'vue';
 import { i18nVue } from 'laravel-vue-i18n'
+
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -30,8 +32,6 @@ app.component('photos-good', PhotosGood);
 import ButtonAddCart from './components/ButtonAddCart.vue';
 app.component('button-add-cart', ButtonAddCart);
 
-// import ExistenceGood from './components/ExistenceGood.vue';
-// app.component('existence-good', ExistenceGood);
 
 import CartIcon from './components/CartIcon.vue';
 app.component('cart-icon', CartIcon);
@@ -55,45 +55,18 @@ import DeliveryChoice from "./components/DeliveryChoice.vue";
 app.component('delivery-choice', DeliveryChoice);
 
 
-
-import InputPhotos from "./components/inputPhotos.vue";
-app.component('input-photos', InputPhotos);
-
-import InputImage from "./components/inputImage.vue";
-app.component('input-image', InputImage);
-
-//
-// import ImageUpload from "./components/ImageUpload.vue";
-// app.component('images-upload', ImageUpload);
-
-
-
 //-----------------
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
-//     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
-// });
-
-/**
- * Finally, we will attach the application instance to a HTML element with
- * an "id" attribute of "app". This element is included with the "auth"
- * scaffolding. Otherwise, you will need to add an element yourself.
- */
+// app.use(i18nVue, {
+//         resolve: async lang => {
+//             const langs = import.meta.glob('../lang/*.json');
+//             return await langs[`../lang/${lang}.json`]();
+//         }
+//     }).mount('#app');
 
 app.use(i18nVue, {
-        resolve: async lang => {
-            const langs = import.meta.glob('../lang/*.json');
-            return await langs[`../lang/${lang}.json`]();
-        }
-    }).mount('#app');
+    resolve: lang => import(`../lang/${lang}.json`),
+}).mount('#app');
 
 // app.mount("#app");
 
@@ -122,8 +95,10 @@ if(Preloader){
 }
 
 // Top Scroll
+
 function scrollFunction() {
     const TopScroll = document.getElementById('top-scroll');
+
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         TopScroll.style.display = "block";
     } else {

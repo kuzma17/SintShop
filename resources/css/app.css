@@ -678,7 +678,7 @@ input[type=radio]:focus + label:before {
     position: fixed;
     bottom: 35px;
     right: 28px;
-    z-index: 100;
+    z-index: 1000;
     display: none;
 }
 .top-scroll a {

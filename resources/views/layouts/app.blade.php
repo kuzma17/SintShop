@@ -9,8 +9,10 @@
 
     <title>{{ config('app.name', 'Sint - Master shop') }} @yield('title')</title>
 
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss'])
+{{--    @vite(['resources/sass/app.scss'])--}}
 {{--    <link href="{{ asset('/build/assets/app-76742b4c.css') }}" rel="stylesheet">--}}
 {{--    <link href="{{ asset('/build/assets/app-260f9e7e.css') }}" rel="stylesheet">--}}
 {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">--}}
@@ -18,15 +20,14 @@
 </head>
 <body>
     <div id="app">
-{{--        @include('layouts.preloader')--}}
+        @include('layouts.preloader')
         @include('layouts.header')
         @yield('content')
         @include('layouts.footer')
 
     </div>
-    @vite(['resources/js/app.js'])
-    {{--    <script async src="{{ asset('/build/assets/app-ad077736.js') }}"></script>--}}
-    {{--    <script async src="{{ asset('/build/assets/ru-ef69a4e1.js') }}"></script>--}}
-    {{--    <script async src="{{ asset('/build/assets/ua-cc329ed6.js') }}"></script>--}}
+
+    <script src="{{ mix('js/app.js') }}" defer></script>
+
 </body>
 </html>

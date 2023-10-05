@@ -28,8 +28,6 @@
 </template>
 
 <script>
-import {prepareExtendedParsedLangFiles} from "laravel-vue-i18n/loader";
-
 export default {
     name: "InputPhotos",
     props: [
