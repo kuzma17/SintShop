@@ -11,12 +11,6 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-    <!-- Scripts -->
-{{--    @vite(['resources/sass/app.scss'])--}}
-{{--    <link href="{{ asset('/build/assets/app-76742b4c.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('/build/assets/app-260f9e7e.css') }}" rel="stylesheet">--}}
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">--}}
-
 </head>
 <body>
     <div id="app">
