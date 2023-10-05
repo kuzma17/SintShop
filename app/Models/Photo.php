@@ -10,4 +10,11 @@ class Photo extends Model
 {
     use HasFactory;
     use Locale;
+
+    protected $fillable = [
+        'good_id',
+        'src',
+        'title_ru',
+        'title_ua'
+    ];
 }

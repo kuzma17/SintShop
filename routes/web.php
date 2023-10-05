@@ -63,7 +63,19 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
     Route::get('/catalog/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
 
+
     Route::get('/admin', [App\Http\Controllers\PageController::class, 'admin'])->name('admin');
+
+    Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
+        //Route::get('/admin/goods', [App\Http\Controllers\Admin\AdminGoodController::class, 'admin'])->name('admin.goods');
+        Route::resource('/goods', \App\Http\Controllers\Admin\AdminGoodController::class);
+        Route::resource('/categories', \App\Http\Controllers\Admin\AdminCategoryController::class);
+    });
+
+    Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);
+    Route::delete('/photo/{photo}', [\App\Http\Controllers\PhotoController::class, 'delete']);
+
+
 
 
     Route::get('/{page}', [App\Http\Controllers\PageController::class, 'page'])->name('page');

@@ -11,6 +11,9 @@ function cleanPhone($phone){
 function cleanText($text){
     $text = trim($text);
 
-
     return $text;
+}
+
+function randomName(){
+    return bin2hex(random_bytes(10));
 }

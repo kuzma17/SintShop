@@ -2,7 +2,11 @@
     <div class="good-card">
         <a href="{{route('good', [$good->slug, $good->id])}}">
             <div class="photo">
-                <img src="/images/goods/{{$good->photos->first()->src}}">
+                @if($good->photos->count() > 0)
+                    <img src="/images/goods/{{$good->photos->first()->src}}">
+                @else
+                    <img src="/images/goods/no_photo.png">
+                @endif
             </div>
             <div class="title">
                 {{$good->title}}

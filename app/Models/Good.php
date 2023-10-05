@@ -13,6 +13,20 @@ class Good extends Model
     use Locale;
     use Searchable;
 
+    protected $fillable = [
+        'id',
+        'code',
+        'title_ru',
+        'title_ua',
+        'description_ru',
+        'description_ua',
+        'category_id',
+        'price',
+        'quantity',
+        'slug',
+        'active',
+    ];
+
     public function toSearchableArray()
     {
         return $this->only([
@@ -21,7 +35,7 @@ class Good extends Model
             'title_ru',
             'title_ua',
             'description_ru',
-            'description_ua'
+            'description_ua',
         ]);
     }
     public function photos(){
@@ -45,6 +59,10 @@ class Good extends Model
 
     public function scopeForCategory($query, $category){
         return $query->where('category_id', $category->id);
+    }
+
+    public function scopeSortDesc($query){
+        return $query->orderBy('updated_at', 'DESC');
     }
 
     public function getGood(){

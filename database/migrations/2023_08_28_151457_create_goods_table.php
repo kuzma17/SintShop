@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('code', 100)->nullable();
             $table->decimal('price', 10, 2);
-            $table->integer('quantity')->index();
-            $table->integer('min_order')->default(1);
+            $table->integer('quantity')->index()->default(0);
+           // $table->integer('min_order')->default(1);
             $table->string('slug', 255)->index()->unique();
             $table->string('title_ru', 255)->nullable();
             $table->string('title_ua', 255)->nullable();

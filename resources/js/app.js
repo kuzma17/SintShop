@@ -56,6 +56,18 @@ app.component('delivery-choice', DeliveryChoice);
 
 
 
+import InputPhotos from "./components/inputPhotos.vue";
+app.component('input-photos', InputPhotos);
+
+import InputImage from "./components/inputImage.vue";
+app.component('input-image', InputImage);
+
+//
+// import ImageUpload from "./components/ImageUpload.vue";
+// app.component('images-upload', ImageUpload);
+
+
+
 //-----------------
 
 /**
