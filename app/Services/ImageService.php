@@ -96,7 +96,7 @@ class ImageService implements ImageServiceInterface
 
     public function create($image, $name = null, $width = null, $height = null, $path = null, $format = null, $quality = null)
     {
-        file_put_contents('/home/cboyezmz/shop.sint.odessa.ua/ajaxDebug.log',  132);
+
         $name = $this->getName($name);
         $width = $this->getWidth($width);
         $height = $this->getHeight($height);
@@ -140,11 +140,11 @@ class ImageService implements ImageServiceInterface
 
     public function delete($image){
 
+        file_put_contents('/home/cboyezmz/shop.sint.odessa.ua/ajaxDebug.log',  $image);
+
         $img = $this->path.$image;
         $img_big = $this->path.'big_'.$image;
         $img_small = $this->path.'small_'.$image;
-
-        file_put_contents('/home/cboyezmz/shop.sint.odessa.ua/ajaxDebug.log',  $img);
 
         $this->deleteImage($img);
         $this->deleteImage($img_big);
