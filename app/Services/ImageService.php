@@ -140,7 +140,7 @@ class ImageService implements ImageServiceInterface
 
     public function delete($image){
 
-        file_put_contents('/home/cboyezmz/shop.sint.odessa.ua/ajaxDebug.log',  $image);
+       // file_put_contents('/home/cboyezmz/shop.sint.odessa.ua/ajaxDebug.log',  $image);
 
         $img = $this->path.$image;
         $img_big = $this->path.'big_'.$image;
