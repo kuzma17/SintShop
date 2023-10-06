@@ -64,10 +64,11 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
 
 
-    Route::get('/admin', [App\Http\Controllers\PageController::class, 'admin'])->name('admin');
 
-    Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
-        //Route::get('/admin/goods', [App\Http\Controllers\Admin\AdminGoodController::class, 'admin'])->name('admin.goods');
+    Route::get('/admin/login', [App\Http\Controllers\Admin\AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/admin/login', [App\Http\Controllers\Admin\AdminLoginController::class, 'login'])->name('admin.login');
+    Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'admin.auth'], function () {
+        Route::get('/', [App\Http\Controllers\PageController::class, 'admin'])->name('admin');
         Route::resource('/goods', \App\Http\Controllers\Admin\AdminGoodController::class);
         Route::resource('/categories', \App\Http\Controllers\Admin\AdminCategoryController::class);
     });

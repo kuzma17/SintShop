@@ -2,7 +2,7 @@
 
 @section('content')
     <h4>Категории</h4>
-    <a style="float: right" href="{{route('admin.categories.create')}}"><button class="btn btn-success">Создать категорию</button></a>
+    <a class="create_item" href="{{route('admin.categories.create')}}"><button class="btn btn-success">Создать категорию</button></a>
     <div class="goods">
         <table class="table">
             <thead>
