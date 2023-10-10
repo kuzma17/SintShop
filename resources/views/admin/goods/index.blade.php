@@ -45,5 +45,8 @@
         @endforeach
         </tbody>
     </table>
+
+    {!! $goods->links() !!}
+
 </div>
 @endsection

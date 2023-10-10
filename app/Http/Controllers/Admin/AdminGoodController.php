@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GoodRequest;
 use App\Models\Category;
 use App\Models\Good;
-use App\Services\AdminFiterGoodsService;
+use App\Services\AdminFilterService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Image;
@@ -24,19 +24,17 @@ class AdminGoodController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, AdminFiterGoodsService $fiterGoodsService)
+    public function index(Request $request, AdminFilterService $filterService)
     {
-
-
 
         $query = Good::query();
 
-        $query = $fiterGoodsService->apply($query);
+        $query = $filterService->apply($query);
 
         $goods = $query->sortDesc()
             ->get()
-            ->paginate(12)
-            ->load('category', 'photos');
+            ->load('category', 'photos')
+            ->paginate(12);
 
         return view('admin.goods.index', ['goods' => $goods]);
     }

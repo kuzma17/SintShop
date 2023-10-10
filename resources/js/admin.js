@@ -31,6 +31,9 @@ app.component('input-photos', InputPhotos);
 import InputImage from "./components/inputImage.vue";
 app.component('input-image', InputImage);
 
+import InputPhone from './components/inputPhone.vue';
+app.component('input-phone', InputPhone);
+
 
 
 

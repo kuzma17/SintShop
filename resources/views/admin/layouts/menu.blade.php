@@ -12,7 +12,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="charts.html">
+            <a href="{{route('admin.orders.index')}}">
                 <i class="fa-solid fa-cart-plus"></i> Заказы
             </a>
         </li>

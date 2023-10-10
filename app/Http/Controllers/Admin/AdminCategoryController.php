@@ -15,7 +15,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::sortDesc()->get();
+        $categories = Category::sortDesc()->get()->paginate(12);
         return view('admin.categories.index', ['categories' => $categories]);
     }
 

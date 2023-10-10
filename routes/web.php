@@ -71,6 +71,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
         Route::get('/', [App\Http\Controllers\PageController::class, 'admin'])->name('admin');
         Route::resource('/goods', \App\Http\Controllers\Admin\AdminGoodController::class);
         Route::resource('/categories', \App\Http\Controllers\Admin\AdminCategoryController::class);
+
+        Route::get('/orders/index', [\App\Http\Controllers\Admin\AdminOrderController::class, 'index'])->name('orders.index');
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);

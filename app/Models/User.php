@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->belongsTo(Payment::class);
     }
 
-    public function findUser($phone){
+    public static function findUser($phone){
         $phone = cleanPhone($phone);
         return self::where('phone', $phone)->first();
     }
@@ -75,7 +75,7 @@ class User extends Authenticatable
 
     public function createUser($data){
 
-        if ($user =$this->findUser($data['phone'])){
+        if ($user =self::findUser($data['phone'])){
             return $user;
         }
 
