@@ -17,9 +17,10 @@ class NewProducts extends Component
     {
 
         $this->goods = $good->visibleNull()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'DESC')
             ->limit(12)
-            ->get();
+            ->get()
+            ->load('photos');
     }
 
     /**

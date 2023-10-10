@@ -73,6 +73,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
         Route::resource('/categories', \App\Http\Controllers\Admin\AdminCategoryController::class);
 
         Route::get('/orders/index', [\App\Http\Controllers\Admin\AdminOrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}/edit', [\App\Http\Controllers\Admin\AdminOrderController::class, 'edit'])->name('orders.edit');
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);

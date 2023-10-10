@@ -20,4 +20,14 @@ class AdminOrderController extends Controller
         return view('admin.orders.index', ['orders' => $orders]);
 
     }
+
+    public function edit(Order $order){
+
+        $order = $order->load('goods', 'goods.photos');
+
+       // dd($order);
+
+        return view('admin.orders.edit', ['order' => $order]);
+
+    }
 }

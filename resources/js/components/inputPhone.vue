@@ -12,9 +12,9 @@
             "
         class="form-control"
         :class="class"
-        required
         @change="edit()"
         :placeholder="placeholder"
+        :required="required"
     />
 </template>
 

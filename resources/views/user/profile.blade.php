@@ -35,6 +35,7 @@
                                 model-value="{{$user->phone}}"
                                 class="@error('phone') is-invalid @enderror"
                                 placeholder=""
+                                required="required"
                             ></input-phone>
                             @error('phone')
                             <span class="invalid-feedback" role="alert">

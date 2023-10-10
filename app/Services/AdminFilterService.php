@@ -46,6 +46,8 @@ class AdminFilterService
 
         if ($user){
             $this->query = $this->query->where('user_id', $user->id);
+        }else{
+            $this->query = $this->query->where('user_id', 'none');
         }
     }
 

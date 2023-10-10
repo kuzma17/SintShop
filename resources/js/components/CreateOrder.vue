@@ -62,6 +62,7 @@
                                 v-model="phone"
                                 :class="{'is-invalid': errors.phone}"
                                 placeholder=""
+                                required="required"
                             ></input-phone>
                             <span v-if="errors.phone" class="invalid-feedback" role="alert">
                                 <strong>{{ errors.phone }}</strong>

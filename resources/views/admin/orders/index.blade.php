@@ -24,7 +24,7 @@
                     <td>{{$order->created_at}}</td>
                     <td>{{$order->status->title}}</td>
                     <td>
-                        <a href="{{route('admin.categories.edit', $order->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="{{route('admin.orders.edit', $order->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
 
                     </td>
                 </tr>
