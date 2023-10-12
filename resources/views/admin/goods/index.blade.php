@@ -30,7 +30,11 @@
             <td>{{$good->category->title_ru}}</td>
             <td>{{$good->quantity}}</td>
             <td>{{$good->price}}</td>
-            <td>{{$good->active}}</td>
+            <td>
+                <x-admin.active
+                    :status="$good->active"
+                ></x-admin.active>
+            </td>
             <td>
                 <a href="{{route('admin.goods.edit', $good->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
                 <form name="destroy_good" method="POST" style="margin: -30px 0 0 15px" action="{{route('admin.goods.destroy', $good->id)}}">

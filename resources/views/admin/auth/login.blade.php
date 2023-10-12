@@ -16,12 +16,12 @@
                     @csrf
 
                     <div class="row mb-3">
-                        <label for="email" class="col-md-3 col-form-label text-md-end">@lang('user.name')</label>
+                        <label for="login" class="col-md-3 col-form-label text-md-end">Login</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="phone" autofocus>
+                            <input id="login" type="text" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autofocus>
 
-                            @error('name')
+                            @error('login')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

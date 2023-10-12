@@ -22,7 +22,11 @@
                     <td>{{$category->title_ru}}</td>
                     <td>@if($category->image) <img src="/images/{{$category->image}}"> @endif</td>
                     <td>{{$category->sort}}</td>
-                    <td>{{$category->active}}</td>
+                    <td>
+                        <x-admin.active
+                            :status="$category->active"
+                        ></x-admin.active>
+                    </td>
                     <td>
                         <a href="{{route('admin.categories.edit', $category->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
 {{--                        <form name="destroy_good" method="POST" style="margin: -30px 0 0 10px" action="{{route('admin.categories.destroy', $category->id)}}">--}}

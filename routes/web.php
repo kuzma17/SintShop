@@ -74,6 +74,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
         Route::get('/orders/index', [\App\Http\Controllers\Admin\AdminOrderController::class, 'index'])->name('orders.index');
         Route::get('/orders/{order}/edit', [\App\Http\Controllers\Admin\AdminOrderController::class, 'edit'])->name('orders.edit');
+        Route::put('/orders/{order}', [\App\Http\Controllers\Admin\AdminOrderController::class, 'update'])->name('orders.update');
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);

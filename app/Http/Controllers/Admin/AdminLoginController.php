@@ -16,7 +16,7 @@ class AdminLoginController extends Controller
 
     public function username()
     {
-        return 'name';
+        return 'login';
     }
 
 //    public function login(Request $request){

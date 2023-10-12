@@ -4,7 +4,7 @@
     <h4>Заказы</h4>
     <div class="goods">
         @include('admin.orders.filter')
-        <table class="table">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th scope="col">id</th>
@@ -17,17 +17,18 @@
             </thead>
             <tbody>
             @foreach($orders as $order)
-                <tr>
+                <tr onclick="location.href='{{route('admin.orders.edit', $order->id)}}'">
                     <td>{{$order->id}}</td>
-                    <td>{{$order->user->name}}</td>
+                    <td>{{$order->user->name}} <i class="fa-solid fa-phone"></i> +38{{$order->user->phone}}</td>
                     <td>{{$order->summa}}</td>
                     <td>{{$order->created_at}}</td>
-                    <td>{{$order->status->title}}</td>
+                    <td><x-admin.status
+                            :status="$order->status"
+                        ></x-admin.status></td>
                     <td>
                         <a href="{{route('admin.orders.edit', $order->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
-
                     </td>
-                </tr>
+                    </tr>
             @endforeach
             </tbody>
         </table>

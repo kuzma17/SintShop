@@ -30,12 +30,41 @@
             </tbody>
         </table>
 
+        <form name="" method="POST" action="{{route('admin.orders.update', $order->id)}}">
+            @method('PUT')
+            @csrf
+        <div class="row mb-3">
+            <label class="col-2 star">
+                Количество товаров
+            </label>
+            <div class="col-9">
+                {{$order->count}}
+            </div>
+        </div>
+
         <div class="row mb-3">
             <label class="col-2 star">
                 Сумма заказа
             </label>
             <div class="col-9">
                 {{$order->summa}} @lang('main.curr')
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-2 star">
+                Время создания заказа
+            </label>
+            <div class="col-9">
+                {{$order->created_at}}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-2 star">
+                Клиент
+            </label>
+            <div class="col-9">
+                {{$order->user->name}} <i class="fa-solid fa-phone"></i> +38{{$order->user->phone}}
+                @if($order->user->email) <i class="fa-regular fa-envelope"></i> {{$order->user->email}} @endif
             </div>
         </div>
         <div class="row mb-3">
@@ -58,12 +87,46 @@
         @endif
         <div class="row mb-3">
             <label class="col-2 star">
-                Оплата
+               Тип оплаты
             </label>
             <div class="col-9">
                 {{$order->payment->title_ru}}
             </div>
         </div>
+            <div class="row mb-3">
+                <label class="col-2 star">
+                    Коментарий
+                </label>
+                <div class="col-9">
+                    {{$order->note}}
+                </div>
+            </div>
+        <div class="row mb-3">
+            <label class="col-2 star">
+               Статус
+            </label>
+            <div class="col-3">
+{{--                <x-admin.status--}}
+{{--                    :status="$order->status"--}}
+{{--                ></x-admin.status>--}}
+{{--                <input type="hidden" name="status_id" value="2">--}}
+                <select name="status_id" class="form-control">
+                    @foreach($statuses as $status)
+                        <option value="{{$status->id}}" @selected($status->id == $order->status_id)>{{$status->title_ru}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-2 star">
+
+            </label>
+            <div class="col-9">
+                <button type="submit" class="btn btn-success" @disabled($order->status_id == 2)>Оформить</button>
+            </div>
+        </div>
+        </form>
 
     </div>
 
