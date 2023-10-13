@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Good;
 use App\Models\Order;
 use App\Services\AdminFilterService;
 use App\Models\Status;

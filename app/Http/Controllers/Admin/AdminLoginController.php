@@ -10,6 +10,8 @@ class AdminLoginController extends Controller
 {
     use AuthenticatesUsers;
 
+    protected $redirectTo = 'admin';
+
     public function showLoginForm(){
         return view('admin.auth.login');
     }
