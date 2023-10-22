@@ -3,7 +3,7 @@
         <a href="{{route('good', [$good->slug, $good->id])}}">
             <div class="photo">
                 @if($good->photos->count() > 0)
-                    <img src="/images/goods/{{$good->photos->first()->src}}">
+                    <img src="/images/goods/{{$good->first_photo->src}}">
                 @else
                     <img src="/images/goods/no_photo.png">
                 @endif

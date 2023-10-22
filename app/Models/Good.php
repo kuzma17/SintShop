@@ -69,5 +69,9 @@ class Good extends Model
         return $this->load('category','photos');
     }
 
+    public function getFirstPhotoAttribute(){
+        return $this->photos->first();
+    }
+
 
 }

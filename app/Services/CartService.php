@@ -35,7 +35,7 @@ class CartService
                 'code' => $good->code,
                 'qty' => $item->qty,
                 'price' => $item->price,
-                'photo' => '/images/goods/'.$good->photos->first()->src,
+                'photo' => '/images/goods/'.$good->first_photo->src,
             ];
         });
     }

@@ -535,7 +535,7 @@ input[type=radio]:focus + label:before {
    text-align: right;
 }
 
-    /*====Stare*=====*/
+    /*====Star*=====*/
 .star::after{
     content: '*';
     color: red;
