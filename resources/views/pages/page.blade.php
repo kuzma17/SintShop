@@ -1,9 +1,9 @@
 @extends('layouts.page')
 
-{{--@section('link', Breadcrumbs::render('cart'))--}}
-
+@section('link', Breadcrumbs::render('page', $page))
 @section('title', $page->title)
-
 @section('body')
-    {!! $page->content !!}
+    <div class="page">
+        {!! $page->content !!}
+    </div>
 @endsection

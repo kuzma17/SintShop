@@ -13,10 +13,10 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push(__('main.home'), route('home'));
 });
 
-//Breadcrumbs::for('page', function (BreadcrumbTrail $trail, \App\Models\Page $page){
-//    $trail->parent('home');
-//    $trail->push($page->title, route('page', $page->slug));
-//});
+Breadcrumbs::for('page', function (BreadcrumbTrail $trail, \App\Models\Page $page){
+    $trail->parent('home');
+    $trail->push($page->title, route('page', $page->slug));
+});
 
 Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail, \App\Models\Category $category){
     if ($category->getParent()) {

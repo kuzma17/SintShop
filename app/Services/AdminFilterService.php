@@ -51,6 +51,12 @@ class AdminFilterService
         }
     }
 
+    protected function user_phone($phone){
+
+        $phone = cleanPhone($phone);
+        $this->query = $this->query->where('phone', $phone);
+    }
+
     protected function status($status_id){
         $this->query = $this->query->where('status_id', $status_id);
     }
@@ -69,6 +75,11 @@ class AdminFilterService
         }
 
         $this->query = $this->query->whereDate('created_at', $sing, $date_created->format('Y-m-d'));
+    }
+
+    protected function name($name){
+
+        $this->query = $this->query->where('name', 'LIKE', '%'.$name.'%');
     }
 
 

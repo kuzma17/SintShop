@@ -120,6 +120,24 @@ body{
     width: 50px;
 }
 
+/*order*/
+
+.orders img{
+    width: 50px;
+}
+
+/*Clients*/
+
+.table-clients th{
+    width: 150px;
+    text-align: right;
+}
+.table-clients th::after{
+    content: ':';
+}
+
+
+
 .custom-control-input:checked ~ .custom-control-label::before {
     background-color: red; /* Change the color of the toggle when it is checked */
     border-color: green; /* Change the border color of the toggle when it is checked */
@@ -136,6 +154,12 @@ body{
 
 .create_item{
     float: right;
+}
+
+/*Badge*/
+.badge{
+    font-size: 12px!important;
+    padding: 2px 5px!important;
 }
 
 

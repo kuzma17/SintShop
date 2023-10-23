@@ -2,7 +2,7 @@
 
 @section('content')
     <h4>Заказ №{{$order->id}}</h4>
-    <div class="goods">
+    <div class="orders">
         <table class="table">
             <thead>
             <tr>
@@ -63,8 +63,10 @@
                 Клиент
             </label>
             <div class="col-9">
-                {{$order->user->name}} <i class="fa-solid fa-phone"></i> +38{{$order->user->phone}}
-                @if($order->user->email) <i class="fa-regular fa-envelope"></i> {{$order->user->email}} @endif
+                <a href="{{route('admin.clients.show',$order->user->id)}}" title="Открыть карточку клиента">
+                    {{$order->user->name}} <i class="fa-solid fa-phone"></i> +38{{$order->user->phone}}
+                    @if($order->user->email) <i class="fa-regular fa-envelope"></i> {{$order->user->email}} @endif
+                </a>
             </div>
         </div>
         <div class="row mb-3">
@@ -126,6 +128,7 @@
                 <button type="submit" class="btn btn-success" @disabled($order->status_id == 2)>Оформить</button>
             </div>
         </div>
+
         </form>
 
     </div>

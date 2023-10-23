@@ -13,7 +13,12 @@
         </li>
         <li class="menu-item">
             <a href="{{route('admin.orders.index')}}">
-                <i class="fa-solid fa-cart-plus"></i> Заказы
+                <i class="fa-solid fa-cart-plus"></i> Заказы &nbsp; <x-admin.new-orders-badge></x-admin.new-orders-badge>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{route('admin.clients.index')}}">
+                <i class="fa-solid fa-user-group"></i> Клиенты &nbsp; <x-admin.new-users-badge></x-admin.new-users-badge>
             </a>
         </li>
     </ul>

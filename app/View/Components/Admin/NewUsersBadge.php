@@ -1,22 +1,22 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Slider extends Component
+class NewUsersBadge extends Component
 {
-    public $sliders;
-    public $locale;
+    public $users = 0;
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        $this->sliders = ['epson_banner','slider_banner1','slider_banner2','slider_banner3','slider_banner4'];
-        $this->locale = app()->getLocale();
+        $date = now()->modify('-7 day');
+        $this->users = User::where('created_at', '<', $date)->get()->count();
     }
 
     /**
@@ -24,7 +24,6 @@ class Slider extends Component
      */
     public function render(): View|Closure|string
     {
-
-        return view('components.slider');
+        return view('components.admin.new-users-badge');
     }
 }
