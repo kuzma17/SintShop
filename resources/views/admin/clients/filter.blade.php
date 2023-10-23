@@ -15,7 +15,7 @@
                     name="user_phone"
                     placeholder="Телефон клиента"
                     class="form-control-sm"
-                    model-value="{{request('phone')}}"
+                    model-value="{{request('user_phone')}}"
                 ></input-phone>
             </div>
             <div class="col">
