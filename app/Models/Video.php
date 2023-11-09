@@ -11,7 +11,7 @@ class Video extends Model
 
     protected $fillable = [
         'good_id',
-        'youtube_id',
+        'youtube',
         'active'
     ];
 

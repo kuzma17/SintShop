@@ -109,6 +109,11 @@ export default {
 }
 .gallery-photos{
     cursor: pointer;
+    display: table-cell;
+    vertical-align: middle;
+}
+.gallery-photos img{
+    width: 100%;
 }
 .modal-image{
     position: fixed;

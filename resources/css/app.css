@@ -313,8 +313,15 @@ h4{
     margin: 5px;
     padding: 5px;
 }
+.good-card .photo{
+    height: 310px;
+    display: table-cell;
+    vertical-align: middle;
+
+}
 .good-card .photo img{
     width: 100%;
+
 }
 .good-card i{
     color: #FFFFFF;
@@ -351,13 +358,8 @@ h4{
 
 /*Good*/
 
-.good .photo{
-    padding: 5px;
-
-}
-.good .photo img{
-    width: 100%;
-    border: 1px solid #CCCCCC;
+.good .gallery-photos{
+    height: 400px;
 }
 
 .good .title{

@@ -40,6 +40,9 @@
     .login .dropdown-login{
         right: -130px!important;
     }
+    .good-card .photo{
+        height: 250px!important;
+    }
 
 }
 
@@ -50,6 +53,9 @@
 
 
 @media (min-width: 1200px) {
+    .good-card .photo{
+        height: 310px!important;
+    }
 
 }
 

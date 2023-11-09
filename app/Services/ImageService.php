@@ -107,7 +107,11 @@ class ImageService implements ImageServiceInterface
         $img = \Image::make($image);
 
         if ($width && $height){
-            $img->fit($width, $height);
+            //$img->fit($width, $height);
+            $img->resize($width, $height,function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
         }
 
         $img->save($path.$name, $quality, $format);

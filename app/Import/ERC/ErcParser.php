@@ -294,7 +294,7 @@ class ErcParser
     protected function getVideos($videos){
         return array_map(function ($video){
             return [
-                'youtube_id' => $video->youtubeId,
+                'youtube' => $video->youtubeId,
                 'active' => 1
             ];
         }, $videos);
