@@ -5,7 +5,7 @@
                 @if($good->photos->count() > 0)
                     <img src="/images/goods/{{$good->first_photo->src}}">
                 @else
-                    <img src="/images/goods/no_photo.png">
+                    <img src="/images/no_photo.jpg">
                 @endif
             </div>
             <div class="title">

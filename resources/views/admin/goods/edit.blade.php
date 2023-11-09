@@ -45,6 +45,18 @@
                     </select>
                 </div>
             </div>
+            <div class="row mb-3">
+                <label class="col-2 star">
+                    Бренд
+                </label>
+                <div class="col-9">
+                    <select name="vendor_id" class="form-control">
+                        @foreach($vendors as $vendor)
+                            <option value="{{$vendor->id}}"  @selected($vendor->id == old('vendor_id', $good->vendor_id))>{{$vendor->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 
             <div class="row mb-3">
                 <label class="col-2">

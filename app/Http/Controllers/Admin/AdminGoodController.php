@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GoodRequest;
 use App\Models\Category;
 use App\Models\Good;
+use App\Models\Vendor;
 use App\Services\AdminFilterService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
@@ -45,7 +46,8 @@ class AdminGoodController extends Controller
     public function create(ImageService $imageService)
     {
         $categories = Category::all();
-        return view('admin.goods.create', ['categories' => $categories]);
+        $vendors = Vendor::all();
+        return view('admin.goods.create', ['categories' => $categories, 'vendors' => $vendors]);
     }
 
     /**
@@ -82,7 +84,8 @@ class AdminGoodController extends Controller
     {
         $good = $good->load('photos');
         $categories = Category::all();
-        return view('admin.goods.edit', ['good' => $good,'categories' => $categories]);
+        $vendors = Vendor::all();
+        return view('admin.goods.edit', ['good' => $good,'categories' => $categories, 'vendors' => $vendors]);
     }
 
     /**

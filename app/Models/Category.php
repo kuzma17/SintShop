@@ -28,6 +28,10 @@ class Category extends Model
         'filter'
     ];
 
+    public function attribute(){
+        return $this->belongsToMany(Attribute::class);
+    }
+
     public function scopeActive($query){
         return $query->where('active', 1);
     }

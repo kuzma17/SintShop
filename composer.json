@@ -9,6 +9,7 @@
         "diglactic/laravel-breadcrumbs": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
+        "jbroadway/urlify": "^1.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/scout": "^10.3",

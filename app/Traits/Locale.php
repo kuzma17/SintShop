@@ -32,4 +32,14 @@ trait Locale
         $column = "attributes_" . $this->lang();
         return $this->{$column};
     }
+
+    protected function getNameAttribute(){
+        $column = "name_" . $this->lang();
+        return $this->{$column};
+    }
+
+    protected function getValueAttribute(){
+        $column = "value_" . $this->lang();
+        return $this->{$column};
+    }
 }

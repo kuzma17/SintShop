@@ -14,6 +14,7 @@ class CatalogController extends Controller
         $goods = $category->getGoodsCategory();
         $goods = $sortService->apply($goods);
         $goods = $goods->paginate(12);
+
         return view('catalog.index', ['category' => $category, 'goods' => $goods]);
     }
 }

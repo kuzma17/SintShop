@@ -21,9 +21,11 @@ class Good extends Model
         'description_ru',
         'description_ua',
         'category_id',
+        'vendor_id',
         'price',
         'quantity',
         'slug',
+        'action',
         'active',
     ];
 
@@ -42,8 +44,20 @@ class Good extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
+
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function vendor(){
+        return $this->belongsTo(Vendor::class);
+    }
+
+    public function valueAttributes(){
+        return $this->belongsToMany(ValueAttribute::class);
     }
 
     public function scopeActive($query){
@@ -66,12 +80,39 @@ class Good extends Model
     }
 
     public function getGood(){
-        return $this->load('category','photos');
+        return $this->load('category','category.attribute','photos','videos','valueAttributes','valueAttributes.attribute');
     }
 
     public function getFirstPhotoAttribute(){
         return $this->photos->first();
     }
 
+    public function listGoodAttributeValue(){
+        $res = [];
+        $values = $this->valueAttributes;
+
+        foreach ($values as $value){
+
+//            $res[$value->attribute->id]['attribute'] = $value->attribute->erc.' '.$value->attribute->name;
+//            $res[$value->attribute->id]['values'][] = $value->value;
+
+            if(isset($res[$value->attribute->id])){
+                $res[$value->attribute->id]['values'] .= ', '.$value->value;
+            }else{
+               // $res[$value->attribute->id]['attribute'] = $value->attribute->erc.' '.$value->attribute->name;
+                $res[$value->attribute->id]['attribute'] = $value->attribute->name;
+                $res[$value->attribute->id]['values'] = $value->value;
+            }
+        }
+        ksort($res);
+        return $res;
+
+//        return $this->valueAttributes->map(function ($value){
+//            return  [
+//                'attribute' => $value->attribute->name,
+//                'value' => $value->value
+//            ];
+//        });
+    }
 
 }

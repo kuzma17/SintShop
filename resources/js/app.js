@@ -26,12 +26,12 @@ app.config.globalProperties.emitter = emitter
 
 
 //--- Components ---
-import PhotosGood from './components/PhotosGood.vue';
-app.component('photos-good', PhotosGood);
+
+import PhotosGallery from './components/PhotosGallery.vue';
+app.component('photos-gallery', PhotosGallery);
 
 import ButtonAddCart from './components/ButtonAddCart.vue';
 app.component('button-add-cart', ButtonAddCart);
-
 
 import CartIcon from './components/CartIcon.vue';
 app.component('cart-icon', CartIcon);

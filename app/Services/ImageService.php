@@ -17,7 +17,7 @@ class ImageService implements ImageServiceInterface
         $this->path('/images');
         //$this->size(800, 800);
         $this->format('jpg');
-        $this->quality(90);
+        $this->quality(100);
     }
 
     public function size($width, $height)
@@ -45,7 +45,7 @@ class ImageService implements ImageServiceInterface
         return bin2hex(random_bytes(10)).'.'.$this->format;
     }
 
-    protected function getName($name){
+    protected function getName($name=null){
         if ($name){
 //            return $name.'.'.$this->format;
             return $name;
@@ -127,6 +127,20 @@ class ImageService implements ImageServiceInterface
         $name_img = $this->create($this->path.$image, $name);
         $this->size(100, 100);
         $this->create($this->path.$image,'small_'.$name);
+
+        return $name_img;
+    }
+
+    public function createGoodPhotosFile($url, $name=null){
+
+        $name_img = $name? $name: $this->getName();
+
+        $this->size(800, 800);
+        $this->create($url,'big_'.$name_img);
+        $this->size(400, 400);
+        $this->create($url, $name_img);
+        $this->size(100, 100);
+        $this->create($url,'small_'.$name_img);
 
         return $name_img;
     }

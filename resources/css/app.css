@@ -407,6 +407,12 @@ h4{
 .good .button i{
     color: #FFFFFF;
 }
+.good .good_settings{
+    padding: 30px 0;
+}
+.good .good_settings .tab-content{
+    padding: 20px 0 0 0;
+}
 
 /*===Cart===*/
 .cart{}

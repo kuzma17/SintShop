@@ -13,7 +13,6 @@ class GoodController extends Controller
     public function index($slug, Good $good)
     {
         $good = $good->getGood();
-
         return view('catalog.good', ['good' => $good]);
     }
 
