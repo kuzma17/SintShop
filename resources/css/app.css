@@ -315,14 +315,14 @@ h4{
 }
 .good-card .photo{
     height: 310px;
-    display: table-cell;
-    vertical-align: middle;
     background-color: #FFFFFF;
-
+    display: flex;
+    align-items: center;
 }
 .good-card .photo img{
-    width: 100%;
-
+    max-height: 310px;
+    margin: auto;
+    max-width: 100%;
 }
 .good-card i{
     color: #FFFFFF;
