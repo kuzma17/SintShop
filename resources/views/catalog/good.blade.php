@@ -100,7 +100,7 @@
                     <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="profile-tab" style="text-align: center">
                        @if(isset($good->videos) && count($good->videos) > 0)
                             @foreach($good->videos as $video)
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$video->youtube}}"></iframe>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$video->youtube_id}}"></iframe>
                             @endforeach
                        @endif
                     </div>
