@@ -95,11 +95,11 @@ export default {
 </script>
 
 <style>
-
 .thumbnails img{
     width: 70px;
     border: 1px solid #CCCCCC;
     margin: 3px;
+    cursor: pointer;
 }
 .layer-image{
     display: none;
@@ -107,7 +107,9 @@ export default {
 .active{
     display: block!important;
 }
-
+.gallery-photos{
+    cursor: pointer;
+}
 .modal-image{
     position: fixed;
     width: 100%;
