@@ -399,9 +399,9 @@ h4{
     color: #04B4F2;
 }
 .good .thumbnails img{
-    width: 70px;
-    border: 1px solid #CCCCCC;
-    margin: 3px;
+    /*width: 70px;*/
+    /*border: 1px solid #CCCCCC;*/
+    /*margin: 3px;*/
 }
 .good .descriptions{
     padding-top: 20px;

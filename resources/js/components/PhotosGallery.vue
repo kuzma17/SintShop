@@ -7,8 +7,9 @@
             </div>
         </div>
         <div class="thumbnails" v-if="images && images.length > 1">
-            <img v-for="(image, key) in images" :src="patch + 'small_'+image.src" @click="changeImage(key)"
-                 :class="{ active_thumbnails: image.active ===1 }">
+            <div v-for="(image, key) in images" @click="changeImage(key)" :class="{ active_thumbnails: image.active ===1 }">
+                <img :src="patch + 'small_'+image.src">
+            </div>
         </div>
 
         <transition name="modal-fade">
@@ -95,11 +96,19 @@ export default {
 </script>
 
 <style>
-.thumbnails img{
+.thumbnails div{
     width: 70px;
+    height: 50px;
+    float: left;
     border: 1px solid #CCCCCC;
     margin: 3px;
     cursor: pointer;
+    text-align: center;
+    padding: 0;
+}
+.thumbnails img{
+    height: 100%;
+    max-width: 100%;
 }
 .layer-image{
     display: none;
