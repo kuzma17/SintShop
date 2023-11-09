@@ -317,6 +317,7 @@ h4{
     height: 310px;
     display: table-cell;
     vertical-align: middle;
+    background-color: #FFFFFF;
 
 }
 .good-card .photo img{
@@ -360,6 +361,7 @@ h4{
 
 .good .gallery-photos{
     height: 400px;
+    background-color: #FFFFFF;
 }
 
 .good .title{
@@ -417,7 +419,7 @@ h4{
 }
 
 /*===Cart===*/
-.cart{}
+
 .cart table td img{
     width: 50px;
     border: 1px solid #CCCCCC;
