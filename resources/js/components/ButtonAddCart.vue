@@ -19,7 +19,10 @@ export default {
         }else{
             this.text_button = this.title
         }
-        this.store_good_qty = this.store_qty - this.cart_qty
+        if (this.store_qty > 0){
+            this.store_good_qty = this.store_qty - this.cart_qty
+        }
+
         this.cart_good_qty = this.cart_qty
     },
     computed:{
