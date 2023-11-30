@@ -21,9 +21,7 @@ export default {
         if (this.modelValue){
             this.value = this.modelValue[0]
         }
-
-         console.log(this.value);
-
+         //console.log(this.value);
     },
     data(){
         return{

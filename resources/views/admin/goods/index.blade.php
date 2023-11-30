@@ -22,11 +22,13 @@
         @foreach($goods as $good)
         <tr>
             <td>{{$good->id}}</td>
-            <td>@if($good->photos->count() > 0)
-                    <img src="/images/goods/{{$good->first_photo->src}}">
+            <td>
+                @if($good->photos->count() > 0)
+                    <img src="/images/goods/small_{{$good->first_photo->src}}">
                 @else
-                    <img src="/images/goods/no_photo.png">
-                @endif {{$good->title}} </td>
+                    <img src="/images/no_photo.jpg">
+                @endif {{$good->title}}
+            </td>
             <td>{{$good->category->title_ru}}</td>
             <td>{{$good->quantity}}</td>
             <td>{{$good->price}}</td>

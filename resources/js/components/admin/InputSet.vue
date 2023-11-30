@@ -36,13 +36,11 @@ export default {
         if (this.modelValue){
             this.value = this.modelValue
         }
-
         //console.log(this.value);
     },
     data(){
         return{
             value: []
-
         }
     },
     methods:{}
