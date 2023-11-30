@@ -5,7 +5,7 @@
                 <h5>@lang('menu.navigation')</h5>
                 <ul>
                     <li><a href="">@lang('menu.main')</a></li>
-                    <li><a href="">@lang('menu.about')</a></li>
+                    <li><a href="{{route('page', 'about')}}">@lang('menu.about')</a></li>
                     <li><a href="">@lang('menu.payment_delivery')</a></li>
                     <li><a href="">@lang('menu.contacts')</a></li>
                     <li><a href="">@lang('menu.sale')</a></li>
@@ -16,13 +16,13 @@
             <div class="col-4 col-md-3">
                 <h5>@lang('menu.categories')</h5>
                 <ul>
-                    <li><a href="">@lang('menu.computers')</a></li>
-                    <li><a href="">@lang('menu.monitors')</a></li>
-                    <li><a href="">@lang('menu.notepads')</a></li>
-                    <li><a href="">@lang('menu.printers')</a></li>
-                    <li><a href="">@lang('menu.mfu')</a></li>
-                    <li><a href="">@lang('menu.cartridges_laser')</a></li>
-                    <li><a href="">@lang('menu.cartridges_jet')</a></li>
+                    <li><a href="{{route('catalog', ['computers', 1])}}">@lang('menu.computers')</a></li>
+                    <li><a href="{{route('catalog', ['monitors', 2])}}">@lang('menu.monitors')</a></li>
+                    <li><a href="{{route('catalog', ['notepads', 3])}}">@lang('menu.notepads')</a></li>
+                    <li><a href="{{route('catalog', ['printers', 4])}}">@lang('menu.printers')</a></li>
+                    <li><a href="{{route('catalog', ['mfu', 5])}}">@lang('menu.mfu')</a></li>
+                    <li><a href="{{route('catalog', ['laser-cartridges', 6])}}">@lang('menu.cartridges_laser')</a></li>
+                    <li><a href="{{route('catalog', ['jet-cartridges', 7])}}">@lang('menu.cartridges_jet')</a></li>
                 </ul>
             </div>
             <div class="col-4 col-md-3">

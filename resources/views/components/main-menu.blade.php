@@ -108,7 +108,7 @@
                     </ul>
                     <ul class="navbar-nav mobile-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">@lang('menu.about')</a>
+                            <a class="nav-link" href="{{route('page', 'about')}}">@lang('menu.about')</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">@lang('menu.payment_delivery')</a>
