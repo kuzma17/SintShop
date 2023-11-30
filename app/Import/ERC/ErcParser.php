@@ -164,7 +164,6 @@ class ErcParser
                 }
 
                 $attribute = $this->getAttribute($item, $items_ua[$key]);
-                $this->addAttributeCategory($attribute);
                 $this->getValues($item, $items_ua[$key], $attribute->id);
             }
         }
@@ -173,14 +172,30 @@ class ErcParser
     protected function getAttribute($data, $data_ua){
         return Attribute::firstOrCreate(
             ['erc' => $data->id],
-            ['name_ru' => $data->title,
+            [
+                'category_id' => $this->category->id,
+                'name_ru' => $data->title,
                 'name_ua' => $data_ua->title,
                 'slug' => \URLify::slug($data->title),
-                'type' => $this->getTypeAttribute($data),
+                'type_id' => $this->getTypeAttribute($data),
                 'filter' => $this->getFilterAttribute($data),
+                'format' => $this->getFormat($data),
                 'active' => 1
             ]
         );
+    }
+
+    protected function getFormat($data){
+
+        if(isset($data->format)){
+            $format = $data->format;
+            if ($format === '%s %'){
+                $format = "%s sRGB";
+            }
+            $format = str_replace('%s', '', $format);
+            return trim($format);
+        }
+        return null;
     }
 
     protected function getTypeAttribute($data){
@@ -188,14 +203,12 @@ class ErcParser
         switch ($type) {
             case 'TYPE_SET':
                 return 1;
-            case 'TYPE_BOOLEAN':
-                return 2;
             case 'TYPE_STRING':
-                return 3;
+                return 2;
             case 'TYPE_FLOAT':
+                return 3;
+            case 'TYPE_BOOLEAN':
                 return 4;
-            default:
-                return 5;
         }
     }
 
@@ -206,53 +219,56 @@ class ErcParser
         return 0;
     }
 
-    protected function addAttributeCategory($attributes){
-        if ($this->category->attribute()->where('id', $attributes->id)->count()){
-            return;
-        }
-        $this->category->attribute()->attach($attributes);
-    }
-
-    protected function getValues($item, $item_ua, $attribute_id){
-        if (isset($item->value)){
-           $this->getValue($item, $item_ua, $attribute_id);
-        }else{
+    protected function getValues($item, $item_ua, $attribute_id)
+    {
+        if ($item->type === 'TYPE_SET') {
             $erc_values = $item->values;
             $erc_values_ua = $item_ua->values;
 
-            for($i=0; $i < count($erc_values); $i++){
-                $this->getValue($erc_values[$i], $erc_values_ua[$i], $attribute_id);
+            for ($i = 0; $i < count($erc_values); $i++) {
+                $this->valueSet($erc_values[$i], $erc_values_ua[$i], $attribute_id);
             }
+        }elseif ($item->type === 'TYPE_BOOLEAN'){
+            $this->valueBoolean($item, $attribute_id);
+        }elseif ($item->type === 'TYPE_STRING'){
+            $this->valueString($item, $item_ua, $attribute_id);
+        }elseif ($item->type === 'TYPE_FLOAT'){
+            $this->valueFloat($item, $attribute_id);
         }
     }
-
-    protected function getValue($data, $data_ua, $attribute_id){
-        $value = $this->formatValue($data);
-        $value_ua = $this->formatValue($data_ua);
-        $value = $this->optimizationValue($value);
-        $value_ua = $this->optimizationValueUa($value_ua);
-        $value_attribute = ValueAttribute::firstOrCreate(
-            ['erc' => $data->id],
-            ['value_ru' => $value, 'value_ua' => $value_ua, 'attribute_id' => $attribute_id]
+    protected function valueString($data, $data_ua, $attribute_id){
+        $value = $data->value;
+        $value_ua = $data_ua->value;
+        $value_attribute = ValueAttribute::create(
+            ['sting_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id]
         );
         $this->values[] = $value_attribute->id;
     }
+    protected function valueFloat($data, $attribute_id){
+        $value = $data->value;
 
-    protected function formatValue($data){
-        if (isset($data->type) && $data->type == 'TYPE_BOOLEAN'){
-            if ($data->value == 1){
-                return 'Да';
-            }
-            return 'Нет';
-        }
+        $value_attribute = ValueAttribute::create(
+            ['float' => $value,  'attribute_id' => $attribute_id]
+        );
+        $this->values[] = $value_attribute->id;
+    }
+    protected function valueBoolean($data, $attribute_id){
+        $value = $data->value;
 
-        if (isset($data->format)){
-            if ($data->format === '%s %'){
-                $data->format = "%s sRGB";
-            }
-            return sprintf($data->format, $data->value);
-        }
-        return $data->value;
+        $value_attribute = ValueAttribute::firstOrCreate(
+            ['erc' => $data->id],
+            ['float' => $value,  'attribute_id' => $attribute_id]
+        );
+        $this->values[] = $value_attribute->id;
+    }
+    protected function valueSet($data, $data_ua, $attribute_id){
+        $value = $data->value;
+        $value_ua = $data_ua->value;
+        $value_attribute = ValueAttribute::firstOrCreate(
+            ['erc' => $data->id],
+            ['string_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id]
+        );
+        $this->values[] = $value_attribute->id;
     }
 
     protected function optimizationValue($string){

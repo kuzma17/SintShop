@@ -25,14 +25,35 @@ app.config.globalProperties.emitter = emitter
 
 //--- Components ---
 
-import InputPhotos from "./components/inputPhotos.vue";
+import InputPhotos from "./components/admin/InputPhotos.vue";
 app.component('input-photos', InputPhotos);
 
-import InputImage from "./components/inputImage.vue";
+import InputImage from "./components/admin/InputImage.vue";
 app.component('input-image', InputImage);
 
-import InputPhone from './components/inputPhone.vue';
+import InputPhone from './components/InputPhone.vue';
 app.component('input-phone', InputPhone);
+
+import CategoryGood from './components/admin/CategoryGood.vue';
+app.component('category-good', CategoryGood);
+
+import AttributesGood from "./components/admin/AttributesGood.vue";
+app.component('attributes-good', AttributesGood);
+
+import InputFloat from "./components/admin/InputFloat.vue";
+app.component('input-float', InputFloat);
+
+import InputString from "./components/admin/InputString.vue";
+app.component('input-string', InputString);
+
+import InputBoolean from "./components/admin/InputBoolean.vue";
+app.component('input-boolean', InputBoolean);
+
+import InputSet from "./components/admin/InputSet.vue";
+app.component('input-set', InputSet);
+
+import TypeAttribute from "./components/admin/TypeAttribute.vue";
+app.component('type-attribute', TypeAttribute);
 
 
 
@@ -40,4 +61,6 @@ app.component('input-phone', InputPhone);
 //-----------------
 
  app.mount("#app");
+
+
 

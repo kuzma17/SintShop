@@ -42,4 +42,9 @@ trait Locale
         $column = "value_" . $this->lang();
         return $this->{$column};
     }
+
+    protected function getStringAttribute(){
+        $column = "string_" . $this->lang();
+        return $this->{$column};
+    }
 }

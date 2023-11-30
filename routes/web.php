@@ -78,6 +78,13 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
         Route::get('/users/', [\App\Http\Controllers\Admin\AdminClientController::class, 'index'])->name('clients.index');
         Route::get('/users/{user}', [\App\Http\Controllers\Admin\AdminClientController::class, 'show'])->name('clients.show');
+
+        Route::resource('/attributes', \App\Http\Controllers\Admin\AdminAttributeController::class);
+
+        Route::get('/goods/category/{category}/attributes', [\App\Http\Controllers\Admin\AdminGoodController::class, 'getAttributes']);
+
+       // Route::get('/attribute/attribute}/values', [\App\Http\Controllers\Admin\AdminAttributeController::class, 'getValues']);
+       // Route::delete('/attribute/values/{value}', [\App\Http\Controllers\Admin\AdminAttributeController::class, 'destroyValue']);
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);

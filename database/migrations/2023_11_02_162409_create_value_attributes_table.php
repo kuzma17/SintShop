@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('attribute_id')->index();
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
-            $table->string('value_ru');
-            $table->string('value_ua');
+            $table->string('string_ru');
+            $table->string('string_ua');
+            $table->integer('float')->nullable()->index();
             $table->integer('erc')->nullable()->index();
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,10 @@ class AdminFilterService
         $this->query = $this->query->where('category_id', $category_id);
     }
 
+    protected function type($type_id){
+        $this->query = $this->query->where('type_id', $type_id);
+    }
+
     protected function slug($slug){
         $this->query = $this->query->where('slug', $slug);
     }
@@ -38,6 +43,10 @@ class AdminFilterService
 
     protected function title($title){
         $this->query = $this->query->where('title_ru', 'LIKE', '%'.$title.'%');
+    }
+
+    protected function attribute($name){
+        $this->query = $this->query->where('name_ru', 'LIKE', '%'.$name.'%');
     }
 
     protected function phone($phone){

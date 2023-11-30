@@ -12,6 +12,11 @@
             </a>
         </li>
         <li class="menu-item">
+            <a href="{{route('admin.attributes.index')}}">
+                <i class="fa-regular fa-rectangle-list"></i> Атрибуты
+            </a>
+        </li>
+        <li class="menu-item">
             <a href="{{route('admin.orders.index')}}">
                 <i class="fa-solid fa-cart-plus"></i> Заказы &nbsp; <x-admin.new-orders-badge></x-admin.new-orders-badge>
             </a>

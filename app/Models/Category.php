@@ -29,7 +29,7 @@ class Category extends Model
     ];
 
     public function attribute(){
-        return $this->belongsToMany(Attribute::class);
+        return $this->hasMany(Attribute::class);
     }
 
     public function scopeActive($query){

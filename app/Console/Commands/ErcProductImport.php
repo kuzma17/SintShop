@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 
 use App\Import\ERC\ErcParser;
+use App\Import\ERC\ErcProducts;
 use App\Import\ERC\ErcStore;
 use App\Models\Category;
 use Illuminate\Console\Command;
@@ -27,11 +28,15 @@ class ErcProductImport extends Command
     /**
      * Execute the console command.
      */
-    public function handle(ErcParser $ercParser, ErcStore $ercStore)
+    public function handle(ErcParser $ercParser, ErcStore $ercStore, ErcProducts $ercProducts)
     {
 
+       // dd($ercProducts->getToken());
+
+
+
         //102.01.03.03 => Компьютеры потребительские
-        $ercParser->parse(Category::find(1), ['102.01.03.03']);
+       // $ercParser->parse(Category::find(1), ['102.01.03.03']);
 
         //107.01.02.01 => Мониторы потребительские
         $ercParser->parse(Category::find(2), ['107.01.02.01']);

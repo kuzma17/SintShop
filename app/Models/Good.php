@@ -6,6 +6,7 @@ use App\Traits\Locale;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use phpDocumentor\Reflection\PseudoTypes\IntegerValue;
 
 class Good extends Model
 {
@@ -87,32 +88,101 @@ class Good extends Model
         return $this->photos->first();
     }
 
-    public function listGoodAttributeValue(){
-        $res = [];
+    public function getListValuesAttribure(){
         $values = $this->valueAttributes;
 
+        $arr = [];
+
         foreach ($values as $value){
+            $attribute = $value->attribute;
+            if(!array_key_exists($attribute->id, $arr)) {
+                $arr[$attribute->id] = [
+                    'attribute' => $attribute->name,
+                    'type' => $attribute->type_id,
+                    'values' => $value->values
+                ];
 
-//            $res[$value->attribute->id]['attribute'] = $value->attribute->erc.' '.$value->attribute->name;
-//            $res[$value->attribute->id]['values'][] = $value->value;
+                if($attribute->type_id === 3) {
+                    $arr[$attribute->id]['values'] = $value->values.' '.$attribute->format;
+                }
+                if($attribute->type_id === 4) {
+                    $arr[$attribute->id]['values'] = ($value->values === 1)? 'YES': 'NO';
+                }
+                continue;
+            }
 
-            if(isset($res[$value->attribute->id])){
-                $res[$value->attribute->id]['values'] .= ', '.$value->value;
-            }else{
-               // $res[$value->attribute->id]['attribute'] = $value->attribute->erc.' '.$value->attribute->name;
-                $res[$value->attribute->id]['attribute'] = $value->attribute->name;
-                $res[$value->attribute->id]['values'] = $value->value;
+            if ($attribute->type_id === 1){
+                $arr[$attribute->id]['values'] .= ', '.$value->values;
+
+            }
+
+        }
+        ksort($arr);
+
+        return $arr;
+    }
+
+    public function getValuesAttributes(){
+
+        $values = $this->valueAttributes;
+        $attributes = $this->category->attribute;
+
+        $arr = [];
+        foreach ($attributes as $attribute){
+            $val = $values->filter(function ($value) use($attribute){
+                return $value->attribute_id === $attribute->id;
+            });
+
+            if ($val->count() > 0){
+                foreach ($val as $item){
+                    if ($attribute->type_id === 2){
+                        $data = [
+                            'string_ru' => $item->string_ru,
+                            'string_ua' => $item->string_ua
+                        ];
+                    }else{
+                        $data = $item->values;
+                    }
+                    $arr[$attribute->id][] = [
+                        'id' => $item->id,
+                        'values' => $data
+                    ];
+
+                }
             }
         }
-        ksort($res);
-        return $res;
 
-//        return $this->valueAttributes->map(function ($value){
-//            return  [
-//                'attribute' => $value->attribute->name,
-//                'value' => $value->value
-//            ];
-//        });
+        return $arr;
+    }
+
+    public function addValuesAttributes(){
+
+        $value_set = [];
+        $values = request()->values;
+        if ($values){
+            foreach ($values as $key => $value){
+                $attribute = Attribute::find((int)$key);
+
+                if ($attribute->type_id === 1 || $attribute->type_id === 4){
+                    foreach ($value as $item){
+                        $value_set[] = $item['id'];
+                    }
+                }else{
+                    $value = $value[0];
+                    $value['attribute_id'] = $attribute->id;
+                    if ($attribute->type_id === 3){
+                        $value['float'] = $value['values'];
+                    }
+                    if ($attribute->type_id === 2){
+                        $value['string_ru'] = $value['values']['string_ru'];
+                        $value['string_ua'] = $value['values']['string_ua'];
+                    }
+                    $val = ValueAttribute::updateOrCreate(['id' => $value['id']], $value);
+                    $value_set[] = $val->id;
+                }
+            }
+        }
+        $this->valueAttributes()->sync($value_set);
     }
 
 }

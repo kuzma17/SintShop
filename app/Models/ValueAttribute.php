@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Locale;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
 
 class ValueAttribute extends Model
 {
@@ -15,7 +16,12 @@ class ValueAttribute extends Model
         'attribute_id',
         'value_ru',
         'value_ua',
-        'erc'
+        'string_ru',
+        'string_ua',
+        'float',
+        'boolean',
+        'erc',
+       // 'values'
     ];
 
     public function attribute(){
@@ -25,4 +31,23 @@ class ValueAttribute extends Model
     public function goods(){
         return $this->belongsToMany(Good::class);
     }
+
+    public function getValuesAttribute()
+    {
+        if ($this->attribute->type_id === 1 || $this->attribute->type_id === 2){
+            return $this->string;
+        }else{
+            return $this->float;
+        }
+    }
+
+//    public function setValuesAttribute($value){
+//
+//        if ($this->attribute->type_id === 1 || $this->attribute->type_id === 2){
+//            $this->attributes['string_ru'] = $value['string_ru'];
+//            $this->attributes['string_ua'] = $value['string_ua'];
+//        }else{
+//            $this->attributes['float'] = $value;
+//        }
+//    }
 }

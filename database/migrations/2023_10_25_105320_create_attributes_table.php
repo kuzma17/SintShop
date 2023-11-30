@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id')->index();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->string('slug')->index();
-            $table->integer('type');
+            $table->unsignedBigInteger('type_id')->index();
+            $table->foreign('type_id')->references('id')->on('type_attributes');
             $table->integer('filter');
             $table->string('name_ru');
             $table->string('name_ua');
+            $table->string('format');
             $table->integer('active')->default(1);
             $table->integer('erc')->nullable()->index();
-            $table->timestamps();
         });
     }
 

@@ -87,7 +87,7 @@
                     </div>
                     <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="profile-tab">
                         <table class="table table-striped">
-                            @foreach($good->listGoodAttributeValue() as $list)
+                            @foreach($good->getListValuesAttribure() as $list)
                                 <tr>
                                     <td>{{$list['attribute']}}</td>
                                     <td>

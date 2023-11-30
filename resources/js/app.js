@@ -42,7 +42,7 @@ app.component('cart', Cart);
 import InputQuantity from './components/InputQuantity.vue';
 app.component('input-quantity', InputQuantity);
 
-import InputPhone from './components/inputPhone.vue';
+import InputPhone from './components/InputPhone.vue';
 app.component('input-phone', InputPhone);
 
 import CreateOrder from './components/CreateOrder.vue';

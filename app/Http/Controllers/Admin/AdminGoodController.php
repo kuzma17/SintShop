@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GoodRequest;
+use App\Http\Resources\AttributeResource;
 use App\Models\Category;
 use App\Models\Good;
 use App\Models\Vendor;
@@ -45,7 +46,7 @@ class AdminGoodController extends Controller
      */
     public function create(ImageService $imageService)
     {
-        $categories = Category::all();
+        $categories = Category::with('attribute', 'attribute.values')->get();
         $vendors = Vendor::all();
         return view('admin.goods.create', ['categories' => $categories, 'vendors' => $vendors]);
     }
@@ -55,6 +56,7 @@ class AdminGoodController extends Controller
      */
     public function store(GoodRequest $request)
     {
+        $request['active'] = $request->input('active')? 1: 0;
         $good = Good::create($request->all());
         $images = $request->get('images');
 
@@ -65,6 +67,8 @@ class AdminGoodController extends Controller
 
             $good->photos()->createMany($images);
         }
+
+        $good->addValuesAttributes($request);
 
         return redirect(route('admin.goods.index'));
     }
@@ -82,10 +86,19 @@ class AdminGoodController extends Controller
      */
     public function edit(Good $good)
     {
-        $good = $good->load('photos');
-        $categories = Category::all();
+        $good = $good->load('photos', 'category.attribute', 'category.attribute.values');
+        $categories = Category::with('attribute', 'attribute.values')->get();
         $vendors = Vendor::all();
-        return view('admin.goods.edit', ['good' => $good,'categories' => $categories, 'vendors' => $vendors]);
+        $attributes = AttributeResource::collection($good->category->attribute);
+        $values = $good->getValuesAttributes();
+
+        return view('admin.goods.edit', [
+            'good' => $good,
+            'categories' => $categories,
+            'vendors' => $vendors,
+            'attributes' => $attributes,
+            'values' => $values
+        ]);
     }
 
     /**
@@ -93,9 +106,9 @@ class AdminGoodController extends Controller
      */
     public function update(GoodRequest $request, Good $good)
     {
-        if(!$request->active){
-            $request['active'] = 0;
-        }
+
+      //  dd($request);
+        $request['active'] = $request->input('active')? 1: 0;
         $good->update($request->all());
         $images = $request->get('images');
 
@@ -107,6 +120,8 @@ class AdminGoodController extends Controller
             $good->photos()->delete();
             $good->photos()->createMany($images);
         }
+
+            $good->addValuesAttributes();
 
         return redirect(route('admin.goods.index'));
     }
@@ -127,5 +142,10 @@ class AdminGoodController extends Controller
         $good->delete();
 
         return redirect(route('admin.goods.index'));
+    }
+
+    public function getAttributes(Category $category){
+        $attributes = AttributeResource::collection($category->attribute);
+        return json_encode($attributes);
     }
 }

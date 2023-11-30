@@ -37,10 +37,10 @@
             </td>
             <td>
                 <a href="{{route('admin.goods.edit', $good->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
-                <form name="destroy_good" method="POST" style="margin: -30px 0 0 15px" action="{{route('admin.goods.destroy', $good->id)}}">
+                <form name="destroy_good" method="POST" style="margin: -30px 0 0 20px" action="{{route('admin.goods.destroy', $good->id)}}">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-link" style="color: red" title="Удалить">
+                    <button type="submit" class="btn btn-link" style="color: red" title="Удалить" onclick="return confirm('Вы уверены что хотите удалить объект?')">
                         <i class="fa-regular fa-trash-can"></i>
                     </button>
                 </form>
@@ -50,7 +50,7 @@
         </tbody>
     </table>
 
-    {!! $goods->links() !!}
+    {!! $goods->appends(request()->input())->links() !!}
 
 </div>
 @endsection

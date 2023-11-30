@@ -11,12 +11,12 @@
 <body>
 <div id="app">
         <div class="row admin">
-            <div class="sidebar ">
+            <div class="col-auto sidebar" >
                 <div class="logo">
                     SintAdmin
                 </div>
                 <div class="user">
-                    admin online
+{{--                    {{auth()->user()->name}} online--}}
                 </div>
                 <br>
                 @include('admin.layouts.menu')
