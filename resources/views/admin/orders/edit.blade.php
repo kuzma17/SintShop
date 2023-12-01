@@ -125,7 +125,7 @@
 
             </label>
             <div class="col-9">
-                <button type="submit" class="btn btn-success" @disabled($order->status_id == 2)>Оформить</button>
+                <button type="submit" class="btn btn-success" @disabled($order->status_id == 2)>Сохранить</button>
             </div>
         </div>
 
