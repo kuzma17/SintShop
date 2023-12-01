@@ -83,8 +83,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
         Route::get('/goods/category/{category}/attributes', [\App\Http\Controllers\Admin\AdminGoodController::class, 'getAttributes']);
 
-       // Route::get('/attribute/attribute}/values', [\App\Http\Controllers\Admin\AdminAttributeController::class, 'getValues']);
-       // Route::delete('/attribute/values/{value}', [\App\Http\Controllers\Admin\AdminAttributeController::class, 'destroyValue']);
+        Route::resource('/pages', \App\Http\Controllers\Admin\AdminPageController::class);
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);

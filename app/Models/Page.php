@@ -11,6 +11,23 @@ class Page extends Model
     use HasFactory;
     use Locale;
 
+    protected $fillable = [
+        'slug',
+        'title_ru',
+        'description_ru',
+        'keywords_ru',
+        'title_ua',
+        'description_ua',
+        'keywords_ua',
+        'content_ru',
+        'content_ua',
+        'active',
+    ];
+
+
+    public function scopeActive($query){
+        return $query->where('active', 1);
+    }
     public function getPage($slug){
         return self::where('slug', $slug)->first();
     }

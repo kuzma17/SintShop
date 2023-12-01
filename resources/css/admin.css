@@ -78,6 +78,13 @@ body{
     /*border: 1px solid #ffffff;*/
 }
 
+/*====Star*=====*/
+.star::after{
+    content: '*';
+    color: red;
+    font-size: 16px;
+}
+
 /*Menu*/
 .menu ul li a{
     display: block;

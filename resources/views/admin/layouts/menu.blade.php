@@ -26,5 +26,11 @@
                 <i class="fa-solid fa-user-group"></i> Клиенты &nbsp; <x-admin.new-users-badge></x-admin.new-users-badge>
             </a>
         </li>
+
+        <li class="menu-item">
+            <a href="{{route('admin.pages.index')}}">
+                <i class="fa-regular fa-file-lines"></i> Страницы
+            </a>
+        </li>
     </ul>
 </div>

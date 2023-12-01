@@ -25,7 +25,8 @@ class Category extends Model
         'image',
         'icon',
         'sort',
-        'filter'
+        'filter',
+        'active',
     ];
 
     public function attribute(){
