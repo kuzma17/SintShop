@@ -54,7 +54,7 @@ class ErcParser
                     //'action' => $item->isaction
                 ];
 
-                if ($good = Good::where('code', $code)->first()){
+                if ($good = Good::where('erc', 1)->where('code', $code)->first()){
                    $this->updateGood($good, $dataGoodSet);
 
                    dump('updated '.$good->id.' '.$good->title_ru);
@@ -69,7 +69,8 @@ class ErcParser
                     'slug' => $this->getSlug($code),
                     'title_ru' => $this->getName($item),
                     'title_ua' => $this->getName($data_ua[$key]),
-                    'active' => 1
+                    'active' => 1,
+                    'erc' => 1
                 ]);
 
                 $product = $this->ercProducts->getGoodInfo($code, 'ru'); // API Product
@@ -82,6 +83,7 @@ class ErcParser
                     $dataGoodSet = array_merge($dataGoodSet,[
                         'description_ru' => $description,
                         'description_ua' => $description_ua,
+                            //'erc2' => 1
                         ]
                     );
 

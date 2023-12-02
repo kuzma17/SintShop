@@ -28,6 +28,7 @@ class Good extends Model
         'slug',
         'action',
         'active',
+        'erc'
     ];
 
     public function toSearchableArray()

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('code', 100)->nullable()->index();
             $table->decimal('price', 10, 2);
             $table->integer('quantity')->index()->default(0);
-           // $table->integer('min_order')->default(1);
             $table->string('slug', 255)->index()->unique();
             $table->string('title_ru', 255)->nullable();
             $table->string('title_ua', 255)->nullable();
@@ -28,6 +27,7 @@ return new class extends Migration
             $table->text('description_ua', 255)->nullable();
             $table->integer('action')->default(0)->index();
             $table->integer('active')->index();
+            $table->integer('erc')->index();
             $table->timestamps();
         });
     }
