@@ -107,7 +107,7 @@ class Good extends Model
                     $arr[$attribute->id]['values'] = $value->values.' '.$attribute->format;
                 }
                 if($attribute->type_id === 4) {
-                    $arr[$attribute->id]['values'] = ($value->values === 1)? 'YES': 'NO';
+                    $arr[$attribute->id]['values'] = ($value->values === 1)? __('catalog.yes'): __('catalog.no');
                 }
                 continue;
             }
@@ -170,15 +170,15 @@ class Good extends Model
                     }
                 }else{
                     $value = $value[0];
-                    $value['attribute_id'] = $attribute->id;
-                    if ($attribute->type_id === 3){
-                        $value['float'] = $value['values'];
-                    }
-                    if ($attribute->type_id === 2){
-                        $value['string_ru'] = $value['values']['string_ru'];
-                        $value['string_ua'] = $value['values']['string_ua'];
-                    }
-                    $val = ValueAttribute::updateOrCreate(['id' => $value['id']], $value);
+
+//                    if ($attribute->type_id === 3){
+//                        $value['float'] = $value['values'];
+//                    }
+//                    if ($attribute->type_id === 2){
+//                        $value['string_ru'] = $value['values']['string_ru'];
+//                        $value['string_ua'] = $value['values']['string_ua'];
+//                    }
+                    $val = $attribute->values()->updateOrCreate(['id' => $value['id']], $value);
                     $value_set[] = $val->id;
                 }
             }

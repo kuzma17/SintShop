@@ -21,7 +21,7 @@ class ValueAttribute extends Model
         'float',
         'boolean',
         'erc',
-       // 'values'
+        'values'
     ];
 
     public function attribute(){
@@ -41,13 +41,13 @@ class ValueAttribute extends Model
         }
     }
 
-//    public function setValuesAttribute($value){
-//
-//        if ($this->attribute->type_id === 1 || $this->attribute->type_id === 2){
-//            $this->attributes['string_ru'] = $value['string_ru'];
-//            $this->attributes['string_ua'] = $value['string_ua'];
-//        }else{
-//            $this->attributes['float'] = $value;
-//        }
-//    }
+    public function setValuesAttribute($value){
+
+        if (is_array($value)){
+            $this->attributes['string_ru'] = $value['string_ru'];
+            $this->attributes['string_ua'] = $value['string_ua'];
+        }else{
+            $this->attributes['float'] = $value;
+        }
+    }
 }
