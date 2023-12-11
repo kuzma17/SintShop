@@ -41,16 +41,16 @@
                    </div>
                </div>
 
-               <div class="row">
-                   <div class="col-md-12">
-                       <div class="form-check">
-                           <input class="form-check-input" type="checkbox" v-model="remember" name="remember" id="remember">
-                           <label class="form-check-label" for="remember">
-                               {{ $t('remember') }}
-                           </label>
-                       </div>
-                   </div>
-               </div>
+<!--               <div class="row">-->
+<!--                   <div class="col-md-12">-->
+<!--                       <div class="form-check">-->
+<!--                           <input class="form-check-input" type="checkbox" v-model="remember" name="remember" id="remember">-->
+<!--                           <label class="form-check-label" for="remember">-->
+<!--                               {{ $t('remember') }}-->
+<!--                           </label>-->
+<!--                       </div>-->
+<!--                   </div>-->
+<!--               </div>-->
 
                <div class="row mb-3">
                    <div class="col-md-12">
@@ -77,9 +77,6 @@ import {getActiveLanguage} from "laravel-vue-i18n";
 
 export default {
     name: "Login",
-    components: {
-       // trans
-    },
     props: [
         'auth_user',
     ],
@@ -105,7 +102,7 @@ export default {
             let data = {
                 'phone': this.phone,
                 'password': this.password,
-                'remember': this.remember
+                //'remember': this.remember
             }
             axios.post(this.patchLocale() + '/login', data)
                 .then(response => {

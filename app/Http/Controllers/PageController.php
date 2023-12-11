@@ -12,9 +12,7 @@ class PageController extends Controller
         $this->modelPage = $page;
     }
     public function page($slug){
-
         $page = $this->modelPage->getPage($slug)?? abort(404);
-
         return view('pages.page', ['page' => $page]);
     }
 

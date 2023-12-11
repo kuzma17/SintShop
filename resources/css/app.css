@@ -27,7 +27,7 @@ h4{
 
  /*header phone*/
 .header .phone{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #5c636a;
     text-align: center;
@@ -577,7 +577,7 @@ input[type=radio]:focus + label:before {
     color: #4b5563;
 }
 .dropdown-login .close_btn{
-    color: red!important;
+    /*color: red!important;*/
     font-size: 14px;
 }
 .dropdown-login .body{
