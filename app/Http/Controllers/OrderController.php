@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Models\User;
+use App\Notifications\NewOrder;
 use App\Services\CartService;
 use Illuminate\Http\Request;
 
@@ -42,8 +43,13 @@ class OrderController extends Controller
 
         $cart_content = $cart->content();
         $order = $order->createOrder($data, $cart_content);
+
         $cart->destroy();
         $order = $order->load('delivery', 'payment');
+
+//        if ($client->email){
+//            $client->notify(new NewOrder()); // send email
+//        }
 
         return view('order.created', ['order' => $order]);
 
