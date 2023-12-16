@@ -63,6 +63,9 @@ class ErcProductImport extends Command
         //107.02.02.09 => Картриджи для струйных устройств
         $ercParser->parse(Category::find(7), ['107.02.02.09']);
 
+
+        $ercParser->countNullGood(); // sets the quantity value to 0 if it is not in the ERC warehouse
+
     }
 
 

@@ -110,6 +110,12 @@ class ErcParser
         }
     }
 
+    public function countNullGood(){
+        Good::where('erc', 1)
+            ->whereDate('updated_at', '<', date('Y-m-d'))
+            ->update(['quantity' => 0]);
+    }
+
     protected function createGood($goodData, $photos=null, $videos=null){
         $good = Good::create($goodData);
 
