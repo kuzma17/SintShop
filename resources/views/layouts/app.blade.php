@@ -9,6 +9,7 @@
 
     <title>{{ config('app.name', 'Sint - Master shop') }} @yield('title')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -20,6 +21,10 @@
     </div>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
+    <script>
+        new Snow ();
+    </script>
 
 </body>
 </html>
