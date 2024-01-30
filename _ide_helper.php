@@ -19232,6 +19232,93 @@
      
 }
 
+    namespace Daaner\NovaPoshta\Facades { 
+            /**
+     * 
+     *
+     * @see https://github.com/daaner/novaposhta
+     */ 
+        class NovaPoshta {
+                    /**
+         * 
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function getApi()
+        {
+                        /** @var \Daaner\NovaPoshta\NovaPoshta $instance */
+                        $instance->getApi();
+        }
+                    /**
+         * Устанавливаем API токен отличный от значения в конфиге.
+         *
+         * @param string $api API токен
+         * @return \Daaner\NovaPoshta\NovaPoshta 
+         * @static 
+         */ 
+        public static function setApi($api)
+        {
+                        /** @var \Daaner\NovaPoshta\NovaPoshta $instance */
+                        return $instance->setApi($api);
+        }
+                    /**
+         * 
+         *
+         * @param bool $auth
+         * @return \Illuminate\Http\Client\Response|string|array 
+         * @static 
+         */ 
+        public static function getData($auth = true)
+        {
+                        /** @var \Daaner\NovaPoshta\NovaPoshta $instance */
+                        return $instance->getData($auth);
+        }
+                    /**
+         * 
+         *
+         * @param string $model Модель Новой Почты
+         * @param string $calledMethod Метод модели
+         * @param array|null $methodProperties Тело запроса
+         * @param bool $auth Использовать ли аутентификацию токеном или нет
+         * @return array 
+         * @static 
+         */ 
+        public static function getResponse($model, $calledMethod, $methodProperties, $auth = true)
+        {
+                        /** @var \Daaner\NovaPoshta\NovaPoshta $instance */
+                        return $instance->getResponse($model, $calledMethod, $methodProperties, $auth);
+        }
+                    /**
+         * Формирование информации.
+         * 
+         * Ошибки, уведомления.
+         *
+         * @param mixed $answer Ответ от НП
+         * @static 
+         */ 
+        public static function addInfo($answer)
+        {
+                        /** @var \Daaner\NovaPoshta\NovaPoshta $instance */
+                        return $instance->addInfo($answer);
+        }
+                    /**
+         * Логирование запроса.
+         *
+         * @param bool $auth Аутентификация
+         * @return void 
+         * @static 
+         */ 
+        public static function development($auth)
+        {
+                        /** @var \Daaner\NovaPoshta\NovaPoshta $instance */
+                        $instance->development($auth);
+        }
+         
+    }
+     
+}
+
     namespace Diglactic\Breadcrumbs { 
             /**
      * Breadcrumbs facade - allows easy access to the Manager instance.
@@ -23936,6 +24023,7 @@ namespace  {
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Image extends \Intervention\Image\Facades\Image {}
+            class NovaPoshta extends \Daaner\NovaPoshta\Facades\NovaPoshta {}
             class Breadcrumbs extends \Diglactic\Breadcrumbs\Breadcrumbs {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
      

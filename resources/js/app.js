@@ -54,6 +54,9 @@ app.component('login', Login);
 import DeliveryChoice from "./components/DeliveryChoice.vue";
 app.component('delivery-choice', DeliveryChoice);
 
+import NovaPoshtaWarehouse from "./components/NovaPoshtaWarehouse.vue";
+app.component('nova-poshta-warehouse', NovaPoshtaWarehouse);
+
 
 //-----------------
 

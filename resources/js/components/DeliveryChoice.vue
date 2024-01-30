@@ -27,6 +27,9 @@
                 </div>
             </div>
         </div>
+      <div v-if="delivery == 3">
+        <nova-poshta-warehouse></nova-poshta-warehouse>
+      </div>
     </div>
 </template>
 
@@ -42,14 +45,14 @@ export default {
     emits: ['update:modelValue'],
     mounted() {
         if (this.modelValue){
-            this.delivery = this.modelValue
+          //  this.delivery = this.modelValue
         }
         this.delivery_address = this.address
 
     },
     data(){
         return{
-            delivery: 1,
+            delivery: 3,
             delivery_address: '',
             errors: false,
             show: false,

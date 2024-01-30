@@ -25,7 +25,11 @@
 
     "login": "Вход",
     "personal_area": "Кабинет",
-    "remember": "Запомнить меня"
+    "remember": "Запомнить меня",
 
+    "np_city": "Город",
+    "np_warehouse": "Отделение",
+    "np_city_placeholder": "Начните набирать ваш город, населенный пункт",
+    "np_warehouse_placeholder": "Выберите ваше отделение \"Новой почты\""
 
 }
