@@ -4,13 +4,13 @@
             <div class="col-4 col-md-3">
                 <h5>@lang('menu.navigation')</h5>
                 <ul>
-                    <li><a href="">@lang('menu.main')</a></li>
+                    <li><a href="{{route('home')}}">@lang('menu.main')</a></li>
                     <li><a href="{{route('page', 'about')}}">@lang('menu.about')</a></li>
-                    <li><a href="">@lang('menu.payment_delivery')</a></li>
-                    <li><a href="">@lang('menu.contacts')</a></li>
+                    <li><a href="{{route('page', 'payment-delivery')}}">@lang('menu.payment_delivery')</a></li>
+                    <li><a href="{{route('page', 'contacts')}}">@lang('menu.contacts')</a></li>
                     <li><a href="">@lang('menu.sale')</a></li>
                     <li><a href="">@lang('menu.stock')</a></li>
-                    <li><a href="">@lang('menu.login')</a></li>
+{{--                    <li><a href="">@lang('menu.login')</a></li>--}}
                 </ul>
             </div>
             <div class="col-4 col-md-3">
@@ -28,9 +28,9 @@
             <div class="col-4 col-md-3">
                 <h5>@lang('menu.services')</h5>
                 <ul>
-                    <li><a href="">@lang('menu.repair')</a></li>
-                    <li><a href="">@lang('menu.replacing_cartridges')</a></li>
-                    <li><a href="">@lang('menu.delivery')</a></li>
+                    <li><a href="{{route('page', 'repair')}}">@lang('menu.repair')</a></li>
+                    <li><a href="{{route('page', 'replacing-cartridges')}}">@lang('menu.replacing_cartridges')</a></li>
+                    <li><a href="{{route('page', 'delivery')}}">@lang('menu.delivery')</a></li>
                 </ul>
             </div>
             <div class="col-12 col-md-3">

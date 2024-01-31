@@ -11,6 +11,10 @@ body{
 h4{
     font-weight: bolder;
 }
+h6{
+    color: #0468C5!important;
+    font-weight: bold;
+}
 
 /*Header*/
 .header{
@@ -721,6 +725,10 @@ input[type=radio]:focus + label:before {
 
 /*Page*/
 
+.page{
+    padding-bottom: 20px;
+}
+
 .page p{
     color: #676767;
     padding: 0;
@@ -729,6 +737,9 @@ input[type=radio]:focus + label:before {
 .page ul li{
     list-style-type: disc!important;
     color: #676767;
+}
+.page img{
+    margin: 0px 0 20px 20px;
 }
 
 

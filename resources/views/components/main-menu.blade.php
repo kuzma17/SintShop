@@ -94,9 +94,9 @@
                                 @lang('menu.services')
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">@lang('menu.repair')</a></li>
-                                <li><a class="dropdown-item" href="#">@lang('menu.replacing_cartridges')</a></li>
-                                <li><a class="dropdown-item" href="#">@lang('menu.delivery')</a></li>
+                                <li><a class="dropdown-item" href="{{route('page', 'repair')}}">@lang('menu.repair')</a></li>
+                                <li><a class="dropdown-item" href="{{route('page', 'replacing-cartridges')}}">@lang('menu.replacing_cartridges')</a></li>
+                                <li><a class="dropdown-item" href="{{route('page', 'delivery')}}">@lang('menu.delivery')</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -111,10 +111,10 @@
                             <a class="nav-link" href="{{route('page', 'about')}}">@lang('menu.about')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">@lang('menu.payment_delivery')</a>
+                            <a class="nav-link" href="{{route('page', 'payment-delivery')}}">@lang('menu.payment_delivery')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">@lang('menu.contacts')</a>
+                            <a class="nav-link" href="{{route('page', 'contacts')}}">@lang('menu.contacts')</a>
                         </li>
                         <li class="nav-item">
                             <login
