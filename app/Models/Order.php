@@ -16,6 +16,10 @@ class Order extends Model
         'count',
         'summa',
         'delivery_address',
+        'np_city',
+        'np_city_ref',
+        'np_warehouse',
+        'np_warehouse_ref',
         'note',
         'status_id',
     ];

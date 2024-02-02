@@ -33,9 +33,19 @@ class OrderRequest extends FormRequest
             ];
         }
 
-        if ($this->request->get('delivery_id') && $this->request->get('delivery_id') == 2){
+        if ($this->request->get('delivery_id')){
 
-            $rules['delivery_address'] = ['required', 'string'];
+            if ($this->request->get('delivery_id') == 2) {
+
+                $rules['delivery_address'] = ['required', 'string'];
+            }
+
+            if ($this->request->get('delivery_id') == 3){
+
+                $rules['np_city'] = ['required', 'string'];
+                $rules['np_warehouse'] = ['required', 'string'];
+            }
+
         }
 
         return $rules;

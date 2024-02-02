@@ -22,6 +22,10 @@ return new class extends Migration
             $table->integer('count', 5);
             $table->decimal('summa', 10, 2);
             $table->string('delivery_address', 255)->nullable();
+            $table->string('np_city')->nullable();
+            $table->string('np_city_ref')->nullable();
+            $table->string('np_warehouse')->nullable();
+            $table->string('np_warehouse_ref')->nullable();
             $table->text('note')->nullable();
             $table->unsignedBigInteger('status_id')->index();
             $table->foreign('status_id')->references('id')->on('statuses');

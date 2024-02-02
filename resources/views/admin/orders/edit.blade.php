@@ -77,7 +77,7 @@
                 {{$order->delivery->title_ru}}
             </div>
         </div>
-        @if($order->delivery_address)
+        @if($order->delivery->id == 2 && $order->delivery_address)
             <div class="row mb-3">
                 <label class="col-2 star">
                    Адрес доставки
@@ -87,6 +87,28 @@
                 </div>
             </div>
         @endif
+            @if($order->delivery->id == 3)
+                @if($order->np_city)
+                <div class="row mb-3">
+                    <label class="col-2 star">
+                        Город, населенный пункт
+                    </label>
+                    <div class="col-9">
+                        {{$order->np_city}}
+                    </div>
+                </div>
+                @endif
+                    @if($order->np_warehouse)
+                        <div class="row mb-3">
+                            <label class="col-2 star">
+                                Отделение "Новой почты"
+                            </label>
+                            <div class="col-9">
+                                {{$order->np_warehouse}}
+                            </div>
+                        </div>
+                    @endif
+            @endif
         <div class="row mb-3">
             <label class="col-2 star">
                Тип оплаты

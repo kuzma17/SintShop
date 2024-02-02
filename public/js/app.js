@@ -20012,7 +20012,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CreateOrder",
   props: ['deliveries', 'payments', 'user', 'validate_errors'],
-  mounted: function mounted() {
+  created: function created() {
     if (this.user) {
       this.userData(this.user);
     }
@@ -20032,7 +20032,11 @@ __webpack_require__.r(__webpack_exports__);
       email: '',
       delivery_address: '',
       errors: false,
-      show: false
+      show: false,
+      np_city: '',
+      np_city_ref: '',
+      np_warehouse: '',
+      np_warehouse_ref: ''
     };
   },
   methods: {
@@ -20060,6 +20064,10 @@ __webpack_require__.r(__webpack_exports__);
       this.delivery = data.delivery_id;
       this.payment = data.payment_id;
       this.delivery_address = data.delivery_address;
+      this.np_city = data.np_city;
+      this.np_city_ref = data.np_city_ref;
+      this.np_warehouse = data.np_warehouse;
+      this.np_warehouse_ref = data.np_warehouse_ref;
     },
     cleanError: function cleanError() {
       this.errors = false;
@@ -20082,17 +20090,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DeliveryChoice",
-  props: ['deliveries', 'modelValue', 'address', 'validate_errors'],
-  emits: ['update:modelValue'],
-  mounted: function mounted() {
-    if (this.modelValue) {
-      //  this.delivery = this.modelValue
-    }
+  props: ['deliveries', 'modelValue', 'address', 'validate_errors', 'np_city', 'np_city_ref', 'np_warehouse', 'np_warehouse_ref'],
+  //emits: ['update:modelValue'],
+  created: function created() {
+    // if (this.modelValue){
+    //     this.delivery = this.modelValue
+    // }
     this.delivery_address = this.address;
+  },
+  computed: {
+    delivery: {
+      get: function get() {
+        return this.modelValue;
+      },
+      set: function set(value) {
+        this.$emit('update:modelValue', value);
+      }
+    }
   },
   data: function data() {
     return {
-      delivery: 3,
+      // delivery: 1,
       delivery_address: '',
       errors: false,
       show: false
@@ -20284,8 +20302,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "NovaPoshtaWarehouse",
-  props: [],
-  mounted: function mounted() {},
+  props: ['np_city', 'np_city_ref', 'np_warehouse', 'np_warehouse_ref'],
+  mounted: function mounted() {
+    if (this.np_city) {
+      this.city = this.np_city;
+    }
+    if (this.np_city_ref) {
+      this.city_ref = this.np_city_ref;
+    }
+    if (this.np_warehouse) {
+      this.warehouse_name = this.np_warehouse;
+    }
+    if (this.np_warehouse_ref) {
+      this.warehouse_ref = this.np_warehouse_ref;
+    }
+  },
   watch: {
     city: function city(after, before) {
       this.searchCity();
@@ -20305,18 +20336,15 @@ __webpack_require__.r(__webpack_exports__);
       list_warehouse: {},
       warehouse_ref: false,
       warehouse_toggle: false,
-      page: 1,
-      busy: true
+      page: 1
     };
   },
   methods: {
     searchCity: function searchCity() {
       var _this = this;
       if (this.city.length > 2 && this.city_search) {
-        console.log(this.city);
         axios.get(this.patchLocale() + '/nova-poshta?city_key=' + this.city).then(function (response) {
           //console.log(response.data);
-
           _this.city_toggle = true;
           _this.list_city = response.data;
           //this.city_toggle = false
@@ -20327,16 +20355,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getCity: function getCity(city) {
-      this.city = city.name + ' ' + city.ref;
+      this.city = city.name;
       this.city_ref = city.ref;
       this.city_toggle = false;
       this.warehouse_name = '';
-      //this.warehouse_ref = ''
       this.listWarehouses();
     },
     blockCity: function blockCity() {
-      // this.city_toggle = !this.city_toggle
-      // // this.city = ''
       // this.$refs.city.focus()
       this.city_search = true;
       this.list_warehouse = {};
@@ -20344,26 +20369,21 @@ __webpack_require__.r(__webpack_exports__);
     listWarehouses: function listWarehouses() {
       var _this2 = this;
       axios.get(this.patchLocale() + '/nova-poshta?city_ref=' + this.city_ref + '&page=' + this.page).then(function (response) {
-        console.log(response.data);
+        //console.log(response.data);
         Object.assign(_this2.list_warehouse, response.data);
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    // addList(item){
-    //   this.list_warehouse = { ...this.list_warehouse, ...item }
-    // },
     getWarehouse: function getWarehouse(warehouse) {
       this.warehouse_name = warehouse.name;
       this.warehouse_ref = warehouse.ref;
       this.warehouse_toggle = false;
-      console.log("block " + this.warehouse_toggle);
     },
     blockWarehouse: function blockWarehouse() {
       this.warehouse_toggle = true;
       this.warehouse = '';
       this.$refs.warehouse.focus();
-      console.log("block " + this.warehouse_toggle);
     },
     patchLocale: function patchLocale() {
       var locale = (0,laravel_vue_i18n__WEBPACK_IMPORTED_MODULE_0__.getActiveLanguage)();
@@ -20374,10 +20394,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     handleScroll: function handleScroll(el) {
       if (el.srcElement.offsetHeight + el.srcElement.scrollTop >= el.srcElement.scrollHeight) {
-        console.log('====scroll====');
         this.page++;
         this.listWarehouses();
       }
+    },
+    resetData: function resetData() {
+      this.city = '';
+      this.city_ref = '';
+      this.warehouse_name = '';
+      this.warehouse_ref = '';
     }
   }
 });
@@ -20846,15 +20871,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return $options.login();
     })
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('login')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('forgot_password')) + "?", 1 /* TEXT */)])])]))]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [_hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('delivery')), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delivery_choice, {
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('login')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('forgot_password')) + "?", 1 /* TEXT */)])])]))]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [_hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('delivery')), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("test: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.delivery) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_delivery_choice, {
     deliveries: $props.deliveries,
     modelValue: $data.delivery,
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $data.delivery = $event;
     }),
     address: $data.delivery_address,
-    validate_errors: $data.errors
-  }, null, 8 /* PROPS */, ["deliveries", "modelValue", "address", "validate_errors"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('payment')), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.payments, function (pay) {
+    validate_errors: $data.errors,
+    np_city: $data.np_city,
+    np_city_ref: $data.np_city_ref,
+    np_warehouse: $data.np_warehouse,
+    np_warehouse_ref: $data.np_warehouse_ref
+  }, null, 8 /* PROPS */, ["deliveries", "modelValue", "address", "validate_errors", "np_city", "np_city_ref", "np_warehouse", "np_warehouse_ref"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('payment')), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.payments, function (pay) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "radio",
       name: "payment_id",
@@ -20912,19 +20941,19 @@ var _hoisted_10 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_nova_poshta_warehouse = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nova-poshta-warehouse");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.deliveries, function (item) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" testChildren: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.delivery) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.deliveries, function (item) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "radio",
       id: 'delivery' + item.id,
       value: item.id,
       name: "delivery_id",
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-        return $data.delivery = $event;
+        return $options.delivery = $event;
       })
-    }, null, 8 /* PROPS */, _hoisted_2), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.delivery]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    }, null, 8 /* PROPS */, _hoisted_2), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $options.delivery]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "for": 'delivery' + item.id
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 9 /* TEXT, PROPS */, _hoisted_3)]);
-  }), 256 /* UNKEYED_FRAGMENT */))]), $data.delivery == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('address')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }), 256 /* UNKEYED_FRAGMENT */))]), $options.delivery == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('address')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     name: "delivery_address",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["form-control", {
@@ -20933,8 +20962,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.delivery_address = $event;
     }),
-    required: $data.delivery == 2
-  }, null, 10 /* CLASS, PROPS */, _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.delivery_address]]), $data.errors.delivery_address ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.delivery_address), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.delivery == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nova_poshta_warehouse)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    required: $options.delivery === 2
+  }, null, 10 /* CLASS, PROPS */, _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.delivery_address]]), $data.errors.delivery_address ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.delivery_address), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.delivery === 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nova_poshta_warehouse, {
+    np_city: this.np_city,
+    np_city_ref: this.np_city_ref,
+    np_warehouse: this.np_warehouse,
+    np_warehouse_ref: this.np_warehouse_ref
+  }, null, 8 /* PROPS */, ["np_city", "np_city_ref", "np_warehouse", "np_warehouse_ref"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
@@ -21225,8 +21259,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onKeydown: _cache[1] || (_cache[1] = function ($event) {
       return $options.blockCity();
     }),
-    placeholder: _ctx.$t('np_city_phr')
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.city]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.resetData();
+    }),
+    placeholder: _ctx.$t('np_city_placeholder'),
+    required: ""
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.city]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("       <span v-if=\"errors.np_city\" class=\"invalid-feedback\" role=\"alert\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <strong>{{ errors.np_city }}</strong>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        </span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "np_city_ref",
     value: $data.city_ref
@@ -21239,23 +21277,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 256 /* UNKEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('np_warehouse')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     ref: "warehouse",
-    onClick: _cache[2] || (_cache[2] = function ($event) {
+    onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.blockWarehouse();
     }),
     name: "np_warehouse",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.warehouse_name = $event;
     }),
     "class": "form-control",
-    placeholder: _ctx.$t('np_warehouse_phr')
-  }, null, 8 /* PROPS */, _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.warehouse_name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: _ctx.$t('np_warehouse_placeholder'),
+    required: ""
+  }, null, 8 /* PROPS */, _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.warehouse_name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <span v-if=\"errors.np_warehouse\" class=\"invalid-feedback\" role=\"alert\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <strong>{{ errors.np_warehouse }}</strong>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        </span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "np_warehouse_ref",
     value: $data.warehouse_ref
   }, null, 8 /* PROPS */, _hoisted_12), $data.warehouse_toggle ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
     "class": "np_select",
-    onScroll: _cache[4] || (_cache[4] = function () {
+    onScroll: _cache[5] || (_cache[5] = function () {
       return $options.handleScroll && $options.handleScroll.apply($options, arguments);
     })
   }, [$data.list_warehouse ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.list_warehouse, function (warehouse) {
@@ -28071,7 +28110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.np_select{\n  position: absolute;\n  background-color: white;\n  border: 1px solid #CCCCCC;\n  max-height: 400px;\n  overflow: auto;\n  width: 95%;\n  z-index: 100;\n}\nul.list{\n  padding: 0;\n  margin: 0\n}\nul.list li{\n  list-style-type: none;\n  padding: 3px 10px !important;\n  border-bottom: 1px solid #CCCCCC;\n  cursor: pointer;\n}\nul.list li:hover{\n  background-color: whitesmoke;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.np_select{\n  position: absolute;\n  background-color: white;\n  border: 1px solid #CCCCCC;\n  max-height: 400px;\n  overflow: auto;\n  width: 95%;\n  z-index: 100;\n}\nul.list{\n  padding: 0;\n  margin: 0\n}\nul.list li{\n  list-style-type: none;\n  padding: 3px 10px !important;\n  border-bottom: 1px solid #CCCCCC;\n  cursor: pointer;\n}\nul.list li:hover{\n  background-color: whitesmoke;\n}\n.form-control{\n  margin-bottom: 10px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
