@@ -130,8 +130,8 @@
                 </div>
             </div>
         </div>
-        <h5><i class="fa-solid fa-truck-arrow-right"></i> {{ $t('delivery') }}</h5>test: {{delivery}}
-        <delivery-choice
+        <h5><i class="fa-solid fa-truck-arrow-right"></i> {{ $t('delivery') }}</h5>
+        <delivery-select
             :deliveries="deliveries"
             v-model="delivery"
             :address="delivery_address"
@@ -141,7 +141,7 @@
             :np_warehouse="np_warehouse"
             :np_warehouse_ref="np_warehouse_ref"
         >
-        </delivery-choice>
+        </delivery-select>
         <h5><i class="fa-regular fa-money-bill-1"></i> {{ $t('payment') }}</h5>
         <div class="content">
             <ul>

@@ -14,10 +14,10 @@
                 <div class="parameter">@lang('order.count_good')</div> <div class="col value">{{$order->count}}</div>
             </div>
             <div class="row">
-                <div class="parameter">@lang('order.cart_sum')</div> <div class=" col value text-orange">{{$order->summa}}</div>
+                <div class="parameter">@lang('order.cart_sum')</div> <div class=" col value text-orange">{{$order->summa}} грн.</div>
             </div>
             <div class="row">
-                <div class="parameter">@lang('order.delivery')</div> <div class="col value">{{$order->delivery->title}}</div>
+                <div class="parameter">@lang('order.delivery')</div> <div class="col value">{!! $order->delivery->title !!}</div>
             </div>
             @if($order->delivery_id == 2 && $order->delivery_address)
                 <div class="row">

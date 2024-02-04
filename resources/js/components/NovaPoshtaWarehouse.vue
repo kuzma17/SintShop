@@ -21,6 +21,7 @@
          </ul>
        </div>
      </div>
+    <br><br>
 
       <label class="col-sm-2 star">{{ $t('np_warehouse') }}</label>
       <div class="col-sm-10" style="position: relative">
@@ -45,12 +46,6 @@
           </ul>
         </div>
       </div>
-
-
-
-<!--      <span v-if="errors.delivery_address" class="invalid-feedback" role="alert">-->
-<!--                                <strong>{{ errors.delivery_address }}</strong>-->
-<!--                        </span>-->
   </div>
 </template>
 
@@ -140,7 +135,6 @@ export default {
     },
 
     blockCity(){
-     // this.$refs.city.focus()
        this.city_search = true
       this.list_warehouse = {}
     },
@@ -201,6 +195,7 @@ export default {
 
 .np_select{
   position: absolute;
+  left: 50px;
   background-color: white;
   border: 1px solid #CCCCCC;
   max-height: 400px;
@@ -220,9 +215,6 @@ ul.list li{
 }
 ul.list li:hover{
   background-color: whitesmoke;
-}
-.form-control{
-  margin-bottom: 10px;
 }
 
 </style>

@@ -3,7 +3,7 @@
         @lang('order.create_order')
     </button>
 </div>
-<div class="collapse_" id="collapseOrder">
+<div class="collapse" id="collapseOrder">
     <h4>@lang('order.creating_order')</h4>
 
     <div class="user_settings">
