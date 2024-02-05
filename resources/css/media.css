@@ -43,6 +43,9 @@
     .good-card .photo{
         height: 250px!important;
     }
+    .hidden-mobile{
+        display: table-cell!important;
+    }
 
 }
 

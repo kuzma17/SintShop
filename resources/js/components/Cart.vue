@@ -7,8 +7,8 @@
             <thead>
             <tr>
                 <th scope="col">{{ $t('good_name') }}</th>
-                <th scope="col">{{ $t('code') }}</th>
-                <th scope="col">{{ $t('price') }}</th>
+                <th scope="col" class="hidden-mobile">{{ $t('code') }}</th>
+                <th scope="col" class="hidden-mobile">{{ $t('price') }}</th>
                 <th scope="col">{{ $t('good_count') }}</th>
                 <th scope="col">{{ $t('good_sum') }}</th>
                 <th scope="col"></th>
@@ -17,8 +17,8 @@
             <tbody>
             <tr v-for="(good) in products" :key="good.id">
                 <td><a :href="'/catalog/'+good.slug+'_'+good.id+'g'" ><img :src="good.photo"> {{good.name}}</a></td>
-                <td>{{good.code}}</td>
-                <td>{{good.price}} {{$t('curr')}}</td>
+                <td class="hidden-mobile">{{good.code}}</td>
+                <td class="hidden-mobile">{{good.price}} {{$t('curr')}}</td>
                 <td>
                     <input-quantity
                         v-model="good.qty"

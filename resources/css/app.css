@@ -743,20 +743,10 @@ input[type=radio]:focus + label:before {
 }
 
 
-
-
 ul li{
     padding-left: 0!important;
 }
 
-
-
-
-
-    /*.col{margin:0 !important; padding:0 !important;}*/
-div{
-    /*border: 1px solid green;*/
-}
-ul li{
-    /*padding: 0!important;*/
+.hidden-mobile{
+    display: none;
 }
