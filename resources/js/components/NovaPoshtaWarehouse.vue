@@ -10,6 +10,7 @@
               @keydown="blockCity()"
               @click="resetData()"
               :placeholder="$t('np_city_placeholder')"
+              autocomplete="off"
               required>
 <!--       <span v-if="errors.np_city" class="invalid-feedback" role="alert">-->
 <!--                                <strong>{{ errors.np_city }}</strong>-->
@@ -32,6 +33,7 @@
                v-model="warehouse_name"
                class="form-control"
                :placeholder="$t('np_warehouse_placeholder')"
+               autocomplete="off"
                required
         >
 <!--        <span v-if="errors.np_warehouse" class="invalid-feedback" role="alert">-->
@@ -195,7 +197,7 @@ export default {
 
 .np_select{
   position: absolute;
-  left: 50px;
+  left: 10px;
   background-color: white;
   border: 1px solid #CCCCCC;
   max-height: 400px;
