@@ -28,7 +28,11 @@ class User extends Authenticatable
         'phone',
         'delivery_id',
         'payment_id',
-        'delivery_address'
+        'delivery_address',
+        'np_city',
+        'np_city_ref',
+        'np_warehouse',
+        'np_warehouse_ref',
     ];
 
     /**

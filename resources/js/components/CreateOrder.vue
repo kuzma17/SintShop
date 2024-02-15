@@ -131,13 +131,17 @@
             </div>
         </div>
         <h5><i class="fa-solid fa-truck-arrow-right"></i> {{ $t('delivery') }}</h5>
-        <delivery-choice
+        <delivery-select
             :deliveries="deliveries"
             v-model="delivery"
             :address="delivery_address"
             :validate_errors="errors"
+            :np_city="np_city"
+            :np_city_ref="np_city_ref"
+            :np_warehouse="np_warehouse"
+            :np_warehouse_ref="np_warehouse_ref"
         >
-        </delivery-choice>
+        </delivery-select>
         <h5><i class="fa-regular fa-money-bill-1"></i> {{ $t('payment') }}</h5>
         <div class="content">
             <ul>
@@ -159,7 +163,7 @@ export default {
         'user',
         'validate_errors'
     ],
-    mounted() {
+    created() {
         if (this.user){
             this.userData(this.user)
         }
@@ -169,17 +173,21 @@ export default {
     },
     data(){
         return{
-            contacts: 1,
-            delivery: 1,
-            payment: 1,
-            auth_user: false,
-            phone: '',
-            password: '',
-            name: '',
-            email: '',
-            delivery_address: '',
-            errors: false,
-            show: false,
+          contacts: 1,
+          delivery: 1,
+          payment: 1,
+          auth_user: false,
+          phone: '',
+          password: '',
+          name: '',
+          email: '',
+          delivery_address: '',
+          errors: false,
+          show: false,
+          np_city: '',
+          np_city_ref: '',
+          np_warehouse: '',
+          np_warehouse_ref: '',
         }
     },
     methods:{
@@ -210,6 +218,10 @@ export default {
             this.delivery = data.delivery_id
             this.payment = data.payment_id
             this.delivery_address= data.delivery_address
+          this.np_city = data.np_city
+          this.np_city_ref = data.np_city_ref
+          this.np_warehouse = data.np_warehouse
+          this.np_warehouse_ref = data.np_warehouse_ref
         },
         cleanError(){
             this.errors = false

@@ -51,8 +51,11 @@ app.component('create-order', CreateOrder);
 import Login from "./components/Login.vue";
 app.component('login', Login);
 
-import DeliveryChoice from "./components/DeliveryChoice.vue";
-app.component('delivery-choice', DeliveryChoice);
+import DeliverySelect from "./components/DeliverySelect.vue";
+app.component('delivery-select', DeliverySelect);
+
+import NovaPoshtaWarehouse from "./components/NovaPoshtaWarehouse.vue";
+app.component('nova-poshta-warehouse', NovaPoshtaWarehouse);
 
 
 //-----------------

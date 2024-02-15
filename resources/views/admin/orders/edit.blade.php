@@ -34,35 +34,35 @@
             @method('PUT')
             @csrf
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
                 Количество товаров
             </label>
-            <div class="col-9">
+            <div class="col-8">
                 {{$order->count}}
             </div>
         </div>
 
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
                 Сумма заказа
             </label>
-            <div class="col-9">
+            <div class="col-8">
                 {{$order->summa}} @lang('main.curr')
             </div>
         </div>
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
                 Время создания заказа
             </label>
-            <div class="col-9">
+            <div class="col-8">
                 {{$order->created_at}}
             </div>
         </div>
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
                 Клиент
             </label>
-            <div class="col-9">
+            <div class="col-8">
                 <a href="{{route('admin.clients.show',$order->user->id)}}" title="Открыть карточку клиента">
                     {{$order->user->name}} <i class="fa-solid fa-phone"></i> +38{{$order->user->phone}}
                     @if($order->user->email) <i class="fa-regular fa-envelope"></i> {{$order->user->email}} @endif
@@ -70,41 +70,63 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
                 Доставка
             </label>
-            <div class="col-9">
-                {{$order->delivery->title_ru}}
+            <div class="col-8">
+                {!! $order->delivery->title_ru !!}
             </div>
         </div>
-        @if($order->delivery_address)
+        @if($order->delivery->id == 2 && $order->delivery_address)
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-3">
                    Адрес доставки
                 </label>
-                <div class="col-9">
+                <div class="col-8">
                     {{$order->delivery_address}}
                 </div>
             </div>
         @endif
+            @if($order->delivery->id == 3)
+                @if($order->np_city)
+                <div class="row mb-3">
+                    <label class="col-3">
+                        Город, населенный пункт
+                    </label>
+                    <div class="col-8">
+                        {{$order->np_city}}
+                    </div>
+                </div>
+                @endif
+                    @if($order->np_warehouse)
+                        <div class="row mb-3">
+                            <label class="col-3">
+                                Отделение "Новой почты"
+                            </label>
+                            <div class="col-8">
+                                {{$order->np_warehouse}}
+                            </div>
+                        </div>
+                    @endif
+            @endif
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
                Тип оплаты
             </label>
-            <div class="col-9">
+            <div class="col-8">
                 {{$order->payment->title_ru}}
             </div>
         </div>
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-3">
                     Коментарий
                 </label>
-                <div class="col-9">
+                <div class="col-8">
                     {{$order->note}}
                 </div>
             </div>
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
                Статус
             </label>
             <div class="col-3">
@@ -121,10 +143,10 @@
         </div>
 
         <div class="row mb-3">
-            <label class="col-2 star">
+            <label class="col-3">
 
             </label>
-            <div class="col-9">
+            <div class="col-8">
                 <button type="submit" class="btn btn-success" @disabled($order->status_id == 2)>Сохранить</button>
             </div>
         </div>

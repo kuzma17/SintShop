@@ -14,15 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Auth::routes();
-//
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::get('locale/{locale}', \App\Services\LocaleService::class)->name('locale');
 
 Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], function(){
@@ -91,8 +82,12 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
 
 
+//    Route::get('/nova-poshta/city/{key}', [\App\Http\Controllers\NovaPoshtaController::class, 'searchCity'])->name('nova-poshta.city');
+//    Route::get('/nova-poshta/city/{city_ref}/warehouses', [\App\Http\Controllers\NovaPoshtaController::class, 'getWarehouses'])->name('nova-poshta.warehouses');
+
+    Route::get('/nova-poshta', [\App\Http\Controllers\NovaPoshtaController::class, 'index']);
+
 
     Route::get('/{page}', [App\Http\Controllers\PageController::class, 'page'])->name('page');
-
 
 });

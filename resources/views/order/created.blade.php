@@ -14,15 +14,27 @@
                 <div class="parameter">@lang('order.count_good')</div> <div class="col value">{{$order->count}}</div>
             </div>
             <div class="row">
-                <div class="parameter">@lang('order.cart_sum')</div> <div class=" col value text-orange">{{$order->summa}}</div>
+                <div class="parameter">@lang('order.cart_sum')</div> <div class=" col value text-orange">{{$order->summa}} грн.</div>
             </div>
             <div class="row">
-                <div class="parameter">@lang('order.delivery')</div> <div class="col value">{{$order->delivery->title}}</div>
+                <div class="parameter">@lang('order.delivery')</div> <div class="col value">{!! $order->delivery->title !!}</div>
             </div>
-            @if($order->delivery_address)
+            @if($order->delivery_id == 2 && $order->delivery_address)
                 <div class="row">
                     <div class="parameter">@lang('order.delivery_address')</div> <div class="col value">{{$order->delivery_address}}</div>
                 </div>
+            @endif
+            @if($order->delivery_id == 3)
+                @if($order->np_city)
+                <div class="row">
+                    <div class="parameter">@lang('order.np_city')</div> <div class="col value">{{$order->np_city}}</div>
+                </div>
+                @endif
+                @if($order->np_warehouse)
+                        <div class="row">
+                            <div class="parameter">@lang('order.np_warehouse')</div> <div class="col value">{{$order->np_warehouse}}</div>
+                        </div>
+                @endif
             @endif
             <div class="row">
                 <div class="parameter">@lang('order.payment')</div> <div class="col value">{{$order->payment->title}}</div>
