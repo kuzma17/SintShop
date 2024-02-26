@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-12 col-md-8 phone-block">
                         <div class="phone">
-                            <i class="fa-solid fa-phone"></i> +38 (067) 5576567
+                            <i class="fa-solid fa-phone"></i> +38 (050) 3379743
                         </div>
                     </div>
                 </div>
