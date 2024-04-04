@@ -80,8 +80,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => cleanPhone($data['phone']),
-            'password' => Hash::make($data['password']),
-            'delivery_id' => $data['delivery_id'],
+            //'password' => Hash::make($data['password']),
+            'password' => $data['password'],
+            'delivery_id' => isset($data['delivery_id'])? $data['delivery_id']: 1,
             'payment_id' => $data['payment_id'],
             'delivery_address' => isset($data['delivery_address'])? $data['delivery_address']: '',
         ]);
