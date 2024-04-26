@@ -17,7 +17,7 @@
             @foreach($pages as $page)
                 <tr>
                     <td>{{$page->id}}</td>
-                    <td>{{$page->title_ru}}</td>
+                    <td>{{$page->name_ru}}</td>
                     <td>
                         <x-admin.active
                             :status="$page->active"

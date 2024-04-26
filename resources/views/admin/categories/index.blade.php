@@ -19,7 +19,7 @@
             @foreach($categories as $category)
                 <tr>
                     <td>{{$category->id}}</td>
-                    <td>{{$category->title_ru}}</td>
+                    <td>{{$category->name_ru}}</td>
                     <td>@if($category->image) <img src="/images/{{$category->image}}"> @endif</td>
                     <td>{{$category->sort}}</td>
                     <td>

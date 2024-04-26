@@ -9,7 +9,7 @@
                     <div class="category">
                         <img src="/images/{{$category->image}}" >
                         <div class="title_category">
-                            {{$category->title}}
+                            {{$category->name}}
                         </div>
                     </div>
                 </a>

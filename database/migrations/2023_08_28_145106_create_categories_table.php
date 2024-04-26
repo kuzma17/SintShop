@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('parent_id')->index();
             $table->string('slug', 255)->index()->unique();
+            $table->string('name_ru', 255);
+            $table->string('name_ua', 255);
             $table->string('title_ru', 255)->nullable();
             $table->string('title_ua', 255)->nullable();
             $table->string('description_ru', 255)->nullable();

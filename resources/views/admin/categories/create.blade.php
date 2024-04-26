@@ -10,6 +10,33 @@
                     Наименование ru
                 </label>
                 <div class="col-9">
+                    <input type="text" name="name_ru" value="{{old('name_ru')}}" class="form-control @error('name_ru') is-invalid @enderror">
+                    @error('name_ru')
+                    <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-2 star">
+                    Наименование ua
+                </label>
+                <div class="col-9">
+                    <input type="text" name="name_ua" value="{{old('name_ua')}}" class="form-control @error('name_ua') is-invalid @enderror">
+                    @error('name_ua')
+                    <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-2 star">
+                    Title ru
+                </label>
+                <div class="col-9">
                     <input type="text" name="title_ru" value="{{old('title_ru')}}" class="form-control @error('title_ru') is-invalid @enderror">
                     @error('title_ru')
                     <span class="invalid-feedback" role="alert">
@@ -20,7 +47,7 @@
             </div>
             <div class="row mb-3">
                 <label class="col-2 star">
-                    Наименование ua
+                    Title ua
                 </label>
                 <div class="col-9">
                     <input type="text" name="title_ua" value="{{old('title_ua')}}" class="form-control @error('title_ua') is-invalid @enderror">
