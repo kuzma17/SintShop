@@ -6,7 +6,7 @@
             @yield('link')
         </div>
 
-        <h4>@yield('title')</h4>
+        <h4>@yield('name_page')</h4>
 
         @yield('body')
 

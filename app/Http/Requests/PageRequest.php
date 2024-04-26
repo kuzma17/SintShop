@@ -23,8 +23,8 @@ class PageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title_ru' => ['required', 'string', 'max:255'],
-            'title_ua' => ['required', 'string', 'max:255'],
+            'name_ru' => ['required', 'string', 'max:255'],
+            'name_ua' => ['required', 'string', 'max:255'],
             'content_ru' => ['required', 'string'],
             'content_ua' => ['required', 'string'],
             'slug' => ['required', 'string', 'max:255', Rule::unique('categories')->ignore($this->id),],

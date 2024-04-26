@@ -2,7 +2,7 @@
 
 @section('link', Breadcrumbs::render('user.profile'))
 
-@section('title')
+@section('name_page')
     @lang('user.cabinet'). @yield('sub_title')
 @endsection
 
