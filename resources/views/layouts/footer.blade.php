@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="copyright">
-            Copyright 2023 @ Designed by <a href="mailto:v.kuzma@mail.ru">Kuzma</a>
+            Copyright 2023 @ Designed by <a href="mailto:webkuzma@gmail.com">Kuzma</a>
         </div>
         <div id="top-scroll" class="top-scroll">
             <a href="#" title="вверх"><span class="fas fa-angle-up"></span></a>
