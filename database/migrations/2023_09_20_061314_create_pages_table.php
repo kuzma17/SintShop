@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('title_ua', 255)->nullable();
             $table->text('content_ru');
             $table->text('content_ua');
-            $table->string('description_ru', 255)->nullable();
-            $table->string('description_ua', 255)->nullable();
+            $table->text('description_ru')->nullable();
+            $table->text('description_ua')->nullable();
             $table->string('keywords_ru', 255)->nullable();
             $table->string('keywords_ua', 255)->nullable();
             $table->integer('active')->index();

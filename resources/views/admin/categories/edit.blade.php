@@ -104,7 +104,7 @@
 
             <div class="row mb-3">
                 <label class="col-2">
-                    Описание ru
+                    Description ru
                 </label>
                 <div class="col-9">
                     <textarea name="description_ru" class="form-control">
@@ -114,7 +114,7 @@
             </div>
             <div class="row mb-3">
                 <label class="col-2">
-                    Описание ua
+                    Description ua
                 </label>
                 <div class="col-9">
                     <textarea name="description_ua" class="form-control">
