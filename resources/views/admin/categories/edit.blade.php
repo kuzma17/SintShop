@@ -35,6 +35,20 @@
             </div>
 
             <div class="row mb-3">
+                <label class="col-2">
+                    Родительская категория
+                </label>
+                <div class="col-9">
+                    <select name="parent_id" class="form-control">
+                        <option value=""> - root - </option>
+                        @foreach($categories as $item)
+                            <option value="{{$item->id}}" @selected($item->id == old('parent_id', $category->parent_id))>{{$item->name_ru}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
                 <label class="col-2 star">
                     Title ru
                 </label>

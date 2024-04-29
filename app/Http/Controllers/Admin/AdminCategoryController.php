@@ -13,18 +13,25 @@ class AdminCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Category $category)
     {
-        $categories = Category::sortDesc()->get()->paginate(12);
+        $categories = $category->getAllCategories();
+        //$categories = Category::with('children')->whereNull('parent_id')->sortDesc()->get();
+
+        //dd($category->getAllCategories());
+
+       // dd($categories->where('id', 2)->first()->children->isNotEmpty());
+
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Category $category)
     {
-        return view('admin.categories.create');
+        $categories = $category->getAllCategories();
+        return view('admin.categories.create', ['categories' => $categories]);
     }
 
     /**
@@ -32,9 +39,9 @@ class AdminCategoryController extends Controller
      */
     public function store(CategoryRequest $request, ImageService $imageService)
     {
-        if (!$request->parent_id){
-            $request['parent_id'] = 0;
-        }
+//        if (!$request->parent_id){
+//            $request['parent_id'] = 0;
+//        }
         $image = $request->files->get('file');
         if ($image){
             $name = $request->slug.'.jpg';
@@ -59,7 +66,8 @@ class AdminCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', ['category' => $category]);
+        $categories = $category->getAllCategories();
+        return view('admin.categories.edit', ['category' => $category, 'categories' => $categories]);
     }
 
     /**

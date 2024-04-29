@@ -53,12 +53,6 @@ class Category extends Model
             ->visibleNull();
     }
 
-    public function getCategories(){
-        return self::active()
-            ->sort()
-            ->get();
-    }
-
     public function getParent(){
         return self::getCategories()
             ->where('id', $this->parent_id)
@@ -72,6 +66,32 @@ class Category extends Model
             //->sort()
             ->get()
             ->load('photos');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function getAllCategories(){
+        return self::with('children')
+            ->whereNull('parent_id')
+            ->sort()
+            ->get();
+    }
+
+    public function getCategories(){
+
+        if ($this->exists){
+            $query = $this->children();
+        }else{
+            $query = self::whereNull('parent_id');
+        }
+
+        $res = $query->active()
+            ->sort()
+            ->get();
+        return $res;
     }
 
 }

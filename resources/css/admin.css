@@ -174,5 +174,16 @@ body{
     padding: 2px 5px!important;
 }
 
+.cat_head-table{
+    font-weight: 800;
+    padding: 10px;
+}
+.cat_item{
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    margin: 5px 0
+}
+
 
 
