@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('locale/{locale}', \App\Services\LocaleService::class)->name('locale');
 
-Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], function(){
+Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], function(){
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -74,7 +74,10 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocale()], functi
 
         Route::get('/goods/category/{category}/attributes', [\App\Http\Controllers\Admin\AdminGoodController::class, 'getAttributes']);
 
-        Route::resource('/pages', \App\Http\Controllers\Admin\AdminPageController::class);
+        Route::resource('pages', \App\Http\Controllers\Admin\AdminPageController::class);
+
+        Route::get('/settings', [\App\Http\Controllers\Admin\AdminSettingController::class, 'index'])->name('settings.index');
+        Route::post('/settings/update', [\App\Http\Controllers\Admin\AdminSettingController::class, 'update'])->name('settings.update');
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);

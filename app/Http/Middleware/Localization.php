@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Localization
 {
-    public static function getLocale(){
+    public static function getLocaleUrl(){
 
         $uri = \request()->path(); //получаем URI
         $segmentsURI = explode('/',$uri); //делим на части по разделителю "/"
@@ -23,6 +23,18 @@ class Localization
         }
         return null;
     }
+
+    public static function getLocale(){
+
+        $locale = self::getLocaleUrl();
+
+        if ($locale){
+            return $locale;
+        }
+
+        return config('app.locale');
+
+    }
     /**
      * Handle an incoming request.
      *
@@ -30,7 +42,7 @@ class Localization
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = self::getLocale()? $this->getLocale(): config('app.locale');
+        $locale = self::getLocale();
         app()->setLocale($locale);
 
         return $next($request);

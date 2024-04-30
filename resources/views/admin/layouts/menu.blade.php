@@ -32,5 +32,10 @@
                 <i class="fa-regular fa-file-lines"></i> Страницы
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{route('admin.settings.index')}}">
+                <i class="fa-solid fa-gear"></i> Параметры
+            </a>
+        </li>
     </ul>
 </div>
