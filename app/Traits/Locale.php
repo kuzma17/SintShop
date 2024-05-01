@@ -47,4 +47,5 @@ trait Locale
         $column = "string_" . $this->lang();
         return $this->{$column};
     }
+
 }

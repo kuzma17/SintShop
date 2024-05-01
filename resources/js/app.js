@@ -57,6 +57,9 @@ app.component('delivery-select', DeliverySelect);
 import NovaPoshtaWarehouse from "./components/NovaPoshtaWarehouse.vue";
 app.component('nova-poshta-warehouse', NovaPoshtaWarehouse);
 
+import SelectOffice from "./components/SelectOffice.vue";
+app.component('select-office', SelectOffice);
+
 
 //-----------------
 

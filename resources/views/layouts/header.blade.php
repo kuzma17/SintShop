@@ -1,19 +1,17 @@
 <div class="header">
     <div class="container">
         <div class="row">
-            <div class="col-4 col-md-3">
+            <div class="col-4 col-md-4">
                 <div class="row">
-                    <div class="col-12 col-md-4 p-0">
+                    <div class="col-12 col-md-3 p-0">
                         <div class="logo">
                             <a href="{{route('home')}}">
                                 <img src="/images/logo.png">
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 col-md-8 phone-block">
-                        <div class="phone">
-                            <i class="fa-solid fa-phone"></i> +38 (050) 3912191
-                        </div>
+                    <div class="col-12 col-md-9 phone-block">
+                        <x-Offices></x-Offices>
                     </div>
                 </div>
             </div>

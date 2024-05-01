@@ -30,15 +30,15 @@ h6{
 }
 
  /*header phone*/
-.header .phone{
-    font-size: 16px;
-    font-weight: 700;
-    color: #5c636a;
-    text-align: center;
-}
-.header .phone i{
-    color: #04B3F1;
-}
+/*.header .phone{*/
+/*    font-size: 16px;*/
+/*    font-weight: 700;*/
+/*    color: #5c636a;*/
+/*    text-align: center;*/
+/*}*/
+/*.header .phone i{*/
+/*    color: #04B3F1;*/
+/*}*/
 .phone-block{
     display: none;
 }
@@ -62,7 +62,6 @@ h6{
 
 /*Header Top menu*/
 .top-menu{
-    /*padding-left: 45%;*/
     padding-bottom: 20px;
     display: none;
 }

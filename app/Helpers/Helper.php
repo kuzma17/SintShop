@@ -1,10 +1,18 @@
 <?php
 
-function cleanPhone($phone){
-    $phone = preg_replace("(\+38)", "", $phone);
+function cleanPhoneUrl($phone){
     $phone = preg_replace("(\()", "", $phone);
     $phone = preg_replace("(\))", "", $phone);
     $phone = preg_replace("/\s+/", "", $phone);
+    return trim($phone);
+}
+
+function cleanPhone($phone){
+    $phone = cleanPhoneUrl($phone);
+    $phone = preg_replace("(\+38)", "", $phone);
+//    $phone = preg_replace("(\()", "", $phone);
+//    $phone = preg_replace("(\))", "", $phone);
+//    $phone = preg_replace("/\s+/", "", $phone);
     return $phone;
 }
 

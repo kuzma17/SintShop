@@ -15,8 +15,6 @@ class SettingServiceProvider extends ServiceProvider
         //
     }
 
-
-
     /**
      * Bootstrap services.
      */
