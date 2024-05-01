@@ -44,9 +44,7 @@
             </div>
         </div>
         <div class="phone-block_mobile">
-            <div class="phone">
-                <i class="fa-solid fa-phone"></i> +38 (067) 5576567
-            </div>
+            <x-Offices></x-Offices>
         </div>
         <div class="search_block-mobile">
             <x-search></x-search>
