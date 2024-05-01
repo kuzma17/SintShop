@@ -115,6 +115,7 @@ export default {
 }
 .list .office{
   margin-top: 5px;
+  cursor: pointer;
 }
 
 </style>
