@@ -7,10 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Sint - Master shop') }} @yield('title')</title>
-{{--    <title>@yield('title', config('site_title'))</title>--}}
-    <meta name="description" content="@yield('description', config('site_description'))">
-    <meta name="keywords" content="@yield('keywords', config('site_keywords'))">
+    <title>@yield('title', __('seo.site_title'))</title>
+    <meta name="description" content="@yield('description', __('seo.site_description'))">
+    <meta name="keywords" content="@yield('keywords', __('seo.site_keywords'))">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 {{--    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">--}}
 </head>

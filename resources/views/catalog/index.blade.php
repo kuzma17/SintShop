@@ -1,8 +1,10 @@
 @extends('layouts.page')
 
-@section('link' ,Breadcrumbs::render('catalog', $category))
+@section('title', __('seo.category_title', ['name' => $category->title]))
+@section('keywords', __('seo.category_keywords', ['name' => $category->title]))
+@section('description', __('seo.category_description', ['name' => $category->title]))
 
-@section('title', $category->title)
+@section('link' ,Breadcrumbs::render('catalog', $category))
 @section('name_page', $category->name)
 
 @section('body')
