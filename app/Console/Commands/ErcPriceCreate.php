@@ -14,7 +14,7 @@ class ErcPriceCreate extends Command
      *
      * @var string
      */
-    protected $signature = 'app:erc-price';
+    protected $signature = 'erc-price';
 
     /**
      * The console command description.
