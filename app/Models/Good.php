@@ -46,6 +46,11 @@ class Good extends Model
         return $this->hasMany(Photo::class);
     }
 
+//    public function photo()
+//    {
+//        return $this->photos()->limit(1);
+//    }
+
     public function videos(){
         return $this->hasMany(Video::class);
     }
@@ -79,6 +84,11 @@ class Good extends Model
 
     public function scopeSortDesc($query){
         return $query->orderBy('updated_at', 'DESC');
+    }
+
+    public function scopeErc($query)
+    {
+        return $query->where('erc', 1);
     }
 
     public function getGood(){
