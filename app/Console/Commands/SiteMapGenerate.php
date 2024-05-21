@@ -2,34 +2,30 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Good;
-use App\Services\ErcPriceService;
-use DOMDocument;
+use App\Services\Contracts\SiteMapService;
 use Illuminate\Console\Command;
 
-class ErcPriceCreate extends Command
+class SiteMapGenerate extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'erc-price';
+    protected $signature = 'site-map';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create ERC price';
+    protected $description = 'Command description';
 
     /**
      * Execute the console command.
      */
-    public function handle(ErcPriceService $ercPriceService)
+    public function handle(SiteMapService $siteMapService)
     {
-
-        $ercPriceService->createXml();
+        $siteMapService->generateMap();
     }
-
 }

@@ -4,6 +4,7 @@
 /public/storage
 /public/images/goods
 /public/price_erc.xml
+/public/sitemap.xml
 /storage/*.key
 /vendor
 .env
