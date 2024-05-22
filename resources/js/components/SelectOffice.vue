@@ -78,6 +78,7 @@ export default {
     handleClickOutside(event) {
       if (!this.$refs.dropdown.contains(event.target)) {
         this.show_list = false;
+        this.icon = this.iconDown()
       }
     },
 
