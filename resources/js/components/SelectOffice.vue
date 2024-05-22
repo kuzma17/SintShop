@@ -1,5 +1,5 @@
 <template>
-  <div class="select-office">
+  <div class="select-office" ref="dropdown">
     <div class="office">
 
       <div style="cursor: pointer" @click="showList()" :title="$t('select_office')">
@@ -45,7 +45,12 @@ export default {
       this.branches = this.offices
       this.branch = this.branches[0]
     }
-    console.log(this.branch);
+
+    document.addEventListener('click', this.handleClickOutside);
+
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.handleClickOutside);
   },
 
   data(){
@@ -59,13 +64,27 @@ export default {
   methods:{
 
     showList(){
-      this.icon = 'fa-chevron-down'
-      this.show_list = true
+      this.show_list = !this.show_list
+      this.icon = this.iconDown()
+    },
+
+    iconDown(){
+      if (this.show_list){
+        return 'fa-chevron-down'
+      }
+      return 'fa-chevron-right'
+    },
+
+    handleClickOutside(event) {
+      if (!this.$refs.dropdown.contains(event.target)) {
+        this.show_list = false;
+      }
     },
 
     selectBranch(id){
       this.branch = this.branches[id]
       this.show_list = false
+      this.icon = this.iconDown()
     },
 
     patchLocale(){

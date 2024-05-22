@@ -24,9 +24,9 @@
 
     <script src="{{ mix('js/app.js') }}" defer></script>
 {{--    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>--}}
-    <script>
-        new Snow ();
-    </script>
+{{--    <script>--}}
+{{--        new Snow ();--}}
+{{--    </script>--}}
 
 </body>
 </html>
