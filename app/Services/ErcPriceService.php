@@ -105,7 +105,7 @@ class ErcPriceService
 
             // name
             $name_good = $xmlDoc->createElement('name');
-            $name_good_text = $xmlDoc->createTextNode($item->name_ua);
+            $name_good_text = $xmlDoc->createTextNode($item->title_ua);
             $name_good->appendChild($name_good_text);
             $offer->appendChild($name_good);
 

@@ -173,7 +173,7 @@ return [
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
-        \App\Providers\SettingServiceProvider::class,
+        //\App\Providers\SettingServiceProvider::class,
 
     ])->toArray(),
 
