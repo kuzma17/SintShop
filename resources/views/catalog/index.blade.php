@@ -15,16 +15,25 @@
         <x-sub-categories
                 :category="$category"
         ></x-sub-categories>
-        <div class="catalog">
-            <div class="row justify-content-center">
-                @foreach($goods as $good)
-                    <x-card-good
-                        :good=$good
-                    ></x-card-good>
-                @endforeach
+        <div class="row">
+            <div class="col-2">
+                <filter-goods
+                        :attributess="{{json_encode($attributes)}}"
+                ></filter-goods>
             </div>
-            <div>
-                {{$goods->links()}}
+            <div class="col-10">
+                <div class="catalog">
+                    <div class="row justify-content-center">
+                        @foreach($goods as $good)
+                            <x-card-good
+                                    :good=$good
+                            ></x-card-good>
+                        @endforeach
+                    </div>
+                    <div>
+                        {{$goods->links()}}
+                    </div>
+                </div>
             </div>
         </div>
         @if($category->content)

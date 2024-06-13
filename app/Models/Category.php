@@ -35,6 +35,11 @@ class Category extends Model
         return $this->hasMany(Attribute::class);
     }
 
+    public function filters()
+    {
+        return $this->attribute()->where('filter', 1);
+    }
+
     public function scopeActive($query){
         return $query->where('active', 1);
     }
