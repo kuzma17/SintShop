@@ -16,12 +16,12 @@
                 :category="$category"
         ></x-sub-categories>
         <div class="row">
-            <div class="col-2">
-                <filter-goods
-                        :attributess="{{json_encode($attributes)}}"
-                ></filter-goods>
-            </div>
-            <div class="col-10">
+{{--            <div class="col-2">--}}
+{{--                <filter-goods--}}
+{{--                        :attributess="{{json_encode($attributes)}}"--}}
+{{--                ></filter-goods>--}}
+{{--            </div>--}}
+            <div class="col-12">
                 <div class="catalog">
                     <div class="row justify-content-center">
                         @foreach($goods as $good)
