@@ -9,19 +9,24 @@
 
 @section('body')
         <div class="sort-panel">
-            <x-sort></x-sort>
+{{--            <x-sort></x-sort>--}}
+            <sort-goods></sort-goods>
         </div>
 
         <x-sub-categories
                 :category="$category"
         ></x-sub-categories>
+
         <div class="row">
-{{--            <div class="col-2">--}}
-{{--                <filter-goods--}}
-{{--                        :attributess="{{json_encode($attributes)}}"--}}
-{{--                ></filter-goods>--}}
-{{--            </div>--}}
-            <div class="col-12">
+            <div class="col-2 p-1">
+                <filter-goods
+                        :attributes="{{json_encode($attributes)}}"
+                        :selected="{{json_encode($selected)}}"
+                        :min_price="{{(float)$min_price}}"
+                        :max_price="{{(float)$max_price}}"
+                ></filter-goods>
+            </div>
+            <div class="col-10 p1">
                 <div class="catalog">
                     <div class="row justify-content-center">
                         @foreach($goods as $good)

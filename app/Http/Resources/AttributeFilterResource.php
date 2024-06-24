@@ -17,10 +17,10 @@ class AttributeFilterResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'name' => $this->name,
             'type' => $this->type,
             'format' => $this->format,
-            //'values' => ValueAttributeResource::collection(ValueAttribute::with('attribute')->where('attribute_id', $this->id)->get())
             'values' => ValueAttributeResource::collection($this->values)
         ];
     }
