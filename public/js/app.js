@@ -20339,7 +20339,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       history.pushState({}, "", newURL); // Edit Current Url
 
-      window.location.href = newURL;
+      //window.location.href=newURL;
+
+      axios.get(newURL).then(function (response) {
+        //console.log(response.data);
+        var container = document.querySelector('#catalog');
+        container.innerHTML = response.data.content;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     // getUrl(val){
     //   let url = new URL(window.location.href);
@@ -21568,27 +21576,18 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "price_block"
 };
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "row"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <div class=\"col p-1\">"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <input type=\"text\" class=\"form-control form-control-sm\" v-model=\"form.price[0]\" @change=\"handleFormChange\">"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </div>"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <div class=\"col p-1\">"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <input type=\"text\" class=\"form-control form-control-sm\" v-model=\"form.price[1]\" @change=\"handleFormChange\">"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </div>")], -1 /* HOISTED */);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_filter_price = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("filter-price");
   var _component_filter_attribute = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("filter-attribute");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-info",
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $options.resetSelect();
-    })
-  }, "reset"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <button class=\"btn btn-info\" @click=\"infoForm()\">info</button>")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <Slider"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          v-model=\"form.price\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :max=\"max\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :lazy=\"lazy\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :tooltips=\"false\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          @change=\"handleFormChange\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      ></Slider>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_filter_price, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <div class=\"col p-1\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <input type=\"text\" class=\"form-control form-control-sm\" v-model=\"form.price[0]\" @change=\"handleFormChange\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <div class=\"col p-1\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <input type=\"text\" class=\"form-control form-control-sm\" v-model=\"form.price[1]\" @change=\"handleFormChange\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <br>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <Slider"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          v-model=\"form.price\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :max=\"max\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :lazy=\"lazy\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :tooltips=\"false\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          @change=\"handleFormChange\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      ></Slider>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_filter_price, {
     modelValue: $data.form.price,
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.form.price = $event;
     }),
     min: $props.min_price,
     max: $props.max_price
-  }, null, 8 /* PROPS */, ["modelValue", "min", "max"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <filter-prices"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                v-model=\"selected.price\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            ></filter-prices>"), _hoisted_6]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.attributes, function (filter, key) {
+  }, null, 8 /* PROPS */, ["modelValue", "min", "max"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <filter-prices"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                v-model=\"selected.price\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            ></filter-prices>"), _hoisted_4]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.attributes, function (filter, key) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"filter_name\" @click=\"showBlock(filter.id)\" >"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        {{filter.name}} <i class=\"fa-solid\" :class=\"iconBlock(filter.id)\" style=\"float: right; margin-top: 5px; color: grey\"></i>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <transition name=\"slide-fade\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <ul class=\"attribute_list\" v-if=\"show[filter.id]\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <li v-for=\"(value, k) in filter.values\" :key=\"k\" class=\"attribute\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <div class=\"form-check\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <input class=\"form-check-input\" type=\"checkbox\" :value=\"value.id\" :id=\"'filter-param-'+value.id\" v-model=\"form[filter.slug]\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                   @change=\"handleFormChange\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <label class=\"form-check-label\" :for=\"'filter-param-'+value.id\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("&lt;!&ndash;              <span style=\"font-size: 12px\">{{value.values}} ({{value.erc}})</span>&ndash;&gt;"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("              <span class=\"name_attribute\">{{value.values}}</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            </label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </li>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </ul>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </transition>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_filter_attribute, {
       filter: filter,
       modelValue: $data.form[filter.slug],
@@ -21596,7 +21595,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $data.form[filter.slug] = $event;
       }
     }, null, 8 /* PROPS */, ["filter", "modelValue", "onUpdate:modelValue"])]);
-  }), 256 /* UNKEYED_FRAGMENT */))])]);
+  }), 256 /* UNKEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-blue",
+    style: {
+      "width": "100%"
+    },
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.resetSelect();
+    })
+  }, "reset"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <button class=\"btn btn-info\" @click=\"infoForm()\">info</button>")])]);
 }
 
 /***/ }),
@@ -21623,6 +21630,7 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "col p-1"
 };
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Slider = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Slider");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <span @click=\"info\">info</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -21643,7 +21651,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[3] || (_cache[3] = function () {
       return $options.changeminmax && $options.changeminmax.apply($options, arguments);
     })
-  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.price_max]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Slider, {
+  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.price_max]])])]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Slider, {
     modelValue: $data.price,
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.price = $event;

@@ -9,6 +9,7 @@
         <input type="text" class="form-control form-control-sm" v-model="price_max" @change="changeminmax">
       </div>
     </div>
+    <br>
     <Slider
         v-model="price"
         :min="min"

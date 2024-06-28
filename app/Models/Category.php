@@ -70,7 +70,7 @@ class Category extends Model
             //->visibleNull()
             //->sort()
             ->get()
-            ->load('photos');
+            ->load('photos', 'valueAttributes');
     }
 
     public function children()

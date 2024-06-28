@@ -28,15 +28,8 @@
             </div>
             <div class="col-10 p1">
                 <div class="catalog">
-                    <div class="row justify-content-center">
-                        @foreach($goods as $good)
-                            <x-card-good
-                                    :good=$good
-                            ></x-card-good>
-                        @endforeach
-                    </div>
-                    <div>
-                        {{$goods->links()}}
+                    <div id="catalog" class="row justify-content-center">
+                       @include('catalog.list', ['goods' => $goods])
                     </div>
                 </div>
             </div>

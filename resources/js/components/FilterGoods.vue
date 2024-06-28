@@ -1,20 +1,16 @@
 <template>
   <div class="filter">
-    <div>
-      <button class="btn btn-info" @click="resetSelect()">reset</button>
-<!--      <button class="btn btn-info" @click="infoForm()">info</button>-->
-    </div>
     <form name="filter">
     <div class="price_block">
-      <div class="row">
+<!--      <div class="row">-->
 <!--        <div class="col p-1">-->
 <!--          <input type="text" class="form-control form-control-sm" v-model="form.price[0]" @change="handleFormChange">-->
 <!--        </div>-->
 <!--        <div class="col p-1">-->
 <!--          <input type="text" class="form-control form-control-sm" v-model="form.price[1]" @change="handleFormChange">-->
 <!--        </div>-->
-      </div>
-      <br>
+<!--      </div>-->
+<!--      <br>-->
 <!--      <Slider-->
 <!--          v-model="form.price"-->
 
@@ -59,6 +55,10 @@
       ></filter-attribute>
     </div>
     </form>
+    <div>
+      <button class="btn btn-blue" style="width: 100%" @click="resetSelect()">reset</button>
+      <!--      <button class="btn btn-info" @click="infoForm()">info</button>-->
+    </div>
   </div>
 </template>
 
@@ -191,7 +191,19 @@ export default {
 
       history.pushState({}, "", newURL); // Edit Current Url
 
-      window.location.href=newURL;
+
+
+      //window.location.href=newURL;
+
+      axios.get(newURL)
+          .then(response => {
+            //console.log(response.data);
+            const container = document.querySelector('#catalog');
+            container.innerHTML = response.data.content
+          })
+          .catch(error => {
+            console.log(error)
+          });
 
 
     },

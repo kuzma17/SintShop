@@ -46,10 +46,10 @@ class Good extends Model
         return $this->hasMany(Photo::class);
     }
 
-//    public function photo()
-//    {
-//        return $this->photos()->limit(1);
-//    }
+    public function photo()
+    {
+        return $this->photos()->limit(1);
+    }
 
     public function videos(){
         return $this->hasMany(Video::class);

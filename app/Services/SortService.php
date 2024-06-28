@@ -16,21 +16,24 @@ class SortService
             $this->sort = $response;
         }
     }
-    public function getSort(Request $request){
+    protected function getSort(Request $request){
 
         return $request->query->get('sort');
     }
 
-    public function new($goods, $path=null){
-        return $goods->sortByDesc('create_at');
+    protected function new($goods, $path=null){
+//        return $goods->sortByDesc('created_at');
+        return $goods->orderBy('created_at', 'desc');
     }
 
-    public function priceAsc($goods){
-        return $goods->sortBy('price');
+    protected function priceAsc($goods){
+        //return $goods->sortBy('price');
+        return $goods->orderBy('price', 'asc');
     }
 
-    public function priceDesc($goods){
-        return $goods->sortByDesc('price');
+    protected function priceDesc($goods){
+        //return $goods->sortByDesc('price');
+        return $goods->orderBy('price', 'desc');
     }
 
     public function apply($goods){
