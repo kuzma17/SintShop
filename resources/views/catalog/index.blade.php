@@ -18,14 +18,14 @@
         ></x-sub-categories>
 
         <div class="row">
-            <div class="col-2 p-1">
+            <div class="col-12 col-md-3 p-1">
                 <x-filter
                         :category="$category"
                         :minPrice="$minPrice"
                         :maxPrice="$maxPrice"
                 ></x-filter>
             </div>
-            <div class="col-10 p1">
+            <div class="col-12 col-md-9 p1">
                 <div class="catalog">
                     <div id="catalog" class="row justify-content-center">
                        @include('catalog.list', ['goods' => $goods])

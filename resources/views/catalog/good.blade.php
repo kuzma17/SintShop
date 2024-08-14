@@ -93,7 +93,7 @@
                         <table class="table table-striped">
                             @foreach($good->getListValuesAttribure() as $list)
                                 <tr>
-                                    <td>{{$list['attribute']}}</td>
+                                    <td>{{$list['attribute']}} {{$list['type']}}</td>
                                     <td>
                                         {{$list['values']}}
                                     </td>
