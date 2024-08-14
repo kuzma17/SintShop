@@ -117,7 +117,8 @@ class Good extends Model
                     $arr[$attribute->id]['values'] = $value->values.' '.$attribute->format;
                 }
                 if($attribute->type_id === 4) {
-                    $arr[$attribute->id]['values'] = ($value->values === 1)? __('catalog.yes'): __('catalog.no');
+                   // $arr[$attribute->id]['values'] = ($value->values === 1)? __('catalog.yes'): __('catalog.no');
+                    $arr[$attribute->id]['values'] = __('catalog.yes');
                 }
                 continue;
             }

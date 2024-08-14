@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\AttributeFilterResource;
-use App\Http\Resources\AttributeResource;
 use App\Models\Category;
 use App\Models\Good;
 use App\Services\FilterService;
@@ -14,16 +12,6 @@ class CatalogController extends Controller
 {
 
     public function list(Request $request, $slug, Category $category, FilterService $filterService, SortService $sortService){
-
-//        $goods = $category->getGoodsCategory();
-//
-//        // get min max
-//        $minPrice = (float)$goods->min('price');
-//        $maxPrice = (float)$goods->max('price');
-//
-//        // Apply filters and sorts
-//        $goods = $filterService->apply($goods);
-//        $goods = $sortService->apply($goods);
 
         $query = Good::with('photos', 'valueAttributes')->forCategory($category)->active();
 
@@ -44,36 +32,11 @@ class CatalogController extends Controller
             ]);
         }
 
-
-        //$goods = $goods->paginate(12);
-
-        // get Attributes
-        $category = $category->load('filters', 'filters.values', 'filters.type', 'filters.values.attribute');
-        $attributes = AttributeFilterResource::collection($category->filters);
-
-        // get parameters from URL
-//        $selectData = $request->all();
-//        $selected = [];
-//        foreach ($selectData as $key=>$val){
-//            if ($key === 'sort'){
-//                $selected[$key] = $val;
-//            }else{
-//                $data = explode(',', $val);
-//                $int_data = [];
-//                foreach ($data as $item){
-//                    $int_data[] = (int)$item;
-//                }
-//                $selected[$key] = $int_data;
-//            }
-//        }
-
         return view('catalog.index', [
             'category' => $category,
             'goods' => $goods,
-            'attributes' => $attributes,
-            'selected' => getParametersRequest(),
-            'min_price' => $minPrice,
-            'max_price' => $maxPrice
+            'minPrice' => $minPrice,
+            'maxPrice' => $maxPrice
         ]);
     }
 }

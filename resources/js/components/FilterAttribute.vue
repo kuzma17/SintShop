@@ -2,7 +2,6 @@
   <div>
     <div class="filter_name" @click="show = !show" >
       {{filter.name}}
-<!--      {{filter.slug}}-->
       <i class="fa-solid" :class="iconBlock(filter.id)" style="float: right; margin-top: 5px; color: grey"></i>
     </div>
     <transition name="slide-fade">
@@ -15,7 +14,6 @@
             <label class="form-check-label" :for="'filter-param-'+value.id">
               <span class="name_attribute">
                 {{value.values}}
-<!--                {{value.id}}-->
               </span>
             </label>
           </div>
@@ -42,8 +40,6 @@ export default {
 
     this.selected = this.modelValue
 
-    console.log(this.modelValue);
-
     if (this.selected.length){
       this.show = true
     }
@@ -64,7 +60,6 @@ export default {
   methods:{
     handleFormChange(){
       this.$emit('update:modelValue', this.selected);
-      //this.$emit('changed-element');
     },
     iconBlock(id){
       if(this.show){
@@ -73,14 +68,12 @@ export default {
       return 'fa-chevron-down'
     },
 
-    info(){
-      console.log(this.modelValue)
-    }
-
   }
 }
 </script>
 
 <style>
-
+  .filter_name{
+    cursor: pointer;
+  }
 </style>

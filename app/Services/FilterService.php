@@ -28,6 +28,11 @@ class FilterService
         $this->query = $this->query->where('price', '>=', $min)->where('price', '<=', $max);
     }
 
+    protected function vendor($values)
+    {
+        $this->query = $this->query->whereIn('vendor_id', $values);
+    }
+
     protected function filters($values)
     {
         return $this->query->whereHas('valueAttributes', function ($query) use ($values) {
@@ -39,10 +44,6 @@ class FilterService
     protected function getValue($value)
     {
         $arr = explode(',', $value);
-//        if (count($arr) > 1){
-//           return $arr;
-//        }
-
         return $arr;
 
     }
@@ -55,19 +56,14 @@ class FilterService
             return $this->query;
         }
 
-//        foreach ($this->parameters as $key => $val){
-//
-//            if ($val){
-//                if(method_exists($this, $key)){
-//                    $this->$key($this->getValue($val));
-//                }
-//            }
-//        }
-
-
         if (isset($this->parameters['price'])){
             $this->price($this->getValue($this->parameters['price']));
             unset($this->parameters['price']);
+        }
+
+        if (isset($this->parameters['vendor'])){
+            $this->vendor($this->getValue($this->parameters['vendor']));
+            unset($this->parameters['vendor']);
         }
 
         if (count($this->parameters) === 0){
@@ -81,9 +77,7 @@ class FilterService
             }
         }
 
-       // if (count($values) > 0){
-            $this->filters($values);
-       // }
+        $this->filters($values);
 
         return $this->query;
     }

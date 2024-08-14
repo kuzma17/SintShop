@@ -40,6 +40,11 @@ class Category extends Model
         return $this->attribute()->where('filter', 1);
     }
 
+    public function vendorValues()
+    {
+        return $this->belongsToMany(Vendor::class);
+    }
+
     public function scopeActive($query){
         return $query->where('active', 1);
     }

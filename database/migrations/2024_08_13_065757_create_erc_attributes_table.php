@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('value_attributes', function (Blueprint $table) {
+        Schema::create('erc_attributes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('attribute_id')->index();
-            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
-            $table->string('slug')->index();
-            $table->string('string_ru');
-            $table->string('string_ua');
-            $table->integer('float')->nullable()->index();
+            $table->foreign('attribute_id')->references('id')->on('attributes');
             $table->integer('erc')->nullable()->index();
             $table->timestamps();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('value_attributes');
+        Schema::dropIfExists('erc_attributes');
     }
 };

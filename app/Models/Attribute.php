@@ -28,7 +28,7 @@ class Attribute extends Model
     }
 
     public function values(){
-        return $this->hasMany(ValueAttribute::class);
+        return $this->hasMany(ValueAttribute::class)->where('active', 1);
     }
 
     public function category(){

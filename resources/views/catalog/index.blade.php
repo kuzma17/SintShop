@@ -19,12 +19,11 @@
 
         <div class="row">
             <div class="col-2 p-1">
-                <filter-goods
-                        :attributes="{{json_encode($attributes)}}"
-                        :selected="{{json_encode($selected)}}"
-                        :min_price="{{(float)$min_price}}"
-                        :max_price="{{(float)$max_price}}"
-                ></filter-goods>
+                <x-filter
+                        :category="$category"
+                        :minPrice="$minPrice"
+                        :maxPrice="$maxPrice"
+                ></x-filter>
             </div>
             <div class="col-10 p1">
                 <div class="catalog">

@@ -1,6 +1,5 @@
 <template>
   <div>
-<!--    <span @click="info">info</span>-->
     <div class="row">
       <div class="col p-1">
         <input type="text" class="form-control form-control-sm" v-model="price_min" @change="changeminmax">
@@ -57,7 +56,6 @@
     this.price_min = this.price[0]
     this.price_max = this.price[1]
 
-    //console.log(this.modelValue);
   },
   data(){
     return{
@@ -85,10 +83,6 @@
       }
 
       this.$emit('update:modelValue', result);
-      //this.$emit('changed-element');
-
-      //console.log(this.selected);
-
     },
     changeminmax(){
 
@@ -106,10 +100,6 @@
 
       this.handleFormChange()
     },
-
-    info(){
-      console.log(this.modelValue)
-    }
 
   }
 }
