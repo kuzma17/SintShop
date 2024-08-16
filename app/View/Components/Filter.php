@@ -22,7 +22,6 @@ class Filter extends Component
      */
     public function __construct(Category $category, $minPrice, $maxPrice)
     {
-        //dd(3232);
         $this->category = $category->load('filters', 'filters.values', 'filters.type', 'filters.values.attribute');
 
         $this->filters = $this->getFilters();
@@ -45,8 +44,7 @@ class Filter extends Component
 
     protected function getFilters()
     {
-
-        return Cache::rememberForever('filter_'.$this->category->id, function (){
+        return Cache::rememberForever('filter_'.app()->getLocale().$this->category->id, function (){
 
             $VendorAttribute = $this->getAttributeVendor();
             $data = $VendorAttribute->concat($this->category->filters);

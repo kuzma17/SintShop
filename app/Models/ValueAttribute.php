@@ -34,8 +34,16 @@ class ValueAttribute extends Model
 
     public function getValuesAttribute()
     {
+//        if ($this->attribute->type_id === 1 || $this->attribute->type_id === 2){
+//            return $this->string;
+//        }else{
+//            return $this->float;
+//        }
+
         if ($this->attribute->type_id === 1 || $this->attribute->type_id === 2){
             return $this->string;
+        }elseif($this->attribute->type_id === 4){
+            return __('catalog.yes');
         }else{
             return $this->float;
         }
