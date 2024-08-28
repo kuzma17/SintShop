@@ -10,7 +10,7 @@ class ErcValue extends Model
 {
     use HasFactory;
 
-    public function Value()
+    public function valueAttribute()
     {
         return $this->belongsTo(ValueAttribute::class, 'value_id', 'id');
     }

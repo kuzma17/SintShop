@@ -10,8 +10,8 @@ class ErcAttribute extends Model
 {
     use HasFactory;
 
-    public function AttributeGood()
+    public function attributeGood()
     {
-        return $this->belongsTo(Attribute::class);
+        return $this->belongsTo(Attribute::class, 'attribute_id');
     }
 }

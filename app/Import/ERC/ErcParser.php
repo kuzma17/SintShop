@@ -4,6 +4,8 @@ namespace App\Import\ERC;
 
 use App\Models\Attribute;
 use App\Models\Category;
+use App\Models\Erc\ErcAttribute;
+use App\Models\Erc\ErcValue;
 use App\Models\Good;
 use App\Models\ValueAttribute;
 use App\Models\Vendor;
@@ -32,6 +34,68 @@ class ErcParser
      * $category Object
      */
     public function parse(Category $category, $erc_categories){
+
+
+//    Attributes ======================
+//        $data = Attribute::where('category_id',5)
+//            ->where('filter', 0)
+//            ->where('active',1)
+//            ->where(function ($query){
+//                return $query->where('type_id', 1)
+//                    ->orWhere('type_id', 4);
+//            })
+//            ->get();
+//
+//
+//        foreach ($data as $item){
+//
+//            $ercAttribute = new ErcAttribute();
+//            $ercAttribute->attribute_id = $item->id;
+//            $ercAttribute->erc = $item->erc;
+//            $ercAttribute->save();
+//        }
+//
+//        dd($data);
+
+        // Check
+
+//        $ercAttributes = ErcAttribute::with('attributeGood')->get();
+//
+//        foreach ($ercAttributes as $attribute){
+//
+//            dump($attribute->attributeGood->type_id);
+//        }
+//
+//        dd(4321432143);
+
+
+        // Values============
+
+//        $attributesCategory = Attribute::where('category_id',5)
+//            ->where('filter', 0)
+//            ->where('active',1)
+//            ->where(function ($query){
+//                return $query->where('type_id', 1)
+//                    ->orWhere('type_id', 4);
+//            })
+//            ->get();
+//
+//
+//        foreach ($attributesCategory as $attr){
+//            foreach ($attr->values as $value){
+//                $ercValue = new ErcValue();
+//                $ercValue->value_id = $value->id;
+//                $ercValue->erc =$value->erc;
+//                $ercValue->save();
+//            }
+//        }
+
+
+
+
+
+
+
 
         $this->category = $category->load('attribute');
         dump('category '.$category->id.' '.$category->title_ru);
@@ -171,26 +235,38 @@ class ErcParser
                     continue;
                 }
 
+               // dd($item);
                 $attribute = $this->getAttribute($item, $items_ua[$key]);
-                $this->getValues($item, $items_ua[$key], $attribute->id);
+
+                if (!$attribute){
+                    continue;
+                }
+
+                //dump('attr : '.$attribute);
+                $this->getValues($item, $items_ua[$key], $attribute);
+
             }
         }
     }
 
     protected function getAttribute($data, $data_ua){
-        return Attribute::firstOrCreate(
-            ['erc' => $data->id],
-            [
-                'category_id' => $this->category->id,
-                'name_ru' => $data->title,
-                'name_ua' => $data_ua->title,
-                'slug' => \URLify::slug($data->title),
-                'type_id' => $this->getTypeAttribute($data),
-                'filter' => $this->getFilterAttribute($data),
-                'format' => $this->getFormat($data),
-                'active' => 1
-            ]
-        );
+//        return Attribute::firstOrCreate(
+//            ['erc' => $data->id],
+//            [
+//                'category_id' => $this->category->id,
+//                'name_ru' => $data->title,
+//                'name_ua' => $data_ua->title,
+//                'slug' => \URLify::slug($data->title),
+//                'type_id' => $this->getTypeAttribute($data),
+//                'filter' => $this->getFilterAttribute($data),
+//                'format' => $this->getFormat($data),
+//                'active' => 1
+//            ]
+//        );
+
+        $ercAttribute = ErcAttribute::where('erc', $data->id)->first();
+
+        return $ercAttribute? $ercAttribute->attribute_id: null;
     }
 
     protected function getFormat($data){
@@ -238,11 +314,14 @@ class ErcParser
             }
         }elseif ($item->type === 'TYPE_BOOLEAN'){
             $this->valueBoolean($item, $attribute_id);
-        }elseif ($item->type === 'TYPE_STRING'){
-            $this->valueString($item, $item_ua, $attribute_id);
-        }elseif ($item->type === 'TYPE_FLOAT'){
-            $this->valueFloat($item, $attribute_id);
         }
+ //       elseif ($item->type === 'TYPE_STRING'){
+//            $this->valueString($item, $item_ua, $attribute_id);
+//        }elseif ($item->type === 'TYPE_FLOAT'){
+//            $this->valueFloat($item, $attribute_id);
+//        }
+
+        return null;
     }
     protected function valueString($data, $data_ua, $attribute_id){
         $value = $data->value;
@@ -261,22 +340,51 @@ class ErcParser
         $this->values[] = $value_attribute->id;
     }
     protected function valueBoolean($data, $attribute_id){
-        $value = $data->value;
+  //      $value = $data->value;
 
-        $value_attribute = ValueAttribute::firstOrCreate(
-            ['erc' => $data->id],
-            ['float' => $value,  'attribute_id' => $attribute_id]
-        );
-        $this->values[] = $value_attribute->id;
+//        $value_attribute = ValueAttribute::firstOrCreate(
+//            ['erc' => $data->id],
+//            ['float' => $value,  'attribute_id' => $attribute_id]
+//        );
+
+        //dd($data);
+        // Тут наеврно нужно сделать общий для всех 1 "Да"
+
+        $attribute = ErcValue::with('valueAttribute')
+            ->where('erc', $data->id)
+            ->first();
+
+        if(isset($attribute->valueAttribute)){
+            $id = $attribute->valueAttribute->id;
+            $this->addValue($id);
+        }
     }
     protected function valueSet($data, $data_ua, $attribute_id){
-        $value = $data->value;
-        $value_ua = $data_ua->value;
-        $value_attribute = ValueAttribute::firstOrCreate(
-            ['erc' => $data->id],
-            ['string_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id]
-        );
-        $this->values[] = $value_attribute->id;
+//        $value = $data->value;
+//        $value_ua = $data_ua->value;
+
+//        $value_attribute = ValueAttribute::firstOrCreate(
+//            ['erc' => $data->id],
+//            ['string_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id]
+//        );
+
+        $attribute = ErcValue::with('valueAttribute')
+            ->where('erc', $data->id)
+            ->first();
+
+        if(isset($attribute->valueAttribute)){
+            $id = $attribute->valueAttribute->id;
+            $this->addValue($id);
+        }
+
+    }
+
+    protected function addValue($id)
+    {
+        if (!in_array($id, $this->values)){
+            $this->values[] = $id;
+        }
+
     }
 
     protected function optimizationValue($string){
