@@ -1,5 +1,4 @@
-<div class="categories">
-
+<div class="sub_categories">
     <div class="row justify-content-center">
         @foreach($categories as $category)
             <div class="col-12 col-sm-6 col-md-3 p-0">
