@@ -14,7 +14,8 @@ class SearchController extends Controller
         $q = cleanText($q);
         $goods = Good::search($q)->get();
         $goods = $sortService->apply($goods);
-        $goods = $goods->paginate(12);
+        $url_params = request()->except('page');
+        $goods = $goods->paginate(12)->appends($url_params);
 
         return view('search.index', ['q' => $q, 'goods' => $goods]);
 
