@@ -21,7 +21,9 @@ class CatalogController extends Controller
         $query = $filterService->apply($query);
         $query = $sortService->apply($query);
 
-        $goods = $query->paginate(12);
+        $url_params = request()->except('page');
+
+        $goods = $query->paginate(12)->appends($url_params);
         $goods->appends($request->all());
 
         if ($request->ajax()){
