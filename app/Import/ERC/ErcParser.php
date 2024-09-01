@@ -37,7 +37,12 @@ class ErcParser
 
 
 //    Attributes ======================
-//        $data = Attribute::where('category_id',5)
+
+
+        $category_id = 4; //
+
+
+//        $data = Attribute::where('category_id', $category_id)
 //            ->where('filter', 0)
 //            ->where('active',1)
 //            ->where(function ($query){
@@ -52,6 +57,7 @@ class ErcParser
 //            $ercAttribute = new ErcAttribute();
 //            $ercAttribute->attribute_id = $item->id;
 //            $ercAttribute->erc = $item->erc;
+//            $ercAttribute->category___id = $category_id;
 //            $ercAttribute->save();
 //        }
 //
@@ -69,9 +75,9 @@ class ErcParser
 //        dd(4321432143);
 
 
-        // Values============
-
-//        $attributesCategory = Attribute::where('category_id',5)
+//        // Values============
+//
+//        $attributesCategory = Attribute::where('category_id',$category_id)
 //            ->where('filter', 0)
 //            ->where('active',1)
 //            ->where(function ($query){
@@ -86,6 +92,7 @@ class ErcParser
 //                $ercValue = new ErcValue();
 //                $ercValue->value_id = $value->id;
 //                $ercValue->erc =$value->erc;
+//                $ercValue->category___id = $category_id;
 //                $ercValue->save();
 //            }
 //        }
@@ -236,13 +243,14 @@ class ErcParser
                 }
 
                // dd($item);
-                $attribute = $this->getAttribute($item, $items_ua[$key]);
-
-                if (!$attribute){
-                    continue;
-                }
+//                $attribute = $this->getAttribute($item, $items_ua[$key]); // Атрибуты не нужны только value. Ибо оные записываются в good_value_attributes
+//
+//                if (!$attribute){
+//                    continue;
+//                }
 
                 //dump('attr : '.$attribute);
+                $attribute=1;
                 $this->getValues($item, $items_ua[$key], $attribute);
 
             }
