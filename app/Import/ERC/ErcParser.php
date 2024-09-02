@@ -39,11 +39,11 @@ class ErcParser
 //    Attributes ======================
 
 
-        $category_id = 4; //
+        $category_id = 1; //
 
 
 //        $data = Attribute::where('category_id', $category_id)
-//            ->where('filter', 0)
+//            ->where('filter', 1)
 //            ->where('active',1)
 //            ->where(function ($query){
 //                return $query->where('type_id', 1)
@@ -86,6 +86,10 @@ class ErcParser
 //            })
 //            ->get();
 //
+//        //$attributesCategory = [Attribute::find(14)];
+//
+//        //dd($attributesCategory->values);
+//
 //
 //        foreach ($attributesCategory as $attr){
 //            foreach ($attr->values as $value){
@@ -96,6 +100,8 @@ class ErcParser
 //                $ercValue->save();
 //            }
 //        }
+//
+//        dd(111);
 
 
 

@@ -28,7 +28,9 @@ class Attribute extends Model
     }
 
     public function values(){
-        return $this->hasMany(ValueAttribute::class)->where('active', 1);
+        return $this->hasMany(ValueAttribute::class)
+            ->where('active', 1)
+            ->orderBy('sort');
     }
 
     public function category(){
