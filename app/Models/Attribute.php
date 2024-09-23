@@ -27,6 +27,20 @@ class Attribute extends Model
         return $query->where('active', 1);
     }
 
+    public function scopeFilter($query)
+    {
+        return $query->where('filter', 1);
+    }
+
+    public function scopeSort($query)
+    {
+        return $query->orderBy('sort');
+    }
+
+    public function scopeSortDesc($query){
+        return $query->orderBy('updated_at', 'DESC');
+    }
+
     public function values(){
         return $this->hasMany(ValueAttribute::class)
             ->where('active', 1)
@@ -39,11 +53,6 @@ class Attribute extends Model
 
     public function type(){
         return $this->belongsTo(TypeAttribute::class, 'type_id');
-    }
-
-
-    public function scopeSortDesc($query){
-        return $query->orderBy('updated_at', 'DESC');
     }
 
     public function getValues(){

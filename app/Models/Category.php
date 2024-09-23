@@ -37,7 +37,7 @@ class Category extends Model
 
     public function filters()
     {
-        return $this->attribute()->where('filter', 1);
+        return $this->attribute()->filter()->sort();
     }
 
     public function vendorValues()

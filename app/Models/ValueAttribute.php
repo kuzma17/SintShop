@@ -14,14 +14,13 @@ class ValueAttribute extends Model
 
     protected $fillable = [
         'attribute_id',
-        'value_ru',
-        'value_ua',
+        'slug',
         'string_ru',
         'string_ua',
         'float',
-        'boolean',
+        'sort',
+        'active',
         'erc',
-        'values'
     ];
 
     public function attribute(){

@@ -106,6 +106,12 @@ class Good extends Model
 
         foreach ($values as $value){
             $attribute = $value->attribute;
+
+
+            if (!$attribute->active){
+                continue;
+            }
+
             if(!array_key_exists($attribute->id, $arr)) {
 
                 if ($attribute->type_id === 3 || $attribute->type_id === 2){ // remove type 3, 2
