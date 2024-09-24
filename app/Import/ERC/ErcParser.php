@@ -41,13 +41,13 @@ class ErcParser
 //    Attributes ======================
 
 
-        $category_id = 3; //
+   //     $category_id = 7; //
 
 
 //        $data = Attribute::where('category_id', $category_id)
 //           // ->where('filter', 1)
 //            ->where('active',1)
-//            ->where('_use', 0)
+//            //->where('_use', 0)
 //            ->where(function ($query){
 //                return $query->where('type_id', 1)
 //                    ->orWhere('type_id', 4);
@@ -112,7 +112,7 @@ class ErcParser
         /// FloatAttributeValue
 
 
-//        $attribute_id = 84;
+//        $attribute_id = 293;
 //
 //        $values = ValueAttribute::where('attribute_id',$attribute_id)->get();
 //
@@ -121,7 +121,7 @@ class ErcParser
 //            $ercFloatValue->attribute_id = $attribute_id;
 //            $ercFloatValue->erc_value = (float)$value->string_ru;
 //            $ercFloatValue->value_id = $value->id;
-//            //$ercFloatValue->filter_value_id = $this->getFilerValueDiagonalLaptops((float)$value->string_ru);
+//            //$ercFloatValue->filter_value_id = $this->getFilerValueResourceJetCartridges((float)$value->string_ru);
 //
 //
 //            $ercFloatValue->save();
@@ -418,6 +418,16 @@ class ErcParser
 
             $filter_value = $this->getFilerValueDiagonalLaptops($item->value);
             $ercFloatValue->filter_value_id = $filter_value;
+
+        }elseif ($attribute->id == 279){ // если ресурс картридж лазерный
+
+            $filter_value = $this->getFilerValueResourceLaserCartridges($item->value);
+            $ercFloatValue->filter_value_id = $filter_value;
+
+        }elseif ($attribute->id == 290){ // если ресурс картридж струйный
+
+            $filter_value = $this->getFilerValueResourceJetCartridges($item->value);
+            $ercFloatValue->filter_value_id = $filter_value;
         }
 
         $ercFloatValue->save();
@@ -462,6 +472,40 @@ class ErcParser
             return 15993;
         }elseif ($value >= 17){
             return 15994;
+        }
+
+    }
+
+    protected function getFilerValueResourceLaserCartridges(float $value)
+    {
+        if ($value < 2000){
+            return 16054;
+        }elseif ($value >= 2000 && $value < 5000){
+            return 16055;
+        }elseif ($value >= 5000 && $value < 15000){
+            return 16056;
+        }elseif ($value >= 15000 && $value < 30000){
+            return 16057;
+        }elseif ($value >= 30000){
+            return 16059;
+        }
+
+    }
+
+    protected function getFilerValueResourceJetCartridges(float $value)
+    {
+        if ($value < 250){
+            return 16065;
+        }elseif ($value >= 250 && $value < 500){
+            return 16066;
+        }elseif ($value >= 500 && $value < 1000){
+            return 16067;
+        }elseif ($value >= 1000 && $value < 2000){
+            return 16068;
+        }elseif ($value >= 2000 && $value < 3000){
+            return 16069;
+        }elseif ($value >= 3000){
+            return 16070;
         }
 
     }

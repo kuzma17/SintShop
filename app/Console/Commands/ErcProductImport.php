@@ -43,7 +43,7 @@ class ErcProductImport extends Command
 
         //102.01.01.01 => Ноутбуки для бизнеса
         //102.01.01.02 => Ноутбуки потребительские
-       $ercParser->parse(Category::find(3), ['102.01.01.01', '102.01.01.02']);
+       //$ercParser->parse(Category::find(3), ['102.01.01.01', '102.01.01.02']);
 
         //107.02.01.05 => Принтеры лазерные монохромные
         //107.02.01.06 => Принтеры лазерные цветные
@@ -61,7 +61,7 @@ class ErcProductImport extends Command
        // $ercParser->parse(Category::find(6), ['107.02.02.07', '107.02.02.08']);
 
         //107.02.02.09 => Картриджи для струйных устройств
-        //$ercParser->parse(Category::find(7), ['107.02.02.09']);
+        $ercParser->parse(Category::find(7), ['107.02.02.09']);
 
 
         $ercParser->countNullGood(); // sets the quantity value to 0 if it is not in the ERC warehouse
