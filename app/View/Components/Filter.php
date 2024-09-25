@@ -17,17 +17,23 @@ class Filter extends Component
     public $selected;
     public $min_price = 0;
     public $max_price = 0;
+
+    protected $countValues;
+
     /**
      * Create a new component instance.
      */
-    public function __construct(Category $category, $minPrice, $maxPrice)
+    public function __construct(Category $category, $minPrice, $maxPrice, $count)
     {
         $this->category = $category->load('filters', 'filters.values', 'filters.type', 'filters.values.attribute');
+
+        $this->countValues = $count;
 
         $this->filters = $this->getFilters();
         $this->selected = getParametersRequest();
         $this->min_price = (float)$minPrice;
         $this->max_price = (float)$maxPrice;
+
     }
 
     protected function getAttributeVendor()
@@ -42,29 +48,53 @@ class Filter extends Component
         return collect([$model]);
     }
 
+
+
     protected function getFilters()
     {
-        return Cache::rememberForever('filter_'.app()->getLocale().$this->category->id, function (){
+        //return Cache::rememberForever('filter_'.app()->getLocale().$this->category->id, function (){
 
             $VendorAttribute = $this->getAttributeVendor();
             $data = $VendorAttribute->concat($this->category->filters);
 
             //return AttributeFilterResource::collection($data);
 
+
             return $data->map(function ($item){
                 return [
                     'slug' => $item->slug,
                     'name' => $item->name,
-                    'values' => $item->values->map(function ($val) {
-                            return [
-                                'id' => $val->id,
-                                'values' => $val->values,
-                                ];
+                    'values' => $item->values->map(function ($val) use($item){
+
+                        $type = 'attributes';
+
+                        if ($item->slug === 'vendor'){
+                            $type = 'vendor';
+                        }
+
+                        return [
+                            'id' => $val->id,
+                            'values' => $val->values,
+                            'count' => $this->getCountValues($type, $val->id),
+                        ];
+
                     })
                 ];
             });
 
-        });
+        //});
+
+    }
+
+    protected function getCountValues($type, $id)
+    {
+        $result = $this->countValues[$type]->where('id', $id)->first();
+
+        if ($result){
+            return $result->count;
+        }
+
+        return 0;
 
     }
 

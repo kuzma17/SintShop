@@ -13,7 +13,7 @@ class CatalogController extends Controller
 
     public function list(Request $request, $slug, Category $category, FilterService $filterService, SortService $sortService){
 
-        $query = Good::with('photos', 'valueAttributes')->forCategory($category)->active();
+        $query = Good::forCategory($category)->active();
 
         $minPrice = $query->min('price');
         $maxPrice = $query->max('price');
@@ -21,10 +21,16 @@ class CatalogController extends Controller
         $query = $filterService->apply($query);
         $query = $sortService->apply($query);
 
+        $count_values = $filterService->getCountAttributes();
+
         $url_params = request()->except('page');
 
         $goods = $query->paginate(12)->appends($url_params);
-        $goods->appends($request->all());
+       // $goods->appends($request->all());
+
+       // $goods = $goods->load('photos');
+
+        $goods->getCollection()->load('valueAttributes','photos');
 
         if ($request->ajax()){
             return json_encode([
@@ -38,7 +44,10 @@ class CatalogController extends Controller
             'category' => $category,
             'goods' => $goods,
             'minPrice' => $minPrice,
-            'maxPrice' => $maxPrice
+            'maxPrice' => $maxPrice,
+            'count_values' => $count_values,
         ]);
     }
+
+
 }

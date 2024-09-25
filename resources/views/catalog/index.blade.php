@@ -31,6 +31,7 @@
                         :category="$category"
                         :minPrice="$minPrice"
                         :maxPrice="$maxPrice"
+                        :count="$count_values"
                 ></x-filter>
             </div>
             <div class="col-12 col-md-9 p1">

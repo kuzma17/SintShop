@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use DB;
 use Illuminate\Http\Request;
 
 class FilterService
@@ -80,6 +81,31 @@ class FilterService
         $this->filters($values);
 
         return $this->query;
+    }
+
+    public function getCountAttributes()
+    {
+        if (!$this->query){
+            return false;
+        }
+
+        $queryVendor = clone $this->query;
+        $queryAttribute = clone $this->query;
+
+        $countVendors = $queryVendor->select('vendor_id as id', DB::raw('COUNT(vendor_id) as count'))
+            ->groupBy('vendor_id')
+            ->get();
+
+        $countAttributes = $queryAttribute->leftJoin('good_value_attribute as v', 'goods.id', '=', 'v.good_id')
+            ->select('v.value_attribute_id as id', DB::raw('COUNT(v.value_attribute_id) as count'))
+            ->groupBy('v.value_attribute_id')
+            ->get();
+
+        return [
+            'vendor' => $countVendors,
+            'attributes' => $countAttributes
+        ];
+
     }
 
 }
