@@ -20217,7 +20217,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   components: {
     Slider: _vueform_slider__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['attributes', 'selected', 'min_price', 'max_price'],
+  props: ['attributes', 'selected', 'min_price', 'max_price', 'container', 'preloader'],
   created: function created() {
     var _this = this;
     Object.entries(this.selected).forEach(function (_ref) {
@@ -20253,6 +20253,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   methods: {
     handleFormChange: function handleFormChange() {
       var _this2 = this;
+      var preloader = document.qu;
       var form = this.form;
       if (form.price === 0) {
         // delete price no edit
@@ -20274,7 +20275,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       axios.get(newURL).then(function (response) {
         //console.log(response.data);
-        var container = document.querySelector('#catalog');
+        var container = document.querySelector(_this2.container);
         container.innerHTML = response.data.content;
         _this2.filters = response.data.filters;
       })["catch"](function (error) {
@@ -20324,7 +20325,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.price = this.modelValue;
-    console.log(this.price);
     if (this.price[0] === 0 || this.price[0] < this.min) {
       this.price[0] = this.min;
     }
@@ -28818,7 +28818,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.filter_name{\n    cursor: pointer;\n}\n.countVal{\n    padding-left: 10px;\n    color: #04B4F2;\n}\n.full-width {\n    display: block;\n    width: 100%;\n    cursor: pointer;\n    padding: 10px;\n    border: 1px solid transparent;\n    transition: background-color 0.2s ease;\n}\n.form-check-input {\n    margin-right: 10px;\n    cursor: pointer;\n}\n.attribute:hover .countVal {\n    padding-left: 15px;\n}\n\n /* .attribute:hover{\n    border-top: 1px solid #e8e8e8;\n    border-bottom: 1px solid #e8e8e8;\n\n  }*/\n.form-check-label {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.filter_name{\n    cursor: pointer;\n}\n.countVal{\n    padding-left: 10px;\n    color: #04B4F2;\n}\n.full-width {\n    display: block;\n    width: 100%;\n    cursor: pointer;\n    padding: 10px;\n    border: 1px solid transparent;\n    transition: background-color 0.2s ease;\n}\n.form-check-input {\n    margin-right: 10px;\n    cursor: pointer;\n}\n.attribute:hover .countVal {\n    padding-left: 15px;\n}\n.form-check-label {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

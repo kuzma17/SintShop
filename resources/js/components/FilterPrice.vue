@@ -45,7 +45,6 @@
 
     this.price = this.modelValue
 
-    console.log(this.price);
     if (this.price[0] === 0 || this.price[0] < this.min){
       this.price[0] = this.min
     }

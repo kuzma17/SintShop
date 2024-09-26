@@ -32,6 +32,8 @@
                         :selected="{{json_encode(getParametersRequest())}}"
                         :min_price="{{$minPrice}}"
                         :max_price="{{$maxPrice}}"
+                        container="#catalog"
+                        preloader="#preloader"
                 ></filter-goods>
             </div>
             <div class="col-12 col-md-9 p1">

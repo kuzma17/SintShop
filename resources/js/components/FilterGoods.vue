@@ -33,7 +33,9 @@ export default {
       'attributes',
       'selected',
       'min_price',
-      'max_price'
+      'max_price',
+      'container',
+      'preloader'
   ],
   created() {
     Object.entries(this.selected).forEach(([key, value]) => {
@@ -67,6 +69,8 @@ export default {
   },
   methods:{
     handleFormChange() {
+
+      const preloader = document.qu
       const form = this.form
 
       if((form.price === 0)){ // delete price no edit
@@ -88,7 +92,7 @@ export default {
       axios.get(newURL)
           .then(response => {
             //console.log(response.data);
-            const container = document.querySelector('#catalog');
+            const container = document.querySelector(this.container);
             container.innerHTML = response.data.content
             this.filters = response.data.filters
           })
