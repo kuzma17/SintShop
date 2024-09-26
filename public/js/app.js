@@ -21404,9 +21404,6 @@ var _hoisted_4 = ["for"];
 var _hoisted_5 = {
   "class": "name_attribute"
 };
-var _hoisted_6 = {
-  "class": "countVal"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "filter_name",
@@ -21442,7 +21439,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selected]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
           "class": "form-check-label",
           "for": 'filter-param-' + value.id
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.values) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_6, "(" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.count) + ")", 1 /* TEXT */)])], 8 /* PROPS */, _hoisted_4)])]);
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.values) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["count", value.count > 0 ? 'color_blue' : 'color_grey'])
+        }, "(" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.count) + ")", 3 /* TEXT, CLASS */)])], 8 /* PROPS */, _hoisted_4)])]);
       }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1 /* STABLE */
@@ -28818,7 +28817,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.filter_name{\n    cursor: pointer;\n}\n.countVal{\n    padding-left: 10px;\n    color: #04B4F2;\n}\n.full-width {\n    display: block;\n    width: 100%;\n    cursor: pointer;\n    padding: 10px;\n    border: 1px solid transparent;\n    transition: background-color 0.2s ease;\n}\n.form-check-input {\n    margin-right: 10px;\n    cursor: pointer;\n}\n.attribute:hover .countVal {\n    padding-left: 15px;\n}\n.form-check-label {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.filter_name{\n    cursor: pointer;\n}\n.count{\n    padding-left: 10px;\n}\n.color_blue{\n    color: #04B4F2;\n}\n.color_grey{\n    color: #989898;\n}\n.full-width {\n    display: block;\n    width: 100%;\n    cursor: pointer;\n    padding: 10px;\n    border: 1px solid transparent;\n    transition: background-color 0.2s ease;\n}\n.form-check-input {\n    margin-right: 10px;\n    cursor: pointer;\n}\n.attribute:hover .countVal {\n    padding-left: 15px;\n}\n.form-check-label {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

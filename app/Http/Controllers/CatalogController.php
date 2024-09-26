@@ -45,8 +45,8 @@ class CatalogController extends Controller
         return view('catalog.index', [
             'category' => $category,
             'goods' => $goods,
-            'minPrice' => $minPrice,
-            'maxPrice' => $maxPrice,
+            'minPrice' => $minPrice? $minPrice: 0,
+            'maxPrice' => $maxPrice? $maxPrice: 0,
             'filters' => $filters
         ]);
     }

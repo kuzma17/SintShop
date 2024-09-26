@@ -13,7 +13,7 @@
                    @change="handleFormChange">
             <label class="form-check-label" :for="'filter-param-'+value.id">
               <span class="name_attribute" >
-                {{value.values}} <span class="countVal">({{value.count}})</span>
+                {{value.values}} <span class="count" :class="value.count > 0? 'color_blue': 'color_grey'" >({{value.count}})</span>
               </span>
             </label>
           </div>
@@ -76,9 +76,15 @@ export default {
   .filter_name{
     cursor: pointer;
   }
-  .countVal{
+  .count{
     padding-left: 10px;
+
+  }
+  .color_blue{
     color: #04B4F2;
+  }
+  .color_grey{
+    color: #989898;
   }
 
   .full-width {
