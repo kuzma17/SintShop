@@ -104,4 +104,19 @@ class Category extends Model
         return $res;
     }
 
+    public function getAllFilters()
+    {
+        $model = new Attribute([
+            'slug' => 'vendor',
+            'name_ru' => 'Производитель',
+            'name_ua' => 'Бренд',
+        ]);
+
+        $model->values = $this->vendorValues;
+        $VendorAttribute = collect([$model]);
+
+        return $VendorAttribute->concat($this->filters);
+
+    }
+
 }

@@ -9,7 +9,7 @@
       ></filter-price>
       <br>
     </div>
-    <div v-for="(filter, key) in attributes" >
+    <div v-for="(filter, key) in filters" >
       <filter-attribute
           :filter="filter"
           v-model="form[filter.slug]"
@@ -42,11 +42,15 @@ export default {
 
   },
   mounted() {
+    if (this.attributes){
+      this.filters = this.attributes
+    }
 
     this.isLoaded = true;
   },
   data(){
     return{
+      filters: [],
       form: {},
       isLoaded: false
     }
@@ -86,6 +90,7 @@ export default {
             //console.log(response.data);
             const container = document.querySelector('#catalog');
             container.innerHTML = response.data.content
+            this.filters = response.data.filters
           })
           .catch(error => {
             console.log(error)

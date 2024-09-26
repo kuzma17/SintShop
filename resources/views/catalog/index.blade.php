@@ -27,12 +27,12 @@
 
         <div class="row">
             <div class="col-12 col-md-3 p-1">
-                <x-filter
-                        :category="$category"
-                        :minPrice="$minPrice"
-                        :maxPrice="$maxPrice"
-                        :count="$count_values"
-                ></x-filter>
+                <filter-goods
+                        :attributes="{{json_encode($filters)}}"
+                        :selected="{{json_encode(getParametersRequest())}}"
+                        :min_price="{{$minPrice}}"
+                        :max_price="{{$maxPrice}}"
+                ></filter-goods>
             </div>
             <div class="col-12 col-md-9 p1">
                 <div class="catalog">

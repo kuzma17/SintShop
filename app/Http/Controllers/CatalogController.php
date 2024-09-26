@@ -21,7 +21,7 @@ class CatalogController extends Controller
         $query = $filterService->apply($query);
         $query = $sortService->apply($query);
 
-        $count_values = $filterService->getCountAttributes();
+        $filters = $filterService->getFilters($category);
 
         $url_params = request()->except('page');
 
@@ -33,9 +33,11 @@ class CatalogController extends Controller
         $goods->getCollection()->load('valueAttributes','photos');
 
         if ($request->ajax()){
-            return json_encode([
+
+            return response()->json([
                 'status' => true,
-                'content' => view('catalog.list', ['goods' => $goods])->render()
+                'content' => view('catalog.list', ['goods' => $goods])->render(),
+                'filters' => $filters
 
             ]);
         }
@@ -45,7 +47,7 @@ class CatalogController extends Controller
             'goods' => $goods,
             'minPrice' => $minPrice,
             'maxPrice' => $maxPrice,
-            'count_values' => $count_values,
+            'filters' => $filters
         ]);
     }
 

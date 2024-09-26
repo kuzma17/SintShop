@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use DB;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,7 @@ class FilterService
     public $parameters;
 
     protected $query;
+    protected $countAttributes;
 
     public function __construct(Request $request){
 
@@ -89,6 +91,10 @@ class FilterService
             return false;
         }
 
+        if ($this->countAttributes){
+            return $this->countAttributes;
+        }
+
         $queryVendor = clone $this->query;
         $queryAttribute = clone $this->query;
 
@@ -101,11 +107,53 @@ class FilterService
             ->groupBy('v.value_attribute_id')
             ->get();
 
-        return [
+        $this->countAttributes = [
             'vendor' => $countVendors,
             'attributes' => $countAttributes
         ];
 
+        return  $this->countAttributes;
+
+
+    }
+
+    public function getFilters(Category $category)
+    {
+        //return Cache::rememberForever('filter_'.app()->getLocale().$this->category->id, function (){
+
+        $category = $category->load('filters', 'filters.values', 'filters.type', 'filters.values.attribute');
+        $data = $category->getAllFilters();
+
+        return $data->map(function ($item){
+            return [
+                'slug' => $item->slug,
+                'name' => $item->name,
+                'values' => $item->values->map(function ($val) use($item){
+
+                    $type = 'attributes';
+                    if ($item->slug === 'vendor'){
+                        $type = 'vendor';
+                    }
+
+                    return [
+                        'id' => $val->id,
+                        'values' => $val->values,
+                        'count' => $this->getCountValues($type, $val->id),
+                    ];
+
+                })
+            ];
+        });
+
+    }
+
+    protected function getCountValues($type, $id)
+    {
+        $result = $this->getCountAttributes()[$type]->where('id', $id)->first();
+        if ($result){
+            return $result->count;
+        }
+        return 0;
     }
 
 }

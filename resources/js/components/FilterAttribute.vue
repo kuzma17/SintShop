@@ -10,9 +10,7 @@
           <div class="form-check">
             <input class="form-check-input" type="checkbox" :value="value.id" :id="'filter-param-'+value.id"
                    v-model="selected"
-                   @change="handleFormChange"
-                   :disabled="value.count === 0"
-            >
+                   @change="handleFormChange">
             <label class="form-check-label" :for="'filter-param-'+value.id">
               <span class="name_attribute" >
                 {{value.values}} <span class="countVal">({{value.count}})</span>
@@ -100,13 +98,6 @@ export default {
   .attribute:hover .countVal {
     padding-left: 15px;
   }
-
- /* .attribute:hover{
-    border-top: 1px solid #e8e8e8;
-    border-bottom: 1px solid #e8e8e8;
-
-  }*/
-
 
   .form-check-label {
     display: flex;

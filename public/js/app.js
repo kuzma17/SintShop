@@ -20228,10 +20228,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     });
   },
   mounted: function mounted() {
+    if (this.attributes) {
+      this.filters = this.attributes;
+    }
     this.isLoaded = true;
   },
   data: function data() {
     return {
+      filters: [],
       form: {},
       isLoaded: false
     };
@@ -20248,6 +20252,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   },
   methods: {
     handleFormChange: function handleFormChange() {
+      var _this2 = this;
       var form = this.form;
       if (form.price === 0) {
         // delete price no edit
@@ -20271,6 +20276,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         //console.log(response.data);
         var container = document.querySelector('#catalog');
         container.innerHTML = response.data.content;
+        _this2.filters = response.data.filters;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -21393,7 +21399,7 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "form-check"
 };
-var _hoisted_3 = ["value", "id", "disabled"];
+var _hoisted_3 = ["value", "id"];
 var _hoisted_4 = ["for"];
 var _hoisted_5 = {
   "class": "name_attribute"
@@ -21432,8 +21438,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }),
           onChange: _cache[2] || (_cache[2] = function () {
             return $options.handleFormChange && $options.handleFormChange.apply($options, arguments);
-          }),
-          disabled: value.count === 0
+          })
         }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selected]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
           "class": "form-check-label",
           "for": 'filter-param-' + value.id
@@ -21479,7 +21484,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     min: $props.min_price,
     max: $props.max_price
-  }, null, 8 /* PROPS */, ["modelValue", "min", "max"]), _hoisted_4]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.attributes, function (filter, key) {
+  }, null, 8 /* PROPS */, ["modelValue", "min", "max"]), _hoisted_4]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.filters, function (filter, key) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_filter_attribute, {
       filter: filter,
       modelValue: $data.form[filter.slug],
