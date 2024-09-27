@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-6 col-md-4 col-lg-4 p-0">
+<div class="col-12 col-sm-6 col-md-{{$countRow}} col-lg-{{$countRow}} p-0">
     <div class="good-card">
         <a href="{{route('good', [$good->slug, $good->id])}}">
             <div class="photo">
