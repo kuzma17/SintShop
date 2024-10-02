@@ -13,4 +13,10 @@ class Vendor extends Model
         'title',
         'image'
     ];
+
+    public function getValuesAttribute()
+    {
+        return $this->title;
+    }
+
 }

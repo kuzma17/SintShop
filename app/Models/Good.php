@@ -46,10 +46,10 @@ class Good extends Model
         return $this->hasMany(Photo::class);
     }
 
-//    public function photo()
-//    {
-//        return $this->photos()->limit(1);
-//    }
+    public function photo()
+    {
+        return $this->photos()->limit(1);
+    }
 
     public function videos(){
         return $this->hasMany(Video::class);
@@ -106,7 +106,18 @@ class Good extends Model
 
         foreach ($values as $value){
             $attribute = $value->attribute;
+
+
+            if (!$attribute->active){
+                continue;
+            }
+
             if(!array_key_exists($attribute->id, $arr)) {
+
+                if ($attribute->type_id === 3 || $attribute->type_id === 2){ // remove type 3, 2
+                    continue;
+                }
+
                 $arr[$attribute->id] = [
                     'attribute' => $attribute->name,
                     'type' => $attribute->type_id,
@@ -114,10 +125,12 @@ class Good extends Model
                 ];
 
                 if($attribute->type_id === 3) {
+
                     $arr[$attribute->id]['values'] = $value->values.' '.$attribute->format;
                 }
                 if($attribute->type_id === 4) {
-                    $arr[$attribute->id]['values'] = ($value->values === 1)? __('catalog.yes'): __('catalog.no');
+                   // $arr[$attribute->id]['values'] = ($value->values === 1)? __('catalog.yes'): __('catalog.no');
+                    $arr[$attribute->id]['values'] = __('catalog.yes');
                 }
                 continue;
             }
@@ -129,7 +142,6 @@ class Good extends Model
 
         }
         ksort($arr);
-
         return $arr;
     }
 

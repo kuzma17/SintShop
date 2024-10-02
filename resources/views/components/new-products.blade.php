@@ -7,7 +7,8 @@
                         <div class="row">
                             @foreach($item as $good)
                                 <x-card-good
-                                    :good=$good
+                                    :good="$good"
+                                    type="new"
                                 ></x-card-good>
                             @endforeach
                         </div>

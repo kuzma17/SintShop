@@ -60,24 +60,24 @@ app.component('nova-poshta-warehouse', NovaPoshtaWarehouse);
 import SelectOffice from "./components/SelectOffice.vue";
 app.component('select-office', SelectOffice);
 
+import SortGoods from "./components/SortGoods.vue";
+app.component('sort-goods', SortGoods);
+
 import FilterGoods from "./components/FilterGoods.vue";
 app.component('filter-goods', FilterGoods);
+
+import FilterAttribute from "./components/FilterAttribute.vue";
+app.component('filter-attribute', FilterAttribute);
+
+import FilterPrice from "./components/FilterPrice.vue";
+app.component('filter-price', FilterPrice);
 
 
 //-----------------
 
-// app.use(i18nVue, {
-//         resolve: async lang => {
-//             const langs = import.meta.glob('../lang/*.json');
-//             return await langs[`../lang/${lang}.json`]();
-//         }
-//     }).mount('#app');
-
 app.use(i18nVue, {
     resolve: lang => import(`../lang/${lang}.json`),
 }).mount('#app');
-
-// app.mount("#app");
 
 // Button cart
 const myCollapsible = document.getElementById('collapseOrder');

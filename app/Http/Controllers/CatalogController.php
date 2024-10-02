@@ -2,29 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\AttributeFilterResource;
-use App\Http\Resources\AttributeResource;
 use App\Models\Category;
+use App\Models\Good;
+use App\Services\FilterService;
 use App\Services\SortService;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
 
-    public function list($slug, Category $category,SortService $sortService){
+    public function list(Request $request, $slug, Category $category, FilterService $filterService, SortService $sortService){
 
-        $goods = $category->getGoodsCategory();
-        $goods = $sortService->apply($goods);
-        $goods = $goods->paginate(12);
+        $query = Good::forCategory($category)->active();
 
-        $category = $category->load('filters', 'filters.values', 'filters.values.attribute');
+        $minPrice = $query->min('price');
+        $maxPrice = $query->max('price');
 
-        //dd($category);
+        $query = $filterService->apply($query);
+        $query = $sortService->apply($query);
 
-        $attributes = AttributeFilterResource::collection($category->filters);
+        $filters = $filterService->getFilters($category);
 
+        $url_params = request()->except('page');
 
+        $goods = $query->paginate(12)->appends($url_params);
+       // $goods->appends($request->all());
 
-        return view('catalog.index', ['category' => $category, 'goods' => $goods, 'attributes' => $attributes]);
+       // $goods = $goods->load('photos');
+
+        $goods->getCollection()->load('valueAttributes','photos');
+
+        if ($request->ajax()){
+
+            return response()->json([
+                'status' => true,
+                'content' => view('catalog.list', ['goods' => $goods])->render(),
+                'filters' => $filters
+
+            ]);
+        }
+
+        return view('catalog.index', [
+            'category' => $category,
+            'goods' => $goods,
+            'minPrice' => $minPrice? $minPrice: 0,
+            'maxPrice' => $maxPrice? $maxPrice: 0,
+            'filters' => $filters
+        ]);
     }
+
+
 }

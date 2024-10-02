@@ -37,7 +37,12 @@ class Category extends Model
 
     public function filters()
     {
-        return $this->attribute()->where('filter', 1);
+        return $this->attribute()->filter()->sort();
+    }
+
+    public function vendorValues()
+    {
+        return $this->belongsToMany(Vendor::class);
     }
 
     public function scopeActive($query){
@@ -70,7 +75,7 @@ class Category extends Model
             //->visibleNull()
             //->sort()
             ->get()
-            ->load('photos');
+            ->load('photos', 'valueAttributes');
     }
 
     public function children()
@@ -97,6 +102,21 @@ class Category extends Model
             ->sort()
             ->get();
         return $res;
+    }
+
+    public function getAllFilters()
+    {
+        $model = new Attribute([
+            'slug' => 'vendor',
+            'name_ru' => 'Производитель',
+            'name_ua' => 'Бренд',
+        ]);
+
+        $model->values = $this->vendorValues;
+        $VendorAttribute = collect([$model]);
+
+        return $VendorAttribute->concat($this->filters);
+
     }
 
 }

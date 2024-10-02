@@ -4,10 +4,14 @@ namespace App\Import\ERC;
 
 use App\Models\Attribute;
 use App\Models\Category;
+use App\Models\Erc\ErcAttribute;
+use App\Models\Erc\ErcFloatValue;
+use App\Models\Erc\ErcValue;
 use App\Models\Good;
 use App\Models\ValueAttribute;
 use App\Models\Vendor;
 use App\Services\ImageService;
+use phpDocumentor\Reflection\Types\Float_;
 
 class ErcParser
 {
@@ -32,6 +36,104 @@ class ErcParser
      * $category Object
      */
     public function parse(Category $category, $erc_categories){
+
+
+//    Attributes ======================
+
+
+   //     $category_id = 7; //
+
+
+//        $data = Attribute::where('category_id', $category_id)
+//           // ->where('filter', 1)
+//            ->where('active',1)
+//            //->where('_use', 0)
+//            ->where(function ($query){
+//                return $query->where('type_id', 1)
+//                    ->orWhere('type_id', 4);
+//            })
+//            ->get();
+//
+//
+//        foreach ($data as $item){
+//
+//            $ercAttribute = new ErcAttribute();
+//            $ercAttribute->attribute_id = $item->id;
+//            $ercAttribute->erc = $item->erc;
+//            $ercAttribute->category___id = $category_id;
+//            $ercAttribute->save();
+//        }
+//
+//        dd($data);
+
+        // Check
+
+//        $ercAttributes = ErcAttribute::with('attributeGood')->get();
+//
+//        foreach ($ercAttributes as $attribute){
+//
+//            dump($attribute->attributeGood->type_id);
+//        }
+//
+//        dd(4321432143);
+
+
+//        // Values============
+
+//        $attributesCategory = Attribute::where('category_id',$category_id)
+//           // ->where('filter', 0)
+//            ->where('active',1)
+//            ->where('_use', 0)
+//            ->where(function ($query){
+//                return $query->where('type_id', 1)
+//                    ->orWhere('type_id', 4);
+//            })
+//            ->get();
+//
+//       // $attributesCategory = [Attribute::find(13)];
+//
+//        //dd($attributesCategory->values);
+//
+//
+//        foreach ($attributesCategory as $attr){
+//            foreach ($attr->values as $value){
+//                $ercValue = new ErcValue();
+//                $ercValue->value_id = $value->id;
+//                $ercValue->erc =$value->erc;
+//                $ercValue->category___id = $category_id;
+//                $ercValue->save();
+//            }
+//        }
+//
+//        dd(111);
+
+
+
+        /// FloatAttributeValue
+
+
+//        $attribute_id = 293;
+//
+//        $values = ValueAttribute::where('attribute_id',$attribute_id)->get();
+//
+//        foreach ($values as $value){
+//            $ercFloatValue = new ErcFloatValue();
+//            $ercFloatValue->attribute_id = $attribute_id;
+//            $ercFloatValue->erc_value = (float)$value->string_ru;
+//            $ercFloatValue->value_id = $value->id;
+//            //$ercFloatValue->filter_value_id = $this->getFilerValueResourceJetCartridges((float)$value->string_ru);
+//
+//
+//            $ercFloatValue->save();
+//        }
+//
+//        dd('=== Finish ===');
+
+
+
+
+
+
 
         $this->category = $category->load('attribute');
         dump('category '.$category->id.' '.$category->title_ru);
@@ -75,6 +177,8 @@ class ErcParser
 
                 $product = $this->ercProducts->getGoodInfo($code, 'ru'); // API Product
                 $product_ua = $this->ercProducts->getGoodInfo($code);
+
+                //dd($product);
                 if ($product && $product_ua){
 
                     $description = $this->getDescription($product);
@@ -162,35 +266,55 @@ class ErcParser
 
     protected function groupsParse($data, $data_ua){
 
+
         for($i=0; $i<count($data); $i++) {
             $items = $data[$i]->items;
             $items_ua = $data_ua[$i]->items;
+
+            //dd($data);
             foreach ($items as $key => $item) {
 
                 if (in_array($item->id, $this->exception_attr)) {
                     continue;
                 }
 
-                $attribute = $this->getAttribute($item, $items_ua[$key]);
-                $this->getValues($item, $items_ua[$key], $attribute->id);
+
+  //              $attribute = $this->getAttribute($item, $items_ua[$key]); // Атрибуты не нужны только value. Ибо оные записываются в good_value_attributes
+//
+//                if (!$attribute){
+//                    continue;
+//                }
+
+                //dump('attr : '.$attribute);
+                $ercAttr = ErcAttribute::where('erc', $item->id)->first();
+
+                if ($ercAttr){
+                    $this->getValues($item, $items_ua[$key], $ercAttr->attribute_id);
+                }
+
+
             }
         }
     }
 
     protected function getAttribute($data, $data_ua){
-        return Attribute::firstOrCreate(
-            ['erc' => $data->id],
-            [
-                'category_id' => $this->category->id,
-                'name_ru' => $data->title,
-                'name_ua' => $data_ua->title,
-                'slug' => \URLify::slug($data->title),
-                'type_id' => $this->getTypeAttribute($data),
-                'filter' => $this->getFilterAttribute($data),
-                'format' => $this->getFormat($data),
-                'active' => 1
-            ]
-        );
+//        return Attribute::firstOrCreate(
+//            ['erc' => $data->id],
+//            [
+//                'category_id' => $this->category->id,
+//                'name_ru' => $data->title,
+//                'name_ua' => $data_ua->title,
+//                'slug' => \URLify::slug($data->title),
+//                'type_id' => $this->getTypeAttribute($data),
+//                'filter' => $this->getFilterAttribute($data),
+//                'format' => $this->getFormat($data),
+//                'active' => 1
+//            ]
+//        );
+
+        $ercAttribute = ErcAttribute::where('erc', $data->id)->first();
+
+        return $ercAttribute? $ercAttribute->attribute_id: null;
     }
 
     protected function getFormat($data){
@@ -238,12 +362,154 @@ class ErcParser
             }
         }elseif ($item->type === 'TYPE_BOOLEAN'){
             $this->valueBoolean($item, $attribute_id);
-        }elseif ($item->type === 'TYPE_STRING'){
-            $this->valueString($item, $item_ua, $attribute_id);
-        }elseif ($item->type === 'TYPE_FLOAT'){
-            $this->valueFloat($item, $attribute_id);
         }
+ //       elseif ($item->type === 'TYPE_STRING'){
+//            $this->valueString($item, $item_ua, $attribute_id);
+//        }
+          elseif ($item->type === 'TYPE_FLOAT'){
+            //$this->valueFloat($item, $attribute_id);
+
+              $data = $this->getErcFloatValue($item, $attribute_id);
+
+              $this->addFloatValue($data); //отправляем values
+        }
+
+        return null;
     }
+
+    protected function addFloatValue($item)
+    {
+
+        $this->addValue($item->value_id);
+        if ($item->filter_value_id){ // добавляем 2 атрибут если есть, это диагональ в мониторах
+            $this->addValue($item->filter_value_id);
+
+        }
+
+    }
+
+    protected function getErcFloatValue($item, $attribute_id)
+    {
+        if ($floatValue = ErcFloatValue::where('attribute_id', $attribute_id)->where('erc_value', $item->value)->first()){
+
+            return $floatValue;
+        }
+
+        $attribute = Attribute::find($attribute_id);
+
+        $value_attributes = $attribute->values()->create([ // Записываем новое значение
+            'slug' => $this->getSlug($item->value),
+            'string_ru' => $item->value,
+            'string_ua' => $item->value,
+            'active' => 1
+        ]);
+
+        $ercFloatValue = new ErcFloatValue();
+        $ercFloatValue->attribute_id = $attribute->id;
+        $ercFloatValue->erc_value = $item->value;
+        $ercFloatValue->value_id = $value_attributes->id;
+
+        if ($attribute->id == 26){ // если диагональ мониторы
+
+            $filter_value = $this->getFilerValueDiagonalMonitors($item->value);
+            $ercFloatValue->filter_value_id = $filter_value;
+
+        }elseif ($attribute->id == 77){  // если диагональ ноутбуки
+
+            $filter_value = $this->getFilerValueDiagonalLaptops($item->value);
+            $ercFloatValue->filter_value_id = $filter_value;
+
+        }elseif ($attribute->id == 279){ // если ресурс картридж лазерный
+
+            $filter_value = $this->getFilerValueResourceLaserCartridges($item->value);
+            $ercFloatValue->filter_value_id = $filter_value;
+
+        }elseif ($attribute->id == 290){ // если ресурс картридж струйный
+
+            $filter_value = $this->getFilerValueResourceJetCartridges($item->value);
+            $ercFloatValue->filter_value_id = $filter_value;
+        }
+
+        $ercFloatValue->save();
+       return $ercFloatValue;
+    }
+
+    protected function getFilerValueDiagonalMonitors(float $value)
+    {
+        if ($value < 15){
+            return 15950;
+        }elseif ($value >= 15 && $value < 20){
+            return 15951;
+        }elseif ($value >= 20 && $value < 25){
+            return 15952;
+        }elseif ($value >= 25 && $value < 30){
+            return 15953;
+        }elseif ($value >= 30 && $value < 35){
+            return 15954;
+        }elseif ($value >= 35 && $value < 40){
+            return 15955;
+        }elseif ($value >= 40 && $value < 45){
+            return 15956;
+        }elseif ($value >= 45 && $value < 50){
+            return 15957;
+        }elseif ($value >= 50){
+            return 15958;
+        }
+
+    }
+
+    protected function getFilerValueDiagonalLaptops(float $value)
+    {
+        if ($value < 13){
+            return 15989;
+        }elseif ($value >= 13 && $value < 14){
+            return 15990;
+        }elseif ($value >= 14 && $value < 15){
+            return 15991;
+        }elseif ($value >= 15 && $value < 16){
+            return 15992;
+        }elseif ($value >= 16 && $value < 17){
+            return 15993;
+        }elseif ($value >= 17){
+            return 15994;
+        }
+
+    }
+
+    protected function getFilerValueResourceLaserCartridges(float $value)
+    {
+        if ($value < 2000){
+            return 16054;
+        }elseif ($value >= 2000 && $value < 5000){
+            return 16055;
+        }elseif ($value >= 5000 && $value < 15000){
+            return 16056;
+        }elseif ($value >= 15000 && $value < 30000){
+            return 16057;
+        }elseif ($value >= 30000){
+            return 16059;
+        }
+
+    }
+
+    protected function getFilerValueResourceJetCartridges(float $value)
+    {
+        if ($value < 250){
+            return 16065;
+        }elseif ($value >= 250 && $value < 500){
+            return 16066;
+        }elseif ($value >= 500 && $value < 1000){
+            return 16067;
+        }elseif ($value >= 1000 && $value < 2000){
+            return 16068;
+        }elseif ($value >= 2000 && $value < 3000){
+            return 16069;
+        }elseif ($value >= 3000){
+            return 16070;
+        }
+
+    }
+
     protected function valueString($data, $data_ua, $attribute_id){
         $value = $data->value;
         $value_ua = $data_ua->value;
@@ -261,22 +527,51 @@ class ErcParser
         $this->values[] = $value_attribute->id;
     }
     protected function valueBoolean($data, $attribute_id){
-        $value = $data->value;
+  //      $value = $data->value;
 
-        $value_attribute = ValueAttribute::firstOrCreate(
-            ['erc' => $data->id],
-            ['float' => $value,  'attribute_id' => $attribute_id]
-        );
-        $this->values[] = $value_attribute->id;
+//        $value_attribute = ValueAttribute::firstOrCreate(
+//            ['erc' => $data->id],
+//            ['float' => $value,  'attribute_id' => $attribute_id]
+//        );
+
+        //dd($data);
+        // Тут наеврно нужно сделать общий для всех 1 "Да"
+
+        $attribute = ErcValue::with('valueAttribute')
+            ->where('erc', $data->id)
+            ->first();
+
+        if(isset($attribute->valueAttribute)){
+            $id = $attribute->valueAttribute->id;
+            $this->addValue($id);
+        }
     }
     protected function valueSet($data, $data_ua, $attribute_id){
-        $value = $data->value;
-        $value_ua = $data_ua->value;
-        $value_attribute = ValueAttribute::firstOrCreate(
-            ['erc' => $data->id],
-            ['string_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id]
-        );
-        $this->values[] = $value_attribute->id;
+//        $value = $data->value;
+//        $value_ua = $data_ua->value;
+
+//        $value_attribute = ValueAttribute::firstOrCreate(
+//            ['erc' => $data->id],
+//            ['string_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id]
+//        );
+
+        $attribute = ErcValue::with('valueAttribute')
+            ->where('erc', $data->id)
+            ->first();
+
+        if(isset($attribute->valueAttribute)){
+            $id = $attribute->valueAttribute->id;
+            $this->addValue($id);
+        }
+
+    }
+
+    protected function addValue($id)
+    {
+        if (!in_array($id, $this->values)){
+            $this->values[] = $id;
+        }
+
     }
 
     protected function optimizationValue($string){

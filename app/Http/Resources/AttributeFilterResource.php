@@ -16,11 +16,11 @@ class AttributeFilterResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            //'id' => $this->id,
+            'slug' => $this->slug,
             'name' => $this->name,
-            'type' => $this->type,
-            'format' => $this->format,
-            //'values' => ValueAttributeResource::collection(ValueAttribute::with('attribute')->where('attribute_id', $this->id)->get())
+//            'type' => $this->type,
+//            'format' => $this->format,
             'values' => ValueAttributeResource::collection($this->values)
         ];
     }
