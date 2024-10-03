@@ -17,7 +17,7 @@
     </div>
     </form>
     <div>
-      <button class="btn btn-blue" style="width: 100%" @click="resetSelect()">reset</button>
+      <button class="btn btn-blue" style="width: 100%" @click="resetSelect()">{{ $t('reset_filters') }}</button>
     </div>
   </div>
 </template>
