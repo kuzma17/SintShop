@@ -132,9 +132,6 @@ class ErcParser
 
 
 
-
-
-
         $this->category = $category->load('attribute');
         dump('category '.$category->id.' '.$category->title_ru);
 
