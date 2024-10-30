@@ -57,12 +57,12 @@
                 window.chatwootSDK.run({
                     websiteToken: 'mPGR6qFtkcAGwKdk418np4vv',
                     baseUrl: BASE_URL
-                });
-                window.chatwootSDK.setLocale('en');
+                })
             }
         })(document,"script");
-
     </script>
+
+
 
 </body>
 </html>
