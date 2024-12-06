@@ -12,6 +12,15 @@
     <meta name="keywords" content="@yield('keywords', __('seo.site_keywords'))">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 {{--    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">--}}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FBPYNJN60"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9FBPYNJN60');
+</script>
 </head>
 <body>
     <div id="app">
