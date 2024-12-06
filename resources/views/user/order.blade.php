@@ -5,44 +5,44 @@
     <div class="user_orders">
 
         <div class="row">
-            <div class="col-2 param">id:</div>
-            <div class="col-10">{{$order->id}}</div>
+            <div class="param">id:</div>
+            <div class="col">{{$order->id}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.time_created'):</div>
-            <div class="col-10">{{$order->created_at}}</div>
+            <div class="param">@lang('user.time_created'):</div>
+            <div class="col">{{$order->created_at}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.order_count'):</div>
-            <div class="col-10">{{$order->count}}</div>
+            <div class="param">@lang('user.order_count'):</div>
+            <div class="col">{{$order->count}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.sum'):</div>
-            <div class="col-10">{{$order->summa}} @lang('main.curr')</div>
+            <div class="param">@lang('user.sum'):</div>
+            <div class="col">{{$order->summa}} @lang('main.curr')</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.delivery'):</div>
-            <div class="col-10">{{$order->delivery->title}}</div>
+            <div class="param">@lang('user.delivery'):</div>
+            <div class="col">{!! $order->delivery->title !!}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.delivery_address'):</div>
-            <div class="col-10">{{$order->delivery_address}}</div>
+            <div class="param">@lang('user.delivery_address'):</div>
+            <div class="col">{{$order->delivery_address}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.payment'):</div>
-            <div class="col-10">{{$order->payment->title}}</div>
+            <div class="param">@lang('user.payment'):</div>
+            <div class="col">{{$order->payment->title}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.status')</div>
-            <div class="col-10">{{$order->status->title}}</div>
+            <div class="param">@lang('user.status')</div>
+            <div class="col">{{$order->status->title}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('order.note'):</div>
-            <div class="col-10">{{$order->note}}</div>
+            <div class="param">@lang('order.note'):</div>
+            <div class="col">{{$order->note}}</div>
         </div>
         <div class="row">
-            <div class="col-2 param">@lang('user.items'):</div>
-            <div class="col-10"></div>
+            <div class="param">@lang('user.items'):</div>
+            <div class="col"></div>
         </div>
         <div class="positions">
             <table class="table">

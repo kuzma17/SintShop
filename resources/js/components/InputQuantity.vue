@@ -49,7 +49,6 @@ export default {
 <style>
 .quantity{
     display:flex;
-    width:160px;
 }
 
 /* it will support chrome and firefox */

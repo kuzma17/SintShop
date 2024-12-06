@@ -4,26 +4,26 @@
         <div class="content">
             <div v-if="auth_user" class="auth_user">
                 <div class="mb-3 row">
-                    <label class="col-sm-2">
+                    <label>
                         {{ $t('user_name') }}:
                     </label>
-                    <div class="col-sm-10">
+                    <div class="col">
                         {{ this.name }}
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2">
+                    <label>
                         {{ $t('phone') }}:
                     </label>
-                    <div class="col-sm-10">
+                    <div class="col">
                         {{ this.phone }}
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2">
+                    <label>
                         e-mail:
                     </label>
-                    <div class="col-sm-10">
+                    <div class="col">
                         {{ this.email }}
                     </div>
                 </div>
