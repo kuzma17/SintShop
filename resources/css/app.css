@@ -757,17 +757,17 @@ ul li{
 .hidden-mobile{
     display: none;
 }
-div{
-    border: 1px solid green;
-}
+/*div{*/
+/*    border: 1px solid green;*/
+/*}*/
 
-.pagination {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-}
-.page-link {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-}
+/*.pagination {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 5px;*/
+/*    justify-content: center;*/
+/*}*/
+/*.page-link {*/
+/*    padding: 0.5rem 0.75rem;*/
+/*    font-size: 0.875rem;*/
+/*}*/
