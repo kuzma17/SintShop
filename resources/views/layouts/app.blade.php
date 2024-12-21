@@ -11,7 +11,7 @@
     <meta name="description" content="@yield('description', __('seo.site_description'))">
     <meta name="keywords" content="@yield('keywords', __('seo.site_keywords'))">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-{{--    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">--}}
+    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FBPYNJN60"></script>
 <script>
@@ -32,10 +32,10 @@
     </div>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
-{{--    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>--}}
-{{--    <script>--}}
-{{--        new Snow ();--}}
-{{--    </script>--}}
+    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
+    <script>
+        new Snow ();
+    </script>
 
 </body>
 </html>
