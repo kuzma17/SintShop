@@ -7,7 +7,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">id</th>
+                <th scope="col">slug</th>
                 <th scope="col">Наименование</th>
                 <th scope="col">статус</th>
                 <th></th>
@@ -16,7 +16,7 @@
             <tbody>
             @foreach($pages as $page)
                 <tr>
-                    <td>{{$page->id}}</td>
+                    <td>{{$page->slug}}</td>
                     <td>{{$page->name_ru}}</td>
                     <td>
                         <x-admin.active

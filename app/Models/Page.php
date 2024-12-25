@@ -30,7 +30,7 @@ class Page extends Model
     public function scopeActive($query){
         return $query->where('active', 1);
     }
-    public function getPage($slug){
+    public static function getPage($slug){
         return self::where('slug', $slug)->first();
     }
 }
