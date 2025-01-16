@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Contracts;
+namespace App\Services;
 
 use App\Models\Category;
 use App\Models\Good;
