@@ -13,17 +13,20 @@
             :category="$category"
     ></x-sub-categories>
 
+    @if($category->content)
+       <collapse-text :text="{{json_encode($category->content)}}"></collapse-text>
+    @endif
+
         <div class="sort-panel">
-{{--            <x-sort></x-sort>--}}
             <sort-goods></sort-goods>
         </div>
-        @if($category->content)
-            <div class="row">
-                <div class="col p-1">
-                    <marquee style=" border:1px solid whitesmoke;font-size: 18px; color: #04B4F2; font-weight: bold;">{{$category->content}}</marquee>
-                </div>
-            </div>
-        @endif
+{{--        @if($category->content)--}}
+{{--            <div class="row">--}}
+{{--                <div class="col p-1">--}}
+{{--                    <marquee style=" border:1px solid whitesmoke;font-size: 18px; color: #04B4F2; font-weight: bold;">{{$category->content}}</marquee>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endif--}}
 
         <div class="row">
             <div class="col-12 col-md-3 p-1">

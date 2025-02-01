@@ -72,6 +72,9 @@ app.component('filter-attribute', FilterAttribute);
 import FilterPrice from "./components/FilterPrice.vue";
 app.component('filter-price', FilterPrice);
 
+import CollapseText from "./components/CollapseText.vue";
+app.component('collapse-text', CollapseText);
+
 
 //-----------------
 
