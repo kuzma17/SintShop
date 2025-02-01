@@ -37,7 +37,7 @@ export default {
       <div v-if="!isExpanded" class="fade-overlay"></div>
     </div>
 
-    <a href="#" @click="toggleText">{{ isExpanded ? "Скрыть" : "Показать полностью" }}</a>
+    <a href="#" @click="toggleText">{{ isExpanded ? $t('collapse') : $t('all_show') }}</a>
   </div>
 </template>
 
