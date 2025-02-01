@@ -66,9 +66,9 @@
                                 @lang('menu.computer_tech')
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('catalog', ['computers', 1])}}">@lang('menu.computers')</a></li>
-                                <li><a class="dropdown-item" href="{{route('catalog', ['monitors', 2])}}">@lang('menu.monitors')</a></li>
-                                <li><a class="dropdown-item" href="{{route('catalog', ['notepads', 3])}}">@lang('menu.notepads')</a></li>
+                                <li><a class="dropdown-item" href="{{route('catalog', 'computers')}}">@lang('menu.computers')</a></li>
+                                <li><a class="dropdown-item" href="{{route('catalog', 'monitors')}}">@lang('menu.monitors')</a></li>
+                                <li><a class="dropdown-item" href="{{route('catalog', 'notepads')}}">@lang('menu.notepads')</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -76,8 +76,8 @@
                                 @lang('menu.print_tech')
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('catalog', ['printers', 4])}}">@lang('menu.printers')</a></li>
-                                <li><a class="dropdown-item" href="{{route('catalog', ['mfu', 5])}}">@lang('menu.mfu')</a></li>
+                                <li><a class="dropdown-item" href="{{route('catalog', 'printers')}}">@lang('menu.printers')</a></li>
+                                <li><a class="dropdown-item" href="{{route('catalog', 'mfu')}}">@lang('menu.mfu')</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -85,8 +85,8 @@
                                 @lang('menu.cartridges')
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('catalog', ['laser-cartridges', 6])}}">@lang('menu.laser')</a></li>
-                                <li><a class="dropdown-item" href="{{route('catalog', ['jet-cartridges', 7])}}">@lang('menu.jet')</a></li>
+                                <li><a class="dropdown-item" href="{{route('catalog', 'laser-cartridges')}}">@lang('menu.laser')</a></li>
+                                <li><a class="dropdown-item" href="{{route('catalog', 'jet-cartridges')}}">@lang('menu.jet')</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

@@ -119,4 +119,10 @@ class Category extends Model
 
     }
 
+    static public function getCategory($slug)
+    {
+        return self::where('slug', $slug)
+            ->first();
+    }
+
 }

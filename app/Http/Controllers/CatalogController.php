@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 class CatalogController extends Controller
 {
 
-    public function list(Request $request, $slug, Category $category, FilterService $filterService, SortService $sortService){
+    public function list(Request $request, $slug, FilterService $filterService, SortService $sortService){
 
-        $query = Good::forCategory($category)->active();
+        $category = Category::getCategory($slug)->load('goods');
+
+        $query = $category->goods()->active();
 
         $minPrice = $query->min('price');
         $maxPrice = $query->max('price');

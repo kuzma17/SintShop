@@ -78,10 +78,6 @@ class Good extends Model
 //        return $query;
     }
 
-    public function scopeForCategory($query, $category){
-        return $query->where('category_id', $category->id);
-    }
-
     public function scopeSortDesc($query){
         return $query->orderBy('updated_at', 'DESC');
     }
