@@ -13,7 +13,7 @@ class CatalogController extends Controller
 
     public function list(Request $request, $slug, FilterService $filterService, SortService $sortService){
 
-        $category = Category::getCategory($slug)->load('goods');
+        $category = Category::getCategory($slug);
 
         $query = $category->goods()->active();
 
