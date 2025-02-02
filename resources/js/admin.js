@@ -55,6 +55,9 @@ app.component('input-set', InputSet);
 import TypeAttribute from "./components/admin/TypeAttribute.vue";
 app.component('type-attribute', TypeAttribute);
 
+import TextEditor from "./components/admin/TinyEditor.vue";
+app.component('text-editor', TextEditor);
+
 
 
 

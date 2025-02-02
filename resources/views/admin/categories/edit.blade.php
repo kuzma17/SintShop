@@ -139,10 +139,14 @@
                 <label class="col-2">
                     Контент ru
                 </label>
-                <div class="col-9">
-                    <textarea name="content_ru" class="form-control">
-                        {{old('content_ru', $category->content_ru)}}
-                    </textarea>
+                <div class="col-9" >
+{{--                    <textarea name="content_ru" class="form-control">--}}
+{{--                        {{old('content_ru', $category->content_ru)}}--}}
+{{--                    </textarea>--}}
+                    <text-editor
+                            name="content_ru"
+                            value="{{old('content_ru', $category->content_ru)}}"
+                    ></text-editor>
                 </div>
             </div>
             <div class="row mb-3">
@@ -150,9 +154,13 @@
                     Контент ua
                 </label>
                 <div class="col-9">
-                    <textarea name="content_ua" class="form-control">
-                        {{old('content_ru', $category->content_ua)}}
-                    </textarea>
+{{--                    <textarea name="content_ua" class="form-control">--}}
+{{--                        {{old('content_ru', $category->content_ua)}}--}}
+{{--                    </textarea>--}}
+                    <text-editor
+                            name="content_ua"
+                            value="{{old('content_ua', $category->content_ua)}}"
+                    ></text-editor>
                 </div>
             </div>
 
@@ -202,5 +210,5 @@
         </form>
 
     </div>
-
+{{--    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>--}}
 @endsection
