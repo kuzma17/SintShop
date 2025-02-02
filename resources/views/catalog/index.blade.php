@@ -47,11 +47,4 @@
                 </div>
             </div>
         </div>
-        @if($category->content)
-            <div class="content">
-            {!! $category->content !!}
-            </div>
-        @endif
-
-
 @endsection
