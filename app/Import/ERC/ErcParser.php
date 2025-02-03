@@ -160,12 +160,14 @@ class ErcParser
                     continue;
                 }
 
+                $name = $this->getName($item);
+
                 $dataGoodSet = array_merge($dataGoodSet,[
                     'code' => $code,
                     'category_id' => $this->category->id,
                     'vendor_id' => $this->getVendor($item->vendor)->id,
-                    'slug' => $this->getSlug($code),
-                    'title_ru' => $this->getName($item),
+                    'slug' => $this->getSlug($name),
+                    'title_ru' => $name,
                     'title_ua' => $this->getName($data_ua[$key]),
                     'active' => 1,
                     'erc' => 1
@@ -241,13 +243,14 @@ class ErcParser
 
     protected function getName($data){
 
-        if ($this->category->id === 1 || $this->category->id === 2 || $this->category->id === 3){
-            $name = explode(',', $data->gname)[0].' ('.$data->code.')';
-        }else{
-            $name = $data->gname;
-        }
-        if ($this->category->id === 6 || $this->category->id === 7){
-            $name = explode('/', $name)[0];
+        $str_name = trim($data->gname);
+        $str_name = preg_replace('/\s+/', ' ', $str_name); // Удаляем двойные пробелы
+        $str_name = preg_replace('/\s*\([^)]*\)/', '', $str_name);
+
+        if ($this->category->id === 1 || $this->category->id === 2 || $this->category->id === 3 || $this->category->id === 4 || $this->category->id === 5){
+            $name = explode(',', $str_name)[0].' ('.$data->code.')';
+        }elseif ($this->category->id === 6 || $this->category->id === 7){
+            $name = explode('/', $str_name)[0].' ('.$data->code.')';
         }
         if ($this->category->id === 1){
             $name = str_replace('ПК', 'Компьютер', $name);
@@ -678,6 +681,17 @@ class ErcParser
     }
 
     protected function getSlug($string){
+        $string = str_replace([' з ', ' с ', ' и ', ' і '], ' ', $string);
+        $string = preg_replace('/\s+/', ' ', $string);
+        $string = str_replace('Компьютер', 'computer', $string);
+        $string = str_replace('Монитор', 'monitor', $string);
+        $string = str_replace('Ноутбук', 'laptop', $string);
+        $string = str_replace('Принтер', 'printer', $string);
+        $string = str_replace('МФУ', 'mfp', $string);
+        $string = str_replace('Картридж', 'cartridge', $string);
+
+        //$string = str_replace(['Компьютер','Монитор','Ноутбук','Принтер','МФУ','Картридж'], '', $string);
+        //$string = trim($string);
         return \URLify::slug($string);
     }
 

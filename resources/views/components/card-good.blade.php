@@ -1,6 +1,6 @@
 <div class="col-12 col-sm-6 col-md-{{$countRow}} col-lg-{{$countRow}} p-0">
     <div class="good-card">
-        <a href="{{route('good', [$good->slug, $good->id])}}">
+        <a href="{{route('good', [$good->category->slug, $good->slug])}}">
             <div class="photo">
                 @if($good->photos->count() > 0)
                     <img src="/images/goods/{{$good->first_photo->src}}">

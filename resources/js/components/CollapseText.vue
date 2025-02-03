@@ -33,7 +33,8 @@ export default {
   <div class="collapse-container">
     <div class="collapse-text" :class="textClass"
        :style="{ '-webkit-line-clamp': isExpanded ? 'unset' : maxLines }">
-      {{ text }}
+<!--      {{ text }}-->
+      <div v-html="text"></div>
       <div v-if="!isExpanded" class="fade-overlay"></div>
     </div>
 

@@ -10,9 +10,9 @@ class GoodController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($slug, Good $good)
+    public function index($category, $slug)
     {
-        $good = $good->getGood();
+        $good = Good::getGood($slug);
         return view('catalog.good', ['good' => $good]);
     }
 

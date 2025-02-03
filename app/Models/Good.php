@@ -87,8 +87,10 @@ class Good extends Model
         return $query->where('erc', 1);
     }
 
-    public function getGood(){
-        return $this->load('category','category.attribute','photos','videos','valueAttributes','valueAttributes.attribute');
+    static public function getGood($slug){
+        return self::where('slug', $slug)
+            ->first()
+            ->load('category','category.attribute','photos','videos','valueAttributes','valueAttributes.attribute');
     }
 
     public function getFirstPhotoAttribute(){

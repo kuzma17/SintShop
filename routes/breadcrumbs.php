@@ -24,12 +24,12 @@ Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail, \App\Models\Catego
     } else {
         $trail->parent('home');
     }
-    $trail->push($category->title, route('catalog', [$category->slug, $category->id]));
+    $trail->push($category->title, route('catalog', $category->slug));
 });
 
 Breadcrumbs::for('good', function (BreadcrumbTrail $trail, \App\Models\Good $good){
     $trail->parent('catalog', $good->category);
-    $trail->push($good->title, route('good', [$good->slug, $good->id]));
+    $trail->push($good->title, route('good', [$good->category->slug, $good->slug]));
 });
 
 Breadcrumbs::for('cart', function (BreadcrumbTrail $trail){
