@@ -5,6 +5,10 @@
     <div class="container">
         <x-categories></x-categories>
         <br>
+        <div class="">
+            <h4>{{$text->name}}</h4>
+            {!! $text->content !!}
+        </div>
         <x-new-products></x-new-products>
     </div>
     <br>

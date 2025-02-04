@@ -25,6 +25,6 @@ class HomeController extends Controller
     public function index()
     {
         $text = Page::getPage('home');
-        return view('home', ['text' => $text->content]);
+        return view('home', ['text' => $text]);
     }
 }

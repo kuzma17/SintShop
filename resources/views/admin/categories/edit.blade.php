@@ -140,9 +140,6 @@
                     Контент ru
                 </label>
                 <div class="col-9" >
-{{--                    <textarea name="content_ru" class="form-control">--}}
-{{--                        {{old('content_ru', $category->content_ru)}}--}}
-{{--                    </textarea>--}}
                     <text-editor
                             name="content_ru"
                             value="{{old('content_ru', $category->content_ru)}}"
@@ -154,9 +151,6 @@
                     Контент ua
                 </label>
                 <div class="col-9">
-{{--                    <textarea name="content_ua" class="form-control">--}}
-{{--                        {{old('content_ru', $category->content_ua)}}--}}
-{{--                    </textarea>--}}
                     <text-editor
                             name="content_ua"
                             value="{{old('content_ua', $category->content_ua)}}"
