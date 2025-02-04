@@ -17,8 +17,6 @@ class CatalogController extends Controller
 
         $query = $category->goods();
 
-        dd($query->get());
-
         $minPrice = $query->min('price');
         $maxPrice = $query->max('price');
 

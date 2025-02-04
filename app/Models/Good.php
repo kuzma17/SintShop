@@ -72,10 +72,7 @@ class Good extends Model
     }
 
     public function scopeVisibleNull($query){
-//        if (!config('visible_goods_null', true)){
-            return $query->where('quantity', '>', 0);
-//        }
-//        return $query;
+        return $query->where('quantity', '>', 0);
     }
 
     public function scopeSortDesc($query){
