@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +23,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::define('admin', function ($user) {
+            return $user->hasRole('admin');
+        });
+
+        Gate::define('manager', function ($user) {
+            return $user->hasRole('manager');
+        });
+
         Collection::macro('paginate', function($perPage, $total = null, $page = null, $pageName = 'page') {
             $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
             return new LengthAwarePaginator(

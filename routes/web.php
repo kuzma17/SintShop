@@ -67,8 +67,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
         Route::get('/orders/{order}/edit', [\App\Http\Controllers\Admin\AdminOrderController::class, 'edit'])->name('orders.edit');
         Route::put('/orders/{order}', [\App\Http\Controllers\Admin\AdminOrderController::class, 'update'])->name('orders.update');
 
-        Route::get('/users/', [\App\Http\Controllers\Admin\AdminClientController::class, 'index'])->name('clients.index');
-        Route::get('/users/{user}', [\App\Http\Controllers\Admin\AdminClientController::class, 'show'])->name('clients.show');
+        Route::get('/customers/', [\App\Http\Controllers\Admin\AdminClientController::class, 'index'])->name('clients.index');
+        Route::get('/customers/{user}', [\App\Http\Controllers\Admin\AdminClientController::class, 'show'])->name('clients.show');
 
         Route::resource('/attributes', \App\Http\Controllers\Admin\AdminAttributeController::class);
 
@@ -78,6 +78,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
 
         Route::get('/settings', [\App\Http\Controllers\Admin\AdminSettingController::class, 'index'])->name('settings.index');
         Route::post('/settings/update', [\App\Http\Controllers\Admin\AdminSettingController::class, 'update'])->name('settings.update');
+
+        Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class);
     });
 
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);

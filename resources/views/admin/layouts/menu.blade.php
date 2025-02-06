@@ -37,5 +37,13 @@
 {{--                <i class="fa-solid fa-gear"></i> Параметры--}}
 {{--            </a>--}}
 {{--        </li>--}}
+
+        @can('admin')
+        <li class="menu-item">
+            <a href="{{route('admin.users.index')}}">
+                <i class="fa-regular fa-file-lines"></i> Пользователи
+            </a>
+        </li>
+        @endcan
     </ul>
 </div>

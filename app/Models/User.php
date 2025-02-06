@@ -21,6 +21,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'role_id',
         'name',
         'login',
         'email',
@@ -73,7 +74,9 @@ class User extends Authenticatable
     }
 
     public function setPasswordAttribute($value){
-        $this->attributes['password'] = Hash::make($value);
+        if ($value){
+            $this->attributes['password'] = Hash::make($value);
+        }
     }
 
     public function setPhoneAttribute($value){

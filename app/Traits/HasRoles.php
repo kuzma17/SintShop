@@ -6,16 +6,14 @@ use App\Models\Role;
 
 trait HasRoles
 {
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
-    public function hasRole(... $roles ) {
-        foreach ($roles as $role) {
-            if ($this->roles->contains('slug', $role)) {
-                return true;
-            }
+    public function hasRole($role) {
+        if ($this->role && $this->role->slug === $role) {
+            return true;
         }
         return false;
     }
