@@ -41,7 +41,7 @@
         @can('admin')
         <li class="menu-item">
             <a href="{{route('admin.users.index')}}">
-                <i class="fa-regular fa-file-lines"></i> Пользователи
+                <i class="fa-solid fa-user"></i> Пользователи
             </a>
         </li>
         @endcan
