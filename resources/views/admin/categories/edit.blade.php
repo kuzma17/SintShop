@@ -143,6 +143,7 @@
                     <text-editor
                             name="content_ru"
                             value="{{old('content_ru', $category->content_ru)}}"
+                            apikey="{{env('TINYMCE_KEY')}}"
                     ></text-editor>
                 </div>
             </div>
@@ -154,6 +155,7 @@
                     <text-editor
                             name="content_ua"
                             value="{{old('content_ua', $category->content_ua)}}"
+                            apikey="{{env('TINYMCE_KEY')}}"
                     ></text-editor>
                 </div>
             </div>

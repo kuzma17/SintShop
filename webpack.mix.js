@@ -1,4 +1,4 @@
-
+require('dotenv').config(); // Загружаем переменные из .env
 const mix = require('laravel-mix');
 
 /*

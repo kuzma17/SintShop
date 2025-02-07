@@ -1,7 +1,7 @@
 <template>
   <div class="text_editor">
     <Editor
-        api-key="am4akclaupwuaxv9q1os8x5mcz4w3isiqajbwqvwry0hgwx4"
+        :api-key="this.apikey"
         :init="editorInit"
         :name="this.name"
         :initial-value="this.value"
@@ -22,6 +22,10 @@ export default {
       default: ''
     },
     value: {
+      type: String,
+      default: ''
+    },
+    apikey: {
       type: String,
       default: ''
     }

@@ -23865,6 +23865,10 @@ __webpack_require__.r(__webpack_exports__);
     value: {
       type: String,
       "default": ''
+    },
+    apikey: {
+      type: String,
+      "default": ''
     }
   },
   data: function data() {
@@ -24483,11 +24487,11 @@ var _hoisted_1 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Editor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Editor");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Editor, {
-    "api-key": "am4akclaupwuaxv9q1os8x5mcz4w3isiqajbwqvwry0hgwx4",
+    "api-key": this.apikey,
     init: $data.editorInit,
     name: this.name,
     "initial-value": this.value
-  }, null, 8 /* PROPS */, ["init", "name", "initial-value"])]);
+  }, null, 8 /* PROPS */, ["api-key", "init", "name", "initial-value"])]);
 }
 
 /***/ }),

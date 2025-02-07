@@ -114,12 +114,10 @@
                     Контент ru
                 </label>
                 <div class="col-9">
-{{--                    <textarea name="content_ru" class="form-control @error('content_ru') is-invalid @enderror">--}}
-{{--                        {{old('content_ru', $page->content_ru)}}--}}
-{{--                    </textarea>--}}
                     <text-editor
                             name="content_ru"
                             value="{{old('content_ru', $page->content_ru)}}"
+                            apikey="{{env('TINYMCE_KEY')}}"
                     ></text-editor>
                     @error('content_ru')
                     <span class="invalid-feedback" role="alert">
@@ -133,12 +131,10 @@
                     Контент ua
                 </label>
                 <div class="col-9">
-{{--                    <textarea name="content_ua" class="form-control @error('content_ua') is-invalid @enderror">--}}
-{{--                        {{old('content_ru', $page->content_ua)}}--}}
-{{--                    </textarea>--}}
                     <text-editor
                             name="content_ua"
                             value="{{old('content_ua', $page->content_ua)}}"
+                            apikey="{{env('TINYMCE_KEY')}}"
                     ></text-editor>
                     @error('content_ua')
                     <span class="invalid-feedback" role="alert">
