@@ -16,7 +16,7 @@
             </thead>
             <tbody>
             <tr v-for="(good) in products" :key="good.id">
-                <td><a :href="'/catalog/'+good.slug+'_'+good.id+'g'" ><img :src="good.photo"> {{good.name}}</a></td>
+                <td><a :href="'/catalog/'+good.category.slug+'/'+good.slug" ><img :src="good.photo"> {{good.name}}</a></td>
                 <td class="hidden-mobile">{{good.code}}</td>
                 <td class="hidden-mobile">{{good.price}} {{$t('curr')}}</td>
                 <td>
