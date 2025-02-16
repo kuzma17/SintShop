@@ -50,7 +50,7 @@
                             <ul>
                                 <li>@lang('catalog.pickup')</li>
                                 <li>@lang('catalog.delivery_address')</li>
-                                <li><a href="">@lang('catalog.more')</a> </li>
+                                <li><a href="{{route('page', 'payment-delivery')}}">@lang('catalog.more')</a> </li>
                             </ul>
                         </div>
                         <div class="payment">
@@ -59,7 +59,7 @@
                                 <li>@lang('catalog.cash')</li>
                                 <li>@lang('catalog.cashless')</li>
                                 <li>@lang('catalog.on_cart')</li>
-                                <li><a href="">@lang('catalog.more')</a> </li>
+                                <li><a href="{{route('page', 'payment-delivery')}}">@lang('catalog.more')</a> </li>
                             </ul>
                         </div>
 

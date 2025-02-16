@@ -6,6 +6,32 @@
         <x-categories></x-categories>
         <br>
         <div class="">
+            <h4>Ремонт техники</h4>
+            <h5>Ремонт офисной техники</h5>
+            <p>
+                <a href="{{route('page', 'repair_mfp')}}">@lang('home.repair_mfp')</a> &nbsp;
+                <a href="{{route('page', 'repair_laptops')}}">@lang('home.repair_laptops')</a> &nbsp;
+                <a href="{{route('page', 'repair_printers')}}">@lang('home.repair_printers')</a> &nbsp;
+                <a href="{{route('page', 'repair_computers')}}">@lang('home.repair_computers')</a> &nbsp;
+                <a href="{{route('page', 'repair_scanners')}}">@lang('home.repair_scanners')</a> &nbsp;
+                <a href="{{route('page', 'epair_replacement_cartridges')}}">@lang('home.epair_replacement_cartridges')</a> &nbsp;
+                <a href="{{route('page', 'repair_plotters')}}">@lang('home.repair_plotters')</a> &nbsp;
+                <a href="{{route('page', 'repair_ups')}}">@lang('home.repair_ups')</a>
+            </p>
+
+            <h5>Ремонт бытовой техники</h5>
+
+            <p>
+                <a href="{{route('page', 'repair_tv-sets')}}">@lang('home.repair_tv-sets')</a> &nbsp;
+                <a href="{{route('page', 'repair_microwave_oven')}}">@lang('home.repair_microwave_oven')</a> &nbsp;
+                <a href="{{route('page', 'repair_small_appliance')}}">@lang('home.repair_small_appliance')</a> &nbsp;
+                <a href="{{route('page', 'repair_multicookers')}}">@lang('home.repair_multicookers')</a> &nbsp;
+                <a href="{{route('page', 'repair_robot_vacuums')}}">@lang('home.repair_robot_vacuums')</a> &nbsp;
+                <a href="{{route('page', 'repair_food_processors')}}">@lang('home.repair_food_processors')</a>
+            </p>
+
+        </div>
+        <div class="">
             <h4>{{$text->name}}</h4>
             {!! $text->content !!}
         </div>
