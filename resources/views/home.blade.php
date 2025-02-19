@@ -32,7 +32,7 @@
 
 {{--        </div>--}}
         <div class="">
-            <h4>{{$text->name}}</h4>
+            <h1>{{$text->name}}</h1>
             {!! $text->content !!}
         </div>
         <x-new-products></x-new-products>

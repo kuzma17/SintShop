@@ -8,6 +8,9 @@ body{
     font-weight: 400;
     color: #595959;
 }
+h1{
+    font-size: 25px!important;
+}
 h4{
     font-weight: bolder;
 }
