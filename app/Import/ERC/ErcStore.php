@@ -97,5 +97,17 @@ class ErcStore
         return $response;
     }
 
+    public function getCodeCategories($lang=null){
+
+        $data = array_merge($this->dataDefault(), [
+            "lang" => $lang
+        ]);
+
+        $url = $this->path_url.'/GetCategories';
+        $response = $this->connect($url, $data);
+        return $response;
+    }
+
+
 
 }
