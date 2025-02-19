@@ -48,10 +48,10 @@ class ErcProductImport extends Command
 
 
         //102.01.03.03 => Компьютеры потребительские
-       // $ercParser->parse(Category::find(1), ['102.01.03.03']);
+        $ercParser->parse(Category::find(1), ['102.01.03.03']);
 
         //107.01.02.01 => Мониторы потребительские
-        //$ercParser->parse(Category::find(2), ['107.01.02.01']);
+        $ercParser->parse(Category::find(2), ['107.01.02.01']);
 
         //102.01.01.01 => Ноутбуки для бизнеса
         //102.01.01.02 => Ноутбуки потребительские

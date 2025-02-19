@@ -13,7 +13,7 @@
                                 @lang('menu.computer_tech')
                             </a>
                             <ul class="dropdown-menu">
-{{--                                <li><a class="dropdown-item" href="{{route('catalog', 'computers')}}">@lang('menu.computers')</a></li>--}}
+                                <li><a class="dropdown-item" href="{{route('catalog', 'computers')}}">@lang('menu.computers')</a></li>
                                 <li><a class="dropdown-item" href="{{route('catalog', 'monitors')}}">@lang('menu.monitors')</a></li>
                                 <li><a class="dropdown-item" href="{{route('catalog', 'notepads')}}">@lang('menu.notepads')</a></li>
                             </ul>
