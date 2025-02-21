@@ -14,7 +14,7 @@ class AdminPageController extends Controller
      */
     public function index()
     {
-        $pages = Page::orderBy('name_ru')->get();
+        $pages = Page::orderBy('slug')->get();
 
         return view('admin.pages.index', ['pages' => $pages]);
     }
