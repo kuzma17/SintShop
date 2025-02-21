@@ -33,7 +33,7 @@
             </div>
 
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-2">
                     Title ru
                 </label>
                 <div class="col-9">
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-2">
                     Title ua
                 </label>
                 <div class="col-9">
