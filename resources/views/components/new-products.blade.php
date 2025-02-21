@@ -1,3 +1,4 @@
+@if($goods->count())
 <div>
     <h3>Новинки</h3>
         <div id="carouselProducts" class="carousel slide" data-bs-ride="carousel">
@@ -23,3 +24,4 @@
             </button>
         </div>
 </div>
+@endif

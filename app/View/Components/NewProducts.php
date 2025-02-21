@@ -17,7 +17,9 @@ class NewProducts extends Component
     {
 
         $this->goods = $good->visibleNull()
-            ->orderBy('created_at', 'DESC')
+            ->where('created_at', '>=', now()->subDays(3)->startOfDay()) // С начала трех дней назад
+            ->where('created_at', '<=', now()) // До текущего момента
+            ->inRandomOrder() // Случайный порядок
             ->limit(12)
             ->get()
             ->load('photos');
