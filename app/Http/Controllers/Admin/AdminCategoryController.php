@@ -42,6 +42,9 @@ class AdminCategoryController extends Controller
 //        if (!$request->parent_id){
 //            $request['parent_id'] = 0;
 //        }
+        if(!$request->active){
+            $request['active'] = 0;
+        }
         $image = $request->files->get('file');
         if ($image){
             $name = $request->slug.'.jpg';
@@ -76,6 +79,9 @@ class AdminCategoryController extends Controller
     public function update(CategoryRequest $request, Category $category, ImageService $imageService)
     {
 
+        if(!$request->active){
+            $request['active'] = 0;
+        }
         $image = $request->files->get('file');
         if ($image){
             $name = $request->slug.'.jpg';

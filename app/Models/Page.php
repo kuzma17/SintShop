@@ -33,4 +33,5 @@ class Page extends Model
     public static function getPage($slug){
         return self::where('slug', $slug)->first();
     }
+
 }

@@ -14,7 +14,7 @@ class AdminPageController extends Controller
      */
     public function index()
     {
-        $pages = Page::active()->get()->paginate(12);
+        $pages = Page::get()->paginate(12);
 
         return view('admin.pages.index', ['pages' => $pages]);
     }
@@ -32,8 +32,10 @@ class AdminPageController extends Controller
      */
     public function store(PageRequest $request)
     {
+        if(!$request->active){
+            $request['active'] = 0;
+        }
         Page::create($request->all());
-
         return redirect(route('admin.pages.index'));
     }
 
@@ -60,6 +62,9 @@ class AdminPageController extends Controller
     public function update(PageRequest $request, Page $page)
     {
 
+        if(!$request->active){
+            $request['active'] = 0;
+        }
         $page->update($request->all());
 
         return redirect(route('admin.pages.index'));
