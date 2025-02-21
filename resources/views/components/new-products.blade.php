@@ -1,6 +1,6 @@
 @if($goods->count())
 <div>
-    <h3>Новинки</h3>
+    <h2>Новинки</h2>
         <div id="carouselProducts" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach($goods->chunk(4) as $item)
