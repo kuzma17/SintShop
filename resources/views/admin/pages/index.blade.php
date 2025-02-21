@@ -24,6 +24,7 @@
                         ></x-admin.active>
                     </td>
                     <td>
+                        <a href="{{route('page', $page->slug)}}" title="просмотр на сайте"><i class="fa-regular fa-eye"></i></a> &nbsp;
                         <a href="{{route('admin.pages.edit', $page->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
 {{--                        <form name="destroy_good" method="POST" style="margin: -30px 0 0 20px" action="{{route('admin.pages.destroy', $page->id)}}">--}}
 {{--                            @method('DELETE')--}}
@@ -38,7 +39,7 @@
             </tbody>
         </table>
 
-        {!! $pages->links() !!}
+{{--        {!! $pages->links() !!}--}}
 
     </div>
 @endsection
