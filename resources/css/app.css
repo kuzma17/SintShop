@@ -11,6 +11,13 @@ body{
 h1{
     font-size: 25px!important;
 }
+h2{
+    font-size: 23px!important;
+}
+h3{
+    font-size: 16px!important;
+    font-weight: bolder;
+}
 h4{
     font-weight: bolder;
 }
