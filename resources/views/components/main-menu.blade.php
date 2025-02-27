@@ -46,12 +46,12 @@
                                 <li><a class="dropdown-item" href="{{route('page', 'delivery')}}">@lang('menu.delivery')</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">@lang('menu.sale')</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">@lang('menu.stock')</a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="#">@lang('menu.sale')</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="#">@lang('menu.stock')</a>--}}
+{{--                        </li>--}}
                     </ul>
                     <ul class="navbar-nav mobile-nav">
                         <li class="nav-item">

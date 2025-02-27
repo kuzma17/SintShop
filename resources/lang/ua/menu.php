@@ -23,7 +23,7 @@ return [
     'cartridges_jet' => 'Картриджі струменеві',
     'repair' => 'Ремонт',
     'replacing_cartridges' => 'Заміна картриджів',
-    'delivery' => 'доставка',
+    'delivery' => 'Доставка',
     'navigation' => 'Навігація',
     'categories' => 'Категорії',
 ];

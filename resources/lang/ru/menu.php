@@ -23,7 +23,7 @@ return [
     'cartridges_jet' => 'Картриджи струйные',
     'repair' => 'Ремонт',
     'replacing_cartridges' => 'Замена картриджей',
-    'delivery' => 'доставка',
+    'delivery' => 'Доставка',
     'navigation' => 'Навигация',
     'categories' => 'Категории',
 ];
