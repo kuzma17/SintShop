@@ -5,15 +5,11 @@
     <div class="container">
         <x-categories></x-categories>
         <br>
-{{--        <div class="">--}}
-{{--            <h2>{{$text->name}}</h2>--}}
-{{--            {!! $text->content !!}--}}
-{{--        </div>--}}
-
-        @if($text)
+        <div class="">
             <h2>{{$text->name}}</h2>
-            <collapse-text :text="{{json_encode($text->content)}}"></collapse-text>
-        @endif
+            {!! $text->content !!}
+        </div>
+
         <x-new-products></x-new-products>
     </div>
     <br>
