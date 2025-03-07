@@ -29,6 +29,7 @@
         @yield('content')
         @include('layouts.footer')
 
+        <callback-button></callback-button>
     </div>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
