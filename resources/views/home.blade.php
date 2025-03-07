@@ -6,35 +6,14 @@
         <x-categories></x-categories>
         <br>
 {{--        <div class="">--}}
-{{--            <h3>@lang('home.repair_equipment')</h3>--}}
-{{--            <h5>@lang('home.repair_office_equipment')</h5>--}}
-{{--            <p>--}}
-{{--                <a href="{{route('page', 'repair_mfp')}}">@lang('home.repair_mfp')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_laptops')}}">@lang('home.repair_laptops')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_printers')}}">@lang('home.repair_printers')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_computers')}}">@lang('home.repair_computers')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_scanners')}}">@lang('home.repair_scanners')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'epair_replacement_cartridges')}}">@lang('home.epair_replacement_cartridges')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_plotters')}}">@lang('home.repair_plotters')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_ups')}}">@lang('home.repair_ups')</a>--}}
-{{--            </p>--}}
-
-{{--            <h5>@lang('home.repair_home_appliance')</h5>--}}
-
-{{--            <p>--}}
-{{--                <a href="{{route('page', 'repair_tv-sets')}}">@lang('home.repair_tv-sets')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_microwave_oven')}}">@lang('home.repair_microwave_oven')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_small_appliance')}}">@lang('home.repair_small_appliance')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_multicookers')}}">@lang('home.repair_multicookers')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_robot_vacuums')}}">@lang('home.repair_robot_vacuums')</a> &nbsp;--}}
-{{--                <a href="{{route('page', 'repair_food_processors')}}">@lang('home.repair_food_processors')</a>--}}
-{{--            </p>--}}
-
+{{--            <h2>{{$text->name}}</h2>--}}
+{{--            {!! $text->content !!}--}}
 {{--        </div>--}}
-        <div class="">
+
+        @if($text)
             <h2>{{$text->name}}</h2>
-            {!! $text->content !!}
-        </div>
+            <collapse-text :text="{{json_encode($text->content)}}"></collapse-text>
+        @endif
         <x-new-products></x-new-products>
     </div>
     <br>
