@@ -18,7 +18,7 @@ class PageController extends Controller
     public function page($slug, TelegramService $telegramService){
 
         dd($telegramService->sendMessage('Перезвоните мне Лариса +79868765432542'));
-        //dd($this->messageChat());
+       // dd($telegramService->getUpdates());
 
         $page = Page::getPage($slug)?? abort(404);
         return view('pages.page', ['page' => $page]);

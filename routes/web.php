@@ -93,6 +93,9 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
     Route::get('/nova-poshta', [\App\Http\Controllers\NovaPoshtaController::class, 'index']);
 
 
+    Route::post('/callback', \App\Http\Controllers\CallBackController::class);
+
+
     Route::get('/{page}', [App\Http\Controllers\PageController::class, 'page'])->name('page');
 
 });

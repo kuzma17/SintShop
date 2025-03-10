@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 import { IMaskDirective } from 'vue-imask'
 export default {
     name: "InputPhone",
