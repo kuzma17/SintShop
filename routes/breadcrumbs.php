@@ -15,7 +15,7 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('page', function (BreadcrumbTrail $trail, \App\Models\Page $page){
     $trail->parent('home');
-    $trail->push($page->title, route('page', $page->slug));
+    $trail->push($page->name, route('page', $page->slug));
 });
 
 Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail, \App\Models\Category $category){
@@ -24,7 +24,7 @@ Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail, \App\Models\Catego
     } else {
         $trail->parent('home');
     }
-    $trail->push($category->title, route('catalog', $category->slug));
+    $trail->push($category->name, route('catalog', $category->slug));
 });
 
 Breadcrumbs::for('good', function (BreadcrumbTrail $trail, \App\Models\Good $good){
