@@ -158,6 +158,31 @@
             </div>
 
             <div class="row mb-3">
+                <label class="col-2">
+                    Контент2 ru
+                </label>
+                <div class="col-9">
+                    <text-editor
+                            name="content2_ru"
+                            value="{{old('content2_ru')}}"
+                            apikey="{{env('TINYMCE_KEY')}}"
+                    ></text-editor>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-2">
+                    Контент2 ua
+                </label>
+                <div class="col-9">
+                    <text-editor
+                            name="content2_ua"
+                            value="{{old('content2_ua')}}"
+                            apikey="{{env('TINYMCE_KEY')}}"
+                    ></text-editor>
+                </div>
+            </div>
+
+            <div class="row mb-3">
                 <label class="col-2 star">
                     slug
                 </label>

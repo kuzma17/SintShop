@@ -46,5 +46,8 @@
                     </div>
                 </div>
             </div>
+            @if($category->content2)
+                <collapse-text :text="{{json_encode($category->content2)}}"></collapse-text>
+            @endif
         </div>
 @endsection

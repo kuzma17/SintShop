@@ -13,6 +13,11 @@ trait Locale
         return $this->{$column};
     }
 
+    public function getContent2Attribute(){
+        $column = "content2_" . $this->lang();
+        return $this->{$column};
+    }
+
     protected function getTitleAttribute(){
         $column = "title_" . $this->lang();
         return $this->{$column};
