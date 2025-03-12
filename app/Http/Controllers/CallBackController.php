@@ -11,7 +11,7 @@ class CallBackController extends Controller
     public function __invoke(CallBackRequest $request, TelegramService $telegramService)
     {
         $massege = 'Sint-shop.com. Call back on the number '.$request->phone.' '.$request->name;
-       // $telegramService->sendMessage($massege);
+        $telegramService->sendMessage($massege);
 
         return response()->json([
             'success' => true,
