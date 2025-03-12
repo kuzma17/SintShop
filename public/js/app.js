@@ -23048,8 +23048,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CallbackButton",
-  props: [],
-  mounted: function mounted() {},
   data: function data() {
     return {
       showForm: false,
@@ -23060,13 +23058,11 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         phone: ''
       },
-      submit: true
+      submit: true,
+      message: false
     };
   },
   methods: {
-    // toggleForm() {
-    //   this.showForm = !this.showForm;
-    // },
     openForm: function openForm() {
       this.showForm = true;
       this.showBtn = false;
@@ -23076,23 +23072,24 @@ __webpack_require__.r(__webpack_exports__);
       this.name = '';
       this.showForm = false;
       this.showBtn = true;
+      this.message = false;
+      this.errors.name = '';
+      this.errors.phone = '';
     },
     validateName: function validateName() {
-      this.errors.name = this.name ? '' : 'Введите ваше имя.';
+      this.errors.name = this.name ? '' : this.$t('error_name');
       if (!this.name) {
         this.submit = false;
       }
     },
     validatePhone: function validatePhone() {
-      // const phonePattern = /^[0-9]{10}$/; // Пример: 10 цифр
-      this.errors.phone = this.phone ? '' : 'Введите номер телефона.';
-      // ? ''
-      // : 'Пожалуйста, введите корректный номер телефона.';
+      this.errors.phone = this.phone ? '' : this.$t('error_phone');
       if (!this.phone) {
         this.submit = false;
       }
     },
     submitForm: function submitForm() {
+      var _this = this;
       this.submit = true;
       this.validateName();
       this.validatePhone();
@@ -23102,14 +23099,16 @@ __webpack_require__.r(__webpack_exports__);
           phone: this.phone
         };
         axios.post('callback', data).then(function (response) {
-          console.log(response.data);
+          //console.log(response.data);
+          if (response.data.success === true) {
+            _this.message = response.data.message;
+          }
         })["catch"](function (error) {
           console.log(error);
-          // if (error.response.status === 422) {
-          //   this.errors = error.response.data.errors;
-          // }
+          if (error.response.status === 422) {
+            _this.errors = error.response.data.errors;
+          }
         });
-        this.closeForm();
       }
     }
   }
@@ -24179,7 +24178,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = {
   key: 1,
-  "class": "callback-form"
+  "class": "callback-container"
 };
 var _hoisted_2 = {
   "class": "callback-header",
@@ -24187,19 +24186,27 @@ var _hoisted_2 = {
     "position": "relative"
   }
 };
-var _hoisted_3 = ["placeholder"];
+var _hoisted_3 = {
+  key: 0,
+  "class": "callback-message"
+};
 var _hoisted_4 = {
+  key: 1,
+  "class": "callback-form"
+};
+var _hoisted_5 = ["placeholder"];
+var _hoisted_6 = {
   key: 0,
   "class": "error-message"
 };
-var _hoisted_5 = {
+var _hoisted_7 = {
   key: 1,
   "class": "error-message"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
   var _component_input_phone = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("input-phone");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Кнопка звонка "), $data.showBtn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.showBtn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     "class": "callback-button",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -24207,14 +24214,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, _cache[7] || (_cache[7] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "fa-solid fa-phone icon-btn-callback"
-  }, null, -1 /* HOISTED */)]))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Форма обратного звонка "), $data.showForm ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('callback')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, null, -1 /* HOISTED */)]))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.showForm ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('callback')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "close_callback",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.closeForm();
     })
   }, _cache[8] || (_cache[8] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "fa-solid fa-circle-xmark icon-close-callback"
-  }, null, -1 /* HOISTED */)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, -1 /* HOISTED */)]))]), $data.message ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.message), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.message ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.name = $event;
@@ -24226,7 +24233,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onInput: _cache[3] || (_cache[3] = function ($event) {
       return _this.errors.name = '';
     })
-  }, null, 42 /* CLASS, PROPS, NEED_HYDRATION */, _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.name]]), $data.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_input_phone, {
+  }, null, 42 /* CLASS, PROPS, NEED_HYDRATION */, _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.name]]), $data.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_input_phone, {
     name: "phone",
     modelValue: $data.phone,
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
@@ -24240,12 +24247,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onInput: _cache[5] || (_cache[5] = function ($event) {
       return _this.errors.phone = '';
     })
-  }, null, 8 /* PROPS */, ["modelValue", "class", "placeholder"]), $data.errors.phone ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.phone), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, ["modelValue", "class", "placeholder"]), $data.errors.phone ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.phone), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[6] || (_cache[6] = function () {
       return $options.submitForm && $options.submitForm.apply($options, arguments);
     }),
     "class": "btn btn-blue"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('send')), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('send')), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
@@ -32148,7 +32155,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n/* Стили кнопки */\n.callback-button[data-v-6589d382] {\n  position: fixed;\n  bottom: 100px;\n  right: 20px;\n  background: #04B3F1;\n  color: white;\n  border: none;\n  padding: 15px;\n  border-radius: 50%;\n  cursor: pointer;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n  z-index: 100;\n}\n.callback-header[data-v-6589d382]{\n  position: relative;\n}\n.close_callback[data-v-6589d382]{\n  position: absolute;\n  right: -5px;\n  top: -7px;\n}\n.icon-close-callback[data-v-6589d382]{\n  font-size: 26px;\n  color: #04B3F1;\n}\n.icon-btn-callback[data-v-6589d382] {\n  font-size: 32px;\n}\n\n/* Всплывающая форма */\n.callback-form[data-v-6589d382] {\n  position: fixed;\n  bottom: 100px;\n  right: 20px;\n  background: white;\n  padding: 10px;\n  border-radius: 10px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  z-index: 99;\n}\n.callback-form input[data-v-6589d382] {\n  padding: 8px;\n  //border: 1px solid #ccc;\n  //border-radius: 5px;\n}\n.callback-form button[data-v-6589d382] {\n  background: #0468C5;\n  color: white;\n  padding: 8px;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n/* Стили кнопки */\n.callback-button[data-v-6589d382] {\n  position: fixed;\n  bottom: 100px;\n  right: 20px;\n  background: #04B3F1;\n  color: white;\n  border: none;\n  padding: 15px;\n  border-radius: 50%;\n  cursor: pointer;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n  z-index: 100;\n}\n.callback-header[data-v-6589d382]{\n  position: relative;\n  padding: 7px;\n  color: #04B4F2;\n  font-size: 16px;\n}\n.close_callback[data-v-6589d382]{\n  position: absolute;\n  right: -5px;\n  top: -7px;\n}\n.icon-close-callback[data-v-6589d382]{\n  font-size: 26px;\n  color: #04B3F1;\n}\n.icon-btn-callback[data-v-6589d382] {\n  font-size: 32px;\n}\n\n/* Всплывающая форма */\n.callback-container[data-v-6589d382] {\n  position: fixed;\n  max-width: 250px;\n  bottom: 100px;\n  right: 20px;\n  background: white;\n  border-radius: 10px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\n  display: flex;\n  flex-direction: column;\n  z-index: 99;\n}\n.callback-form[data-v-6589d382]{\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.callback-form input[data-v-6589d382] {\n  padding: 8px;\n}\n.callback-form button[data-v-6589d382] {\n  background: #0468C5;\n  color: white;\n  padding: 8px;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.error-message[data-v-6589d382]{\n  font-size: 11px;\n  color: darkred;\n}\n.callback-message[data-v-6589d382]{\n  padding: 10px 7px 20px 7px;\n  font-size: 14px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -1,18 +1,18 @@
 <template>
   <div>
-    <!-- Кнопка звонка -->
     <button v-if="showBtn" class="callback-button" @click="openForm()">
       <i class="fa-solid fa-phone icon-btn-callback"></i>
     </button>
 
-    <!-- Форма обратного звонка -->
-    <div v-if="showForm" class="callback-form">
+    <div v-if="showForm" class="callback-container">
       <div class="callback-header" style="position: relative">
         <span>{{$t('callback')}}</span>
         <span class="close_callback" @click="closeForm()">
         <i class="fa-solid fa-circle-xmark icon-close-callback"></i>
       </span>
       </div>
+      <div v-if="message" class="callback-message">{{message}}</div>
+      <div v-if="!message" class="callback-form">
       <input type="text"
              v-model="name"
              class="form-control"
@@ -31,6 +31,7 @@
       ></input-phone>
       <span v-if="errors.phone" class="error-message">{{ errors.phone }}</span>
       <button @click="submitForm" class="btn btn-blue">{{$t('send')}}</button>
+      </div>
     </div>
   </div>
 </template>
@@ -38,10 +39,6 @@
 <script>
 export default {
   name: "CallbackButton",
-  props:[
-  ],
-  mounted() {
-  },
   data(){
     return{
       showForm : false,
@@ -53,13 +50,10 @@ export default {
         phone: '',
       },
       submit: true,
+      message: false
     }
   },
   methods:{
-    // toggleForm() {
-    //   this.showForm = !this.showForm;
-    // },
-
     openForm(){
       this.showForm = true
       this.showBtn = false
@@ -70,21 +64,20 @@ export default {
       this.name = '';
       this.showForm = false
       this.showBtn = true
+      this.message = false
+      this.errors.name = ''
+      this.errors.phone = ''
     },
 
     validateName() {
-      this.errors.name = this.name ? '' : 'Введите ваше имя.';
-
+      this.errors.name = this.name ? '' : this.$t('error_name');
       if (!this.name){
         this.submit = false;
       }
 
     },
     validatePhone() {
-     // const phonePattern = /^[0-9]{10}$/; // Пример: 10 цифр
-      this.errors.phone = this.phone ? '' : 'Введите номер телефона.';
-          // ? ''
-          // : 'Пожалуйста, введите корректный номер телефона.';
+      this.errors.phone = this.phone ? '' : this.$t('error_phone');
       if (!this.phone) {
         this.submit = false;
       }
@@ -102,18 +95,17 @@ export default {
         };
         axios.post('callback', data)
             .then(response => {
-               console.log(response.data);
-
+               //console.log(response.data);
+               if (response.data.success === true){
+                 this.message =  response.data.message
+               }
             })
             .catch(error => {
               console.log(error);
-              // if (error.response.status === 422) {
-              //   this.errors = error.response.data.errors;
-              // }
+              if (error.response.status === 422) {
+                this.errors = error.response.data.errors;
+              }
             });
-
-        this.closeForm();
-
       }
     },
 
@@ -138,6 +130,9 @@ export default {
 }
 .callback-header{
   position: relative;
+  padding: 7px;
+  color: #04B4F2;
+  font-size: 16px;
 }
 .close_callback{
   position: absolute;
@@ -154,24 +149,26 @@ export default {
 }
 
 /* Всплывающая форма */
-.callback-form {
+.callback-container {
   position: fixed;
+  max-width: 250px;
   bottom: 100px;
   right: 20px;
   background: white;
-  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  gap: 8px;
   z-index: 99;
 }
-
+.callback-form{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .callback-form input {
   padding: 8px;
-  //border: 1px solid #ccc;
-  //border-radius: 5px;
 }
 
 .callback-form button {
@@ -182,4 +179,13 @@ export default {
   border-radius: 5px;
   cursor: pointer;
 }
+.error-message{
+  font-size: 11px;
+  color: darkred;
+}
+.callback-message{
+  padding: 10px 7px 20px 7px;
+  font-size: 14px;
+}
+
 </style>

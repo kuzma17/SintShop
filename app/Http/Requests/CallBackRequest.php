@@ -23,7 +23,15 @@ class CallBackRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:17'],
+            'phone' => ['required', 'regex:/^\+38 \(\d{3}\) \d{3} \d{2} \d{2}$/']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'phone.required' => 'Введите номер телефона.',
+            'phone.regex' => 'Неверный формат номера телефона.', // Кастомное сообщение
         ];
     }
 }
