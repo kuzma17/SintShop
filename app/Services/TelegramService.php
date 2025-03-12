@@ -15,14 +15,34 @@ class TelegramService
     }
     public function sendMessage($message)
     {
-        $url = "https://api.telegram.org/bot{$this->token}/sendMessage";
+//        $url = "https://api.telegram.org/bot{$this->token}/sendMessage";
+//
+//        $response = Http::post($url, [
+//            'chat_id' => $this->chatId,
+//            'text' => $message,
+//        ]);
 
-        $response = Http::post($url, [
-            'chat_id' => $this->chatId,
-            'text' => $message,
-        ]);
+       // return $response->successful();
 
-        return $response->successful();
+
+
+        try {
+            $url = "https://api.telegram.org/bot{$this->token}/sendMessage";
+
+            $response = Http::post($url, [
+                'chat_id' => $this->chatId,
+                'text' => $message,
+            ]);
+
+            if (!$response->successful()) {
+                \Log::error('Ошибка отправки в Telegram', ['response' => $response->body()]);
+            }
+
+            return $response->successful();
+        } catch (\Exception $e) {
+            \Log::error('Ошибка при отправке сообщения в Telegram', ['error' => $e->getMessage()]);
+            return false;
+        }
 
     }
 
