@@ -23,7 +23,13 @@ class CallBackRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'regex:/^\+38 \(\d{3}\) \d{3} \d{2} \d{2}$/']
+            'phone' => ['required', function ($attribute, $value, $fail) {
+
+                $digits = preg_replace('/\D/', '', $value);
+                if (strlen($digits) !== 12) {
+                    $fail('Неверный формат номера телефона');
+                }
+            }],
         ];
     }
 
@@ -31,7 +37,6 @@ class CallBackRequest extends FormRequest
     {
         return [
             'phone.required' => 'Введите номер телефона.',
-            'phone.regex' => 'Неверный формат номера телефона.', // Кастомное сообщение
         ];
     }
 }

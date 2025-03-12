@@ -12,7 +12,7 @@
             "
         class="form-control"
         :class="class"
-        @change="edit()"
+        @input="edit()"
         :placeholder="placeholder"
         :required="required"
     />
@@ -58,9 +58,12 @@ export default {
         },
 
         edit(){
-            this.num++
-            this.$emit('update:modelValue', this.value)
+          if (this.value.length > 19) {
+            this.value = this.value.slice(0, 19);
+          }
+          this.$emit('update:modelValue', this.value)
         },
+
         addFocus(){
             this.$refs.input.focus()
         },
