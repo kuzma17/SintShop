@@ -121,4 +121,6 @@ return [
 
     'attributes' => [],
 
+    'error_format_phone' => 'Неправильний формат телефонного номера',
+
 ];

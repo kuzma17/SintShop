@@ -118,4 +118,7 @@ return [
 
     'attributes' => [],
 
+
+    'error_format_phone' => 'Неверный формат номера телефона',
+
 ];

@@ -27,7 +27,7 @@ class CallBackRequest extends FormRequest
 
                 $digits = preg_replace('/\D/', '', $value);
                 if (strlen($digits) !== 12) {
-                    $fail('Неверный формат номера телефона');
+                    $fail(__('validation.error_format_phone'));
                 }
             }],
         ];
