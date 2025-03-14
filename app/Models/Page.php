@@ -23,6 +23,8 @@ class Page extends Model
         'keywords_ua',
         'content_ru',
         'content_ua',
+        'content2_ru',
+        'content2_ua',
         'active',
     ];
 
