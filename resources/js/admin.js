@@ -58,6 +58,8 @@ app.component('type-attribute', TypeAttribute);
 import TextEditor from "./components/admin/TinyEditor.vue";
 app.component('text-editor', TextEditor);
 
+import QuillEditor from "./components/admin/QuillEditor.vue";
+app.component('quill-editor', QuillEditor);
 
 
 

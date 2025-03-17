@@ -112,11 +112,12 @@
                     Контент ru
                 </label>
                 <div class="col-9">
-                    <text-editor
-                            name="content_ru"
-                            value="{{old('content_ru')}}"
-                            apikey="{{env('TINYMCE_KEY')}}"
-                    ></text-editor>
+{{--                    <text-editor--}}
+{{--                            name="content_ru"--}}
+{{--                            value="{{old('content_ru')}}"--}}
+{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
+{{--                    ></text-editor>--}}
+                    <quill-editor></quill-editor>
                     @error('content_ru')
                     <span class="invalid-feedback" role="alert">
                        <strong>{{ $message }}</strong>
