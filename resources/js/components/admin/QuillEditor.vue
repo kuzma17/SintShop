@@ -17,7 +17,13 @@
 <!--        :modules="moduleseditor"-->
 <!--    />-->
 
-    <QuillEditor :modules="modules" v-model:content="content" toolbar="full" contentType="html" theme="snow"/>
+    <QuillEditor
+        :modules="modules"
+        v-model:content="content"
+        toolbar="full"
+        contentType="html"
+        theme="snow"
+    />
   </div>
 </template>
 
@@ -62,6 +68,8 @@ export default {
               const formData = new FormData();
               formData.append("image", file);
 
+              console.log('Form '+formData);
+
               // axios.post('/upload-image', formData)
               //     .then(res => {
               //       console.log(res)
@@ -71,6 +79,19 @@ export default {
               //       reject("Upload failed");
               //       console.error("Error:", err)
               //     })
+
+              axios.post('/photo/upload', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+              }).then(response => {
+                 console.log(response.data);
+                //this.fileList = this.fileList.concat(response.data);
+                //this.$emit('update:modelValue', this.fileList)
+               // this.$refs.files.value=''; // zero input files
+              }).catch(error => {
+                console.log(error);
+              });
             })
           }
         },
