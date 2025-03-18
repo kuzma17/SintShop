@@ -27,6 +27,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
     Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'loginPhone'])->name('login.phone'); //Login Phone
     Route::post('/login_order', [\App\Http\Controllers\Auth\LoginController::class, 'loginOrder'])->name('login.order'); //Login from Order
 
+    Route::get('/catalog/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
+
     Route::get('/catalog/{slug}', [\App\Http\Controllers\CatalogController::class, 'list'])->name('catalog');
 
     Route::get('/catalog/{category}/{slug}', [\App\Http\Controllers\GoodController::class, 'index'])->name('good');
@@ -51,7 +53,6 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
         Route::get('/order/{order}', [\App\Http\Controllers\UserController::class, 'order'])->name('user.order');
     });
 
-    Route::get('/catalog/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
 
 
