@@ -31,4 +31,17 @@ class PhotoController extends Controller
 
         $this->imageService->delete($photo);
     }
+
+    public function uploadImage(Request $request)
+    {
+        $file = $request->file('image');
+        $path = '/images/posts/';
+        $this->imageService->path($path);
+        $name = $this->imageService->create($file);
+
+        return response()->json([
+            'url' => $path.$name
+        ]);
+
+    }
 }

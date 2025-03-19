@@ -118,9 +118,9 @@
 {{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
 {{--                    ></text-editor>--}}
 
-{{--                    <quill-editor></quill-editor>--}}
+                    <quill-editor></quill-editor>
 
-                    <tiptap-editor></tiptap-editor>
+{{--                    <tiptap-editor></tiptap-editor>--}}
                     @error('content_ru')
                     <span class="invalid-feedback" role="alert">
                        <strong>{{ $message }}</strong>
