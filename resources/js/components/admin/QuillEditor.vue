@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="quill_editor">
     <span @click="toggleHtmlView" class="toggle-btn">
-      {{ showHtml ? "Вернуться в редактор" : "Просмотр HTML" }}
+      {{ showHtml ? "editor" : "html" }}
     </span>
 
     <div v-if="showHtml">
@@ -15,82 +15,82 @@
         theme="snow"
         :modules="modules"
     />
+    <input type="hidden" :name="this.name" v-model="content">
   </div>
 </template>
 
 <script>
 
-import { QuillEditor, Quill } from "@vueup/vue-quill";
+import {Quill,QuillEditor} from "@vueup/vue-quill";
 import ImageUploader from "quill-image-uploader";
+import BlotFormatter from 'quill-blot-formatter'
 import axios from "axios";
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-
-import BlotFormatter from 'quill-blot-formatter'
 
 export default {
   components: {
     QuillEditor,
     Quill
   },
+  props:[
+    'name',
+    'value'
+  ],
+  mounted() {
+    if(this.value){
+      this.content = this.value
+    }
+  },
   data() {
     return {
       content: "",
       showHtml: false,
-      modules : {
-        name: 'imageUploader',
-        module: ImageUploader,
-        options: {
-          upload: file => {
-            return new Promise((resolve, reject) => {
-              const formData = new FormData();
-              formData.append("image", file);
+      modules: [
+        {
+          name: 'imageUploader',
+          module: ImageUploader,
+          options: {
+            upload: file => {
+              return new Promise((resolve, reject) => {
+                const formData = new FormData();
+                formData.append("image", file);
 
-              axios.post('/photo/upload_image', formData)
-                  .then(res => {
-                    //console.log(res.data)
-                    resolve(res.data.url);
-                  })
-                  .catch(err => {
-                    reject("Upload failed");
-                    console.error("Error:", err)
-                  })
-            })
-          }
+                axios.post('/photo/upload', formData)
+                    .then(res => {
+                      //console.log(res.data)
+                      resolve(res.data.url);
+                    })
+                    .catch(err => {
+                      reject("Upload failed");
+                      console.error("Error:", err)
+                    })
+              })
+            }
+          },
         },
-
-
-      }
+        {
+          name: 'blotFormatter',
+          module: BlotFormatter,
+          options: {/* options */}
+        }
+      ]
     };
   },
-      methods: {
-        toggleHtmlView() {
-          this.showHtml = !this.showHtml;
-        },
+  methods: {
+    toggleHtmlView() {
+      this.showHtml = !this.showHtml;
+    },
 
 
-        // Метод для загрузки изображения
-        // async uploadImage(file) {
-        //   const formData = new FormData();
-        //   formData.append("image", file);
-        //
-        //   try {
-        //     const response = await axios.post("/api/upload", formData, {
-        //       headers: {"Content-Type": "multipart/form-data"}
-        //     });
-        //
-        //     return response.data.url; // Вставляем URL загруженного изображения
-        //   } catch (error) {
-        //     console.error("Ошибка загрузки", error);
-        //     throw new Error("Ошибка загрузки изображения");
-        //   }
-        // },
-
-      }
-    }
+  }
+}
 
 </script>
 
 <style scoped>
+.quill_editor{
+
+}
 .toggle-btn {
   margin-bottom: 10px;
   padding: 5px 10px;

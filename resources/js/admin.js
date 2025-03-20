@@ -61,10 +61,6 @@ app.component('text-editor', TextEditor);
 import QuillEditor from "./components/admin/QuillEditor.vue";
 app.component('quill-editor', QuillEditor);
 
-import TiptapEditor from "./components/admin/TiptapEditor.vue";
-app.component('tiptap-editor', TiptapEditor);
-
-
 //-----------------
 
  app.mount("#app");
