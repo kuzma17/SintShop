@@ -33846,9 +33846,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vueup_vue_quill_dist_vue_quill_snow_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vueup/vue-quill/dist/vue-quill.snow.css */ "./node_modules/@vueup/vue-quill/dist/vue-quill.snow.css");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['name', 'value'],
+  props: {
+    name: String,
+    value: String,
+    "class": String
+  },
   mounted: function mounted() {
-    console.log('Name => ' + this.name);
     if (this.value) {
       this.content = this.value;
     }
@@ -34538,8 +34541,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:content": _cache[2] || (_cache[2] = function ($event) {
       return $data.content = $event;
     }),
-    contentType: "html"
-  }, null, 8 /* PROPS */, ["content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    contentType: "html",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(this["class"])
+  }, null, 8 /* PROPS */, ["content", "class"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: $props.name,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
@@ -41281,7 +41285,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.quill_editor{}\n.toggle-btn {\n  margin-bottom: 10px;\n  padding: 5px 10px;\n  background: #007bff;\n  color: white;\n  border: none;\n  cursor: pointer;\n  border-radius: 4px;\n}\n.html-view {\n  width: 100%;\n  height: 300px;\n  border: 1px solid #ddd;\n  padding: 10px;\n  font-family: monospace;\n}\n:deep(.ql-container) {\n  font-family: Arial, sans-serif;\n  font-size: 16px;\n  background-color: #f9f9f9;\n  height: 300px; /* Начальная высота */\n  min-height: 150px; /* Минимальная высота */\n  max-height: 900px; /* Максимальная высота */\n  resize: vertical; /* Позволяет изменять размер только по вертикали */\n  overflow: auto; /* Добавляет скролл при необходимости */\n  border: 1px solid #ccc; /* Граница, чтобы было видно, за что тянуть */\n  padding: 5px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.quill_editor{}\n.toggle-btn {\n  margin-bottom: 10px;\n  padding: 5px 10px;\n  background: #007bff;\n  color: white;\n  border: none;\n  cursor: pointer;\n  border-radius: 4px;\n}\n.html-view {\n  width: 100%;\n  height: 300px;\n  border: 1px solid #ddd;\n  padding: 10px;\n  font-family: monospace;\n}\n:deep(.ql-container) {\n  font-family: Arial, sans-serif;\n  font-size: 16px;\n  background-color: #f9f9f9;\n  height: 300px; /* Начальная высота */\n  min-height: 150px; /* Минимальная высота */\n  max-height: 900px; /* Максимальная высота */\n  resize: vertical; /* Позволяет изменять размер только по вертикали */\n  overflow: auto; /* Добавляет скролл при необходимости */\n  border: 1px solid #ccc; /* Граница, чтобы было видно, за что тянуть */\n  padding: 5px;\n}\n.is-invalid {\n  border-color: red !important;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

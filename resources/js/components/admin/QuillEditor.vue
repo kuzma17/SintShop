@@ -10,6 +10,7 @@
         v-if="!showHtml"
         v-model:content="content"
         contentType="html"
+        :class="this.class"
     />
     <input type="hidden" :name="name" v-model="content">
   </div>
@@ -19,10 +20,11 @@
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 export default {
-  props:[
-    'name',
-    'value'
-  ],
+  props: {
+    name: String,
+    value: String,
+    class: String
+  },
   mounted() {
     if(this.value){
       this.content = this.value
@@ -78,6 +80,10 @@ export default {
   overflow: auto; /* Добавляет скролл при необходимости */
   border: 1px solid #ccc; /* Граница, чтобы было видно, за что тянуть */
   padding: 5px;
+}
+
+.is-invalid {
+  border-color: red !important;
 }
 
 </style>

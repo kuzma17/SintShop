@@ -144,7 +144,7 @@
 {{--                    ></text-editor>--}}
                     <quill-editor
                             name="content_ru"
-                            value="{{old('content_ru')}}"
+                            :value="{{json_encode(old('content_ru'))}}"
                     ></quill-editor>
                 </div>
             </div>
@@ -160,7 +160,7 @@
 {{--                    ></text-editor>--}}
                     <quill-editor
                             name="content_ua"
-                            value="{{old('content_ua')}}"
+                            :value="{{json_encode(old('content_ua'))}}"
                     ></quill-editor>
                 </div>
             </div>
@@ -177,7 +177,7 @@
 {{--                    ></text-editor>--}}
                     <quill-editor
                             name="content2_ru"
-                            value="{{old('content2_ru')}}"
+                            :value="{{json_encode(old('content2_ru'))}}"
                     ></quill-editor>
                 </div>
             </div>
@@ -193,7 +193,7 @@
 {{--                    ></text-editor>--}}
                     <quill-editor
                             name="content2_ua"
-                            value="{{old('content2_ua')}}"
+                            :value="{{json_encode(old('content2_ua'))}}"
                     ></quill-editor>
                 </div>
             </div>

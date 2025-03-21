@@ -116,7 +116,7 @@
                 <div class="col-9">
                     <quill-editor
                             name="content_ru"
-                            value="{{old('content_ru', $page->content_ru)}}"
+                            :value="{{json_encode(old('content_ru', $page->content_ru))}}"
                             class="@error('content_ru') is-invalid @enderror"
                     ></quill-editor>
                     @error('content_ru')
@@ -138,7 +138,7 @@
 {{--                    ></text-editor>--}}
                     <quill-editor
                             name="content_ua"
-                            value="{{old('content_ru', $page->content_ua)}}"
+                            :value="{{json_encode(old('content_ru', $page->content_ua))}}"
                             class="@error('content_ua') is-invalid @enderror"
                     ></quill-editor>
                     @error('content_ua')
