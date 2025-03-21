@@ -33848,6 +33848,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['name', 'value'],
   mounted: function mounted() {
+    console.log('Name => ' + this.name);
     if (this.value) {
       this.content = this.value;
     }
@@ -33861,6 +33862,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     toggleHtmlView: function toggleHtmlView() {
       this.showHtml = !this.showHtml;
+      if (this.showHtml) {
+        this.content = this.content || ""; // Заполняем content при переходе в HTML-режим
+      }
     }
   }
 });
@@ -34537,7 +34541,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     contentType: "html"
   }, null, 8 /* PROPS */, ["content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
-    name: this.name,
+    name: $props.name,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.content = $event;
     })

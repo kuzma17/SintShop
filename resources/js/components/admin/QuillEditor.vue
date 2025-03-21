@@ -10,9 +10,8 @@
         v-if="!showHtml"
         v-model:content="content"
         contentType="html"
-
     />
-    <input type="hidden" :name="this.name" v-model="content">
+    <input type="hidden" :name="name" v-model="content">
   </div>
 </template>
 
@@ -38,6 +37,9 @@ export default {
   methods: {
     toggleHtmlView() {
       this.showHtml = !this.showHtml;
+      if (this.showHtml) {
+        this.content = this.content || ""; // Заполняем content при переходе в HTML-режим
+      }
     },
 
   }
