@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    {{$errors}}
     <h4>Редактирование страницы</h4>
     <div class="good">
         <form name="category" method="post" enctype="multipart/form-data" action="{{route('admin.pages.update', $page->id)}}">
