@@ -118,7 +118,9 @@
 {{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
 {{--                    ></text-editor>--}}
 
-                    <quill-editor></quill-editor>
+                    <quill-editor
+                            class="@error('content_ru') is-invalid @enderror"
+                    ></quill-editor>
 
                     @error('content_ru')
                     <span class="invalid-feedback" role="alert">
@@ -137,7 +139,9 @@
 {{--                            value="{{old('content_ua')}}"--}}
 {{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
 {{--                    ></text-editor>--}}
-                    <quill-editor></quill-editor>
+                    <quill-editor
+                            class="@error('content_ua') is-invalid @enderror"
+                    ></quill-editor>
                     @error('content_ua')
                     <span class="invalid-feedback" role="alert">
                        <strong>{{ $message }}</strong>

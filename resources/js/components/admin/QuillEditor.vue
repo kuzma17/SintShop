@@ -3,35 +3,23 @@
     <span @click="toggleHtmlView" class="toggle-btn">
       {{ showHtml ? "editor" : "html" }}
     </span>
-
     <div v-if="showHtml">
       <textarea v-model="content" class="html-view"></textarea>
     </div>
     <QuillEditor
         v-if="!showHtml"
         v-model:content="content"
-        toolbar="full"
         contentType="html"
-        theme="snow"
-        :modules="modules"
+
     />
     <input type="hidden" :name="this.name" v-model="content">
   </div>
 </template>
 
 <script>
-
-import {Quill,QuillEditor} from "@vueup/vue-quill";
-import ImageUploader from "quill-image-uploader";
-import BlotFormatter from 'quill-blot-formatter'
-import axios from "axios";
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 export default {
-  components: {
-    QuillEditor,
-    Quill
-  },
   props:[
     'name',
     'value'
@@ -45,35 +33,6 @@ export default {
     return {
       content: "",
       showHtml: false,
-      modules: [
-        {
-          name: 'imageUploader',
-          module: ImageUploader,
-          options: {
-            upload: file => {
-              return new Promise((resolve, reject) => {
-                const formData = new FormData();
-                formData.append("image", file);
-
-                axios.post('/photo/upload', formData)
-                    .then(res => {
-                      //console.log(res.data)
-                      resolve(res.data.url);
-                    })
-                    .catch(err => {
-                      reject("Upload failed");
-                      console.error("Error:", err)
-                    })
-              })
-            }
-          },
-        },
-        {
-          name: 'blotFormatter',
-          module: BlotFormatter,
-          options: {/* options */}
-        }
-      ]
     };
   },
   methods: {
@@ -81,16 +40,13 @@ export default {
       this.showHtml = !this.showHtml;
     },
 
-
   }
 }
-
 </script>
 
-<style scoped>
-.quill_editor{
+<style>
+.quill_editor{}
 
-}
 .toggle-btn {
   margin-bottom: 10px;
   padding: 5px 10px;
@@ -108,4 +64,18 @@ export default {
   padding: 10px;
   font-family: monospace;
 }
+
+:deep(.ql-container) {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  height: 300px; /* Начальная высота */
+  min-height: 150px; /* Минимальная высота */
+  max-height: 900px; /* Максимальная высота */
+  resize: vertical; /* Позволяет изменять размер только по вертикали */
+  overflow: auto; /* Добавляет скролл при необходимости */
+  border: 1px solid #ccc; /* Граница, чтобы было видно, за что тянуть */
+  padding: 5px;
+}
+
 </style>
