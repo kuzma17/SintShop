@@ -65,6 +65,29 @@
             ></type-attribute>
 
             <div class="row mb-3">
+                <label class="col-2 star">
+                    Сортировка
+                </label>
+                <div class="col-9">
+                    <input type="text" name="sort" value="{{old('sort', 1)}}" class="form-control @error('sort') is-invalid @enderror">
+                    @error('sort')
+                    <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-2">
+                   Показывать в фильтре
+                </label>
+                <div class="col-9">
+                    <input name="filter" class="form-check-input" type="checkbox" value="0" @checked(old('filter', false))/>
+                </div>
+            </div>
+
+            <div class="row mb-3">
                 <label class="col-2">
                     Статус
                 </label>

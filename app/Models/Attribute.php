@@ -20,6 +20,7 @@ class Attribute extends Model
         'name_ua',
         'format',
         'active',
+        'sort',
         'erc'
     ];
 

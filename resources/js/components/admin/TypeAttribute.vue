@@ -1,16 +1,20 @@
 <template>
     <div>
-        <div class="row mb-3">
-            <label class="col-2 star">
-                Тип
-            </label>
-            <div class="col-9">
-                <select name="type_id" class="form-control" v-model="type" @click="changeType(type)">
-                    <option v-for="type in typesAttribute" :value="type.id">{{type.title}}</option>
-                </select>
-                <input type="hidden" name="prev_type_id" :value="modelValue">
-            </div>
-        </div>
+<!--        <div class="row mb-3">-->
+<!--            <label class="col-2 star">-->
+<!--                Тип-->
+<!--            </label>-->
+<!--            <div class="col-9">-->
+<!--                <select name="type_id" class="form-control" v-model="type" @click="changeType(type)">-->
+<!--                    <option v-for="type in typesAttribute" :value="type.id">{{type.title}}</option>-->
+<!--                </select>-->
+<!--                <input type="hidden" name="prev_type_id" :value="modelValue">-->
+<!--            </div>-->
+<!--        </div>-->
+
+      <input type="hidden" name="type_id" v-model="type">
+      <input type="hidden" name="prev_type_id" :value="modelValue">
+
         <div v-if="type == 1" class="row mb-3">
             <label class="col-2 star">
                 Значения
