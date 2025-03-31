@@ -32,8 +32,6 @@
 
 /*! #__NO_SIDE_EFFECTS__ */
 
-/*! For license information please see quill.htmlEditButton.min.js.LICENSE.txt */
-
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /**
