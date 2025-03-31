@@ -83,7 +83,10 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
         Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class);
     });
 
+    Route::post('/photo/multi-upload', [\App\Http\Controllers\PhotoController::class, 'multiUpload']);
+
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);
+
     Route::get('/photo/{photo}/delete', [\App\Http\Controllers\PhotoController::class, 'delete']);
 
 

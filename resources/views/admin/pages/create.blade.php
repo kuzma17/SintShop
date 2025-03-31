@@ -112,11 +112,17 @@
                     Контент ru
                 </label>
                 <div class="col-9">
-                    <text-editor
+{{--                    <text-editor--}}
+{{--                            name="content_ru"--}}
+{{--                            value="{{old('content_ru')}}"--}}
+{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
+{{--                    ></text-editor>--}}
+
+                    <quill-editor
                             name="content_ru"
-                            value="{{old('content_ru')}}"
-                            apikey="{{env('TINYMCE_KEY')}}"
-                    ></text-editor>
+                            :value="{{json_encode(old('content_ru'))}}"
+                            class="@error('content_ru') is-invalid @enderror"
+                    ></quill-editor>
                     @error('content_ru')
                     <span class="invalid-feedback" role="alert">
                        <strong>{{ $message }}</strong>
@@ -129,11 +135,16 @@
                     Контент ua
                 </label>
                 <div class="col-9">
-                    <text-editor
+{{--                    <text-editor--}}
+{{--                            name="content_ua"--}}
+{{--                            value="{{old('content_ua')}}"--}}
+{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
+{{--                    ></text-editor>--}}
+                    <quill-editor
                             name="content_ua"
-                            value="{{old('content_ua')}}"
-                            apikey="{{env('TINYMCE_KEY')}}"
-                    ></text-editor>
+                            :value="{{json_encode(old('content_ua'))}}"
+                            class="@error('content_ua') is-invalid @enderror"
+                    ></quill-editor>
                     @error('content_ua')
                     <span class="invalid-feedback" role="alert">
                        <strong>{{ $message }}</strong>

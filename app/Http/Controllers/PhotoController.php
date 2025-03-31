@@ -15,7 +15,7 @@ class PhotoController extends Controller
         $this->imageService->path(env('GOOD_PHOTO_PATH'));
     }
 
-    public function upload(Request $request){
+    public function multiUpload(Request $request){
 
         $files = $request->file('images');
 
@@ -30,5 +30,18 @@ class PhotoController extends Controller
     public function delete($photo){
 
         $this->imageService->delete($photo);
+    }
+
+    public function upload(Request $request)
+    {
+        $file = $request->file('image');
+        $path = '/images/posts/';
+        $this->imageService->path($path);
+        $name = $this->imageService->create($file);
+
+        return response()->json([
+            'url' => $path.$name
+        ]);
+
     }
 }

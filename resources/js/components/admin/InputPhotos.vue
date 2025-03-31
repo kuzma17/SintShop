@@ -64,7 +64,7 @@ export default {
                 formData.append('images[' + i + ']', file);
             }
 
-            axios.post('/photo/upload', formData, {
+            axios.post('/photo/multi-upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
