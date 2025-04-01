@@ -38,7 +38,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="{{route('catalog', 'sale')}}">
-                                @lang('menu.cartridges')
+                                @lang('menu.sale')
                             </a>
                         </li>
                         <li class="nav-item dropdown">
