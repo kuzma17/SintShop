@@ -75,6 +75,9 @@ app.component('filter-price', FilterPrice);
 import CollapseText from "./components/CollapseText.vue";
 app.component('collapse-text', CollapseText);
 
+import CallbackButton from "./components/CallbackButton.vue";
+app.component('callback-button', CallbackButton);
+
 
 //-----------------
 

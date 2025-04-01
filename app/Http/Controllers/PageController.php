@@ -19,4 +19,8 @@ class PageController extends Controller
     public function admin(){
         return view('admin.layouts.app');
     }
+
+
+
+
 }
