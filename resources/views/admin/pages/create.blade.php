@@ -3,7 +3,7 @@
 @section('content')
     <h4>Создание Страницы</h4>
     <div class="good">
-        <form name="good" method="post" enctype="multipart/form-data" action="{{route('admin.pages.store')}}">
+        <form name="page" method="post" enctype="multipart/form-data" action="{{route('admin.pages.store')}}">
             @csrf
             <div class="row mb-3">
                 <label class="col-2 star">

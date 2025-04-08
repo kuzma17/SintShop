@@ -43,6 +43,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
     Route::post('/order/create', [\App\Http\Controllers\OrderController::class, 'createOrder'])->name('order.create');
 //    Route::get('/order/created/{order}', [\App\Http\Controllers\OrderController::class, 'created'])->name('order.created');
 
+    Route::get('/post/{slug}', [\App\Http\Controllers\PostController::class, 'post'])->name('post');
+
 
     Route::group(['prefix' => 'user', 'middleware' => 'auth'], function (){
         Route::get('/profile', [\App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
@@ -77,6 +79,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
 
         Route::resource('pages', \App\Http\Controllers\Admin\AdminPageController::class);
 
+        Route::resource('posts', \App\Http\Controllers\Admin\AdminPostController::class);
+
         Route::get('/settings', [\App\Http\Controllers\Admin\AdminSettingController::class, 'index'])->name('settings.index');
         Route::post('/settings/update', [\App\Http\Controllers\Admin\AdminSettingController::class, 'update'])->name('settings.update');
 
@@ -84,19 +88,12 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
     });
 
     Route::post('/photo/multi-upload', [\App\Http\Controllers\PhotoController::class, 'multiUpload']);
-
     Route::post('/photo/upload', [\App\Http\Controllers\PhotoController::class, 'upload']);
-
     Route::get('/photo/{photo}/delete', [\App\Http\Controllers\PhotoController::class, 'delete']);
-
-
-
-//    Route::get('/nova-poshta/city/{key}', [\App\Http\Controllers\NovaPoshtaController::class, 'searchCity'])->name('nova-poshta.city');
-//    Route::get('/nova-poshta/city/{city_ref}/warehouses', [\App\Http\Controllers\NovaPoshtaController::class, 'getWarehouses'])->name('nova-poshta.warehouses');
 
     Route::get('/nova-poshta', [\App\Http\Controllers\NovaPoshtaController::class, 'index']);
 
-    Route::post('/callback', \App\Http\Controllers\CallBackController::class);
+    Route::post('/callback', \App\Http\Controllers\CallBackController::class)->name('callback');
 
 
     Route::get('/{page}', [App\Http\Controllers\PageController::class, 'page'])

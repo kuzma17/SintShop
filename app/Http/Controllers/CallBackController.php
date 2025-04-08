@@ -13,9 +13,14 @@ class CallBackController extends Controller
         $massege = 'Sint-shop.com. Call back on the number '.$request->phone.' '.$request->name;
         $telegramService->sendMessage($massege);
 
-        return response()->json([
-            'success' => true,
-            'message' => __('main.wait_call')
-        ]);
+        if (\request()->ajax()){
+            return response()->json([
+                'success' => true,
+                'message' => __('main.wait_call')
+            ]);
+        }
+
+        return back()->with('success', __('main.wait_call'));
+
     }
 }

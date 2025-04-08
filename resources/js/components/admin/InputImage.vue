@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input class="file" type="file" name="file" ref="file" @change="uploadFile()" />
+        <input class="file" type="file" :name="name_input" ref="file" @change="uploadFile()" />
         <div @mouseover="edit = true" @mouseleave="edit=false" class="image_container">
             <img v-if="image" :src="image" style="width: 290px; height: 290px">
             <div v-if="edit" @click="addFiles()" class="edit-bg">
@@ -15,10 +15,15 @@
 export default {
     name: "InputImage",
     props: [
+        'name',
         'path',
         'modelValue',
     ],
     mounted() {
+      if (this.name){
+        this.name_input = this.name
+      }
+
         if (this.modelValue){
             this.image = this.path+'/'+this.modelValue
         }
@@ -28,8 +33,9 @@ export default {
     data() {
         return {
             //token: document.head.querySelector('meta[name="csrf-token"]') ? document.head.querySelector('meta[name="csrf-token"]').content : '',
-            image: '',
-            edit: false
+          name_input: 'file',
+          image: '',
+          edit: false
         }
     },
     methods: {

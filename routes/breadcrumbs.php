@@ -18,6 +18,11 @@ Breadcrumbs::for('page', function (BreadcrumbTrail $trail, \App\Models\Page $pag
     $trail->push($page->name, route('page', $page->slug));
 });
 
+Breadcrumbs::for('post', function (BreadcrumbTrail $trail, \App\Models\Post $post){
+    $trail->parent('home');
+    $trail->push($post->name, route('post', $post->slug));
+});
+
 Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail, \App\Models\Category $category){
     if ($category->getParent()) {
         $trail->parent('catalog', $category->getParent());

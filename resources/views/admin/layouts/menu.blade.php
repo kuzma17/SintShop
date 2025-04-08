@@ -29,7 +29,13 @@
 
         <li class="menu-item">
             <a href="{{route('admin.pages.index')}}">
-                <i class="fa-regular fa-file-lines"></i> Страницы
+                <i class="fa-regular fa-file"></i> Страницы
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="{{route('admin.posts.index')}}">
+                <i class="fa-regular fa-file-lines"></i> Статьи
             </a>
         </li>
 {{--        <li class="menu-item">--}}
