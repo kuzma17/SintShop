@@ -167,7 +167,7 @@
                 </label>
                 <div class="col-9">
                     <input type="hidden" name="callback" value="0">
-                    <input name="callback" class="form-check-input" type="checkbox" value="1" @checked($post->callback)>
+                    <input name="callback" class="form-check-input" type="checkbox" value="1" @checked(old('callback',$post->callback))>
                 </div>
             </div>
 {{--            <div class="row mb-3">--}}

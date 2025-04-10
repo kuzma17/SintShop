@@ -152,6 +152,27 @@
                     @enderror
                 </div>
             </div>
+
+            <div class="row mb-3">
+                <label class="col-2">
+                    Картинка
+                </label>
+                <div class="col-9">
+                    <input-image
+                            path="/images/posts"
+                            :model-value="{{json_encode(old('images'))}}"
+                    ></input-image>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-2">
+                    Добавить callback
+                </label>
+                <div class="col-9">
+                    <input type="hidden" name="callback" value="0">
+                    <input name="callback" class="form-check-input" type="checkbox" value="1" @checked(old('callback'))>
+                </div>
+            </div>
 {{--            <div class="row mb-3">--}}
 {{--                <label class="col-2 star">--}}
 {{--                    Контент2 ru--}}
