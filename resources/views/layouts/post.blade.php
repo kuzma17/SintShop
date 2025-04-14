@@ -7,11 +7,11 @@
         </div>
 
         <div class="row">
-            <div class="" style="width: 300px">
+            <div class="col-12 col-md-auto custom-left">
                 @include('layouts.callback')
                 <x-office-list></x-office-list>
             </div>
-            <div class="col">
+            <div class="col-12 col-md">
                 <h1>@yield('name_post')</h1>
                 @if (session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>

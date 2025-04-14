@@ -808,3 +808,9 @@ ul li{
     margin-top: 5px;
     cursor: pointer;
 }
+@media (min-width: 768px) {
+    .custom-left {
+
+      width: 300px!important;
+    }
+}

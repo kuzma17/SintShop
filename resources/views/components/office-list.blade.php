@@ -6,7 +6,9 @@
                 <i class="fa-solid fa-chevron-down"></i> {{$office->name}}
             </div>
             <div class="phone">
-                <i class="fa-solid fa-phone"></i> {{$office->phone}}
+                <a href="viber://chat?number={{$office->phone}}">
+                    <i class="fa-brands fa-viber"></i> {{$office->phone}}
+                </a>
             </div>
             <div>
                 <i class="fa-solid fa-location-dot"></i> {{$office->description}}
