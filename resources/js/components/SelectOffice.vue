@@ -100,7 +100,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .select-office{
   position: relative;
   z-index: 100

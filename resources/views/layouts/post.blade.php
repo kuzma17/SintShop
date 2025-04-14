@@ -6,9 +6,20 @@
             @yield('link')
         </div>
 
-        <h1>@yield('name_page')</h1>
+        <div class="row">
+            <div class="" style="width: 300px">
+                @include('layouts.callback')
+                <x-office-list></x-office-list>
+            </div>
+            <div class="col">
+                <h1>@yield('name_post')</h1>
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
 
-        @yield('body')
+                @yield('body')
+            </div>
+        </div>
 
     </div>
 @endsection

@@ -781,3 +781,30 @@ ul li{
 /*    padding: 0.5rem 0.75rem;*/
 /*    font-size: 0.875rem;*/
 /*}*/
+
+
+/* Offices */
+.office {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px 7px;
+    font-size: 15px;
+}
+
+.office i{
+    color: #04B3F1;
+}
+.office a{
+    text-decoration: none;
+}
+
+.phone{
+    font-size: 16px;
+    font-weight: 700;
+    color: #5c636a;
+}
+
+.list .office{
+    margin-top: 5px;
+    cursor: pointer;
+}
