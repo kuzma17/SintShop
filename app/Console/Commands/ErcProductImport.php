@@ -31,6 +31,8 @@ class ErcProductImport extends Command
     public function handle(ErcParser $ercParser, ErcStore $ercStore, ErcProducts $ercProducts)
     {
 
+        exit();
+
        // dd($ercProducts->getToken());
 //        $response = $ercStore->getCodeCategories('ru');
 //        $data = $response->Data;
