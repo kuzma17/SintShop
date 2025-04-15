@@ -90,11 +90,11 @@ class ErcParser
 //            })
 //            ->get();
 //
-//       // $attributesCategory = [Attribute::find(13)];
+// $attributesCategory = [Attribute::find(155)];
 //
-//        //dd($attributesCategory->values);
+ //       dd($attributesCategory[0]->values->take(10));
 //
-//
+//        $category_id = 4;
 //        foreach ($attributesCategory as $attr){
 //            foreach ($attr->values as $value){
 //                $ercValue = new ErcValue();
@@ -152,13 +152,13 @@ class ErcParser
                     //'action' => $item->isaction
                 ];
 
-                if ($good = Good::where('erc', 1)->where('code', $code)->first()){
-                   $this->updateGood($good, $dataGoodSet);
+//                if ($good = Good::where('erc', 1)->where('code', $code)->first()){
+//                   $this->updateGood($good, $dataGoodSet);
 
-                   dump('updated '.$good->id.' '.$good->title_ru);
+                 //  dump('updated '.$good->id.' '.$good->title_ru);
 
-                    continue;
-                }
+                //    continue;
+               // }
 
                 $name = $this->getName($item);
 
@@ -205,6 +205,15 @@ class ErcParser
                     $videos = null;
                 }
 
+                if ($good = Good::where('erc', 1)->where('code', $code)->first()) {
+                    $this->updateGood($good, $dataGoodSet);
+
+                    dump('updated '.$good->id.' '.$good->title_ru);
+
+                    continue;
+
+                }
+
                $good = $this->createGood($dataGoodSet, $photos, $videos);
 
                 dump('created '.$good->id.' '.$good->title_ru);
@@ -239,6 +248,11 @@ class ErcParser
 
     protected function updateGood(Good $good, $goodData){
         $good->update($goodData);
+
+        if (count($this->values) > 0){
+            $good->valueAttributes()->syncWithoutDetaching($this->values);
+            $this->values = [];
+        }
     }
 
     protected function getName($data){
@@ -546,22 +560,31 @@ class ErcParser
         }
     }
     protected function valueSet($data, $data_ua, $attribute_id){
-//        $value = $data->value;
-//        $value_ua = $data_ua->value;
+        $value = $data->value;
+        $value_ua = $data_ua->value;
 
-//        $value_attribute = ValueAttribute::firstOrCreate(
-//            ['erc' => $data->id],
-//            ['string_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id]
-//        );
+        $value_attribute = ValueAttribute::firstOrCreate(
+            ['erc' => $data->id],
+            ['string_ru' => $value, 'string_ua' => $value_ua, 'attribute_id' => $attribute_id, 'active' => 1, 'slug' => \Str::slug($value)]
+        );
 
-        $attribute = ErcValue::with('valueAttribute')
-            ->where('erc', $data->id)
-            ->first();
+//        $attribute = ErcValue::with('valueAttribute')
+//            ->where('erc', $data->id)
+//            ->first();
 
-        if(isset($attribute->valueAttribute)){
-            $id = $attribute->valueAttribute->id;
-            $this->addValue($id);
-        }
+        ErcValue::firstOrCreate(
+            ['erc' => $data->id],
+            ['value_id' => $value_attribute->id]
+        );
+
+
+
+//        if(isset($attribute->valueAttribute)){
+//            $id = $attribute->valueAttribute->id;
+//            $this->addValue($id);
+//        }
+
+        $this->addValue($value_attribute->id);
 
     }
 

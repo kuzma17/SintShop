@@ -10,6 +10,8 @@ class ErcValue extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['value_id', 'erc'];
+
     public function valueAttribute()
     {
         return $this->belongsTo(ValueAttribute::class, 'value_id', 'id');
