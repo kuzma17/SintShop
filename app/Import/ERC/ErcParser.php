@@ -252,6 +252,7 @@ class ErcParser
     }
 
     protected function updateGood(Good $good, $goodData, $photos){
+
         $good->update($goodData);
 
         if ($photos){

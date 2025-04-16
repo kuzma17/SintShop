@@ -100,10 +100,9 @@ class Category extends Model
             $query = self::whereNull('parent_id');
         }
 
-        $res = $query->active()
+        return $query->active()
             ->sort()
             ->get();
-        return $res;
     }
 
     public function getAllFilters()

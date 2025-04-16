@@ -31,7 +31,7 @@ class CatalogController extends Controller
             ->paginate(12)
             ->appends($url_params);
 
-        $goods->getCollection()->load('valueAttributes','photos');
+        $goods->getCollection()->load('valueAttributes','photos','category');
 
         if ($request->ajax()){
 

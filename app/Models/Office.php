@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Locale;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Office extends Model
 {
@@ -19,11 +20,13 @@ class Office extends Model
         return $query->orderBy('sort');
     }
 
-    public function getOffices()
+    public static function getOffices()
     {
-        return self::active()
-            ->sort()
-            ->get();
+        return Cache::rememberForever('offices.active.sorted', function () {
+            return self::active()
+                ->sort()
+                ->get();
+        });
 
     }
 }

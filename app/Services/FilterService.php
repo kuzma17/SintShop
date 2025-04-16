@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Category;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class FilterService
 {
@@ -119,30 +120,32 @@ class FilterService
 
     public function getFilters(Category $category)
     {
-        //return Cache::rememberForever('filter_'.app()->getLocale().$this->category->id, function (){
+        return Cache::rememberForever('filter_'.app()->getLocale().$category->id, function () use ($category) {
 
-        $category = $category->load('filters', 'filters.values', 'filters.type', 'filters.values.attribute');
-        $data = $category->getAllFilters();
+            $category = $category->load('filters', 'filters.values', 'filters.type', 'filters.values.attribute');
+            $data = $category->getAllFilters();
 
-        return $data->map(function ($item){
-            return [
-                'slug' => $item->slug,
-                'name' => $item->name,
-                'values' => $item->values->map(function ($val) use($item){
+            return $data->map(function ($item) {
+                return [
+                    'slug' => $item->slug,
+                    'name' => $item->name,
+                    'values' => $item->values->map(function ($val) use ($item) {
 
-                    $type = 'attributes';
-                    if ($item->slug === 'vendor'){
-                        $type = 'vendor';
-                    }
+                        $type = 'attributes';
+                        if ($item->slug === 'vendor') {
+                            $type = 'vendor';
+                        }
 
-                    return [
-                        'id' => $val->id,
-                        'values' => $val->values,
-                        'count' => $this->getCountValues($type, $val->id),
-                    ];
+                        return [
+                            'id' => $val->id,
+                            'values' => $val->values,
+                            'count' => $this->getCountValues($type, $val->id),
+                        ];
 
-                })
-            ];
+                    })
+                ];
+            });
+
         });
 
     }
