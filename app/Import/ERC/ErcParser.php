@@ -154,13 +154,13 @@ class ErcParser
 
                 //==================
 
-                if ($good = Good::where('erc', 1)->where('code', $code)->first()){
-                   $this->updateGood($good, $dataGoodSet);
-
-                   dump('updated '.$good->id.' '.$good->title_ru);
-
-                    continue;
-                }
+//                if ($good = Good::where('erc', 1)->where('code', $code)->first()){
+//                   $this->updateGood($good, $dataGoodSet);
+//
+//                   dump('updated '.$good->id.' '.$good->title_ru);
+//
+//                    continue;
+//                }
 
                 //=======================
 
@@ -209,14 +209,14 @@ class ErcParser
                     $videos = null;
                 }
 
-//                if ($good = Good::where('erc', 1)->where('code', $code)->first()) {
-//                    $this->updateGood($good, $dataGoodSet);
-//
-//                    dump('updated '.$good->id.' '.$good->title_ru);
-//
-//                    continue;
-//
-//                }
+                if ($good = Good::where('erc', 1)->where('code', $code)->first()) {
+                    $this->updateGood($good, $dataGoodSet, $photos);
+
+                    dump('updated '.$good->id.' '.$good->title_ru);
+
+                    continue;
+
+                }
 
                $good = $this->createGood($dataGoodSet, $photos, $videos);
 
@@ -250,8 +250,12 @@ class ErcParser
         return $good;
     }
 
-    protected function updateGood(Good $good, $goodData){
+    protected function updateGood(Good $good, $goodData, $photos){
         $good->update($goodData);
+
+        if ($photos){
+            $good->photos()->createMany($photos);
+        }
 
 //        if (count($this->values) > 0){
 //            $good->valueAttributes()->syncWithoutDetaching($this->values);
@@ -329,9 +333,9 @@ class ErcParser
             ]
         );
 
-        $ercAttribute = ErcAttribute::where('erc', $data->id)->first();
-
-        return $ercAttribute? $ercAttribute->attribute_id: null;
+//        $ercAttribute = ErcAttribute::where('erc', $data->id)->first();
+//
+//        return $ercAttribute? $ercAttribute->attribute_id: null;
     }
 
     protected function getFormat($data){
