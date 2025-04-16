@@ -155,13 +155,13 @@ class ErcParser
 
                 //==================
 
-//                if ($good = Good::where('erc', 1)->where('code', $code)->first()){
-//                   $this->updateGood($good, $dataGoodSet);
-//
-//                   dump('updated '.$good->id.' '.$good->title_ru);
-//
-//                    continue;
-//                }
+                if ($good = Good::where('erc', 1)->where('code', $code)->first()){
+                   $this->updateGood($good, $dataGoodSet);
+
+                   dump('updated '.$good->id.' '.$good->title_ru);
+
+                    continue;
+                }
 
                 //=======================
 
@@ -210,14 +210,14 @@ class ErcParser
                     $videos = null;
                 }
 
-                if ($good = Good::where('erc', 1)->where('code', $code)->first()) {
-                    $this->updateGood($good, $dataGoodSet, $photos);
-
-                    dump('updated '.$good->id.' '.$good->title_ru);
-
-                    continue;
-
-                }
+//                if ($good = Good::where('erc', 1)->where('code', $code)->first()) {
+//                    $this->updateGood($good, $dataGoodSet, $photos);
+//
+//                    dump('updated '.$good->id.' '.$good->title_ru);
+//
+//                    continue;
+//
+//                }
 
                $good = $this->createGood($dataGoodSet, $photos, $videos);
 
@@ -251,13 +251,13 @@ class ErcParser
         return $good;
     }
 
-    protected function updateGood(Good $good, $goodData, $photos){
+    protected function updateGood(Good $good, $goodData){
 
         $good->update($goodData);
 
-        if ($photos){
-            $good->photos()->createMany($photos);
-        }
+//        if ($photos){
+//            $good->photos()->createMany($photos);
+//        }
 
 //        if (count($this->values) > 0){
 //            $good->valueAttributes()->syncWithoutDetaching($this->values);
