@@ -16,7 +16,7 @@ class ImageService implements ImageServiceInterface
     public function __construct(){
         $this->path('/images');
         //$this->size(800, 800);
-        $this->format('jpg');
+        $this->format('webp');
         $this->quality(100);
     }
 
@@ -114,7 +114,12 @@ class ImageService implements ImageServiceInterface
             });
         }
 
-        $img->save($path.$name, $quality, $format);
+        //$img->save($path.$name, $quality, $format);
+        if ($this->format === 'webp'){
+            $img->encode('webp', $quality)->save($path.$name);
+        }else{
+            $img->save($path.$name, $quality, $format);
+        }
 
         return $name;
     }
