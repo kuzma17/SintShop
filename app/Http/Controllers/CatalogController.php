@@ -27,10 +27,9 @@ class CatalogController extends Controller
 
         $url_params = request()->except('page');
 
-        $goods = $query->paginate(12)->appends($url_params);
-       // $goods->appends($request->all());
-
-       // $goods = $goods->load('photos');
+        $goods = $query->sortQuantity()
+            ->paginate(12)
+            ->appends($url_params);
 
         $goods->getCollection()->load('valueAttributes','photos');
 

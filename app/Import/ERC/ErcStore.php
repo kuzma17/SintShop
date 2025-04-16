@@ -63,7 +63,7 @@ class ErcStore
 
         $data = array_merge($this->dataDefault(), [
             "infotype" => 6,
-            "OnlyFree" => true,
+            "OnlyFree" => false, // Наличие на складе
             "CategoryId" => $categories,
             "lang" => $lang
         ]);

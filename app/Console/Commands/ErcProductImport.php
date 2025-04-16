@@ -31,8 +31,6 @@ class ErcProductImport extends Command
     public function handle(ErcParser $ercParser, ErcStore $ercStore, ErcProducts $ercProducts)
     {
 
-        exit();
-
        // dd($ercProducts->getToken());
 //        $response = $ercStore->getCodeCategories('ru');
 //        $data = $response->Data;
@@ -57,13 +55,13 @@ class ErcProductImport extends Command
 
         //102.01.01.01 => Ноутбуки для бизнеса
         //102.01.01.02 => Ноутбуки потребительские
-       //$ercParser->parse(Category::find(3), ['102.01.01.01', '102.01.01.02']);
+        //$ercParser->parse(Category::find(3), ['102.01.01.01', '102.01.01.02']);
 
         //107.02.01.05 => Принтеры лазерные монохромные
         //107.02.01.06 => Принтеры лазерные цветные
         //107.02.01.10 => Принтеры струйные монохромные
         //107.02.01.11 => Принтеры струйные цветные
-        //$ercParser->parse(Category::find(4), ['107.02.01.05', '107.02.01.06', '107.02.01.10', '107.02.01.11']);
+        $ercParser->parse(Category::find(4), ['107.02.01.05', '107.02.01.06', '107.02.01.10', '107.02.01.11']);
 
         //107.02.01.01 => МФУ лазерные монохромные
         //107.02.01.02 => МФУ лазерные цветные

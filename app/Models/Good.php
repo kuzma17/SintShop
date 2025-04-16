@@ -75,6 +75,10 @@ class Good extends Model
         return $query->where('quantity', '>', 0);
     }
 
+    public function scopeSortQuantity($query){
+        return $query->orderBy('quantity', 'DESC');
+    }
+
     public function scopeSortDesc($query){
         return $query->orderBy('updated_at', 'DESC');
     }
