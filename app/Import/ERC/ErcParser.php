@@ -29,6 +29,7 @@ class ErcParser
         $this->ercProducts = $ercProducts;
         $this->imageService = $imageService;
         $this->imageService->path('/images/goods');
+        $this->imageService->format('webp');
     }
 
     /**
