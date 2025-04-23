@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Category;
 use App\Models\Good;
 use App\Models\Page;
+use App\Models\Post;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -35,6 +36,23 @@ class SiteMapService
 
         foreach ($pages as $page){
             $route = route('page', [$page->slug]);
+            $map->add(Url::create($route)
+                ->addAlternate($this->getRuUrl($route), 'ru')
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.5));
+
+        }
+
+        return $map;
+    }
+
+    protected function posts($map)
+    {
+        $pages = Post::active()->get(['id', 'slug']);
+
+        foreach ($pages as $page){
+            $route = route('post', [$page->slug]);
             $map->add(Url::create($route)
                 ->addAlternate($this->getRuUrl($route), 'ru')
                 ->setLastModificationDate(Carbon::yesterday())
@@ -86,6 +104,7 @@ class SiteMapService
         $map = Sitemap::create();
         $map = $this->homePage($map);
         $map = $this->pages($map);
+        $map = $this->posts($map);
         $map = $this->goods($map);
 
         $map->writeToFile(public_path('sitemap.xml'));
