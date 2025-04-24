@@ -5,11 +5,13 @@
 
     RewriteEngine On
 
-    # Редирект с remont_* на post/remont_*
-    RewriteCond %{REQUEST_URI} ^/remont_(.+)$
-    RewriteRule ^remont_(.+)$ /post/remont_%1 [R=301,L]
-    RewriteCond %{REQUEST_URI} ^/repair_robot_(.+)$
-    RewriteRule ^repair_robot_(.+)$ /post/repair_robot_%1 [R=301,L]
+    # Редирект для /remont_* и /ru/remont_*
+    RewriteCond %{REQUEST_URI} ^/(ru/)?remont_(.+)$
+    RewriteRule ^(ru/)?remont_(.+)$ /post/remont_%2 [R=301,L]
+
+    # Редирект для /repair_robot_* и /ru/repair_robot_*
+    RewriteCond %{REQUEST_URI} ^/(ru/)?repair_robot_(.+)$
+    RewriteRule ^(ru/)?repair_robot_(.+)$ /post/repair_robot_%2 [R=301,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
