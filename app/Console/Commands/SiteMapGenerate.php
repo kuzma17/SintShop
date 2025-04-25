@@ -28,6 +28,6 @@ class SiteMapGenerate extends Command
     {
         $siteMapService->generateMap();
 
-        $this->info('=== Complete ===');
+        $this->info('=== Completed ===');
     }
 }
