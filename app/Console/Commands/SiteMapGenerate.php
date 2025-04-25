@@ -27,5 +27,7 @@ class SiteMapGenerate extends Command
     public function handle(SiteMapService $siteMapService)
     {
         $siteMapService->generateMap();
+
+        $this->info('=== Complete ===');
     }
 }
