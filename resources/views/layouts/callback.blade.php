@@ -1,7 +1,7 @@
 
 <div class="" style="padding: 10px; height: 210px; border: 1px solid #cccccc; border-radius: 10px; margin-bottom: 20px; background-color: whitesmoke">
 
-    <div style="color: #0DA6DD; font-size: 18px; font-weight: bolder;"><i class="fa-solid fa-phone"></i> Обратный звонок</div>
+    <div style="color: #0DA6DD; font-size: 18px; font-weight: bolder;"><i class="fa-solid fa-phone"></i> @lang('main.callback')</div>
         <form name="callback" method="post" action="{{route('callback')}}">
             @csrf
             <div class="mb-3 mt-3">
