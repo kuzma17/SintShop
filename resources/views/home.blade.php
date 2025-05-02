@@ -5,7 +5,7 @@
     <div class="container">
         <x-categories></x-categories>
         <br>
-        <div class="">
+        <div class="content-text">
             <h2>{{$text->name}}</h2>
             {!! $text->content !!}
         </div>

@@ -13,7 +13,9 @@
                 @if($post->image) <img style="width: 100%; height: auto" src="{{asset('/images/posts/'.$post->image)}}"></span> @endif
             </div>
     @endif
-        {!! $post->content !!}
+        <div class="content-text">
+            {!! $post->content !!}
+        </div>
 </div>
     <div class="clearfix"></div>
 @endsection

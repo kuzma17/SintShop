@@ -7,7 +7,7 @@
 @section('link', Breadcrumbs::render('page', $page))
 @section('name_page', $page->name)
 @section('body')
-    <div class="page">
+    <div class="content-text">
         {!! $page->content !!}
     </div>
 @endsection
