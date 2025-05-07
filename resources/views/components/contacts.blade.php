@@ -1,5 +1,5 @@
 <div>
-    <h5>@lang('menu.contacts')</h5>
+    <h1>@lang('menu.contacts')</h1>
     <ul>
         <li><i class="fa-solid fa-location-dot"></i> @lang('main.address') 33А</li>
         <li><i class="fa-solid fa-phone"></i> +38 (067) 5576567</li>

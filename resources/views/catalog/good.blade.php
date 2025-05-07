@@ -22,7 +22,7 @@
                 <div class="col-12 col-md-6">
                     <div class="good-set">
                         <div class="title">
-                            <h4>{{$good->title}}</h4>
+                            <h1>{{$good->title}}</h1>
                         </div>
                         <div class="code">
                             <span class="title-sm">@lang('catalog.code_good'):</span> {{$good->code}}
