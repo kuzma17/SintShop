@@ -26,7 +26,7 @@ class GoodRequest extends FormRequest
             'title_ru' => ['required', 'string', 'max:255'],
             'title_ua' => ['required', 'string', 'max:255'],
             'code' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('goods')->ignore($this->id),],
+            'slug' => ['nullable', 'string', 'max:255', Rule::unique('goods')->ignore($this->id),],
             'price' => ['required', 'numeric'],
         ];
     }

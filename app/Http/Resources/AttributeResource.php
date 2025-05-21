@@ -20,11 +20,10 @@ class AttributeResource extends JsonResource
             'name_ru' => $this->name,
             'type' => $this->type,
             'format' => $this->format,
-           // 'values' => ValueAttributeResource::collection(ValueAttribute::where('attribute_id', $this->id)->get())
         ];
 
         if ($this->type_id == 1 || $this->type_id == 4){
-            $data['values'] = ValueAttributeResource::collection(ValueAttribute::where('attribute_id', $this->id)->get());
+            $data['values'] = ValueAttributeResource::collection(ValueAttribute::with('attribute')->where('attribute_id', $this->id)->get());
         }
         return $data;
     }

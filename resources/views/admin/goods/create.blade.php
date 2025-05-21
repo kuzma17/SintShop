@@ -67,9 +67,13 @@
                             Описание ru
                         </label>
                         <div class="col-9">
-                    <textarea name="description_ru" class="form-control">
-                        {{old('description_ru')}}
-                    </textarea>
+{{--                    <textarea name="description_ru" class="form-control">--}}
+{{--                        {{old('description_ru')}}--}}
+{{--                    </textarea>--}}
+                            <quill-editor
+                                    name="description_ru"
+                                    :value="{{json_encode(old('description_ru'))}}"
+                            ></quill-editor>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -77,9 +81,13 @@
                             Описание ua
                         </label>
                         <div class="col-9">
-                    <textarea name="description_ua" class="form-control">
-                        {{old('description_ru')}}
-                    </textarea>
+{{--                    <textarea name="description_ua" class="form-control">--}}
+{{--                        {{old('description_ru')}}--}}
+{{--                    </textarea>--}}
+                            <quill-editor
+                                    name="description_ua"
+                                    :value="{{json_encode(old('description_ua'))}}"
+                            ></quill-editor>
                         </div>
                     </div>
 
@@ -97,7 +105,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-2 star">
+                        <label class="col-2">
                             slug
                         </label>
                         <div class="col-9">

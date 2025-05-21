@@ -11,6 +11,7 @@ use App\Models\Vendor;
 use App\Services\AdminFilterService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Image;
 
 class AdminGoodController extends Controller
@@ -144,8 +145,16 @@ class AdminGoodController extends Controller
         return redirect(route('admin.goods.index'));
     }
 
-    public function getAttributes(Category $category){
-        $attributes = AttributeResource::collection($category->attribute);
-        return json_encode($attributes);
+    public function getAttributes(Category $category)
+    {
+        $cacheKey = 'category_attributes_' . $category->id;
+
+        $timeCache = now()->addMonth();
+
+        return Cache::remember($cacheKey, $timeCache, function () use ($category) {
+            $category = $category->load('attribute', 'attribute.type', 'attribute.values');
+            $attributes = AttributeResource::collection($category->attribute);
+            return json_encode($attributes);
+        });
     }
 }

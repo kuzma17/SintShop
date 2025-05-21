@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Locale;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use phpDocumentor\Reflection\PseudoTypes\IntegerValue;
 
@@ -206,5 +207,27 @@ class Good extends Model
         }
         $this->valueAttributes()->sync($value_set);
     }
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = Str::slug($value);
+    }
+
+    protected static function booted()
+    {
+        static::saving(function ($good) {
+            if (empty($good->slug)) {
+                $slug = Str::slug($good->title_ru);
+                $originalSlug = $slug;
+                $i = 1;
+                while (Good::where('slug', $slug)->where('id', '!=', $good->id)->exists()) {
+                    $slug = $originalSlug . '-' . $i++;
+                }
+                $good->slug = $slug;
+            }
+        });
+    }
+
+
 
 }

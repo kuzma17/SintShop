@@ -5,7 +5,7 @@
         </label>
         <div class="col-9">
             <select name="category_id" class="form-control" v-model="model" @change="select()">
-                <option value="" >Выберите категорию</option>
+<!--                <option value="" >Выберите категорию</option>-->
                 <option v-for="item in categories" :value="item.id">{{item.title_ru}}</option>
             </select>
         </div>
@@ -22,8 +22,10 @@ export default {
     mounted() {
         if (this.category){
             this.model = this.category
-            this.select()
+        }else{
+          this.model = this.categories[0].id;
         }
+      this.select()
     },
     data(){
         return{
