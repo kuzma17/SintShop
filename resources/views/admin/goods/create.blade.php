@@ -153,6 +153,14 @@
                     </div>
                     <div class="row mb-3">
                         <label class="col-2">
+                           Распродажа
+                        </label>
+                        <div class="col-9">
+                            <input name="sale" class="form-check-input" type="checkbox" value="1" @checked(old('sale', false))/>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-2">
                             Статус
                         </label>
                         <div class="col-9">

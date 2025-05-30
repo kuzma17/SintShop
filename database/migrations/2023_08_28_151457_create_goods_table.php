@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('description_ru', 255)->nullable();
             $table->text('description_ua', 255)->nullable();
             $table->integer('action')->default(0)->index();
+            $table->boolean('sale')->default(0)->index();
             $table->integer('active')->index();
             $table->integer('erc')->index();
             $table->timestamps();

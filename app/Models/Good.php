@@ -28,6 +28,7 @@ class Good extends Model
         'quantity',
         'slug',
         'action',
+        'sale',
         'active',
         'erc'
     ];
@@ -70,6 +71,10 @@ class Good extends Model
 
     public function scopeActive($query){
         return $query->where('active', 1);
+    }
+
+    public function scopeSale($query){
+        return $query->where('sale', 1);
     }
 
     public function scopeVisibleNull($query){
