@@ -22,12 +22,16 @@ class Vendor extends Model
     public function goods()
     {
         return $this->hasMany(Good::class)
-            ->active();;
+            ->active();
     }
 
     public function saleGoods()
     {
         return $this->goods()->sale();
+    }
+
+    public function scopeSortDesc($query){
+        return $query->orderBy('updated_at', 'DESC');
     }
 
 }

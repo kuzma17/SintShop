@@ -7,6 +7,11 @@
             </a>
         </li>
         <li class="menu-item">
+            <a href="{{route('admin.vendors.index')}}">
+                <i class="fa-brands fa-apple"></i> Бренды
+            </a>
+        </li>
+        <li class="menu-item">
             <a href="{{route('admin.goods.index')}}">
                 <i class="fa-solid fa-cubes"></i> Продукты
             </a>

@@ -87,6 +87,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
         Route::post('/settings/update', [\App\Http\Controllers\Admin\AdminSettingController::class, 'update'])->name('settings.update');
 
         Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class);
+
+        Route::resource('vendors', \App\Http\Controllers\Admin\AdminVendorController::class);
     });
 
     Route::post('/photo/multi-upload', [\App\Http\Controllers\PhotoController::class, 'multiUpload']);
