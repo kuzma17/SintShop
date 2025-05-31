@@ -19,4 +19,15 @@ class Vendor extends Model
         return $this->title;
     }
 
+    public function goods()
+    {
+        return $this->hasMany(Good::class)
+            ->active();;
+    }
+
+    public function saleGoods()
+    {
+        return $this->goods()->sale();
+    }
+
 }

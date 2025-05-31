@@ -234,5 +234,15 @@ class Good extends Model
     }
 
 
+    public static function getSaleAllGoods()
+    {
+        return self::sale()->get();
+    }
+
+    public static function getSaleGoods()
+    {
+        return self::sale()->active()->get();
+    }
+
 
 }

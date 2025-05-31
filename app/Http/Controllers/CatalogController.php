@@ -52,5 +52,46 @@ class CatalogController extends Controller
         ]);
     }
 
+    public function SaleList(Request $request, FilterService $filterService, SortService $sortService)
+    {
+
+        $query = Good::sale()->active();
+
+        $minPrice = $query->min('price');
+        $maxPrice = $query->max('price');
+
+        $query = $filterService->apply($query);
+        $query = $sortService->apply($query);
+
+        $filters = $filterService->getSaleFilter();
+
+        $url_params = request()->except('page');
+
+        $goods = $query->sortQuantity()
+            ->paginate(12)
+            ->appends($url_params);
+
+        $goods->getCollection()->load('valueAttributes','photos','category');
+
+        if ($request->ajax()){
+
+            return response()->json([
+                'status' => true,
+                'content' => view('catalog.list', ['goods' => $goods])->render(),
+                'filters' => $filters
+
+            ]);
+        }
+
+        return view('catalog.sale', [
+            'goods' => $goods,
+            'minPrice' => $minPrice? $minPrice: 0,
+            'maxPrice' => $maxPrice? $maxPrice: 0,
+            'filters' => $filters
+        ]);
+
+
+    }
+
 
 }

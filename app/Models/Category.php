@@ -62,7 +62,11 @@ class Category extends Model
     public function goods(){
         return $this->hasMany(Good::class)
             ->active();
-            //->visibleNull();
+    }
+
+    public function saleGoods()
+    {
+        return $this->goods()->sale();
     }
 
     public function getParent(){

@@ -29,6 +29,8 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
 
     Route::get('/catalog/search', [\App\Http\Controllers\SearchController::class, 'search'])->middleware('throttle:5,1')->name('search');
 
+    Route::get('/catalog/sale', [\App\Http\Controllers\CatalogController::class, 'SaleList'])->name('catalog.sale');
+
     Route::get('/catalog/{slug}', [\App\Http\Controllers\CatalogController::class, 'list'])->name('catalog');
 
     Route::get('/catalog/{category}/{slug}', [\App\Http\Controllers\GoodController::class, 'index'])->name('good');

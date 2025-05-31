@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Attribute;
 use App\Models\Category;
+use App\Models\Vendor;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -37,6 +39,11 @@ class FilterService
         $this->query = $this->query->whereIn('vendor_id', $values);
     }
 
+    protected function category($values)
+    {
+        $this->query = $this->query->whereIn('category_id', $values);
+    }
+
     protected function filters($values)
     {
         return $this->query->whereHas('valueAttributes', function ($query) use ($values) {
@@ -68,6 +75,11 @@ class FilterService
         if (isset($this->parameters['vendor'])){
             $this->vendor($this->getValue($this->parameters['vendor']));
             unset($this->parameters['vendor']);
+        }
+
+        if (isset($this->parameters['category'])){
+            $this->category($this->getValue($this->parameters['category']));
+            unset($this->parameters['category']);
         }
 
         if (count($this->parameters) === 0){
@@ -148,6 +160,39 @@ class FilterService
 
         });
 
+    }
+
+    public function getSaleFilter()
+    {
+        $model1 = new Attribute([
+            'slug' => 'vendor',
+            'name_ru' => 'Производитель',
+            'name_ua' => 'Бренд',
+        ]);
+        $model1->values = Vendor::withCount('saleGoods')->get();
+
+        $model2 = new Attribute([
+            'slug' => 'category',
+            'name_ru' => 'Тип товара',
+            'name_ua' => 'Тип товару',
+        ]);
+        $model2->values = Category::withCount('saleGoods')->active()->get();
+
+        $data = collect([$model1, $model2]);
+
+        return $data->map(function ($item) {
+            return [
+                'slug' => $item->slug,
+                'name' => $item->name,
+                'values' => collect($item->values)->map(function ($val) use ($item) {
+                    return [
+                        'id' => $val['id'] ?? null,
+                        'values' => $val['values'] ?? $val['name'],
+                        'count' => $val['sale_goods_count'],
+                    ];
+                })
+            ];
+        });
     }
 
     protected function getCountValues($type, $id)
