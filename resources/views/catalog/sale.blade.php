@@ -1,11 +1,11 @@
 @extends('layouts.page')
 
-@section('title', __('seo.category_title', ['name' => 'Sale']))
-@section('keywords', __('seo.category_keywords', ['name' => 'Sale']))
-@section('description', __('seo.category_description', ['name' => 'Sale']))
+@section('title', __('seo.category_title', ['name' => $page->title ?? '']))
+@section('keywords', __('seo.category_keywords', ['name' => $page->keywords ?? '']))
+@section('description', __('seo.category_description', ['name' => $page->description ?? '']))
 
-{{--@section('link' ,Breadcrumbs::render('catalog', $category))--}}
-@section('name_page', 'Sale')
+@section('link' ,Breadcrumbs::render('sale', $page))
+@section('name_page', $page->name)
 
 @section('body')
 
@@ -13,9 +13,9 @@
 {{--            :category="$category"--}}
 {{--    ></x-sub-categories>--}}
 
-{{--    @if($category->content)--}}
-{{--        <collapse-text :text="{{json_encode($category->content)}}"></collapse-text>--}}
-{{--    @endif--}}
+    @if($page->content)
+        <collapse-text :text="{{json_encode($page->content)}}"></collapse-text>
+    @endif
 
     <div class="sort-panel">
         <sort-goods></sort-goods>

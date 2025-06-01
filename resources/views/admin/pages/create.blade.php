@@ -108,15 +108,10 @@
             </div>
 
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-2">
                     Контент ru
                 </label>
                 <div class="col-9">
-{{--                    <text-editor--}}
-{{--                            name="content_ru"--}}
-{{--                            value="{{old('content_ru')}}"--}}
-{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
-{{--                    ></text-editor>--}}
 
                     <quill-editor
                             name="content_ru"
@@ -131,15 +126,10 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-2">
                     Контент ua
                 </label>
                 <div class="col-9">
-{{--                    <text-editor--}}
-{{--                            name="content_ua"--}}
-{{--                            value="{{old('content_ua')}}"--}}
-{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
-{{--                    ></text-editor>--}}
                     <quill-editor
                             name="content_ua"
                             :value="{{json_encode(old('content_ua'))}}"

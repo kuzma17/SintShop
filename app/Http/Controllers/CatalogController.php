@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Good;
+use App\Models\Page;
 use App\Services\FilterService;
 use App\Services\SortService;
 use Illuminate\Http\Request;
@@ -73,6 +74,8 @@ class CatalogController extends Controller
 
         $goods->getCollection()->load('valueAttributes','photos','category');
 
+        $page = Page::getPage('sale');
+
         if ($request->ajax()){
 
             return response()->json([
@@ -87,7 +90,8 @@ class CatalogController extends Controller
             'goods' => $goods,
             'minPrice' => $minPrice? $minPrice: 0,
             'maxPrice' => $maxPrice? $maxPrice: 0,
-            'filters' => $filters
+            'filters' => $filters,
+            'page' => $page
         ]);
 
 

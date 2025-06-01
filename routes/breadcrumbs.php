@@ -32,6 +32,11 @@ Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail, \App\Models\Catego
     $trail->push($category->name, route('catalog', $category->slug));
 });
 
+Breadcrumbs::for('sale', function (BreadcrumbTrail $trail, \App\Models\Page $page){
+    $trail->parent('home');
+    $trail->push($page->name, route('catalog.sale'));
+});
+
 Breadcrumbs::for('good', function (BreadcrumbTrail $trail, \App\Models\Good $good){
     $trail->parent('catalog', $good->category);
     $trail->push($good->title, route('good', [$good->category->slug, $good->slug]));
