@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <h4>Бркнды</h4>
+    <h4>Бренды</h4>
     <a class="create_item" href="{{route('admin.vendors.create')}}"><button class="btn btn-success">Создать бренд</button></a>
     <div class="goods">
         <table class="table">

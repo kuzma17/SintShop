@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\VendorRequest;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AdminVendorController extends Controller
 {
@@ -32,6 +33,7 @@ class AdminVendorController extends Controller
     public function store(VendorRequest $request)
     {
         Vendor::create($request->all());
+        Cache::forget('filter_sale');
         return redirect()->route('admin.vendors.index');
     }
 
@@ -57,6 +59,7 @@ class AdminVendorController extends Controller
     public function update(VendorRequest $request, Vendor $vendor)
     {
         $vendor->update($request->all());
+        Cache::forget('filter_sale');
         return redirect()->route('admin.vendors.index');
     }
 
