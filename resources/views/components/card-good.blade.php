@@ -7,6 +7,7 @@
                 @else
                     <img src="/images/no_photo.jpg">
                 @endif
+                    @if($good->sale)<img src="/images/sale.png" class="badge-sale">@endif
             </div>
             <div class="title">
                 {{$good->title}}

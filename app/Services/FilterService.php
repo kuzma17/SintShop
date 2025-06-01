@@ -132,7 +132,7 @@ class FilterService
 
     public function getFilters(Category $category)
     {
-        return Cache::rememberForever('filter_'.app()->getLocale().$category->id, function () use ($category) {
+        return Cache::rememberForever('filter_category'.$category->id.app()->getLocale(), function () use ($category) {
 
             $category = $category->load('filters', 'filters.values', 'filters.type', 'filters.values.attribute');
             $data = $category->getAllFilters();
@@ -164,7 +164,7 @@ class FilterService
 
     public function getSaleFilter()
     {
-        return Cache::rememberForever('filter_sale', function(){
+        return Cache::rememberForever('filter_sale_'.app()->getLocale(), function(){
             $model1 = new Attribute([
                 'slug' => 'vendor',
                 'name_ru' => 'Производитель',

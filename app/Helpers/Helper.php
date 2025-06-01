@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
+
 function cleanPhoneUrl($phone){
     $phone = preg_replace("(\()", "", $phone);
     $phone = preg_replace("(\))", "", $phone);
@@ -45,4 +47,10 @@ function getParametersRequest()
 
     return $values;
 
+}
+
+function clearCache($key)
+{
+    Cache::forget($key.'_ru');
+    Cache::forget($key.'_ua');
 }

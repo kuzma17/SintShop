@@ -33,7 +33,7 @@ class AdminVendorController extends Controller
     public function store(VendorRequest $request)
     {
         Vendor::create($request->all());
-        Cache::forget('filter_sale');
+        clearCache('filter_sale');
         return redirect()->route('admin.vendors.index');
     }
 
@@ -59,7 +59,7 @@ class AdminVendorController extends Controller
     public function update(VendorRequest $request, Vendor $vendor)
     {
         $vendor->update($request->all());
-        Cache::forget('filter_sale');
+        clearCache('filter_sale');
         return redirect()->route('admin.vendors.index');
     }
 

@@ -7,7 +7,6 @@ use App\Http\Requests\AttributeRequest;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\TypeAttribute;
-use App\Models\ValueAttribute;
 use App\Services\AdminFilterService;
 use Illuminate\Http\Request;
 
@@ -47,6 +46,8 @@ class AdminAttributeController extends Controller
 
         $attribute->addValues($request);
 
+        clearCache('filter_category_'.$attribute->category->id);
+
         return redirect(route('admin.attributes.index'));
     }
 
@@ -80,6 +81,8 @@ class AdminAttributeController extends Controller
         $attribute->update($request->all());
 
         $attribute->addValues($request);
+
+        clearCache('filter_category_'.$attribute->category->id);
 
         return redirect(route('admin.attributes.index'));
     }
