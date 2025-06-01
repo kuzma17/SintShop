@@ -25,6 +25,14 @@
             <div class="col">
                 <input type="text" name="title" value="{{request('title')}}" class="form-control form-control-sm" placeholder="Наименование">
             </div>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" name="sale" type="checkbox" value="1" id="flexCheckDefault" @checked(request('sale'))>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        <span class="badge rounded-pill text-bg-warning">SALE</span>
+                    </label>
+                </div>
+            </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-sm btn-blue">Применить</button>
             </div>

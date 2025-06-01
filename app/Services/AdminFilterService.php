@@ -49,6 +49,10 @@ class AdminFilterService
         $this->query = $this->query->where('name_ru', 'LIKE', '%'.$name.'%');
     }
 
+    protected function sale(){
+        $this->query = $this->query->where('sale', 1);
+    }
+
     protected function phone($phone){
 
         $user = User::findUser($phone);
