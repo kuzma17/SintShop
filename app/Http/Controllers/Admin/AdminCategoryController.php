@@ -16,12 +16,6 @@ class AdminCategoryController extends Controller
     public function index(Category $category)
     {
         $categories = $category->getAllCategories();
-        //$categories = Category::with('children')->whereNull('parent_id')->sortDesc()->get();
-
-        //dd($category->getAllCategories());
-
-       // dd($categories->where('id', 2)->first()->children->isNotEmpty());
-
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
@@ -39,9 +33,6 @@ class AdminCategoryController extends Controller
      */
     public function store(CategoryRequest $request, ImageService $imageService)
     {
-//        if (!$request->parent_id){
-//            $request['parent_id'] = 0;
-//        }
         if(!$request->active){
             $request['active'] = 0;
         }
