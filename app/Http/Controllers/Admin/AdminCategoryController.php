@@ -44,6 +44,8 @@ class AdminCategoryController extends Controller
 
         Category::create($request->all());
 
+        clearCache('filter_sale');
+
         return redirect(route('admin.categories.index'));
     }
 
@@ -80,6 +82,8 @@ class AdminCategoryController extends Controller
         }
 
         $category->update($request->all());
+
+        clearCache('filter_sale');
 
         return redirect(route('admin.categories.index'));
 
