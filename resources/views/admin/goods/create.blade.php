@@ -155,9 +155,11 @@
                         <label class="col-2">
                            Распродажа
                         </label>
-                        <div class="col-9">
+                        <div class="col-2">
                             <input name="sale" class="form-check-input" type="checkbox" value="1" @checked(old('sale', false))/>
+                            <span> &nbsp; &nbsp; <img src="/images/sale.png" class="sale_icon"></span>
                         </div>
+
                     </div>
                     <div class="row mb-3">
                         <label class="col-2">

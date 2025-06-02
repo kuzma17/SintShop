@@ -27,7 +27,7 @@ class PageRequest extends FormRequest
             'name_ua' => ['required', 'string', 'max:255'],
             //'content_ru' => ['required', 'string'],
            //'content_ua' => ['required', 'string'],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('pages')->ignore($this->id),],
+            'slug' => ['nullable', 'string', 'max:255', Rule::unique('pages')->ignore($this->id),],
         ];
     }
 }

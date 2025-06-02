@@ -137,11 +137,6 @@
                     Контент ru
                 </label>
                 <div class="col-9">
-{{--                    <text-editor--}}
-{{--                            name="content_ru"--}}
-{{--                            value="{{old('content_ru')}}"--}}
-{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
-{{--                    ></text-editor>--}}
                     <quill-editor
                             name="content_ru"
                             :value="{{json_encode(old('content_ru'))}}"
@@ -153,11 +148,6 @@
                     Контент ua
                 </label>
                 <div class="col-9">
-{{--                    <text-editor--}}
-{{--                            name="content_ua"--}}
-{{--                            value="{{old('content_ua')}}"--}}
-{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
-{{--                    ></text-editor>--}}
                     <quill-editor
                             name="content_ua"
                             :value="{{json_encode(old('content_ua'))}}"
@@ -170,11 +160,6 @@
                     Контент2 ru
                 </label>
                 <div class="col-9">
-{{--                    <text-editor--}}
-{{--                            name="content2_ru"--}}
-{{--                            value="{{old('content2_ru')}}"--}}
-{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
-{{--                    ></text-editor>--}}
                     <quill-editor
                             name="content2_ru"
                             :value="{{json_encode(old('content2_ru'))}}"
@@ -186,11 +171,6 @@
                     Контент2 ua
                 </label>
                 <div class="col-9">
-{{--                    <text-editor--}}
-{{--                            name="content2_ua"--}}
-{{--                            value="{{old('content2_ua')}}"--}}
-{{--                            apikey="{{env('TINYMCE_KEY')}}"--}}
-{{--                    ></text-editor>--}}
                     <quill-editor
                             name="content2_ua"
                             :value="{{json_encode(old('content2_ua'))}}"
@@ -199,7 +179,7 @@
             </div>
 
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-2">
                     slug
                 </label>
                 <div class="col-9">
@@ -212,7 +192,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-2 ">
                     Сортировка
                 </label>
                 <div class="col-9">

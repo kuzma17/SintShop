@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Locale;
+use App\Traits\Slug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,7 @@ class Attribute extends Model
 {
     use HasFactory;
     use Locale;
+    use Slug;
 
     protected $fillable = [
         'category_id',

@@ -10,9 +10,10 @@
         <thead>
         <tr>
             <th scope="col">id</th>
-            <th scope="col">Наименование</th>
-            <th scope="col">Категория</th>
+            <th scope="col">наименование</th>
+            <th scope="col">категория</th>
             <th scope="col">количество</th>
+            <th scope="col">распродажа</th>
             <th scope="col">Цена</th>
             <th scope="col">статус</th>
             <th></th>
@@ -31,6 +32,7 @@
             </td>
             <td>{{$good->category->title_ru}}</td>
             <td>{{$good->quantity}}</td>
+            <td>@if($good->sale) <span class="badge rounded-pill text-bg-danger">sale</span> @endif</td>
             <td>{{$good->price}}</td>
             <td>
                 <x-admin.active

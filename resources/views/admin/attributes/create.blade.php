@@ -45,7 +45,7 @@
             </div>
 
             <div class="row mb-3">
-                <label class="col-2 star">
+                <label class="col-2">
                     slug
                 </label>
                 <div class="col-9">

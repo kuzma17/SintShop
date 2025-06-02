@@ -29,7 +29,8 @@
                 <div class="form-check">
                     <input class="form-check-input" name="sale" type="checkbox" value="1" id="flexCheckDefault" @checked(request('sale'))>
                     <label class="form-check-label" for="flexCheckDefault">
-                        <span class="badge rounded-pill text-bg-warning">SALE</span>
+{{--                        <span class="badge rounded-pill text-bg-warning">SALE</span>--}}
+                        <img src="/images/sale.png" class="sale_icon">
                     </label>
                 </div>
             </div>
