@@ -339,7 +339,7 @@ h6{
     display: flex;
     align-items: center;
 }
-.good-card .photo .badge-sale{
+.badge-sale{
     position: absolute;
     bottom: 10px;
     right: 10px;
