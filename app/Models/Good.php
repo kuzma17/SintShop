@@ -213,27 +213,6 @@ class Good extends Model
         $this->valueAttributes()->sync($value_set);
     }
 
-//    public function setSlugAttribute($value)
-//    {
-//        $this->attributes['slug'] = Str::slug($value);
-//    }
-//
-//    protected static function booted()
-//    {
-//        static::saving(function ($good) {
-//            if (empty($good->slug)) {
-//                $slug = Str::slug($good->title_ru);
-//                $originalSlug = $slug;
-//                $i = 1;
-//                while (Good::where('slug', $slug)->where('id', '!=', $good->id)->exists()) {
-//                    $slug = $originalSlug . '-' . $i++;
-//                }
-//                $good->slug = $slug;
-//            }
-//        });
-//    }
-
-
     public static function getSaleAllGoods()
     {
         return self::sale()->get();
