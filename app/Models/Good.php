@@ -33,6 +33,14 @@ class Good extends Model
         'erc'
     ];
 
+    protected $casts = [
+        'active' => 'integer',
+    ];
+
+    protected $attributes = [
+        'active' => 0
+    ];
+
     public function toSearchableArray()
     {
         return $this->only([
@@ -222,6 +230,7 @@ class Good extends Model
     {
         return self::sale()->active()->get();
     }
+
 
 
 }

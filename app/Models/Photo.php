@@ -17,4 +17,5 @@ class Photo extends Model
         'title_ru',
         'title_ua'
     ];
+
 }

@@ -60,6 +60,7 @@ class AdminGoodController extends Controller
         $request['active'] = $request->input('active')? 1: 0;
         $good = Good::create($request->all());
         $images = $request->get('images');
+        $videos = $request->get('videos');
 
         if ($images){
             array_map(function ($image){
@@ -67,6 +68,10 @@ class AdminGoodController extends Controller
             }, $images);
 
             $good->photos()->createMany($images);
+        }
+
+        if ($videos) {
+            $good->videos()->createMany($videos);
         }
 
         $good->addValuesAttributes($request);
@@ -108,10 +113,10 @@ class AdminGoodController extends Controller
     public function update(GoodRequest $request, Good $good)
     {
 
-      //  dd($request);
         $request['active'] = $request->input('active')? 1: 0;
         $good->update($request->all());
         $images = $request->get('images');
+        $videos = $request->get('videos');
 
         if ($images){
             array_map(function ($image){
@@ -120,6 +125,12 @@ class AdminGoodController extends Controller
 
             $good->photos()->delete();
             $good->photos()->createMany($images);
+        }
+
+        $good->videos()->delete();
+
+        if ($videos) {
+            $good->videos()->createMany($videos);
         }
 
             $good->addValuesAttributes();

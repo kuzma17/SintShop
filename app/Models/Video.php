@@ -15,6 +15,14 @@ class Video extends Model
         'active'
     ];
 
+    protected $casts = [
+        'active' => 'integer',
+    ];
+
+    protected $attributes = [
+        'active' => 0
+    ];
+
     public function scopeActive($query){
         return $query->where('active', 1);
     }
