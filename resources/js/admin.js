@@ -116,6 +116,9 @@ app.component('text-editor', TextEditor);
 import QuillEditorEl from "./components/admin/QuillEditor.vue";
 app.component('quill-editor', QuillEditorEl);
 
+import VideosGood from "./components/admin/VideosGood.vue";
+app.component('videos-good', VideosGood);
+
 //-----------------
 
 

@@ -87,7 +87,7 @@ class AdminGoodController extends Controller
      */
     public function edit(Good $good)
     {
-        $good = $good->load('photos', 'category.attribute', 'category.attribute.values');
+        $good = $good->load('photos', 'category.attribute', 'category.attribute.values', 'videos');
         $categories = Category::with('attribute', 'attribute.values')->get();
         $vendors = Vendor::all();
         $attributes = AttributeResource::collection($good->category->attribute);

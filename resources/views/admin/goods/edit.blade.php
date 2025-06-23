@@ -22,6 +22,12 @@
                         <h6>Атрибуты</h6>
                     </button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="videos-tab" data-bs-toggle="tab" data-bs-target="#videos"
+                            type="button" role="tab" aria-controls="profile" aria-selected="false">
+                        <h6>Видео</h6>
+                    </button>
+                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="main" role="tabpanel" aria-labelledby="main-tab">
@@ -189,6 +195,11 @@
                         :attributes="{{json_encode($attributes)}}"
                         :values-attribute="{{json_encode(old('values', $values))}}"
                     ></attributes-good>
+                </div>
+                <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab">
+                    <videos-good
+                            :videos="{{json_encode(old('videos',$good->videos))}}"
+                    ></videos-good>
                 </div>
             </div>
 
