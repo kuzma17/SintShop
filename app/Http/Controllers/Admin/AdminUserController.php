@@ -17,7 +17,10 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = User::whereNotNull('login')->where('login', '!=', '')->paginate(10);
+        $users = User::with('role')
+            ->whereNotNull('login')
+            ->where('login', '!=', '')
+            ->paginate(12);
         return view('admin.users.index', ['users' => $users]);
     }
 

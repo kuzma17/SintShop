@@ -17,9 +17,9 @@ class AdminAttributeController extends Controller
      */
     public function index(Request $request, AdminFilterService $filterService)
     {
-        $query = Attribute::query();
+        $query = Attribute::with('category','type');
         $query = $filterService->apply($query);
-        $attributes = $query->get()->load('category')->paginate(12);
+        $attributes = $query->get()->paginate(12);
         $categories = Category::sortDesc()->get();
         $types = TypeAttribute::all();
 
