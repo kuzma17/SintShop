@@ -64,14 +64,14 @@ export default {
         }
        // console.log(this.val);
     },
-    created() {
-        this.emitter.on('selectCategory', (data) => {
-            this.getAttributes(data)
-            if (this.valuesAttribute) {
-                this.val = this.valuesAttribute
-            }
-        })
-    },
+    // created() {
+    //     this.emitter.on('selectCategory', (data) => {
+    //         this.getAttributes(data)
+    //         if (this.valuesAttribute) {
+    //             this.val = this.valuesAttribute
+    //         }
+    //     })
+    // },
     data(){
         return{
             params: [],
@@ -80,17 +80,17 @@ export default {
         }
     },
     methods:{
-        getAttributes(id){
-            axios.get('/admin/goods/category/'+id+'/attributes')
-                .then(response => {
-                    //console.log(response.data);
-                    this.params = response.data
-
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        },
+        // getAttributes(id){
+        //     axios.get('/admin/goods/category/'+id+'/attributes')
+        //         .then(response => {
+        //             //console.log(response.data);
+        //             this.params = response.data
+        //
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         })
+        // },
 
         }
 }

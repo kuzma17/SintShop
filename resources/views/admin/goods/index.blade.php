@@ -24,8 +24,8 @@
         <tr>
             <td>{{$good->id}}</td>
             <td>
-                @if($good->photos->count() > 0)
-                    <img src="/images/goods/small_{{$good->first_photo->src}}">
+                @if($good->photo)
+                    <img src="/images/goods/small_{{$good->photo->src}}">
                 @else
                     <img src="/images/no_photo.jpg">
                 @endif {{$good->title}}

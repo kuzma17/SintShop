@@ -58,7 +58,7 @@ class Good extends Model
 
     public function photo()
     {
-        return $this->photos()->limit(1);
+        return $this->hasOne(Photo::class);
     }
 
     public function videos(){
@@ -158,33 +158,31 @@ class Good extends Model
         return $arr;
     }
 
-    public function getValuesAttributes(){
-
-        $values = $this->valueAttributes;
-        $attributes = $this->category->attribute;
+    public function getValuesAttributes()
+    {
+        // Группируем сразу по attribute_id
+        $groupedValues = $this->valueAttributes->groupBy('attribute_id');
 
         $arr = [];
-        foreach ($attributes as $attribute){
-            $val = $values->filter(function ($value) use($attribute){
-                return $value->attribute_id === $attribute->id;
-            });
 
-            if ($val->count() > 0){
-                foreach ($val as $item){
-                    if ($attribute->type_id === 2){
-                        $data = [
-                            'string_ru' => $item->string_ru,
-                            'string_ua' => $item->string_ua
-                        ];
-                    }else{
-                        $data = $item->values;
-                    }
-                    $arr[$attribute->id][] = [
-                        'id' => $item->id,
-                        'values' => $data
+        foreach ($groupedValues as $attributeId => $items) {
+            // Берем первый элемент, чтобы получить тип атрибута
+            $attribute = $items->first()->attribute;
+
+            foreach ($items as $item) {
+                if ($attribute->type_id === 2) {
+                    $data = [
+                        'string_ru' => $item->string_ru,
+                        'string_ua' => $item->string_ua
                     ];
-
+                } else {
+                    $data = $item->values;
                 }
+
+                $arr[$attributeId][] = [
+                    'id' => $item->id,
+                    'values' => $data
+                ];
             }
         }
 

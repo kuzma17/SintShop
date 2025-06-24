@@ -22,9 +22,10 @@ class AttributeResource extends JsonResource
             'format' => $this->format,
         ];
 
-        if ($this->type_id == 1 || $this->type_id == 4){
-            $data['values'] = ValueAttributeResource::collection(ValueAttribute::with('attribute')->where('attribute_id', $this->id)->get());
+        if ($this->type_id == 1 || $this->type_id == 4) {
+            $data['values'] = ValueAttributeResource::collection($this->values);
         }
+
         return $data;
     }
 }

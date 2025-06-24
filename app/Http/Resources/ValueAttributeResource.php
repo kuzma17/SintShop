@@ -16,7 +16,6 @@ class ValueAttributeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            //'attribute_id' => $this->attribute_id,
             'values' => $this->values,
             //'erc' => $this->erc
         ];

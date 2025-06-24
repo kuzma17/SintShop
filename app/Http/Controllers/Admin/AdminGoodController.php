@@ -12,7 +12,6 @@ use App\Services\AdminFilterService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Image;
 
 class AdminGoodController extends Controller
 {
@@ -29,15 +28,9 @@ class AdminGoodController extends Controller
      */
     public function index(Request $request, AdminFilterService $filterService)
     {
-
-        $query = Good::query();
-
+        $query = Good::with('category', 'photo');
         $query = $filterService->apply($query);
-
-        $goods = $query->sortDesc()
-            ->get()
-            ->load('category', 'photos')
-            ->paginate(12);
+        $goods = $query->sortDesc()->paginate(12);
 
         return view('admin.goods.index', ['goods' => $goods]);
     }
@@ -45,7 +38,7 @@ class AdminGoodController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(ImageService $imageService)
+    public function create()
     {
         $categories = Category::with('attribute', 'attribute.values')->get();
         $vendors = Vendor::all();
@@ -92,11 +85,15 @@ class AdminGoodController extends Controller
      */
     public function edit(Good $good)
     {
-        $good = $good->load('photos', 'category.attribute', 'category.attribute.values', 'videos');
-        $categories = Category::with('attribute', 'attribute.values')->get();
+        $categories = Category::get();
         $vendors = Vendor::all();
-        $attributes = AttributeResource::collection($good->category->attribute);
-        $values = $good->getValuesAttributes();
+
+        $attributes = AttributeResource::collection(
+            $good->category->attribute()->with(['type', 'values.attribute'])->get()
+        );
+
+        $values = $good->load(['valueAttributes.attribute'])->getValuesAttributes();
+
 
         return view('admin.goods.edit', [
             'good' => $good,
