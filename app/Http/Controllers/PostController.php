@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function post($slug)
+    public function post(Post $post)
     {
-        $post = Post::where('slug', $slug)->first();
         return view('posts.post', ['post' => $post]);
 
     }

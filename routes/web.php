@@ -45,7 +45,7 @@ Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], fun
     Route::post('/order/create', [\App\Http\Controllers\OrderController::class, 'createOrder'])->name('order.create');
 //    Route::get('/order/created/{order}', [\App\Http\Controllers\OrderController::class, 'created'])->name('order.created');
 
-    Route::get('/post/{slug}', [\App\Http\Controllers\PostController::class, 'post'])->name('post');
+    Route::get('/post/{post}', [\App\Http\Controllers\PostController::class, 'post'])->name('post');
 
 
     Route::group(['prefix' => 'user', 'middleware' => 'auth'], function (){

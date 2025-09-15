@@ -7,12 +7,8 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-   // protected $modelPage;
-//    public function __construct(Page $page){
-//        $this->modelPage = $page;
-//    }
-    public function page($slug){
-        $page = Page::getPage($slug)?? abort(404);
+
+    public function page(Page $page){
         return view('pages.page', ['page' => $page]);
     }
 

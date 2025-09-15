@@ -36,5 +36,13 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::bind('post', function ($value) {
+            return \App\Models\Post::where('slug', $value)->firstOrFail();
+        });
+
+        Route::bind('page', function ($value) {
+            return \App\Models\Page::where('slug', $value)->firstOrFail();
+        });
     }
 }
