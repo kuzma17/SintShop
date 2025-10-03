@@ -26,20 +26,6 @@ import {getActiveLanguage} from "laravel-vue-i18n";
 export default {
   name: "SortGoods",
     props: [],
-    mounted() {
-
-    //this.selectSort()
-
-      //this.currentUrl = window.location.href;
-
-      //console.log(this.currentUrl);
-
-      // let url = new URL(window.location.href);
-      // url.searchParams.set('sort', 'val');
-      //
-      //
-      // console.log(url.href);
-    },
     data(){
       return{
         show: false,
@@ -57,47 +43,15 @@ export default {
     methods:{
 
     selectSort(){
-
-      // Создаем объект URL из текущего URL
-      //let url = new URL(window.location.href);
       this.show = !this.show
-
-      //this.currentUrl = window.location.href;
-
-
-// Добавляем новый параметр
-    //  url.searchParams.set('key', 'value');
     },
 
     getUrl(val){
-
       let url = new URL(window.location.href);
       url.searchParams.set('sort', val);
-
       let newURL = url.href.replace(/%2C/g, ',');
-
-      console.log(newURL);
-
-      window.location.href=newURL;
-      // let prefix = '?';
-      // if (url.search){
-      //   prefix = '&';
-      // }
-      //
-      // let newURL = url.origin+url.pathname+url.search+prefix+'sort='+val
-
       //console.log(newURL);
-
-      //window.location.href = newURL
-
-      //window.history.pushState({}, '', newURL);
-
-
-
-
-      //  let url = new URL(${this.currentUrl});
-      //  url.searchParams.set('sort', val);
-      // return 123;
+      window.location.href=newURL;
     }
 
     }
@@ -105,11 +59,14 @@ export default {
 </script>
 
 <style scoped>
+.sort{
+  position: relative;
+}
 .sort_list{
   position: absolute;
-  inset: 0px auto auto 0px;
-  margin: 0px;
-  transform: translate(1443px, 264px);
+  top: 35px;
+  right: 0;
+  z-index: 100;
 }
 .list-group-item{
   background-color: #1a1d20;
