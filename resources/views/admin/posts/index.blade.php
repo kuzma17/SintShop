@@ -2,7 +2,7 @@
 
 @section('content')
     <h4>Статьи</h4>
-    <a class="create_item" href="{{route('admin.posts.create')}}" target="_blank"><button class="btn btn-success">Создать статью</button></a>
+    <a class="create_item" href="{{route('admin.posts.create')}}"><button class="btn btn-success">Создать статью</button></a>
     <div class="goods">
         <table class="table">
             <thead>
@@ -17,8 +17,8 @@
             @foreach($posts as $post)
                 <tr>
                     <td>
-                        <a href="{{route('post', $post->slug)}}" target="_blank" title="просмотр на сайте"><i class="fa-regular fa-eye"></i></a> &nbsp;
-                        <a href="{{route('admin.posts.edit', $post->id)}}" target="_blank" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="{{route('post', $post->slug)}}" title="просмотр на сайте"><i class="fa-regular fa-eye"></i></a> &nbsp;
+                        <a href="{{route('admin.posts.edit', $post->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
                         {{--                        <form name="destroy_good" method="POST" style="margin: -30px 0 0 20px" action="{{route('admin.posts.destroy', $post->id)}}">--}}
                         {{--                            @method('DELETE')--}}
                         {{--                            @csrf--}}

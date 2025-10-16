@@ -17,12 +17,6 @@ class Post extends Model
         'slug',
         'name_ru',
         'name_ua',
-        'title_ru',
-        'description_ru',
-        'keywords_ru',
-        'title_ua',
-        'description_ua',
-        'keywords_ua',
         'content_ru',
         'content_ua',
         'image',
@@ -32,6 +26,11 @@ class Post extends Model
 
     public function scopeActive($query){
         return $query->where('active', 1);
+    }
+
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoable');
     }
 
 }

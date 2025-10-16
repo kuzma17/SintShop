@@ -35,7 +35,8 @@ class AdminPageController extends Controller
         if(!$request->active){
             $request['active'] = 0;
         }
-        Page::create($request->all());
+        $page = Page::create($request->all());
+        $page->seo()->create($request->input('seo'));
         return redirect(route('admin.pages.index'));
     }
 
@@ -61,11 +62,12 @@ class AdminPageController extends Controller
      */
     public function update(PageRequest $request, Page $page)
     {
-
         if(!$request->active){
             $request['active'] = 0;
         }
+
         $page->update($request->all());
+        $page->seo()->update($request->input('seo'));
 
         return redirect(route('admin.pages.index'));
     }

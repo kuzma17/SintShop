@@ -15,7 +15,7 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $pages = Post::orderBy('slug')->get();
+        $pages = Post::orderBy('updated_at', 'desc')->get();
         return view('admin.posts.index', ['posts' => $pages]);
     }
 
@@ -40,7 +40,9 @@ class AdminPostController extends Controller
             $request['image'] = $imageService->create($image, '', 400, 300, 'images/posts');
         }
 
-        Post::create($request->all());
+        $post = Post::create($request->all());
+        $post->seo()->create($request->input('seo'));
+
         return redirect(route('admin.posts.index'));
     }
 
@@ -75,6 +77,7 @@ class AdminPostController extends Controller
         }
 
         $post->update($request->all());
+        $post->seo()->update($request->input('seo'));
 
         return redirect(route('admin.posts.index'));
     }

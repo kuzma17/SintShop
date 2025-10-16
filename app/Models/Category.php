@@ -18,12 +18,6 @@ class Category extends Model
         'slug',
         'name_ru',
         'name_ua',
-        'title_ru',
-        'description_ru',
-        'keywords_ru',
-        'title_ua',
-        'description_ua',
-        'keywords_ua',
         'content_ru',
         'content_ua',
         'content2_ru',
@@ -47,6 +41,11 @@ class Category extends Model
     public function vendorValues()
     {
         return $this->belongsToMany(Vendor::class);
+    }
+
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoable');
     }
 
     public function scopeActive($query){

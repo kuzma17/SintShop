@@ -1,8 +1,6 @@
 @extends('layouts.page')
 
-@section('title', __('seo.good_title', ['name' => $good->title]))
-@section('keywords', __('seo.good_keywords', ['name' => $good->title]))
-@section('description', __('seo.good_description', ['name' => $good->title]))
+@php($seo = $good)
 
 @section('link'){{Breadcrumbs::render('good', $good)}}@endsection
 @section('body')

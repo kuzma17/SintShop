@@ -53,4 +53,30 @@ trait Locale
         return $this->{$column};
     }
 
+    protected function getMetaTitleAttribute(){
+        $column = "meta_title_" . $this->lang();
+        return $this->{$column};
+    }
+
+    public function getMetaDescriptionAttribute(){
+        $column = "meta_description_" . $this->lang();
+        return $this->{$column};
+    }
+
+    public function getMetaKeywordsAttribute(){
+        $column = "meta_keywords_" . $this->lang();
+        return $this->{$column};
+    }
+
+    protected function getOgTitleAttribute(){
+        $column = "og_title_" . $this->lang();
+        return $this->{$column};
+    }
+
+    public function getOgDescriptionAttribute(){
+        $column = "og_description_" . $this->lang();
+        return $this->{$column};
+    }
+
+
 }
