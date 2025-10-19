@@ -28275,6 +28275,8 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
       newURL = newURL.slice(0, -1);
       history.pushState({}, "", newURL); // Edit Current Url
 
+      this.localeUrl(newURL); // Lang swicher
+
       axios.get(newURL).then(function (response) {
         //console.log(response.data);
         var container = document.querySelector(_this2.container);
@@ -28287,6 +28289,19 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
     resetSelect: function resetSelect() {
       this.form = {};
       this.handleFormChange();
+    },
+    localeUrl: function localeUrl(urlString) {
+      var url = new URL(urlString);
+      var locale = 'ru';
+      var link = document.getElementById('lang-swicher');
+      var segments = url.pathname.split('/').filter(Boolean);
+      if (segments[0] === locale) {
+        segments.shift();
+      } else {
+        segments.unshift(locale);
+      }
+      url.pathname = '/' + segments.join('/');
+      link.href = url.toString(); // Lang swicher
     }
   }
 });

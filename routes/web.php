@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('locale/{locale}', \App\Services\LocaleService::class)->name('locale');
+//Route::get('locale/{locale}', \App\Services\LocaleService::class)->name('locale');
 
 Route::group(['prefix' => App\Http\Middleware\Localization::getLocaleUrl()], function(){
 

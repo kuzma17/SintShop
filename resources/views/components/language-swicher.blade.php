@@ -3,13 +3,13 @@
         @if($locale == 'ru')
             RU
         @else
-            <a href="{{ route('locale', 'ru') }}">RU</a>
+            <a id="lang-swicher" href="{{ $url }}">RU</a>
         @endif
         |
         @if($locale == 'ua')
             UA
         @else
-            <a href="{{ route('locale', 'ua') }}">UA</a>
+                <a id="lang-swicher" href="{{ $url }}">UA</a>
         @endif
     </div>
 </div>
