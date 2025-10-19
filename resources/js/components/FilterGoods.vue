@@ -87,7 +87,10 @@ export default {
       });
 
       newURL = newURL.slice(0, -1);
+
       history.pushState({}, "", newURL); // Edit Current Url
+
+     this.localeUrl(newURL); // Lang swicher
 
       axios.get(newURL)
           .then(response => {
@@ -104,6 +107,23 @@ export default {
     resetSelect(){
       this.form = {}
       this.handleFormChange()
+    },
+
+    localeUrl(urlString){
+      const url = new URL(urlString);
+      const locale = 'ru';
+      const link = document.getElementById('lang-swicher');
+
+      const segments = url.pathname.split('/').filter(Boolean);
+      if (segments[0] === locale) {
+        segments.shift();
+      } else {
+        segments.unshift(locale);
+      }
+
+      url.pathname = '/' + segments.join('/');
+
+      link.href = url.toString(); // Lang swicher
     },
 
   }
