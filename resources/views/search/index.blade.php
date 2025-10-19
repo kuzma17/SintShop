@@ -5,9 +5,10 @@
 @section('title', __('main.searching_results').' '.$q)
 @section('body')
 
-        <div class="sort-panel">
-            <x-sort></x-sort>
-        </div>
+{{--        <div class="sort-panel">--}}
+{{--            <x-sort></x-sort>--}}
+{{--            <sort-goods></sort-goods>--}}
+{{--        </div>--}}
         <div class="catalog">
             <div class="row justify-content-center">
                 @foreach($goods as $good)
