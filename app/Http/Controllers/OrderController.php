@@ -8,11 +8,12 @@ use App\Models\Order;
 use App\Models\User;
 use App\Notifications\NewOrder;
 use App\Services\CartService;
+use App\Services\TelegramService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function createOrder(OrderRequest $request, CartService $cart, User $user, Order $order){
+    public function createOrder(OrderRequest $request, CartService $cart, User $user, Order $order, TelegramService $telegramService){
 
         $data = $request->all();
 
@@ -50,6 +51,9 @@ class OrderController extends Controller
 //        if ($client->email){
 //            $client->notify(new NewOrder()); // send email
 //        }
+        $telegramService->sendMessage(
+            '🛍️ Sint-shop.com. User ' . $client->name . ' (phone: +38' . $client->phone . ') created order №' . $order->id
+        );
 
         return view('order.created', ['order' => $order]);
 
