@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@php($model = $page)
 
 @section('content')
     <x-slider></x-slider>
@@ -6,8 +7,8 @@
         <x-categories></x-categories>
         <br>
         <div class="content-text">
-            <h2>{{$text->name}}</h2>
-            {!! $text->content !!}
+            <h2>{{$page->name}}</h2>
+            {!! $page->content !!}
         </div>
 
         <x-new-products></x-new-products>

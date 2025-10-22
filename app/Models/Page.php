@@ -17,12 +17,6 @@ class Page extends Model
         'slug',
         'name_ru',
         'name_ua',
-        'title_ru',
-        'description_ru',
-        'keywords_ru',
-        'title_ua',
-        'description_ua',
-        'keywords_ua',
         'content_ru',
         'content_ua',
         'content2_ru',
@@ -38,6 +32,11 @@ class Page extends Model
     }
     public static function getPage($slug){
         return self::where('slug', $slug)->first();
+    }
+
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoable');
     }
 
 }

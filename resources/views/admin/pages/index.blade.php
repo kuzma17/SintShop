@@ -2,7 +2,7 @@
 
 @section('content')
     <h4>Страницы</h4>
-    <a class="create_item" href="{{route('admin.pages.create')}}" target="_blank"><button class="btn btn-success">Создать страницу</button></a>
+    <a class="create_item" href="{{route('admin.pages.create')}}"><button class="btn btn-success">Создать страницу</button></a>
     <div class="goods">
         <table class="table">
             <thead>
@@ -17,8 +17,8 @@
             @foreach($pages as $page)
                 <tr>
                     <td>
-                        <a href="{{route('page', $page->slug)}}" target="_blank" title="просмотр на сайте"><i class="fa-regular fa-eye"></i></a> &nbsp;
-                        <a href="{{route('admin.pages.edit', $page->id)}}" target="_blank" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="{{route('page', $page->slug)}}" title="просмотр на сайте"><i class="fa-regular fa-eye"></i></a> &nbsp;
+                        <a href="{{route('admin.pages.edit', $page->id)}}" title="редактировать"><i class="fa-regular fa-pen-to-square"></i></a>
                         {{--                        <form name="destroy_good" method="POST" style="margin: -30px 0 0 20px" action="{{route('admin.pages.destroy', $page->id)}}">--}}
                         {{--                            @method('DELETE')--}}
                         {{--                            @csrf--}}

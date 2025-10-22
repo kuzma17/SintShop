@@ -42,7 +42,8 @@ class AdminCategoryController extends Controller
             $request['image'] = $imageService->create($image, $name, 290, 290);
         }
 
-        Category::create($request->all());
+        $category = Category::create($request->all());
+        $category->seo()->create($request->input('seo'));
 
         clearCache('filter_sale');
 
@@ -82,6 +83,7 @@ class AdminCategoryController extends Controller
         }
 
         $category->update($request->all());
+        $category->seo()->update($request->input('seo'));
 
         clearCache('filter_sale');
 

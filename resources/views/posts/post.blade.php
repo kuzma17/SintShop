@@ -1,8 +1,10 @@
 @extends('layouts.post')
 
-@section('title', $post->title ?? '')
-@section('keywords', $post->keywords ?? '')
-@section('description', $post->description ?? '')
+{{--@section('title', $post->title ?? '')--}}
+{{--@section('keywords', $post->keywords ?? '')--}}
+{{--@section('description', $post->description ?? '')--}}
+
+@php($seo = $post)
 
 @section('link', Breadcrumbs::render('post', $post))
 @section('name_post', $post->name)
