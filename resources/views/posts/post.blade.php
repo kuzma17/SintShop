@@ -12,7 +12,7 @@
 <div class="post">
     @if($post->image)
             <div class="" style="width: 400px; float: right; padding: 0 0 10px 10px">
-                @if($post->image) <img style="width: 100%; height: auto" src="{{asset('/images/posts/'.$post->image)}}"></span> @endif
+                @if($post->image) <img style="width: 100%; height: auto" src="{{asset('/images/posts/'.$post->image)}}" alt="{{$post->name}}"></span> @endif
             </div>
     @endif
         <div class="content-text">

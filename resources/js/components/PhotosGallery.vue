@@ -3,12 +3,12 @@
         <div class="gallery-photos">
             <div :id="key" v-for="(image, key) in images" class="layer-image" :class="{ active: image.active === 1 }"
                  @click="showModal(key)">
-                <img :src="patch + image.src">
+                <img :src="patch + image.src" :alt="alt">
             </div>
         </div>
         <div class="thumbnails" v-if="images && images.length > 1">
             <div v-for="(image, key) in images" @click="changeImage(key)" :class="{ active_thumbnails: image.active ===1 }">
-                <img :src="patch + 'small_'+image.src">
+                <img :src="patch + 'small_'+image.src" :alt="alt">
             </div>
         </div>
 
@@ -19,7 +19,7 @@
                     <div class="box-image" @click.self="closeModal">
                         <div :key="image.id" v-for="(image, key) in images" class="layer-image"
                              :class="{ active: image.active === 1}">
-                            <img :src="patch + 'big_'+image.src" class="img-modal">
+                            <img :src="patch + 'big_'+image.src" class="img-modal" :alt="alt">
                             <div class="nav-modal">
                                 <div v-if="key > 0" class="prev" @click="prev(key)">&#8249;</div>
                                 <div v-if="key < images.length-1" class="next" @click="next(key)">&#8250;</div>
@@ -43,7 +43,11 @@ export default {
         'photos':{
             type: Array,
             default: []
-        }
+        },
+      'alt':{
+        type: String,
+        default: 'photo'
+      },
     },
     mounted() {
         if (this.photos && this.photos.length > 0){

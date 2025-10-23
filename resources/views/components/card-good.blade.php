@@ -3,11 +3,11 @@
         <a href="{{route('good', [$good->category->slug, $good->slug])}}">
             <div class="photo">
                 @if($good->photos->count() > 0)
-                    <img src="/images/goods/{{$good->first_photo->src}}">
+                    <img src="/images/goods/{{$good->first_photo->src}}" alt="{{$good->title}}">
                 @else
-                    <img src="/images/no_photo.jpg">
+                    <img src="/images/no_photo.jpg" alt="no photo">
                 @endif
-                    @if($good->sale)<img src="/images/sale.png" class="badge-sale">@endif
+                    @if($good->sale)<img src="/images/sale.png" class="badge-sale" alt="sale">@endif
             </div>
             <div class="title">
                 {{$good->title}}

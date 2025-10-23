@@ -11,6 +11,7 @@
                         <photos-gallery
                             :patch="{{json_encode('/images/goods/')}}"
                             :photos="{{json_encode($good->photos)}}"
+                            :alt="{{json_encode($good->title)}}"
                         >
                         </photos-gallery>
                     @else

@@ -1,8 +1,10 @@
 @extends('layouts.page')
 
-@section('title', __('seo.category_title', ['name' => $page->title ?? '']))
-@section('keywords', __('seo.category_keywords', ['name' => $page->keywords ?? '']))
-@section('description', __('seo.category_description', ['name' => $page->description ?? '']))
+{{--@section('title', __('seo.category_title', ['name' => $page->title ?? '']))--}}
+{{--@section('keywords', __('seo.category_keywords', ['name' => $page->keywords ?? '']))--}}
+{{--@section('description', __('seo.category_description', ['name' => $page->description ?? '']))--}}
+
+@php($seo = $page)
 
 @section('link' ,Breadcrumbs::render('sale', $page))
 @section('name_page', $page->name)

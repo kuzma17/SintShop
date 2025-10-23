@@ -6,7 +6,7 @@
                     <div class="col-12 col-md-3 p-0">
                         <div class="logo">
                             <a href="{{route('home')}}">
-                                <img src="/images/logo.png">
+                                <img src="/images/logo.png" alt="{{__('seo.site_title')}}">
                             </a>
                         </div>
                     </div>
