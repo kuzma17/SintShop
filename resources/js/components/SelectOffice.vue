@@ -1,12 +1,18 @@
 <template>
   <div class="select-office" ref="dropdown">
     <div class="office">
-
       <div style="cursor: pointer" @click="showList()" :title="$t('select_office')">
-        <i class="fa-solid" :class="icon"></i> {{branch.name}}
+        <svg class="icon">
+          <use :xlink:href="'#'+icon"></use> {{branch.name}}
+        </svg>
       </div>
       <div class="phone">
-        <a :href="'tel:' + branch.phone_url"><i class="fa-solid fa-phone"></i> {{branch.phone}}</a>
+        <a :href="'tel:' + branch.phone_url">
+          <svg class="icon">
+            <use xlink:href="#fa-phone-flip"></use>
+          </svg>
+          {{branch.phone}}
+        </a>
       </div>
       <div>
         <a :href="patchLocale() +'/contacts/#office_' + branch.id"><i class="fa-solid fa-location-dot"></i> {{ branch.location }}</a>
@@ -17,13 +23,20 @@
       <div v-for="(item, key) in branches" @click="selectBranch(key)" class="office">
 
         <div>
-          <i class="fa-solid fa-chevron-down"></i> {{item.name}}
+          <svg class="icon"><use xlink:href="#fa-chevron-down"></use></svg>
+          {{item.name}}
         </div>
         <div class="phone">
-          <i class="fa-solid fa-phone"></i> {{item.phone}}
+          <svg class="icon">
+            <use xlink:href="#fa-phone-flip"></use>
+          </svg>
+          {{item.phone}}
         </div>
         <div>
-          <i class="fa-solid fa-location-dot"></i> {{ item.location }}
+          <svg class="icon">
+            <use xlink:href="#fa-location-dot" ></use>
+          </svg>
+          {{ item.location }}
         </div>
 
       </div>
@@ -101,6 +114,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .select-office{
   position: relative;
   z-index: 100

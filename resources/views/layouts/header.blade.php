@@ -6,7 +6,7 @@
                     <div class="col-12 col-md-3 p-0">
                         <div class="logo">
                             <a href="{{route('home')}}">
-                                <img src="/images/logo.png" alt="{{__('seo.site_title')}}">
+                                <img src="{{asset('/images/logo.png')}}" alt="{{__('seo.site_title')}}">
                             </a>
                         </div>
                     </div>
@@ -19,7 +19,9 @@
                 <div class="row">
                     <div class="col-8 col-md-4">
                         <div class="clock">
-                            <i class="fa-regular fa-clock"></i>
+                            <svg class="icon">
+                                <use xlink:href="#fa-clock"></use>
+                            </svg>
                             <span class="time-work_text">@lang('main.we_working'): </span><span>9.00 - 18.00</span>
                         </div>
                     </div>

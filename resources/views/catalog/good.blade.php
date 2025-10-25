@@ -45,7 +45,9 @@
                             </div>
                         </div>
                         <div class="delivery">
-                           <div class="title-sm"><i class="fa-solid fa-truck-arrow-right"></i> @lang('catalog.delivery'):</div>
+                           <div class="title-sm">
+                               <svg class="icon"><use xlink:href="#fa-truck-arrow-right"></use></svg>
+                               @lang('catalog.delivery'):</div>
                             <ul>
                                 <li>@lang('catalog.pickup')</li>
                                 <li>@lang('catalog.delivery_address')</li>
@@ -53,7 +55,9 @@
                             </ul>
                         </div>
                         <div class="payment">
-                            <div class="title-sm"><i class="fa-regular fa-money-bill-1"></i> @lang('catalog.payment'):</div>
+                            <div class="title-sm">
+                                <svg class="icon"><use xlink:href="#fa-money-bill-1"></use></svg>
+                                @lang('catalog.payment'):</div>
                             <ul>
                                 <li>@lang('catalog.cash')</li>
                                 <li>@lang('catalog.cashless')</li>

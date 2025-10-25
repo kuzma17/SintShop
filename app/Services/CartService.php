@@ -28,6 +28,9 @@ class CartService
 
         return $content->map(function ($item){
             $good = Good::find($item->id)->load('photos', 'category');
+
+            $photo = $good->first_photo? '/images/goods/'.$good->first_photo->src: '/images/no_photo.jpg';
+
             return [
                 'id' => $good->id,
                 'slug' => $good->slug,
@@ -35,7 +38,7 @@ class CartService
                 'code' => $good->code,
                 'qty' => $item->qty,
                 'price' => $item->price,
-                'photo' => '/images/goods/'.$good->first_photo->src,
+                'photo' => asset($photo),
                 'category' => [
                     'name' => $good->category->name,
                     'slug' => $good->category->slug,

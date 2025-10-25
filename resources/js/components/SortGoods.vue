@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import {getActiveLanguage} from "laravel-vue-i18n";
-
 export default {
   name: "SortGoods",
     props: [],
@@ -61,6 +59,7 @@ export default {
 <style scoped>
 .sort{
   position: relative;
+  float: right;
 }
 .sort_list{
   position: absolute;

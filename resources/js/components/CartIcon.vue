@@ -1,6 +1,8 @@
 <template>
     <div class="cart-icon">
-        <i class="fa-solid fa-cart-arrow-down"></i>
+      <svg class="icon">
+        <use xlink:href="#fa-cart-arrow-down"></use>
+      </svg>
         <div class="cart-count">{{this.good_count}}</div>
     </div>
 </template>
@@ -27,13 +29,10 @@ export default {
             good_count: 0
         }
     },
-    methods:{
-
-    }
+    methods:{}
 
 }
 </script>
 
 <style scoped>
-
 </style>

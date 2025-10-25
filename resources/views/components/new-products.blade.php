@@ -17,10 +17,10 @@
                 @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducts" data-bs-slide="prev">
-                <i class="fa-solid fa-chevron-left"></i>
+                <svg class="icon"><use xlink:href="#fa-chevron-left"></use></svg>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselProducts" data-bs-slide="next">
-                <i class="fa-solid fa-chevron-right"></i>
+                <svg class="icon"><use xlink:href="#fa-chevron-right"></use></svg>
             </button>
         </div>
 </div>

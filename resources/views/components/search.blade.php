@@ -4,7 +4,9 @@
             <input type="text" name="search" class="form-control" placeholder="@lang('main.search_production')">
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <svg class="icon">
+                        <use xlink:href="#fa-magnifying-glass"></use>
+                    </svg>
                 </button>
             </div>
         </div>

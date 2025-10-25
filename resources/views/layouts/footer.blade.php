@@ -42,7 +42,13 @@
             Copyright 2023 @ Designed by <a href="mailto:webkuzma@gmail.com">Kuzma</a>
         </div>
         <div id="top-scroll" class="top-scroll">
-            <a href="#" title="вверх"><span class="fas fa-angle-up"></span></a>
+            <a href="#" title="вверх">
+{{--                <span class="fas fa-angle-up"></span>--}}
+                <svg class="icon">
+                    <use xlink:href="#fa-chevron-up"></use>
+                </svg>
+
+            </a>
         </div>
     </div>
 </div>

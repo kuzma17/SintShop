@@ -25,7 +25,11 @@
                     <td>{{$order->count}}</td>
                     <td>{{$order->summa}} @lang('main.curr')</td>
                     <td>{{$order->status->title}}</td>
-                    <td><a href="{{route('user.order', $order->id)}}" ><i class="fa-regular fa-eye"></i> @lang('user.see')</a></td>
+                    <td><a href="{{route('user.order', $order->id)}}" >
+{{--                            <i class="fa-regular fa-eye"></i>--}}
+                            <svg class="icon"><use xlink:href="#fa-eye"></use></svg>
+
+                            @lang('user.see')</a></td>
                 </tr>
             @endforeach
 

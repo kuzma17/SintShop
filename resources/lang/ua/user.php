@@ -13,7 +13,7 @@ return [
      'payment' => 'Тип оплати',
      'save' => 'Зберегти',
      'password' => 'Пароль',
-     'confirm_password' => 'Пароль повторно',
+     'confirm_password' => 'Пароль',
      'time_created' => 'Час створення',
      'order_count' => 'кіл. товарів',
      'sum' => 'Сума',

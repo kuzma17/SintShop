@@ -1,7 +1,19 @@
 <template>
     <div class="login">
-        <a v-if="auth" :href="patchLocale()+'/user/profile'"><i class="fa-solid fa-user"></i> {{ $t('personal_area') }}</a>
-        <span v-else @click="show = !show" ><i class="fa-solid fa-user"></i> {{ $t('login') }}</span>
+        <a v-if="auth" :href="patchLocale()+'/user/profile'">
+<!--          <i class="fa-solid fa-user"></i> -->
+
+          <svg class="icon">
+            <use xlink:href="#fa-user"></use>
+          </svg>
+
+          {{ $t('personal_area') }}</a>
+        <span v-else @click="show = !show" >
+<!--          <i class="fa-solid fa-user"></i>-->
+          <svg class="icon">
+                                <use xlink:href="#fa-user"></use>
+                            </svg>
+          {{ $t('login') }}</span>
         <transition name="fade">
         <div v-if="show" class="dropdown-login">
             <div class="container_btn"><span class="close_btn" @click="show = false">x</span></div>
@@ -152,6 +164,10 @@ export default {
     box-shadow: 5px 5px 5px #CCCCCC;
     border-radius: 10px;
 }
+.dropdown-login input{
+  margin: 0 0 15px 0;
+}
+
 .container_btn{
     height: 15px;
 }

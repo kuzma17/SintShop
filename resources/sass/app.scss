@@ -5,12 +5,12 @@
 @import 'variables';
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+//@import 'bootstrap/scss/bootstrap';
+@import "bootstrap.custom";
 
 // for FontAwesome v6+
-@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+//@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 // Style
 @import "../css/app.css";
 @import "../css/media.css";
-//@import "../css/admin.css";

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <x-seo-block :model="$seo ?? null" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 {{--    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">--}}
@@ -17,6 +18,7 @@
     </script>
 </head>
 <body>
+@include('layouts.icons-sprite')
     <div id="app">
         @include('layouts.preloader')
         @include('layouts.header')

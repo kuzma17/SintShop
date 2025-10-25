@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h5><i class="fa-regular fa-address-card"></i> {{ $t('contacts_data') }}</h5>
+        <h5>
+          <svg class="icon"><use xlink:href="#fa-address-card"></use></svg>
+          {{ $t('contacts_data') }}</h5>
         <div class="content">
             <div v-if="auth_user" class="auth_user">
                 <div class="mb-3 row">
@@ -130,7 +132,10 @@
                 </div>
             </div>
         </div>
-        <h5><i class="fa-solid fa-truck-arrow-right"></i> {{ $t('delivery') }}</h5>
+        <h5>
+          <svg class="icon"><use xlink:href="#fa-truck-arrow-right"></use></svg>
+          {{ $t('delivery') }}
+        </h5>
         <delivery-select
             :deliveries="deliveries"
             v-model="delivery"
@@ -142,7 +147,10 @@
             :np_warehouse_ref="np_warehouse_ref"
         >
         </delivery-select>
-        <h5><i class="fa-regular fa-money-bill-1"></i> {{ $t('payment') }}</h5>
+        <h5>
+          <svg class="icon"><use xlink:href="#fa-money-bill-1"></use></svg>
+          {{ $t('payment') }}
+        </h5>
         <div class="content">
             <ul>
                 <li v-for="pay in payments">

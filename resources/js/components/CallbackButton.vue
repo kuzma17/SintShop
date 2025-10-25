@@ -1,7 +1,9 @@
 <template>
   <div>
     <button v-if="showBtn" class="callback-button" @click="openForm()">
-      <i class="fa-solid fa-phone icon-btn-callback"></i>
+      <svg class="icon icon-btn-callback">
+        <use xlink:href="#fa-phone-flip"></use>
+      </svg>
     </button>
 
     <div v-if="showForm" class="callback-container">
@@ -146,6 +148,7 @@ export default {
 
 .icon-btn-callback {
   font-size: 32px;
+  color: white;
 }
 
 /* Всплывающая форма */

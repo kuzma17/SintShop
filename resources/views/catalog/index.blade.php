@@ -15,9 +15,12 @@
        <collapse-text :text="{{json_encode($category->content)}}"></collapse-text>
     @endif
 
-        <div class="sort-panel">
+    <div class="row">
+        <div class="sort-panel_">
             <sort-goods></sort-goods>
         </div>
+    </div>
+
 {{--        @if($category->content)--}}
 {{--            <div class="row">--}}
 {{--                <div class="col p-1">--}}
