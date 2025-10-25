@@ -8,6 +8,10 @@ import './bootstrap';
 
 import {createApp} from 'vue';
 // import { i18nVue } from 'laravel-vue-i18n'
+import mitt from 'mitt';
+import { Quill, QuillEditor } from '@vueup/vue-quill'
+import ImageUploader from "quill-image-uploader";
+import BlotFormatter from 'quill-blot-formatter'
 
 
 /**
@@ -18,63 +22,9 @@ import {createApp} from 'vue';
 
 const app = createApp({});
 
-
-import mitt from 'mitt';
 const emitter = mitt();
 app.config.globalProperties.emitter = emitter
 
-
-//========== QuillEditor ==========================
-
-import { Quill, QuillEditor } from '@vueup/vue-quill'
-import ImageUploader from "quill-image-uploader";
-import BlotFormatter from 'quill-blot-formatter'
-
-Quill.register('modules/imageUploader', ImageUploader);
-Quill.register('modules/blotFormatter', BlotFormatter);
-
-const globalOptions = {
- debug: 'info',
- modules: {
-  toolbar: [
-   ['bold', 'italic', 'underline'],        // toggled buttons
-  // ['blockquote'],
-   [{ 'header': 1 }, { 'header': 2 },{ 'header': [1, 2, 3, 4, 5, 6, false] }],  // custom button values
-   [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-   [{ 'align': [] }],
-   [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-   //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-   [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-   [{ 'direction': 'rtl' }],                         // text direction
-   [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-   [{ 'font': ['arial', 'times-new-roman', 'courier-new'] }],
-   ['link', 'image', 'video'],
-   ['clean']                                         // remove formatting button
-  ],
-  imageUploader: {
-   upload: (file) => {
-    return new Promise((resolve, reject) => {
-     const formData = new FormData();
-     formData.append("image", file);
-     axios.post('/photo/upload', formData).then(res => {
-          //console.log(res.data)
-          resolve(res.data.url);
-         }).catch(err => {
-          reject("Upload failed");
-          console.error("Error:", err)
-         });
-    });
-   }
-  },
-  blotFormatter: {}
- },
- sanitize: "false",
- readOnly: false,
- theme: 'snow',
-}
-
-QuillEditor.props.globalOptions.default = () => globalOptions
-app.component('QuillEditor', QuillEditor)
 //==========================================
 
 
@@ -121,7 +71,53 @@ app.component('videos-good', VideosGood);
 
 //-----------------
 
+//========== QuillEditor ==========================
 
+Quill.register('modules/imageUploader', ImageUploader);
+Quill.register('modules/blotFormatter', BlotFormatter);
+
+const globalOptions = {
+ debug: 'info',
+ modules: {
+  toolbar: [
+   ['bold', 'italic', 'underline'],        // toggled buttons
+   // ['blockquote'],
+   [{ 'header': 1 }, { 'header': 2 },{ 'header': [1, 2, 3, 4, 5, 6, false] }],  // custom button values
+   [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+   [{ 'align': [] }],
+   [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+   //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+   [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+   [{ 'direction': 'rtl' }],                         // text direction
+   [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+   [{ 'font': ['arial', 'times-new-roman', 'courier-new'] }],
+   ['link', 'image', 'video'],
+   ['clean']                                         // remove formatting button
+  ],
+  imageUploader: {
+   upload: (file) => {
+    return new Promise((resolve, reject) => {
+     const formData = new FormData();
+     formData.append("image", file);
+     axios.post('/photo/upload', formData).then(res => {
+      //console.log(res.data)
+      resolve(res.data.url);
+     }).catch(err => {
+      reject("Upload failed");
+      console.error("Error:", err)
+     });
+    });
+   }
+  },
+  blotFormatter: {}
+ },
+ sanitize: "false",
+ readOnly: false,
+ theme: 'snow',
+}
+
+QuillEditor.props.globalOptions.default = () => globalOptions
+app.component('QuillEditor', QuillEditor)
 
  app.mount("#app");
 
