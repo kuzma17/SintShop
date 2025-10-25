@@ -99,17 +99,17 @@ const asyncLoaders = {
 };
 
 // опционально: простой компонент ошибки/загрузки (убери/замени на свои)
-const DefaultLoading = {
-    template: `<div class="component-loading" aria-hidden="true">Loading…</div>`
-};
-const DefaultError = {
-    props: ['error'],
-    template: `<div class="component-error">Error loading component</div>`
-};
+// const DefaultLoading = {
+//     template: ''
+// };
+// const DefaultError = {
+//     props: ['error'],
+//     template: `<div class="component-error">Error loading component</div>`
+// };
 
 const asyncConfig = {
-    loadingComponent: DefaultLoading,
-    errorComponent: DefaultError,
+   // loadingComponent: DefaultLoading,
+    //errorComponent: DefaultError,
     delay: 200,
     timeout: 30000,
     onError(error, retry, fail, attempts) {
