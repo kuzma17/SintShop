@@ -30,7 +30,7 @@
                     <img src="/images/no_photo.jpg">
                 @endif {{$good->title}}
             </td>
-            <td>{{$good->category->title_ru}}</td>
+            <td></td>
             <td>{{$good->quantity}}</td>
             <td>@if($good->sale) <span class="badge rounded-pill text-bg-danger">sale</span> @endif</td>
             <td>{{$good->price}}</td>
