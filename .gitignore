@@ -5,8 +5,6 @@
 /public/images/goods
 /public/price_erc.xml
 /public/sitemap.xml
-/public/js/*
-/public/css/*
 /storage/*.key
 /vendor
 .env
