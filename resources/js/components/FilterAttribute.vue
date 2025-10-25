@@ -91,6 +91,10 @@ export default {
     margin-right: 10px;
     cursor: pointer;
   }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
 
   li.attribute:hover .countval {
     padding-left: 15px;
