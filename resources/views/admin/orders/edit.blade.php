@@ -17,7 +17,7 @@
             @foreach($order->goods as $good)
                 <tr>
                     <td>
-                        <a href="{{route('good', [$good->slug, $good->id])}}">
+                        <a href="{{route('good', [$good->category->slug, $good->slug])}}">
                             <img src="{{'/images/goods/'.$good->photos->first()->src}}"> {{$good->title_ru}}
                         </a>
                     </td>
