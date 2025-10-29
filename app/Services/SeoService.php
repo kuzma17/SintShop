@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Category;
-use App\Models\Page;
 use App\Models\Post;
 use App\Models\Seo;
 use Illuminate\Contracts\Routing\UrlGenerator;
@@ -12,10 +10,7 @@ use Illuminate\Support\Str;
 
 class SeoService
 {
-    public function __construct(protected UrlGenerator $url) {
-       // $this->generateTable();
-    }
-
+    public function __construct(protected UrlGenerator $url) {}
 
     public function generateTable()
     {
@@ -46,8 +41,8 @@ class SeoService
     {
 
         $cacheKey = $this->cacheKey($model);
-        //return Cache::remember($cacheKey, now()->addMinutes(30), fn() => $this->build($model));
-        return $this->build($model);
+        return Cache::remember($cacheKey, now()->addMinutes(30), fn() => $this->build($model));
+        //return $this->build($model);
     }
 
     protected function build($model): array
