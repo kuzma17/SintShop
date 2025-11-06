@@ -15,5 +15,16 @@
                 </a>
             </div>
         @endforeach
+
+            <div class="col-12 col-sm-6 col-md-3 p-0">
+                <a href="{{route('page', 'replacing-cartridges')}}">
+                    <div class="category">
+                        <img src="{{asset('images/replacing-cartridges.jpg')}}" alt="@lang('catalog.replacing_cartridges')">
+                        <div class="title_category">
+                            @lang('catalog.replacing_cartridges')
+                        </div>
+                    </div>
+                </a>
+            </div>
     </div>
 </div>

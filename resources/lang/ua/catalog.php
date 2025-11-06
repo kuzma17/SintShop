@@ -20,5 +20,6 @@ return [
     'video' => 'Відео',
     'yes' => 'Так',
     'no' => 'Ні',
+    'replacing_cartridges' => 'Заміна картриджів'
 
 ];
