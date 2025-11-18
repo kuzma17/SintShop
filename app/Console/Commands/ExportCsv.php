@@ -81,8 +81,8 @@ class ExportCsv extends Command
                 $good['code'] ?? $good->code ?? '',
                 $good['title_ru'] ?? $good->title_ru ?? '',
                 $good['title_ua'] ?? $good->title_ua ?? '',
-                'description_ru',
-                'description_ua'
+                $good['description_ua'] ?? $good->description_ua ?? '',
+                $good['description_ua'] ?? $good->description_ua ?? '',
             ], ';');
         }
 
