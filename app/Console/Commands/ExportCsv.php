@@ -77,8 +77,12 @@ class ExportCsv extends Command
         foreach ($data as $good) {
             // Записываем только нужные поля
             fputcsv($file, [
+                $good['id'],
                 $good['code'] ?? $good->code ?? '',
                 $good['title_ru'] ?? $good->title_ru ?? '',
+                $good['title_ua'] ?? $good->title_ua ?? '',
+                'description_ru',
+                'description_ua'
             ], ';');
         }
 
