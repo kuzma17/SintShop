@@ -7,7 +7,12 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <x-seo-block :model="$seo ?? null" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    <!-- New Year -->
     <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
+    <link href="/css/newyear.css" rel="stylesheet"/>
+    <!-- End New Year -->
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17046141229"></script>
     <script>
@@ -22,6 +27,9 @@
     <div id="app">
         @include('layouts.preloader')
         @include('layouts.header')
+        <!-- New Year -->
+                @include('layouts.newyear')
+        <!-- end New Year -->
         @yield('content')
         @include('layouts.footer')
 
@@ -31,10 +39,12 @@
 <script src="{{ mix('js/manifest.js') }}"></script>
 <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
+<!-- New Year -->
     <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
     <script>
         new Snow ();
     </script>
+<!-- End New Year -->
 
     <script>
         (function(d,t) {
