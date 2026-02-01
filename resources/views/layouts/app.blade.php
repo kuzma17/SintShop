@@ -10,7 +10,7 @@
 
     <!-- New Year -->
     <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
-    <link href="/css/newyear.css" rel="stylesheet"/>
+{{--    <link href="/css/newyear.css" rel="stylesheet"/>--}}
     <!-- End New Year -->
 
     <!-- Google tag (gtag.js) -->
@@ -28,7 +28,7 @@
         @include('layouts.preloader')
         @include('layouts.header')
         <!-- New Year -->
-                @include('layouts.newyear')
+{{--                @include('layouts.newyear')--}}
         <!-- end New Year -->
         @yield('content')
         @include('layouts.footer')
