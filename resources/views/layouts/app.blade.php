@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <!-- New Year -->
-    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
+{{--    <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">--}}
 {{--    <link href="/css/newyear.css" rel="stylesheet"/>--}}
     <!-- End New Year -->
 
@@ -40,10 +40,10 @@
 <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
 <!-- New Year -->
-    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
-    <script>
-        new Snow ();
-    </script>
+{{--    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>--}}
+{{--    <script>--}}
+{{--        new Snow ();--}}
+{{--    </script>--}}
 <!-- End New Year -->
 
     <script>
