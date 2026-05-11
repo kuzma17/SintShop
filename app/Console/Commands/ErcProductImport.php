@@ -7,6 +7,7 @@ use App\Import\ERC\ErcParser;
 use App\Import\ERC\ErcProducts;
 use App\Import\ERC\ErcStore;
 use App\Models\Category;
+use App\Models\Good;
 use Illuminate\Console\Command;
 
 class ErcProductImport extends Command
@@ -30,21 +31,9 @@ class ErcProductImport extends Command
      */
     public function handle(ErcParser $ercParser, ErcStore $ercStore, ErcProducts $ercProducts)
     {
+        $startedAt = now(); //  время начала импорта
 
        // dd($ercProducts->getToken());
-//        $response = $ercStore->getCodeCategories('ru');
-//        $data = $response->Data;
-//        $text = '';
-//
-//        foreach ($data as $item) {
-//            $text .= "{$item->ID} - {$item->Name}\n";
-//        }
-//
-//        file_put_contents(base_path('ajaxDebug.log'), $text);
-//        echo "Данные сохранены в data.txt";
-//
-//        dd($data_cat->Data[0]);
-
 
 
         //102.01.03.03 => Компьютеры потребительские
@@ -76,9 +65,20 @@ class ErcProductImport extends Command
         $ercParser->parse(Category::find(7), ['107.02.02.09']);
 
 
-        //
-        //$ercParser->countNullGood(); // sets the quantity value to 0 if it is not in the ERC warehouse
+        if ($ercParser->countGoods > 0){
+            $this->resetOldGoodsQuantity($startedAt);
+            $this->info('==== Erc Products Import Completed ====');
+        }
+    }
 
+
+    public function resetOldGoodsQuantity($date)
+    {
+        Good::erc()
+            ->where('updated_at', '<', $date)
+            ->update([
+                'quantity' => 0
+            ]);
     }
 
 

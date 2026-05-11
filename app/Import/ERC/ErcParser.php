@@ -23,6 +23,7 @@ class ErcParser
     protected $exception_item = ['097S05201'];
 
     protected $values = [];
+    public $countGoods=0;
 
     function __construct(ErcStore $ercStore, ErcProducts $ercProducts, ImageService $imageService){
         $this->ercStore = $ercStore;
@@ -222,15 +223,18 @@ class ErcParser
                $good = $this->createGood($dataGoodSet, $photos, $videos);
 
                 dump('created '.$good->id.' '.$good->title_ru);
+
             }
+
         }
+
     }
 
-    public function countNullGood(){
-        Good::where('erc', 1)
-            ->whereDate('updated_at', '<', date('Y-m-d'))
-            ->update(['quantity' => 0]);
-    }
+//    public function countNullGood(){
+//        Good::where('erc', 1)
+//            ->whereDate('updated_at', '<', date('Y-m-d'))
+//            ->update(['quantity' => 0]);
+//    }
 
     protected function createGood($goodData, $photos=null, $videos=null){
         $good = Good::create($goodData);
@@ -248,12 +252,16 @@ class ErcParser
             $this->values = [];
         }
 
+        $this->countGoods++;
+
         return $good;
     }
 
     protected function updateGood(Good $good, $goodData){
 
         $good->update($goodData);
+
+        $this->countGoods++;
 
 //        if ($photos){
 //            $good->photos()->createMany($photos);
@@ -762,5 +770,6 @@ class ErcParser
         }
         return $image;
     }
+
 
 }
