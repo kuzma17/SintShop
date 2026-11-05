@@ -21,8 +21,19 @@
         gtag('js', new Date());
         gtag('config', 'AW-17046141229');
     </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://googletagmanager.com;
+        })(window,document,'script','dataLayer','GTM-WBRRP3QC');</script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://googletagmanager.com"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 @include('layouts.icons-sprite')
     <div id="app">
         @include('layouts.preloader')

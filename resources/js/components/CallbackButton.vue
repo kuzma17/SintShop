@@ -100,6 +100,10 @@ export default {
                //console.log(response.data);
                if (response.data.success === true){
                  this.message =  response.data.message
+                 // --- ------------------------------------
+                 window.dataLayer = window.dataLayer || [];
+                 window.dataLayer.push({event: 'callback_form_success'});
+                 // ----------------------------------------
                }
             })
             .catch(error => {

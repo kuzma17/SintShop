@@ -67,6 +67,12 @@ __webpack_require__.r(__webpack_exports__);
           //console.log(response.data);
           if (response.data.success === true) {
             _this.message = response.data.message;
+            // --- ------------------------------------
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'callback_form_success'
+            });
+            // ----------------------------------------
           }
         })["catch"](function (error) {
           console.log(error);
